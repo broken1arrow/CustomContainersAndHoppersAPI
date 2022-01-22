@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Set;
 
-public class RecipeData implements RecipeCacheDataAPI {
+public final class RecipeData implements RecipeCacheDataAPI {
 	private final Set<ItemStack> matrial1;
 	private final Set<ItemStack> matrial2;
 	private final Set<ItemStack> matrial3;

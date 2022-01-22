@@ -13,7 +13,7 @@ import java.util.UUID;
  * Builder class to create container data.
  */
 
-public class ContainerData {
+public final class ContainerData {
 
 	private final UUID playerId;
 	private final String upgrade;
