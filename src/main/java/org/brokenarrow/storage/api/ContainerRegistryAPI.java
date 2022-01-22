@@ -25,7 +25,7 @@ public interface ContainerRegistryAPI {
 	 */
 
 	static ContainerRegistryAPI getInstance() {
-		return ContainerRegistryAPI.getInstance();
+		return null;
 	}
 
 	/**
