@@ -1,6 +1,8 @@
 
 # CustomContainersAndHoppersAPI info
 
+[![](https://jitpack.io/v/broken1arrow/CustomContainersAndHoppersAPI.svg)](https://jitpack.io/#broken1arrow/CustomContainersAndHoppersAPI)
+
 You have several methods you can use and also events. You have also a lot more inside to use (most of the methods have java docs) and
 Most of the methods you get access from the main class, only ContainerRegistry and PreferenceSettingsRegistery have another way 
 to access the class methods.
