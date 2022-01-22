@@ -1,11 +1,11 @@
 package org.brokenarrow.storage.customevents;
 
-import com.sun.istack.internal.NotNull;
 import org.bukkit.Location;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This event is fierd after Link/suction container has try to add item to container.
