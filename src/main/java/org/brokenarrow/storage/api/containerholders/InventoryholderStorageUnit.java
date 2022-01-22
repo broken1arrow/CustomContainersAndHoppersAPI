@@ -170,6 +170,16 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	BigInteger getAmount();
 
 	/**
+	 * Get the amount of items inside the container.
+	 * This method are not exact, if amount is over
+	 * Intriger max value it will return Intriger max
+	 * value.
+	 *
+	 * @return the amount of items in the container or Intriger max value.
+	 */
+	int getAmountInt();
+
+	/**
 	 * Get the max amount of items you can store inside the container.
 	 *
 	 * @return the amount of items in the container or -1 if it unlimit amount.
@@ -197,6 +207,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * Set the defult placeholders inside inventory if container are empty, on all slots
 	 * but not center slot.
 	 */
+	@Override
 	void setItemPlaceholderEmptyChest();
 
 	/**
