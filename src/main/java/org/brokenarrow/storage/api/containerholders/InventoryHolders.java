@@ -51,8 +51,18 @@ public interface InventoryHolders {
 	 * @return return int value of invetory size.
 	 */
 
-	public int getguiSize();
+	int getguiSize();
 
+	/**
+	 * Set new page if it not exist.
+	 *
+	 * @param type  set type of inventory or null if
+	 *              you want chest gui with size.
+	 * @param size  size of the inventory.
+	 * @param title The description of the gui
+	 * @return return array of invetorys.
+	 */
+	Inventory setPage(InventoryType type, int size, String title);
 
 	/**
 	 * Create an inventory for containers.
@@ -89,7 +99,7 @@ public interface InventoryHolders {
 	 * @param page     the page you whant to open of this container.
 	 * @return inventory on that page number you put in.
 	 */
-	public Inventory getPage(Location location, int page);
+	Inventory getPage(Location location, int page);
 
 	/**
 	 * Get number of the gui player has curent
@@ -99,7 +109,7 @@ public interface InventoryHolders {
 	 * @return the page of the inventory you current has open.
 	 */
 
-	public int getPageIndex(Inventory inventory);
+	int getPageIndex(Inventory inventory);
 
 	/**
 	 * Get the number of pages for one container.
@@ -128,6 +138,22 @@ public interface InventoryHolders {
 	ArrayList<Inventory> getInventory(Location location);
 
 	/**
+	 * Get first page with matching item inside.
+	 *
+	 * @param item item you want to check.
+	 * @return inventory some contains at lest 1 matching item.
+	 */
+	Inventory getFirstPageWithItems(ItemStack item);
+
+	/**
+	 * Get amount of one item type
+	 *
+	 * @param itemStack item you want to check amount.
+	 * @return amount of this itemStack.
+	 */
+	int getAmountOfOneItem(ItemStack itemStack);
+
+	/**
 	 * Get the page some has items, if one page
 	 * are emty it will check next page for items
 	 * or the page befor if it has items.
@@ -146,13 +172,30 @@ public interface InventoryHolders {
 	List<ItemStack> listAllPagesItems();
 
 	/**
+	 * Set item on a specific slot. Will override the old item if the slot
+	 * already has an item. Use {@link #addItems(ItemStack...)} if you want
+	 * to add items.
+	 *
+	 * @param slot      you want to set the item.
+	 * @param itemStack item you want to set in the slot.
+	 */
+	void setItem(int slot, ItemStack itemStack);
+
+	/**
+	 * Get the item in a specific slot.
+	 * <p>
+	 * slot you want to get the item.
+	 * item or null, if the slot does not, has any item.
+	 */
+	ItemStack getItem(int slot);
+
+	/**
 	 * Get the contents in the chest.
 	 *
-	 * @param location location for the inventory you has close
 	 * @return items from curent gui you close, will save all pages.
 	 */
 
-	ItemStack[] getContents(Location location);
+	ItemStack[] getContents();
 
 	/**
 	 * Add items to the chest and change page if first is full.
@@ -168,11 +211,11 @@ public interface InventoryHolders {
 	/**
 	 * It are used for count items and that way
 	 * calulate what page the item shall bee puted.
-	 * See {@link InventoryholderDefultContiners#setContents(Location)}
+	 * See {@link InventoryholderDefultContiners#setContents(ItemStack...)} ()}
 	 *
 	 * @return count number of itemstacks and return
 	 * a number of stacks some you put in.
-	 * @see #setContents(Location) org.broken.cheststorage.inventoryholders.InventoryHolderDefultchest
+	 * @see #setContents(ItemStack...) () org.broken.cheststorage.inventoryholders.InventoryHolderDefultchest
 	 */
 
 
@@ -197,16 +240,15 @@ public interface InventoryHolders {
 
 	boolean isIfChestFull();
 
+
 	/**
 	 * Set items in the chest on this cords,
 	 * if you have more an one page, it will
-	 * set items on this too (if a slot not has items
-	 * it will return air or null (slots will be empty)).
+	 * set items on this too.
 	 *
-	 * @param location where the container are placed.
+	 * @param itemStacks items you want to add
 	 */
-
-	void setContents(Location location);
+	void setContents(ItemStack... itemStacks);
 
 	/**
 	 * Save the items to cache.

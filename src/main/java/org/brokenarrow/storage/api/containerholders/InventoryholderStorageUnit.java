@@ -14,6 +14,7 @@ import java.util.Map;
 
 public interface InventoryholderStorageUnit extends InventoryHolders {
 
+
 	/**
 	 * Create inventory if not exist and add items if
 	 * the inventory has items before.
@@ -48,7 +49,26 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @param title The description of the gui
 	 * @return one inventory.
 	 */
+	@Override
 	Inventory setPage(InventoryType type, int size, String title);
+
+	/**
+	 * Get items in the container. You have to define
+	 * the amount you want to get from container.
+	 * <p>
+	 * For check amount inside use {@link #getAmount()}
+	 * <p>
+	 * The idea behind this is the huge amount some can be stored
+	 * in this container and to reduce the strain on the server
+	 * it only creates stacks after the amount you specify.
+	 * <p>
+	 * It will check if the amount you want exist or
+	 * will return empty ItemStack[].
+	 *
+	 * @param amount you want to get from the container.
+	 * @return array if itemStack´s or null if a container is empty or you specify number bigger a contents container have.
+	 */
+	ItemStack[] getContents(int amount);
 
 	/**
 	 * This method will try add items to container and

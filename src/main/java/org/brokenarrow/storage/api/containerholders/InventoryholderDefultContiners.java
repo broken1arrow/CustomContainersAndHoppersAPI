@@ -31,21 +31,18 @@ public interface InventoryholderDefultContiners extends InventoryHolders {
 	 * if you have more an one page, it will
 	 * set items on this too (if a slot not has items
 	 * it will return air or null (slots will be empty)).
-	 *
-	 * @param location where the container are placed.
 	 */
 
 	@Override
-	void setContents(Location location);
+	void setContents(ItemStack... itemStack);
 
 	/**
 	 * Get the contents in the chest.
 	 *
-	 * @param location location for the inventory you has close
 	 * @return items from curent gui you close, will save all pages.
 	 */
 	@Override
-	ItemStack[] getContents(Location location);
+	ItemStack[] getContents();
 
 	/**
 	 * This event will check if player click outside of the gui and check both
