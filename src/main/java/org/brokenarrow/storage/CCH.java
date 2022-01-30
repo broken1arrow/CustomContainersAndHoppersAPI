@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
-public class CustomContainersMainClass extends JavaPlugin {
+public class CCH extends JavaPlugin {
 
 
 	private final ContainerRegistryAPI registry = ContainerRegistryAPI.getInstance();
@@ -49,8 +49,8 @@ public class CustomContainersMainClass extends JavaPlugin {
 	}
 
 
-	public static CustomContainersMainClass getInstance() {
-		return CustomContainersMainClass.getPlugin(CustomContainersMainClass.class);
+	public static CCH getInstance() {
+		return CCH.getPlugin(CCH.class);
 	}
 
 	protected void cleanBeforeReload() {
@@ -102,7 +102,7 @@ public class CustomContainersMainClass extends JavaPlugin {
 
 	/*	for (Location location : registry.getContainerlocations())
 			if (location != null && registry.isRegistered(location))
-				CustomContainersMainClass.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(location, registry.getPlayerUUID(location));
+				CCH.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(location, registry.getPlayerUUID(location));
 			else
 				throw new IllegalArgumentException("This is not right location for a container ");*/
 
@@ -112,7 +112,7 @@ public class CustomContainersMainClass extends JavaPlugin {
 	/*	hasStartLoadedToCache = true;
 		try {
 			if (location != null && registry.isRegistered(location))
-				CustomContainersMainClass.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(location, registry.getPlayerUUID(location));
+				CCH.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(location, registry.getPlayerUUID(location));
 			else
 				throw new IllegalArgumentException("This is not right location for a container ");
 		} finally {
