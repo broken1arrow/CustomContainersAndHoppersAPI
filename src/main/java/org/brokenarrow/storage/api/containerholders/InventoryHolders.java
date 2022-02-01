@@ -186,6 +186,9 @@ public interface InventoryHolders {
 	 * <p>
 	 * slot you want to get the item.
 	 * item or null, if the slot does not, has any item.
+	 *
+	 * @param slot number you want to get the item.
+	 * @return itemstack.
 	 */
 	ItemStack getItem(int slot);
 
