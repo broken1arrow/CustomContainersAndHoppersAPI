@@ -259,7 +259,15 @@ public interface ContainerRegistryAPI {
 	List<Location> getLinkContainerLinkedToLocation(Location location);
 
 	/**
-	 * Get amount of items for storageunit
+	 * Convenient method to convert to BigInteger.
+	 *
+	 * @param amount amount you want to convert.
+	 * @return BigInteger value.
+	 */
+	BigInteger convertToBigInteger(long amount);
+
+	/**
+	 * Get amount of items for storage container.
 	 *
 	 * @param location of the container.
 	 * @return amount of items or 0 if it empty or null.
@@ -267,6 +275,23 @@ public interface ContainerRegistryAPI {
 
 	BigInteger getAmontOfItems(Location location);
 
+	/**
+	 * Remove amount of items from storage container.
+	 *
+	 * @param location of the container.
+	 * @param amount   the amount of items you want to remove.
+	 * @return true if continer has more an 1 item left after remove.
+	 */
+	boolean subtractAmount(Location location, BigInteger amount);
+
+	/**
+	 * Add amount of items to storage container.
+	 *
+	 * @param location of the container.
+	 * @param amount   the amount of items you want to add .
+	 */
+	void addAmount(Location location, BigInteger amount);
+	
 	/**
 	 * Set amount of items continer have in cache.
 	 *
