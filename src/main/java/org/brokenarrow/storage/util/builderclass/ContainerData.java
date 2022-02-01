@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.util.builderclass;
 
-import org.brokenarrow.storage.util.TypeOfContainers;
+import org.brokenarrow.storage.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,7 +17,7 @@ public final class ContainerData {
 
 	private final UUID playerId;
 	private final String upgrade;
-	private final TypeOfContainers.TypeOfContainer typeOfContainer;
+	private final TypeOfContainer typeOfContainer;
 	private final String containerFileName;
 	private final int numberOfPages;
 	private final int amountPlaceForFree;
@@ -78,7 +78,7 @@ public final class ContainerData {
 	 *
 	 * @return container type.
 	 */
-	public TypeOfContainers.TypeOfContainer getTypeOfContainer() {
+	public TypeOfContainer getTypeOfContainer() {
 		return typeOfContainer;
 	}
 
@@ -224,7 +224,7 @@ public final class ContainerData {
 	public static class Builder {
 		private UUID playerId;
 		private String upgrade = "";
-		private TypeOfContainers.TypeOfContainer typeOfContainer;
+		private TypeOfContainer typeOfContainer;
 		private String containerFileName;
 		private int numberOfPages = 1;
 		private int amountPlaceForFree;
@@ -269,7 +269,7 @@ public final class ContainerData {
 		 * @param typeOfContainer type of container.
 		 * @return builder instance.
 		 */
-		public Builder setTypeOfContainer(TypeOfContainers.TypeOfContainer typeOfContainer) {
+		public Builder setTypeOfContainer(TypeOfContainer typeOfContainer) {
 			this.typeOfContainer = typeOfContainer;
 			return this;
 		}

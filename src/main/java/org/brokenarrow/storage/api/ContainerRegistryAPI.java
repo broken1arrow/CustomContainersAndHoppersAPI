@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api;
 
-import org.brokenarrow.storage.util.TypeOfContainers;
+import org.brokenarrow.storage.util.TypeOfContainer;
 import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -38,7 +38,7 @@ public interface ContainerRegistryAPI {
 	 * @param currentUpdate     The current update off the container.
 	 * @param pagesAmount       the amount off pages for the container.
 	 */
-	void addChest(Location location, UUID whoPlaced, TypeOfContainers.TypeOfContainer typeOfContainer, String containerFileName, String currentUpdate, int pagesAmount);
+	void addChest(Location location, UUID whoPlaced, TypeOfContainer typeOfContainer, String containerFileName, String currentUpdate, int pagesAmount);
 
 	/**
 	 * Add link/suction container data to cache.
@@ -50,7 +50,7 @@ public interface ContainerRegistryAPI {
 	 * @param currentUpdate        The current update off the container.
 	 * @param filterWhiteBlackList the defult if it shall bee black or white list as defult.
 	 */
-	void addHopperChestLinked(Location location, UUID whoPlaced, TypeOfContainers.TypeOfContainer typeOfContainer, String containerFileName, String currentUpdate, boolean filterWhiteBlackList);
+	void addHopperChestLinked(Location location, UUID whoPlaced, TypeOfContainer typeOfContainer, String containerFileName, String currentUpdate, boolean filterWhiteBlackList);
 
 	/**
 	 * Remove container from both database and cache.
@@ -176,7 +176,7 @@ public interface ContainerRegistryAPI {
 	 * @return the containertype enum.
 	 */
 
-	TypeOfContainers.TypeOfContainer transformStringToTypeofContainer(String typeOfContainer);
+	TypeOfContainer transformStringToTypeofContainer(String typeOfContainer);
 
 	/**
 	 * check the chesttype of this container.
@@ -194,7 +194,7 @@ public interface ContainerRegistryAPI {
 	 * @return return the chesttype.
 	 */
 
-	TypeOfContainers.TypeOfContainer getTypeofContainer(Location location);
+	TypeOfContainer getTypeofContainer(Location location);
 
 	/**
 	 * Get amount of pages this continer has.
@@ -291,7 +291,7 @@ public interface ContainerRegistryAPI {
 	 * @param amount   the amount of items you want to add .
 	 */
 	void addAmount(Location location, BigInteger amount);
-	
+
 	/**
 	 * Set amount of items continer have in cache.
 	 *

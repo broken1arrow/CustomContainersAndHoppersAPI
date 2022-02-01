@@ -18,19 +18,18 @@ package org.brokenarrow.storage.util;
  * <p>
  * DEFAULT("null")
  */
-public class TypeOfContainers {
+public enum TypeOfContainer {
 
-	public enum TypeOfContainer {
-		PAGEDCONTAINER("paged_chest"), CRAFTINGCONTAINER("craft_chest"), SELLCHEST("sell_chest"),
-		STORAGEUNIT("bigchest"), LINKEDCONTAINER("hopper"), DEFAULT("null");
-		private final String type;
+	PAGEDCONTAINER("paged_chest"), CRAFTINGCONTAINER("craft_chest"), SELLCHEST("sell_chest"),
+	STORAGEUNIT("bigchest"), LINKEDCONTAINER("hopper"), DEFAULT("null");
+	private final String type;
 
-		TypeOfContainer(String type) {
-			this.type = type;
-		}
+	TypeOfContainer(String type) {
+		this.type = type;
+	}
 
-		public String getType() {
-			return type;
-		}
+	public String getType() {
+		return type;
 	}
 }
+

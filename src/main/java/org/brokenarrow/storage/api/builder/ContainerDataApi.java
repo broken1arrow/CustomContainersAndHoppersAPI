@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.builder;
 
-import org.brokenarrow.storage.util.TypeOfContainers;
+import org.brokenarrow.storage.util.TypeOfContainer;
 import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
@@ -30,7 +30,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return container type.
 	 */
-	TypeOfContainers.TypeOfContainer getTypeOfContainer();
+	TypeOfContainer getTypeOfContainer();
 
 	/**
 	 * Get Container FileName.
