@@ -131,40 +131,40 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	void setItemStack(ItemStack itemStack);
 
 	/**
-	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
+	 * Add the amount and itemstack to cache (will only save 1 item to cache).
 	 * <p>
 	 * See also this, for see what I use to set data it in cache.
 	 * <p>
-	 * {@link ContainerRegistryAPI#setAmontOfItems(Location, BigInteger)}
+	 * {@link ContainerRegistryAPI#addAmount(Location, BigInteger)}
 	 * {@link ContainerRegistryAPI#setContainercontents(Location, ItemStack[])}
 	 *
 	 * @param itemStack items you set to chache.
 	 */
-	void setItemsAmountInCache(ItemStack itemStack);
+	void addItemsAmountInCache(ItemStack itemStack);
 
 	/**
-	 * Set the amount of items in chest.
+	 * Add the amount of items in chest.
 	 * <p>
 	 * See also this, for see what I use to amount it in cache.
 	 * <p>
-	 * {@link ContainerRegistryAPI#setAmontOfItems(Location, BigInteger)}
+	 * {@link ContainerRegistryAPI#addAmount(Location, BigInteger)}
 	 *
 	 * @param amount set amount in chest.
 	 */
-	void setItemsAmountInCache(long amount);
+	void addItemsAmountInCache(long amount);
 
 	/**
-	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
+	 * Add the amount and itemstack to cache (will only save 1 item to cache).
 	 * <p>
 	 * See also this, for see what I use to set data it in cache.
 	 * <p>
-	 * {@link ContainerRegistryAPI#setAmontOfItems(Location, BigInteger)}
+	 * {@link ContainerRegistryAPI#addAmount(Location, BigInteger)}
 	 * {@link ContainerRegistryAPI#setContainercontents(Location, ItemStack[])}
 	 *
 	 * @param itemStack items you set to chache.
 	 * @param amount    set amount in chest.
 	 */
-	void setItemsAmountInCache(ItemStack itemStack, long amount);
+	void addItemsAmountInCache(ItemStack itemStack, long amount);
 
 	/**
 	 * Get amount is left in the chest (if the container has limmit
@@ -175,11 +175,26 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	BigInteger getAmountLeft();
 
 	/**
-	 * Set the amount of items added to the container.
+	 * Set the amount of items in the container.
 	 *
-	 * @param amount the amount of items from you add/remove items.
+	 * @param amount the amount of items items.
 	 */
 	void setAmount(BigInteger amount);
+
+	/**
+	 * Subtract the number of items from the container.
+	 *
+	 * @param amount the number of items you want to remove.
+	 */
+	void subtractAmount(BigInteger amount);
+
+	/**
+	 * Add several items to the container.
+	 *
+	 * @param amount the number of items you want to add.
+	 */
+
+	void addAmount(BigInteger amount);
 
 	/**
 	 * Get the amount of items inside the container.
