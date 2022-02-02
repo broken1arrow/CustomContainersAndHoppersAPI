@@ -21,10 +21,10 @@ To access the containers to add or remove items. The plugin will create and make
 new containers player place or in some cases when opening the container.
 ```
 // you can use this if you also want the inventory also get created (if not set the player to null or use the method below)
-CustomContainersMainClass.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(Location, UUID);
+CCH.getInstance().getInventoryHoldersCached().createOrGetInventoryHolder(Location, UUID);
 
 // return the inventoryholder on location or null if it does not exist and needs to be created first.
-CustomContainersMainClass.getInstance().getInventoryHoldersCached().getInventoryHolder(Location);
+CCH.getInstance().getInventoryHoldersCached().getInventoryHolder(Location);
 ```
 
 
