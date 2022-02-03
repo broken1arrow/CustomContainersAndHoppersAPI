@@ -63,12 +63,14 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * it only creates stacks after the amount you specify.
 	 * <p>
 	 * It will check if the amount you want exist or
-	 * will return empty ItemStack[].
+	 * will return empty ItemStack array. Also You can´t get more an
+	 * 4000 items if you not set bypassLimit to true.
 	 *
-	 * @param amount you want to get from the container.
+	 * @param amount      you want to get from the container.
+	 * @param bypassLimit set to true if you want to force more than 4000 items. If you set the amount too high it will cause problems.
 	 * @return array if itemStack´s or null if a container is empty or you specify number bigger a contents container have.
 	 */
-	ItemStack[] getContents(int amount);
+	ItemStack[] getContents(int amount, boolean bypassLimit);
 
 	/**
 	 * This method will try add items to container and
