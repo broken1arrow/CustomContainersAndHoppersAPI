@@ -2,6 +2,7 @@ package org.brokenarrow.storage.api;
 
 import org.brokenarrow.storage.util.TypeOfContainer;
 import org.brokenarrow.storage.util.builderclass.ContainerData;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -94,11 +95,27 @@ public interface ContainerRegistryAPI {
 	Map<Location, ContainerData> getContainerDataMap();
 
 	/**
-	 * Get the chunks containers are placed in.
+	 * Get chunk container are placed in.
+	 *
+	 * @param location of the container.
+	 * @return chunk data.
+	 */
+	Chunk getChunkData(Location location);
+
+	/**
+	 * Set the chunk container are placed in.
+	 *
+	 * @param chunkData of the container placed.
+	 */
+	void setChunkData(Chunk chunkData);
+
+	/**
+	 * Get list of the chunks containers are placed in. If the chunk
+	 * are not loaded yet the chunkdata may not be added yet.
 	 *
 	 * @return chunk data.
 	 */
-	Set<Object> getChunkData();
+	Set<Chunk> getChunkData();
 
 	/**
 	 * Save number of pages for this container
