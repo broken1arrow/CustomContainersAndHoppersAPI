@@ -116,6 +116,23 @@ public interface ContainerRegistryAPI {
 	 * @return chunk data.
 	 */
 	Set<Chunk> getChunkData();
+	
+	/**
+	 * Get if this container has a hopper
+	 * below the container.
+	 *
+	 * @return true if is placed hopper below container
+	 */
+	boolean isIfHasHopperBelow(Location location);
+
+	/**
+	 * Set if this container has a hopper
+	 * below the container.
+	 *
+	 * @param location    of the container.
+	 * @param hopperBelow set to true if is placed hopper below container.
+	 */
+	void setIfHasHopperBelow(Location location, boolean hopperBelow);
 
 	/**
 	 * Save number of pages for this container
