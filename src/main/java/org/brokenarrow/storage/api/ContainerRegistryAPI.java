@@ -87,12 +87,26 @@ public interface ContainerRegistryAPI {
 	Set<Location> getContainerlocations();
 
 	/**
-	 * Get all continers inside cache.
+	 * Get all continers inside cache .
 	 *
 	 * @return map with location and all continerdata.
 	 */
 
 	Map<Location, ContainerData> getContainerDataMap();
+
+	/**
+	 * Get continer data for one type of container.
+	 * You have acces to all curent data set (insted of
+	 * load the map every time you want to get data).
+	 * <p>
+	 * Do not also set data in begning or befor you use this
+	 * method, becuse that will create new ContainerData instance.
+	 * So use that after your check something with the conbtiners or
+	 * use the other getters methods.
+	 *
+	 * @return ContainerData with all continerdata.
+	 */
+	ContainerData getContainerData(Location location);
 
 	/**
 	 * Get chunk container are placed in.
@@ -116,7 +130,7 @@ public interface ContainerRegistryAPI {
 	 * @return chunk data.
 	 */
 	Set<Chunk> getChunkData();
-	
+
 	/**
 	 * Get if this container has a hopper
 	 * below the container.
