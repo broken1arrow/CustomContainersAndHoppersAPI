@@ -23,7 +23,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return current update.
 	 */
-	String getUpgrade();
+	String getCurentUpgrade();
 
 	/**
 	 * Get type of container.
@@ -102,6 +102,14 @@ public interface ContainerDataApi {
 	 */
 	boolean isFilterWhiteBlack();
 
+	/**
+	 * Get if this container has a hopper
+	 * below the container.
+	 *
+	 * @return true if is placed hopper below container
+	 */
+	boolean isHasHopperBelow();
+	
 	/**
 	 * Get filteritems inside the white/blacklist gui.
 	 *
