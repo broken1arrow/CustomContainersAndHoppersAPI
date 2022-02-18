@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 public interface TeleportAndPickupItemsApi {
-	
+
 	/**
 	 * List of containers it shall go thrue. Will check continer for next run
 	 * on that location and also if the cunk are loaded.
@@ -20,6 +20,28 @@ public interface TeleportAndPickupItemsApi {
 	 * @param locationsList list of locations for all continer´s
 	 */
 	void runTeleportSuctionTask(List<Location> locationsList);
+
+	/**
+	 * Add locations it shall teleport or picup items.
+	 *
+	 * @param location of the continer.
+	 */
+	void setLocationInList(Location location);
+
+	/**
+	 * Check if it contains location.
+	 *
+	 * @param location of the continer.
+	 * @return true if the list contains the container
+	 */
+	boolean isLocationInList(Location location);
+
+	/**
+	 * Remove location from the list.
+	 *
+	 * @param location of the container you want to remove.
+	 */
+	void removeLocationInList(Location location);
 
 	/**
 	 * Remove all linked containers inventorys and locations from cache.
