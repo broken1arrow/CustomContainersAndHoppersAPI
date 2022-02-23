@@ -1,6 +1,7 @@
 package org.brokenarrow.storage;
 
 import org.brokenarrow.storage.api.*;
+import org.brokenarrow.storage.api.runnable.*;
 import org.brokenarrow.storage.util.ConsoleColors;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -72,6 +73,27 @@ public class CCH extends JavaPlugin {
 	}
 
 	public HopperMoveItemsListenerAPI getHopperMoveItemsListener() {
+		return null;
+	}
+
+	public CraftingSellTaskAPI getCraftingSellTask() {
+		return null;
+	}
+
+
+	public AddItemsToStorageUnitAPI getAddItemsToStorageUnit() {
+		return null;
+	}
+
+	public SpawnContainerEffectsTaskAPI getSpawnContainerEffectsTask() {
+		return null;
+	}
+
+	public HologramsTaskAPI getHologramsTask() {
+		return null;
+	}
+
+	public HopperMoveTaskAPI getHopperMoveTask() {
 		return null;
 	}
 
