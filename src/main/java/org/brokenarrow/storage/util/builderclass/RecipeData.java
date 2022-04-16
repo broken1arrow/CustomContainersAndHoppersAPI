@@ -1,11 +1,11 @@
 package org.brokenarrow.storage.util.builderclass;
 
-import org.brokenarrow.storage.api.builder.RecipeCacheDataAPI;
+import org.brokenarrow.storage.api.builder.RecipeDataAPI;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public final class RecipeData implements RecipeCacheDataAPI {
+public final class RecipeData implements RecipeDataAPI {
 	private final List<ItemStackData> itemStackDataList;
 	private final int outputAmount;
 	private final ItemStack outputStack;

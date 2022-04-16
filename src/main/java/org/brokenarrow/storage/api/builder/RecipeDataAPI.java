@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public interface RecipeCacheDataAPI {
+public interface RecipeDataAPI {
 
 	/**
 	 * Get list of ingredients you need to craft the item (every object in the list
