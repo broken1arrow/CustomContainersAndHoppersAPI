@@ -1,6 +1,9 @@
 package org.brokenarrow.storage;
 
-import org.brokenarrow.storage.api.*;
+import org.brokenarrow.storage.api.DatabaseAPI;
+import org.brokenarrow.storage.api.HopperMoveItemsListenerAPI;
+import org.brokenarrow.storage.api.RecipeCacheAPI;
+import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
 import org.brokenarrow.storage.api.runnable.*;
 import org.brokenarrow.storage.util.ConsoleColors;
 import org.bukkit.Bukkit;
@@ -56,10 +59,6 @@ public class CCH extends JavaPlugin {
 	}
 
 	public DatabaseAPI getDatabaseApi() {
-		return null;
-	}
-
-	public CheckItemsForCraftingApi getCheckItemsForCraftingApi() {
 		return null;
 	}
 

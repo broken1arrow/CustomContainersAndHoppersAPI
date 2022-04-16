@@ -1,16 +1,48 @@
 package org.brokenarrow.storage.api;
 
-import org.brokenarrow.storage.api.builder.RecipeCacheDataAPI;
+import org.brokenarrow.storage.util.builderclass.RecipeData;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public interface RecipeCacheAPI {
 
 
-	void addRecipes(ItemStack recipes, Set<ItemStack> material1, Set<ItemStack> material2, Set<ItemStack> material3, Set<ItemStack> material4, Set<ItemStack> material5,
-	                int amount1, int amount2, int amount3, int amount4, int amount5, int totalAmount);
+	/**
+	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
+	 *
+	 * @param recipeKey  unique recipe name
+	 * @param recipeData the data like amount, itemstack, amount output item and the itemstack output.
+	 */
+
+	public void setRecipes(final String recipeKey, final RecipeData recipeData);
+
+	/**
+	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
+	 *
+	 * @param recipeKey       unique recipe name
+	 * @param recipeList      the ingriens and amount.
+	 * @param outputAmount    amount of items added back of the new item.
+	 * @param itemstackoutput the output item you want as result.
+	 */
+	public void setRecipes(final String recipeKey, final List<RecipeData.ItemStackData> recipeList, final int outputAmount, ItemStack itemstackoutput);
+
+	/**
+	 * Add one or several recipe´s to the cache. If key exist it will try add the new values
+	 * (if not it will put new data to cache). If you want to replace all data use {@link #setRecipes(String, RecipeData)} or
+	 * {@link #setRecipes(String, List, int, ItemStack)}.
+	 * <p>
+	 * It will store this and be used in autocrafter container.
+	 *
+	 * @param recipeKey       unique recipe name
+	 * @param recipeList      the ingriens and amount.
+	 * @param outputAmount    amount of items added back of the new item.
+	 * @param itemstackoutput the output item you want as result.
+	 */
+
+	public void addRecipes(final String recipeKey, final List<RecipeData.ItemStackData> recipeList, final int outputAmount, ItemStack itemstackoutput);
 
 	/**
 	 * Get the map with all recipes
@@ -18,51 +50,40 @@ public interface RecipeCacheAPI {
 	 * @return return all recipes.
 	 */
 
-	Map<ItemStack, RecipeCacheDataAPI> getRecipe();
+	public Map<String, RecipeData> getRecipes();
 
 	/**
-	 * Get all recipes as a setlist
+	 * Get the Recipe Data some contains
+	 * recipe info.
+	 *
+	 * @return return all recipes.
+	 */
+	public RecipeData getRecipe(String key);
+
+	/**
+	 * Get all recipes key in map.
 	 *
 	 * @return a list of recipes.
 	 */
-
-	Set<ItemStack> getRecipes();
-
-	/**
-	 * Get one recipe from this cache
-	 *
-	 * @param recipe the recipe you want the ingridens.
-	 * @return the recipe ingridens.
-	 */
-
-	RecipeCacheDataAPI getRecipe(ItemStack recipe);
+	public Set<String> getKeyList();
 
 	/**
-	 * Get the matrial needed for a recipe.
+	 * Get ItemStackData with ingredients and amount needed for the output item.
 	 *
-	 * @param recipe       the recipe you want to make
-	 * @param materialType matrial
-	 * @return
+	 * @param data        List of recipes seach inside for the ingredients.
+	 * @param ingredients the ingredient you want to know amount of items.
+	 * @return itemStackData class you can acces ingredients and amount getters.
 	 */
-	Set<ItemStack> getIngredients(ItemStack recipe, MaterialType materialType);
 
-	int getIngredientsAmount(ItemStack recipe, MatrialAmount matrialAmount);
+	public RecipeData.ItemStackData getItemStackData(RecipeData data, ItemStack ingredients);
 
-	enum MaterialType {
-		MATERIAL_1,
-		MATERIAL_2,
-		MATERIAL_3,
-		MATERIAL_4,
-		MATERIAL_5
-	}
+	/**
+	 * Get list of matching recipe from this cache.
+	 *
+	 * @param recipe itemstack you want from the cache.
+	 * @return list of recipe some match the recipe.
+	 */
 
-	enum MatrialAmount {
-		AMOUNT1,
-		AMOUNT2,
-		AMOUNT3,
-		AMOUNT4,
-		AMOUNT5
-
-	}
+	public List<RecipeData> getRecipes(ItemStack recipe);
 
 }
