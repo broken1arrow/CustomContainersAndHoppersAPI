@@ -7,8 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * This class is used for cache recipes. You can ether use
+ * any of set methods or add method for put a recipe to cache.
+ * <p>
+ * For build a recipe to add to cache see:
+ * {@link RecipeData}
+ */
 public interface RecipeCacheAPI {
-
 
 	/**
 	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
@@ -17,7 +23,7 @@ public interface RecipeCacheAPI {
 	 * @param recipeData the data like amount, itemstack, amount output item and the itemstack output.
 	 */
 
-	public void setRecipes(final String recipeKey, final RecipeData recipeData);
+	void setRecipes(final String recipeKey, final RecipeData recipeData);
 
 	/**
 	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
@@ -27,7 +33,7 @@ public interface RecipeCacheAPI {
 	 * @param outputAmount    amount of items added back of the new item.
 	 * @param itemstackoutput the output item you want as result.
 	 */
-	public void setRecipes(final String recipeKey, final List<RecipeData.ItemStackData> recipeList, final int outputAmount, ItemStack itemstackoutput);
+	void setRecipes(final String recipeKey, final List<RecipeData.IngredientsData> recipeList, final int outputAmount, ItemStack itemstackoutput);
 
 	/**
 	 * Add one or several recipe´s to the cache. If key exist it will try add the new values
@@ -42,7 +48,7 @@ public interface RecipeCacheAPI {
 	 * @param itemstackoutput the output item you want as result.
 	 */
 
-	public void addRecipes(final String recipeKey, final List<RecipeData.ItemStackData> recipeList, final int outputAmount, ItemStack itemstackoutput);
+	void addRecipes(final String recipeKey, final List<RecipeData.IngredientsData> recipeList, final int outputAmount, ItemStack itemstackoutput);
 
 	/**
 	 * Get the map with all recipes
@@ -50,7 +56,7 @@ public interface RecipeCacheAPI {
 	 * @return return all recipes.
 	 */
 
-	public Map<String, RecipeData> getRecipes();
+	Map<String, RecipeData> getRecipes();
 
 	/**
 	 * Get the Recipe Data some contains
@@ -58,24 +64,24 @@ public interface RecipeCacheAPI {
 	 *
 	 * @return return all recipes.
 	 */
-	public RecipeData getRecipe(String key);
+	RecipeData getRecipe(String key);
 
 	/**
 	 * Get all recipes key in map.
 	 *
 	 * @return a list of recipes.
 	 */
-	public Set<String> getKeyList();
+	Set<String> getKeyList();
 
 	/**
-	 * Get ItemStackData with ingredients and amount needed for the output item.
+	 * Get IngredientsData with ingredients and amount needed for the output item.
 	 *
 	 * @param data        List of recipes seach inside for the ingredients.
 	 * @param ingredients the ingredient you want to know amount of items.
 	 * @return itemStackData class you can acces ingredients and amount getters.
 	 */
 
-	public RecipeData.ItemStackData getItemStackData(RecipeData data, ItemStack ingredients);
+	RecipeData.IngredientsData getIngredientsData(RecipeData data, ItemStack ingredients);
 
 	/**
 	 * Get list of matching recipe from this cache.
@@ -84,6 +90,22 @@ public interface RecipeCacheAPI {
 	 * @return list of recipe some match the recipe.
 	 */
 
-	public List<RecipeData> getRecipes(ItemStack recipe);
+	List<RecipeData> getRecipes(ItemStack recipe);
+
+	/**
+	 * Check if it prevent override or not.
+	 *
+	 * @return true if it prevent override.
+	 */
+	boolean isPreventOverride();
+
+	/**
+	 * Set this to false to override a recipe in cache.
+	 * <p>
+	 * IMPORTANT: Do not override recipes some start with 'minecraft:'
+	 *
+	 * @param preventOverride set it to false if you want to override recipe in cache.
+	 */
+	void setPreventOverride(boolean preventOverride);
 
 }

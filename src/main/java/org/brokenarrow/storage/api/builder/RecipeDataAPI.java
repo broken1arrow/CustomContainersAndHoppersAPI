@@ -5,6 +5,13 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
+/**
+ * This class are used to create a recipe you later can use when
+ * add to RecipeCache and later used for autocrafter container.
+ * <p>
+ * See this class for methods to add to cache:
+ * {@link org.brokenarrow.storage.api.RecipeCacheAPI}
+ */
 public interface RecipeDataAPI {
 
 	/**
@@ -15,12 +22,12 @@ public interface RecipeDataAPI {
 	 * <p>
 	 * <p>
 	 * Recipe need 8 oak planks to make on chest.
-	 * But it can be also Recipe need 8 tnt to make on chest(If a custom recipe is
+	 * But it can be also contain recipe some need 8 tnt to make on chest(If a custom recipe is
 	 * addeed on the server or added thru the api).
 	 *
-	 * @return ItemStackData class you can get the data for all diffrent recipes you can make one result/output item.
+	 * @return IngredientsData class you can get the data for all diffrent recipes you can make one result/output item.
 	 */
-	public List<RecipeData.ItemStackData> getItemStackDataList();
+	public List<RecipeData.IngredientsData> getIngredientsDataList();
 
 	/**
 	 * Get amount of items you get for a recipe.
@@ -34,7 +41,7 @@ public interface RecipeDataAPI {
 	 *
 	 * @return the itemstack as result/output for the recipe.
 	 */
-	public ItemStack getOutputStack();
+	public ItemStack getResult();
 
 	/**
 	 * Get the builder to get old data when want to only add new data.

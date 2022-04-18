@@ -5,42 +5,77 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
+/**
+ * This class are used to create a recipe you later can use when
+ * add to RecipeCache and later used for autocrafter container.
+ * <p>
+ * See this class for methods to add to cache:
+ * {@link org.brokenarrow.storage.api.RecipeCacheAPI}
+ */
 public final class RecipeData implements RecipeDataAPI {
-	private final List<ItemStackData> itemStackDataList;
+	private final List<IngredientsData> ingredientsDataList;
 	private final int outputAmount;
 	private final ItemStack outputStack;
 	private final Bulider bulider;
 
 
 	private RecipeData(Bulider bulider) {
-		this.itemStackDataList = bulider.listOfIngriens;
+		this.ingredientsDataList = bulider.listOfIngriens;
 		this.outputStack = bulider.outputStack;
 		this.outputAmount = bulider.outputAmount;
 		this.bulider = bulider;
 	}
 
+	/**
+	 * Get list of ingredients you need to craft the item (every object in the list
+	 * are one recipe with diffrent ingrediens and amount you needd make the recipe).
+	 * <p>
+	 * It will have like this:
+	 * <p>
+	 * <p>
+	 * Recipe need 8 oak planks to make on chest.
+	 * But it can be also contain recipe some need 8 tnt to make on chest(If a custom recipe is
+	 * addeed on the server or added thru the api).
+	 *
+	 * @return IngredientsData class you can get the data for all diffrent recipes you can make one result/output item.
+	 */
 	@Override
-	public List<ItemStackData> getItemStackDataList() {
-		return itemStackDataList;
+	public List<IngredientsData> getIngredientsDataList() {
+		return ingredientsDataList;
 	}
 
+	/**
+	 * Get amount of items you get for a recipe.
+	 *
+	 * @return amount of items you get as result/output.
+	 */
 	@Override
 	public int getOutputAmount() {
 		return outputAmount;
 	}
 
+	/**
+	 * Get itemstack you get for a recipe.
+	 *
+	 * @return the itemstack as result/output for the recipe.
+	 */
 	@Override
-	public ItemStack getOutputStack() {
+	public ItemStack getResult() {
 		return outputStack;
 	}
 
+	/**
+	 * Get the builder to get old data when want to only add new data.
+	 *
+	 * @return the builder you can set new data.
+	 */
 	@Override
 	public Bulider getBulider() {
 		return bulider;
 	}
 
 	public static class Bulider {
-		private List<ItemStackData> listOfIngriens;
+		private List<IngredientsData> listOfIngriens;
 		private ItemStack outputStack;
 		private int outputAmount;
 
@@ -50,19 +85,19 @@ public final class RecipeData implements RecipeDataAPI {
 		 * @param listOfIngriens the diffrent recipes for this result/outupt item.
 		 * @return this builder class.
 		 */
-		public final Bulider setListOfIngriens(List<ItemStackData> listOfIngriens) {
+		public final Bulider setListOfIngriens(List<IngredientsData> listOfIngriens) {
 			this.listOfIngriens = listOfIngriens;
 
 			return this;
 		}
 
 		/**
-		 * Set the itemstack some shall be used as output item.
+		 * Set the itemstack some shall be used as result/output item.
 		 *
 		 * @param outputStack The item used as result/output item.
 		 * @return this builder class.
 		 */
-		public Bulider setOutputStack(ItemStack outputStack) {
+		public Bulider setResult(ItemStack outputStack) {
 			this.outputStack = outputStack;
 			return this;
 		}
@@ -73,7 +108,7 @@ public final class RecipeData implements RecipeDataAPI {
 		 * @param outputAmount amount of items give back from the recipe.
 		 * @return this builder class.
 		 */
-		public Bulider setOutputAmount(int outputAmount) {
+		public Bulider setResultAmount(int outputAmount) {
 			this.outputAmount = outputAmount;
 			return this;
 		}
@@ -88,21 +123,21 @@ public final class RecipeData implements RecipeDataAPI {
 		}
 	}
 
-	public static class ItemStackData {
-		private final ItemStack[] itemStacks;
+	public static class IngredientsData {
+		private final ItemStack[] ingredientsList;
 		private final int amountNeeded;
 
 		/**
 		 * Set array of items you want as sugestion for the recipe.
-		 * For example chest can you craft from diffrent matrials
-		 * so add all matrial in same array to give player several
-		 * diffrent matrail he can use or add only one item.
+		 * For example chest can you craft from diffrent material
+		 * so add all material in same array to give player several
+		 * diffrent material he can use or add only one item.
 		 *
-		 * @param itemStacks   you want to use as ingredients to make a recipe.
-		 * @param amountNeeded for this ingredients to make the recipe.
+		 * @param ingredientsList of your itemstacks you want as ingredients to make a recipe.
+		 * @param amountNeeded    for this ingredients to make the recipe.
 		 */
-		public ItemStackData(ItemStack[] itemStacks, int amountNeeded) {
-			this.itemStacks = itemStacks;
+		public IngredientsData(ItemStack[] ingredientsList, int amountNeeded) {
+			this.ingredientsList = ingredientsList;
 			this.amountNeeded = amountNeeded;
 		}
 
@@ -111,8 +146,8 @@ public final class RecipeData implements RecipeDataAPI {
 		 *
 		 * @return itemstack array of ingredients some can be used.
 		 */
-		public ItemStack[] getItemStacks() {
-			return itemStacks;
+		public ItemStack[] getIngredientsList() {
+			return ingredientsList;
 		}
 
 		/**
