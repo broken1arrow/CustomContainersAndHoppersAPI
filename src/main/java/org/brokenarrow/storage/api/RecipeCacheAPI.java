@@ -59,6 +59,24 @@ public interface RecipeCacheAPI {
 	Map<String, RecipeData> getRecipes();
 
 	/**
+	 * Check if itemstack is same as the recipe ingredients.
+	 *
+	 * @param ingredientsData class some contains ingredients
+	 * @param itemStacks      the items you want to check against the ingredients.
+	 * @return true if find a match.
+	 */
+	boolean itemIsSimilar(RecipeData.IngredientsData ingredientsData, ItemStack... itemStacks);
+
+	/**
+	 * Check if itemstack is same as the recipe ingredients.
+	 *
+	 * @param ingredientsData class some contains ingredients
+	 * @param itemStack       the items you want to check against the ingredients.
+	 * @return true if find a match.
+	 */
+	boolean itemIsSimilar(RecipeData.IngredientsData ingredientsData, ItemStack itemStack);
+
+	/**
 	 * Get the Recipe Data some contains
 	 * recipe info.
 	 *
@@ -72,6 +90,22 @@ public interface RecipeCacheAPI {
 	 * @return a list of recipes.
 	 */
 	Set<String> getKeyList();
+
+	/**
+	 * Get List of all info both ingredients and result with amount.
+	 *
+	 * @param data List of recipes seach inside for the ingredients.
+	 * @return RecipeData class you can acces all recipe data like ingredients and result.
+	 */
+	List<RecipeData.IngredientsData> getRecipeDataList(RecipeData data);
+
+	/**
+	 * Get List of ingredients for one of the ingredient need for the recipe.
+	 *
+	 * @param ingredientsData class some contains the ingredient or ingredients.
+	 * @return true if find a match.
+	 */
+	List<ItemStack> getIngredientsList(RecipeData.IngredientsData ingredientsData);
 
 	/**
 	 * Get IngredientsData with ingredients and amount needed for the output item.
@@ -101,11 +135,9 @@ public interface RecipeCacheAPI {
 
 	/**
 	 * Set this to false to override a recipe in cache.
-	 * <p>
-	 * IMPORTANT: Do not override recipes some start with 'minecraft:'
+	 * Do not override recipes some start with 'minecraft:'
 	 *
 	 * @param preventOverride set it to false if you want to override recipe in cache.
 	 */
 	void setPreventOverride(boolean preventOverride);
-
 }
