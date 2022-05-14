@@ -22,7 +22,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @param itemStack item you want to set in the index.
 	 */
 	@Override
-	public void setItem(int index, ItemStack itemStack);
+	void setItem(int index, ItemStack itemStack);
 
 	/**
 	 * Get the item in a specific slot.
@@ -34,7 +34,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @return itemstack.
 	 */
 	@Override
-	public ItemStack getItem(int index);
+	ItemStack getItem(int index);
 
 	/**
 	 * This method will try add items to container and
@@ -62,7 +62,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @param itemStacks items you want to set.
 	 */
 	@Override
-	public void setContents(ItemStack... itemStacks);
+	void setContents(ItemStack... itemStacks);
 
 	/**
 	 * Will only return 3000 cloned item.
@@ -71,7 +71,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 */
 
 	@Override
-	public ItemStack[] getContents();
+	ItemStack[] getContents();
 
 	/**
 	 * Get items in the container. You have to define
@@ -91,7 +91,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @param bypassLimit set to true if you want to force more than 4000 items. If you set the amount too high it will cause problems.
 	 * @return array if itemStack´s or null if a container is empty or you specify number bigger a contents container have.
 	 */
-	public ItemStack[] getContents(int amount, boolean bypassLimit);
+	ItemStack[] getContents(int amount, boolean bypassLimit);
 
 	/**
 	 * This type of container has no pages, so will only return one.
@@ -197,7 +197,7 @@ public interface InventoryholderStorageUnit extends InventoryHolders {
 	 * @param amount the number of items you want to add.
 	 */
 	void addAmount(BigInteger amount);
-	
+
 	/**
 	 * Add or Subtract the amount of items added to the container.
 	 *
