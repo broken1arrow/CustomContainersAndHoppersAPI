@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.containerholders;
 
+import org.brokenarrow.storage.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.awt.*;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -19,39 +19,136 @@ import java.util.UUID;
 public interface InventoryHolders {
 
 	/**
-	 * Open container for player.
+	 * Set item on a specific index. Will override the old item if the index
+	 * already has an item. Use {@link #addItems(ItemStack...)} if you want
+	 * to add items.
 	 *
-	 * @param player     player some open container.
-	 * @param pageNumber witch page player shall open (if the container have pages).
+	 * @param index     you want to set the item.
+	 * @param itemStack item you want to set in the index.
+	 */
+	void setItem(int index, ItemStack itemStack);
+
+	/**
+	 * Get the item in a specific index.
+	 * <p>
+	 * index you want to get the item.
+	 * item or null, if the index does not, has any item.
+	 *
+	 * @param index number you want to get the item.
+	 * @return itemstack.
+	 */
+	ItemStack getItem(int index);
+
+	/**
+	 * Get the contents in the chest.
+	 *
+	 * @return items from curent gui you close, will save all pages.
 	 */
 
-	void openContainer(Player player, int pageNumber);
+	ItemStack[] getContents();
 
+	/**
+	 * Add items to the chest and change page if first is full.
+	 * If chest are full it will return the items some not fit.
+	 *
+	 * @param itemStacks items hopper try to add
+	 * @return items some not fit in the gui.
+	 * @see InventoryholderStorageUnit
+	 * @see InventoryholderDefultContiners
+	 */
+
+	Map<Integer, ItemStack> addItems(ItemStack... itemStacks);
+	
+	/**
+	 * Set items in the container. It will override all old items
+	 * you have stored inside the container.
+	 * <p>
+	 * <p>
+	 * <p>
+	 * If this container have more pages it will automatic add items when
+	 * first inventory is full (it will also respect empty slots).
+	 *
+	 * @param itemStacks items you want to set.
+	 */
+	void setContents(ItemStack[] itemStacks);
+
+	/**
+	 * It are used for count items and that way
+	 * calulate what page the item shall bee puted.
+	 * See {@link InventoryHolders#setContents(ItemStack...)} ()}
+	 *
+	 * @return count number of itemstacks and return
+	 * a number of stacks some you put in.
+	 * @see #setContents(ItemStack...) () org.broken.cheststorage.inventoryholders.InventoryHolderDefultchest
+	 */
+
+	int countItemStacks(ItemStack[] itemStacks);
+
+
+	/**
+	 * Get a Inventory for a container. Will return first
+	 * page always.
+	 *
+	 * @return return first inventory or null if it not contains any inventorys.
+	 */
+	Inventory getInventory();
+
+	/**
+	 * Get a Inventory for a container. Type what page you want to get.
+	 *
+	 * @param page of the inventory.
+	 * @return return inventory you has requested
+	 * or null if it not find the inventory.
+	 */
+	Inventory getInventory(int page);
+
+	/**
+	 * Get a Inventory for a container.
+	 *
+	 * @return return inventoy on location you has requested
+	 * or null if it not find the gui.
+	 */
+	List<Inventory> getInventorys();
+
+	/**
+	 * Get size some are set inside yml file.
+	 *
+	 * @return return int value of inventory size.
+	 */
+
+	int getSize();
+
+
+	/*
+	 * ##########################################
+	 * Custom methods to container.
+	 */
 
 	/**
 	 * Create inventory if not exist and add items if
 	 * the gui has items before.
 	 *
-	 * @return the gui player open.
+	 * @return inventory if player is not null.
 	 */
-
-
-	Inventory createAndLoadInventory();
+	Inventory loadInventory();
 
 	/**
-	 * Create inventory when hopper try add or remove items.
+	 * Create inventory if not exist and add items if
+	 * the gui has items before.
 	 *
-	 * @return inventory or null if it alredy created.
+	 * @param player some open inventory.
+	 * @return inventory if player is not null.
 	 */
-	Inventory setInventoryHopper();
+	Inventory loadInventory(Player player);
 
 	/**
-	 * Get size some are set inside yml file.
+	 * Set inventory in cache, return false if {@link #getInventorys()}
+	 * exist and amount of pages is same as amount stored in the list.
 	 *
-	 * @return return int value of invetory size.
+	 * @param type of inventory.
+	 * @return return true if it have created inventorys.
 	 */
-
-	int getguiSize();
+	boolean setInventory(InventoryType type);
 
 	/**
 	 * Set new page if it not exist.
@@ -62,7 +159,7 @@ public interface InventoryHolders {
 	 * @param title The description of the gui
 	 * @return return array of invetorys.
 	 */
-	Inventory setPage(InventoryType type, int size, String title);
+	void setPagesInCache(InventoryType type, int size, String title);
 
 	/**
 	 * Create an inventory for containers.
@@ -92,173 +189,31 @@ public interface InventoryHolders {
 
 	Inventory createInventory(InventoryType inventoryType, Component title, Integer inventorySize);
 
-	/**
-	 * Get the page you want to open.
-	 *
-	 * @param location the container location.
-	 * @param page     the page you whant to open of this container.
-	 * @return inventory on that page number you put in.
-	 */
-	Inventory getPage(Location location, int page);
 
 	/**
-	 * Get number of the gui player has curent
-	 * open.
+	 * Get page number of the inventory.
 	 *
-	 * @param inventory inventory you looking for
-	 * @return the page of the inventory you current has open.
+	 * @param inventory you whant to get the page.
+	 * @return the page of the inventory.
 	 */
 
 	int getPageIndex(Inventory inventory);
 
-	/**
-	 * Get the number of pages for one container.
-	 *
-	 * @param location the container location.
-	 * @return get number of pages the inventory has.
-	 */
-	int getPagesAmount(Location location);
 
 	/**
-	 * check if inventory exist for a conatiner.
+	 * check if inventory exist for a container.
 	 *
-	 * @param location of the container
+	 * @param inventory of the container
 	 * @return true if it exist.
 	 */
 
-	boolean isInventoryExist(Location location);
+	boolean containsClickedInventory(Inventory inventory);
 
-	/**
-	 * Get a Inventory for a container.
-	 *
-	 * @param location location of the inventor want to find.
-	 * @return return inventoy on location you has requested
-	 * or null if it not find the gui.
-	 */
-	ArrayList<Inventory> getInventory(Location location);
-
-	/**
-	 * Get first page with matching item inside.
-	 *
-	 * @param item item you want to check.
-	 * @return inventory some contains at lest 1 matching item.
-	 */
-	Inventory getFirstPageWithItems(ItemStack item);
-
-	/**
-	 * Get amount of one item type
-	 *
-	 * @param itemStack item you want to check amount.
-	 * @return amount of this itemStack.
-	 */
-	int getAmountOfOneItem(ItemStack itemStack);
-
-	/**
-	 * Get the page some has items, if one page
-	 * are emty it will check next page for items
-	 * or the page befor if it has items.
-	 *
-	 * @return inventory with items.
-	 */
-
-	Inventory getEmptyPages();
-
-	/**
-	 * Get a list of all pages of items in the inventory.
-	 *
-	 * @return list Of Itemstacks inside.
-	 */
-
-	List<ItemStack> listAllPagesItems();
-
-	/**
-	 * Set item on a specific slot. Will override the old item if the slot
-	 * already has an item. Use {@link #addItems(ItemStack...)} if you want
-	 * to add items.
-	 *
-	 * @param slot      you want to set the item.
-	 * @param itemStack item you want to set in the slot.
-	 */
-	void setItem(int slot, ItemStack itemStack);
-
-	/**
-	 * Get the item in a specific slot.
-	 * <p>
-	 * slot you want to get the item.
-	 * item or null, if the slot does not, has any item.
-	 *
-	 * @param slot number you want to get the item.
-	 * @return itemstack.
-	 */
-	ItemStack getItem(int slot);
-
-	/**
-	 * Get the contents in the chest.
-	 *
-	 * @return items from curent gui you close, will save all pages.
-	 */
-
-	ItemStack[] getContents();
-
-	/**
-	 * Add items to the chest and change page if first is full.
-	 * If chest are full it will return the items some not fit.
-	 *
-	 * @param itemStacks items hopper try to add
-	 * @return items some not fit in the gui.
-	 * @see InventoryholderStorageUnit
-	 */
-
-	Map<Integer, ItemStack> addItems(ItemStack... itemStacks);
-
-	/**
-	 * It are used for count items and that way
-	 * calulate what page the item shall bee puted.
-	 * See {@link InventoryholderDefultContiners#setContents(ItemStack...)} ()}
-	 *
-	 * @return count number of itemstacks and return
-	 * a number of stacks some you put in.
-	 * @see #setContents(ItemStack...) () org.broken.cheststorage.inventoryholders.InventoryHolderDefultchest
-	 */
-
-
-	int countItemStacks(ItemStack[] itemStacks);
-
-	/**
-	 * Check if chest are full.
-	 *
-	 * @param itemStack items some you add to the chest
-	 * @param from      the inventory items are from.
-	 * @return true if chest are not full.
-	 */
-	boolean checkIfChestFull(ItemStack itemStack, Inventory from);
-
-	/**
-	 * Check if chest is full. Will be some delay, so if you use this, you has to track last tranfered item
-	 * and add item back to source. I do it auto in checkIfChestFull method.
-	 *
-	 * @return true if chest is full.
-	 * @see #checkIfChestFull(ItemStack, Inventory).
-	 */
-
-	boolean isIfChestFull();
-
-
-	/**
-	 * Set items in the chest on this cords,
-	 * if you have more an one page, it will
-	 * set items on this too.
-	 *
-	 * @param itemStacks items you want to add
-	 */
-	void setContents(ItemStack... itemStacks);
 
 	/**
 	 * Save the items to cache.
-	 *
-	 * @param player get the player some close the gui.
 	 */
-	void onContainerClose(Player player);
+	void saveToCache();
 
 	/**
 	 * When you break container it collect all pages of items
@@ -271,12 +226,10 @@ public interface InventoryHolders {
 	boolean dropItemsOnBlockBreak(BlockBreakEvent event);
 
 	/**
-	 * Remove inventory on location
-	 *
-	 * @param location of the container you whan remove inventory
+	 * Remove all inventorys for this
+	 * inventoryholder.
 	 */
-
-	void removeInventory(Location location);
+	void removeInventorys();
 
 	/**
 	 * Get the amount of items inside the container.
@@ -284,16 +237,6 @@ public interface InventoryHolders {
 	 * @return the amount of items in the container.
 	 */
 	BigInteger getAmount();
-
-	/**
-	 * When you break the continer it check what type of container
-	 * and will return back right type of container and remove from
-	 * cache both the inventory (if it exist) and the database.
-	 *
-	 * @param event the event some get trigged when you break the chest.
-	 */
-
-	void onContainerBreak(BlockBreakEvent event);
 
 	/**
 	 * Drop items 1 stack at the time, if you try drop 128 items
@@ -314,21 +257,12 @@ public interface InventoryHolders {
 	 */
 	boolean canPlaceItemInsideContainer(ItemStack itemStack);
 
-
 	/**
-	 * Handle inventory clickevent. For ether when player add/remove items
-	 * or change page.
-	 * To see how it is set up for Storage Unit and rest of the chest use the defult one in See also.
+	 * Get type of continer this holder is conected too.
 	 *
-	 * @param location location of the container.
-	 * @param event    the event.
-	 * @param player   player some interact with the chest.
-	 * @return true if player successful can do the action in the inventory.
-	 * @see InventoryholderStorageUnit#onClickingInsideGui(Location, InventoryClickEvent, Player)
-	 * @see InventoryholderDefultContiners#onClickingInsideGui(Location, InventoryClickEvent, Player)
+	 * @return type of container.
 	 */
-
-	boolean onClickingInsideGui(Location location, InventoryClickEvent event, Player player);
+	TypeOfContainer getTypeofContainer();
 
 	/**
 	 * Set the page player open and it also set the player some open container.
@@ -396,6 +330,22 @@ public interface InventoryHolders {
 	boolean isIfContainerAreOpen();
 
 	/**
+	 * Get wivers of inventory.
+	 *
+	 * @param page you want to get the inventory.
+	 * @return amount of current viwers or -1 if inventory is null.
+	 */
+	int getViewersAmount(int page);
+
+	/**
+	 * Get wivers of inventory.
+	 *
+	 * @param inventory inventory you want to check.
+	 * @return amount of current viwers or -1 if inventory is null.
+	 */
+	int getViewersAmount(Inventory inventory);
+
+	/**
 	 * Get container location inventory/inventory´s are linked to.
 	 *
 	 * @return location of this container or null.
@@ -422,6 +372,51 @@ public interface InventoryHolders {
 	 * @return owner´s UUID.
 	 */
 	UUID getOwnerUUID();
+
+	/*
+	 * ################################################
+	 * Player actions, when player open,break or close inventory.
+	 */
+
+	/**
+	 * Open container for player.
+	 *
+	 * @param player     player some open container.
+	 * @param pageNumber witch page player shall open (if the container have pages).
+	 */
+
+	void openContainer(Player player, int pageNumber);
+
+	/**
+	 * Handle inventory clickevent. For ether when player add/remove items
+	 * or change page.
+	 * To see how it is set up for Storage Unit and rest of the chest use the defult one in See also.
+	 *
+	 * @param event  the event.
+	 * @param player player some interact with the chest.
+	 * @return true if player successful can do the action in the inventory.
+	 * @see InventoryholderStorageUnit#onClickingInsideGui(InventoryClickEvent, Player)
+	 * @see InventoryholderDefultContiners#onClickingInsideGui(InventoryClickEvent, Player)
+	 */
+
+	boolean onClickingInsideGui(InventoryClickEvent event, Player player);
+
+	/**
+	 * When you break the continer it check what type of container
+	 * and will return back right type of container and remove from
+	 * cache both the inventory (if it exist) and the database.
+	 *
+	 * @param event the event some get trigged when you break the chest.
+	 */
+
+	void onContainerBreak(BlockBreakEvent event);
+
+	/**
+	 * when player close innventory.
+	 *
+	 * @param player get the player some close the gui.
+	 */
+	void onContainerClose(Player player);
 
 
 }

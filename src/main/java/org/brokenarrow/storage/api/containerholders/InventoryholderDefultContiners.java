@@ -1,69 +1,76 @@
 package org.brokenarrow.storage.api.containerholders;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
+
 public interface InventoryholderDefultContiners extends InventoryHolders {
-
-
+	
 	/**
-	 * Create inventory if not exist and add items if
-	 * the gu has items before.
+	 * Get first page with matching item inside.
 	 *
-	 * @return the gui player open.
+	 * @param item item you want to check.
+	 * @return inventory some contains at lest 1 matching item.
 	 */
-
-	@Override
-	Inventory createAndLoadInventory();
+	Inventory getFirstPageWithItems(ItemStack item);
 
 	/**
-	 * @return return inventory or null if it allredy created.
-	 */
-
-	@Override
-	Inventory setInventoryHopper();
-
-	/**
-	 * Set items in the chest on this cords,
-	 * if you have more an one page, it will
-	 * set items on this too (if a slot not has items
-	 * it will return air or null (slots will be empty)).
-	 */
-
-	@Override
-	void setContents(ItemStack... itemStack);
-
-	/**
-	 * Get the contents in the chest.
+	 * Get amount of one item type
 	 *
-	 * @return items from curent gui you close, will save all pages.
+	 * @param itemStack item you want to check amount.
+	 * @return amount of this itemStack.
 	 */
-	@Override
-	ItemStack[] getContents();
+	int getAmountOfOneItem(ItemStack itemStack);
+
+	/**
+	 * Get the page some has items, if one page
+	 * are emty it will check next page for items
+	 * or the page befor if it has items.
+	 * <p>
+	 * <p>
+	 * If inventory not exist, it will create new one automatic
+	 * with right amount of pages.
+	 *
+	 * @return inventory with 1 or more empty slots.
+	 */
+
+	Inventory getEmptyPage();
+
+	/**
+	 * Get a list of all pages of items in the inventory.
+	 *
+	 * @return list Of Itemstacks inside.
+	 */
+
+	List<ItemStack> listAllPagesItems();
+
+	/**
+	 * Get the number of pages for one container.
+	 *
+	 * @return get number of pages the inventory has.
+	 */
+	int getPagesAmount();
+
+	/**
+	 * Get the page you want to open.
+	 *
+	 * @param page the page you whant to open of this container.
+	 * @return inventory on that page number you put in.
+	 */
+	Inventory getPage(int page);
 
 	/**
 	 * This event will check if player click outside of the gui and check both
 	 * how many pages the chest has and max amount it can have from container settings
 	 * inside one of the yml files.
 	 *
-	 * @param location location of the container.
-	 * @param event    the event.
-	 * @param player   player some interact with the chest.
+	 * @param event  the event.
+	 * @param player player some interact with the chest.
 	 * @return true if player successful can change page or false if the chest don´t have pages or player can´t change page.
 	 */
 	@Override
-	boolean onClickingInsideGui(Location location, InventoryClickEvent event, Player player);
-
-	/**
-	 * Save the items to cache.
-	 *
-	 * @param player get the player some close the gui.
-	 */
-
-	@Override
-	void onContainerClose(Player player);
-
+	boolean onClickingInsideGui(InventoryClickEvent event, Player player);
 }
