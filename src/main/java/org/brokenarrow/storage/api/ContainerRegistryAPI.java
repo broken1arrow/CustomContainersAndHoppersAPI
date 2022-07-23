@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -109,12 +110,24 @@ public interface ContainerRegistryAPI {
 	ContainerData getContainerData(Location location);
 
 	/**
-	 * Get chunk container are placed in.
+	 * Get list of locations where continers are located
+	 * in the chunk, if it exist any registed continers.
 	 *
-	 * @param location of the container.
-	 * @return chunk data.
+	 * @param location inside a chunk.
+	 * @return list of locations inside the chunk.
 	 */
+	@Nullable
 	Chunk getChunkData(Location location);
+
+	/**
+	 * Get list of locations where continers are located
+	 * in the chunk, if it exist any registed continers.
+	 *
+	 * @param chunk or chunk Snapshot the container is placed in.
+	 * @return list of locations.
+	 */
+	@Nullable
+	List<Location> getChunkData(Object chunk);
 
 	/**
 	 * Set the chunk container are placed in.
@@ -124,12 +137,18 @@ public interface ContainerRegistryAPI {
 	void setChunkData(Chunk chunkData);
 
 	/**
-	 * Get list of the chunks containers are placed in. If the chunk
-	 * are not loaded yet the chunkdata may not be added yet.
+	 * Get a map of both locations of the chunk and all registered container
+	 * locations.
+	 * <p>
+	 * <p>
+	 * <p>
+	 * This may not contains all locations stored in the database
+	 * (Depending on settings if it shall load to cache when chunks are loaded
+	 * or load all when the server start).
 	 *
 	 * @return chunk data.
 	 */
-	Set<Chunk> getChunkData();
+	Map<String, List<Location>> getChunkData();
 
 	/**
 	 * Get if this container has a hopper
