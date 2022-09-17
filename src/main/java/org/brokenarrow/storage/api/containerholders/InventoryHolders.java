@@ -1,10 +1,13 @@
 package org.brokenarrow.storage.api.containerholders;
 
+
 import org.brokenarrow.storage.util.TypeOfContainer;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -17,6 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public interface InventoryHolders {
+
 
 	/**
 	 * Set item on a specific index. Will override the old item if the index
@@ -54,11 +58,10 @@ public interface InventoryHolders {
 	 * @param itemStacks items hopper try to add
 	 * @return items some not fit in the gui.
 	 * @see InventoryholderStorageUnit
-	 * @see InventoryholderDefultContiners
 	 */
 
 	Map<Integer, ItemStack> addItems(ItemStack... itemStacks);
-	
+
 	/**
 	 * Set items in the container. It will override all old items
 	 * you have stored inside the container.
@@ -83,7 +86,6 @@ public interface InventoryHolders {
 	 */
 
 	int countItemStacks(ItemStack[] itemStacks);
-
 
 	/**
 	 * Get a Inventory for a container. Will return first
@@ -219,11 +221,9 @@ public interface InventoryHolders {
 	 * When you break container it collect all pages of items
 	 * and drop it on the ground.
 	 *
-	 * @param event the event some get trigged when you break a container.
 	 * @return return true after it has finished.
 	 */
-
-	boolean dropItemsOnBlockBreak(BlockBreakEvent event);
+	boolean dropItemsOnBlockBreak();
 
 	/**
 	 * Remove all inventorys for this
@@ -379,44 +379,58 @@ public interface InventoryHolders {
 	 */
 
 	/**
-	 * Open container for player.
+	 * Open container for player. Will defult to leftklick action,
+	 * use {@link #openContainer(Player, Material, Action, int)} to set players clicktype.
 	 *
-	 * @param player     player some open container.
-	 * @param pageNumber witch page player shall open (if the container have pages).
+	 * @param player        player some open container.
+	 * @param containerType type of container player open.
+	 * @param pageNumber    witch page player shall open (if the container have pages).
+	 * @return true if it could open container.
 	 */
 
-	void openContainer(Player player, int pageNumber);
+	boolean openContainer(Player player, Material containerType, int pageNumber);
+
+	/**
+	 * Open container for player.
+	 *
+	 * @param player        player some open container.
+	 * @param containerType type of container player open.
+	 * @param pageNumber    witch page player shall open (if the container have pages).
+	 * @return true if it could open container.
+	 */
+
+	boolean openContainer(Player player, Material containerType, Action action, int pageNumber);
 
 	/**
 	 * Handle inventory clickevent. For ether when player add/remove items
 	 * or change page.
 	 * To see how it is set up for Storage Unit and rest of the chest use the defult one in See also.
 	 *
-	 * @param event  the event.
-	 * @param player player some interact with the chest.
+	 * @param inventoryClick the event some get trigged.
+	 * @param player         player some interact with the chest.
 	 * @return true if player successful can do the action in the inventory.
 	 * @see InventoryholderStorageUnit#onClickingInsideGui(InventoryClickEvent, Player)
 	 * @see InventoryholderDefultContiners#onClickingInsideGui(InventoryClickEvent, Player)
 	 */
-
-	boolean onClickingInsideGui(InventoryClickEvent event, Player player);
+	boolean onClickingInsideGui(InventoryClickEvent inventoryClick, Player player);
 
 	/**
 	 * When you break the continer it check what type of container
 	 * and will return back right type of container and remove from
 	 * cache both the inventory (if it exist) and the database.
 	 *
-	 * @param event the event some get trigged when you break the chest.
+	 * @param player some breck the container.
+	 * @param block  some get removed.
+	 * @return true if it could break the container.
 	 */
-
-	void onContainerBreak(BlockBreakEvent event);
+	boolean onContainerBreak(final Player player, final Block block);
 
 	/**
-	 * when player close innventory.
+	 * When player close inventory.
 	 *
-	 * @param player get the player some close the gui.
+	 * @param player some close the inventory.
+	 * @return true if valid container some get closed.
 	 */
-	void onContainerClose(Player player);
-
+	boolean onContainerClose(Player player);
 
 }

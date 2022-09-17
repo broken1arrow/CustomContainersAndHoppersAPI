@@ -1,6 +1,5 @@
 package org.brokenarrow.storage.util.builderclass;
 
-import org.brokenarrow.storage.api.builder.RecipeDataAPI;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -12,12 +11,12 @@ import java.util.List;
  * See this class for methods to add to cache:
  * {@link org.brokenarrow.storage.api.RecipeCacheAPI}
  */
-public final class RecipeData implements RecipeDataAPI {
+public class RecipeData {
+
 	private final List<IngredientsData> ingredientsDataList;
 	private final int outputAmount;
 	private final ItemStack outputStack;
 	private final Bulider bulider;
-
 
 	private RecipeData(Bulider bulider) {
 		this.ingredientsDataList = bulider.listOfIngriens;
@@ -39,7 +38,6 @@ public final class RecipeData implements RecipeDataAPI {
 	 *
 	 * @return IngredientsData class you can get the data for all diffrent recipes you can make one result/output item.
 	 */
-	@Override
 	public List<IngredientsData> getIngredientsDataList() {
 		return ingredientsDataList;
 	}
@@ -49,8 +47,7 @@ public final class RecipeData implements RecipeDataAPI {
 	 *
 	 * @return amount of items you get as result/output.
 	 */
-	@Override
-	public int getOutputAmount() {
+	public int getResultAmount() {
 		return outputAmount;
 	}
 
@@ -59,7 +56,6 @@ public final class RecipeData implements RecipeDataAPI {
 	 *
 	 * @return the itemstack as result/output for the recipe.
 	 */
-	@Override
 	public ItemStack getResult() {
 		return outputStack;
 	}
@@ -69,7 +65,6 @@ public final class RecipeData implements RecipeDataAPI {
 	 *
 	 * @return the builder you can set new data.
 	 */
-	@Override
 	public Bulider getBulider() {
 		return bulider;
 	}
