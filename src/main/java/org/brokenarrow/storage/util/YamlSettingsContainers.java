@@ -1,6 +1,5 @@
 package org.brokenarrow.storage.util;
 
-import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -8,9 +7,6 @@ import java.util.List;
 
 /**
  * Almost settings on the continer can you get here.
- * You can get file and upgrade name in the cache.
- * {@link org.brokenarrow.storage.api.ContainerRegistryAPI#getContainerFileName(Location)}
- * {@link org.brokenarrow.storage.api.ContainerRegistryAPI#getCurrentUpdate(Location)}
  */
 @SuppressWarnings("unused")
 public class YamlSettingsContainers {

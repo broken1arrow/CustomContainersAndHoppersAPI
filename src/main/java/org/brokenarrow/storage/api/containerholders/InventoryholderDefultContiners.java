@@ -1,14 +1,10 @@
 package org.brokenarrow.storage.api.containerholders;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.List;
+public interface InventoryholderDefultContiners extends InventoryHolder {
 
-public interface InventoryholderDefultContiners extends InventoryHolders {
-	
 	/**
 	 * Get first page with matching item inside.
 	 *
@@ -40,14 +36,6 @@ public interface InventoryholderDefultContiners extends InventoryHolders {
 	Inventory getEmptyPage();
 
 	/**
-	 * Get a list of all pages of items in the inventory.
-	 *
-	 * @return list Of Itemstacks inside.
-	 */
-
-	List<ItemStack> listAllPagesItems();
-
-	/**
 	 * Get the number of pages for one container.
 	 *
 	 * @return get number of pages the inventory has.
@@ -63,14 +51,11 @@ public interface InventoryholderDefultContiners extends InventoryHolders {
 	Inventory getPage(int page);
 
 	/**
-	 * This event will check if player click outside of the gui and check both
-	 * how many pages the chest has and max amount it can have from container settings
-	 * inside one of the yml files.
+	 * Get page number of the inventory.
 	 *
-	 * @param event  the event.
-	 * @param player player some interact with the chest.
-	 * @return true if player successful can change page or false if the chest don´t have pages or player can´t change page.
+	 * @param inventory inventory you whant to get the page.
+	 * @return the page of the inventory.
 	 */
-	@Override
-	boolean onClickingInsideGui(InventoryClickEvent event, Player player);
+
+	int getPageIndex(final Inventory inventory);
 }

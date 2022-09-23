@@ -2,16 +2,18 @@ package org.brokenarrow.storage.api.containerholders;
 
 
 import org.brokenarrow.storage.util.TypeOfContainer;
+import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.math.BigInteger;
@@ -19,8 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public interface InventoryHolders {
-
+public interface InventoryHolder {
 
 	/**
 	 * Set item on a specific index. Will override the old item if the index
@@ -30,25 +31,25 @@ public interface InventoryHolders {
 	 * @param index     you want to set the item.
 	 * @param itemStack item you want to set in the index.
 	 */
-	void setItem(int index, ItemStack itemStack);
+	void setItem(final int index, final ItemStack itemStack);
 
 	/**
-	 * Get the item in a specific index.
-	 * <p>
-	 * index you want to get the item.
-	 * item or null, if the index does not, has any item.
+	 * Get the item in a specific index. You get item or air/null if the ccontainer is empty.
+	 * If you try get items outside the array length you get ArrayIndexOutOfBoundsException.
 	 *
 	 * @param index number you want to get the item.
 	 * @return itemstack.
+	 * @throws ArrayIndexOutOfBoundsException if index is out of bound.
 	 */
-	ItemStack getItem(int index);
+	@Nullable
+	ItemStack getItem(final int index);
 
 	/**
 	 * Get the contents in the chest.
 	 *
 	 * @return items from curent gui you close, will save all pages.
 	 */
-
+	@NotNull
 	ItemStack[] getContents();
 
 	/**
@@ -57,10 +58,10 @@ public interface InventoryHolders {
 	 *
 	 * @param itemStacks items hopper try to add
 	 * @return items some not fit in the gui.
-	 * @see InventoryholderStorageUnit
+	 * @see ContainerHolderStorageUnit
 	 */
-
-	Map<Integer, ItemStack> addItems(ItemStack... itemStacks);
+	@NotNull
+	Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
 
 	/**
 	 * Set items in the container. It will override all old items
@@ -73,19 +74,19 @@ public interface InventoryHolders {
 	 *
 	 * @param itemStacks items you want to set.
 	 */
-	void setContents(ItemStack[] itemStacks);
+	void setContents(final ItemStack[] itemStacks);
 
 	/**
 	 * It are used for count items and that way
 	 * calulate what page the item shall bee puted.
-	 * See {@link InventoryHolders#setContents(ItemStack...)} ()}
+	 * See {@link InventoryHolder#setContents(ItemStack...)} ()}
 	 *
 	 * @return count number of itemstacks and return
 	 * a number of stacks some you put in.
-	 * @see #setContents(ItemStack...) () org.broken.cheststorage.inventoryholders.InventoryHolderDefultchest
+	 * @see #setContents(ItemStack...) () org.broken.cheststorage.inventoryholders.ContainerHolderDefultchest
 	 */
 
-	int countItemStacks(ItemStack[] itemStacks);
+	int countItemStacks(final ItemStack[] itemStacks);
 
 	/**
 	 * Get a Inventory for a container. Will return first
@@ -102,7 +103,7 @@ public interface InventoryHolders {
 	 * @return return inventory you has requested
 	 * or null if it not find the inventory.
 	 */
-	Inventory getInventory(int page);
+	Inventory getInventory(final int page);
 
 	/**
 	 * Get a Inventory for a container.
@@ -132,6 +133,7 @@ public interface InventoryHolders {
 	 *
 	 * @return inventory if player is not null.
 	 */
+	@Nullable
 	Inventory loadInventory();
 
 	/**
@@ -141,7 +143,8 @@ public interface InventoryHolders {
 	 * @param player some open inventory.
 	 * @return inventory if player is not null.
 	 */
-	Inventory loadInventory(Player player);
+	@Nullable
+	Inventory loadInventory(final Player player);
 
 	/**
 	 * Set inventory in cache, return false if {@link #getInventorys()}
@@ -150,7 +153,7 @@ public interface InventoryHolders {
 	 * @param type of inventory.
 	 * @return return true if it have created inventorys.
 	 */
-	boolean setInventory(InventoryType type);
+	boolean setInventory(final InventoryType type);
 
 	/**
 	 * Set new page if it not exist.
@@ -161,7 +164,7 @@ public interface InventoryHolders {
 	 * @param title The description of the gui
 	 * @return return array of invetorys.
 	 */
-	void setPagesInCache(InventoryType type, int size, String title);
+	void setPagesInCache(final InventoryType type, final int size, final String title);
 
 	/**
 	 * Create an inventory for containers.
@@ -172,10 +175,10 @@ public interface InventoryHolders {
 	 * @param inventorySize set inventory size, as defult it will take settings from containers yml files.
 	 * @return A inventory with your settings.
 	 * @deprecated minecraft not use Strings, but Component to set text (I use this method to set titles {@link #updateInventoryTitle}).
-	 * <p> Use {@link InventoryHolders#createInventory(InventoryType, Component, Integer)}
+	 * <p> Use {@link InventoryHolder#createInventory(InventoryType, Component, Integer)}
 	 */
 	@Deprecated()
-	Inventory createInventory(InventoryType inventoryType, String title, Integer inventorySize);
+	Inventory createInventory(final InventoryType inventoryType, final String title, final Integer inventorySize);
 
 	/**
 	 * Not fixed yet. Will fix in futcher and this will only work on paper.
@@ -189,18 +192,7 @@ public interface InventoryHolders {
 	 * @return A inventory with your settings.
 	 */
 
-	Inventory createInventory(InventoryType inventoryType, Component title, Integer inventorySize);
-
-
-	/**
-	 * Get page number of the inventory.
-	 *
-	 * @param inventory you whant to get the page.
-	 * @return the page of the inventory.
-	 */
-
-	int getPageIndex(Inventory inventory);
-
+	Inventory createInventory(final InventoryType inventoryType, final Component title, final Integer inventorySize);
 
 	/**
 	 * check if inventory exist for a container.
@@ -209,13 +201,8 @@ public interface InventoryHolders {
 	 * @return true if it exist.
 	 */
 
-	boolean containsClickedInventory(Inventory inventory);
+	boolean containsClickedInventory(final Inventory inventory);
 
-
-	/**
-	 * Save the items to cache.
-	 */
-	void saveToCache();
 
 	/**
 	 * When you break container it collect all pages of items
@@ -247,7 +234,7 @@ public interface InventoryHolders {
 	 *                  or the items max stack size.
 	 */
 
-	void dropItemsOnGround(ItemStack itemStack);
+	void dropItemsOnGround(final ItemStack itemStack);
 
 	/**
 	 * Check if the item can be placeded inside the chest.
@@ -255,7 +242,7 @@ public interface InventoryHolders {
 	 * @param itemStack the items some hopper or player try to add.
 	 * @return true if you can place items inside.
 	 */
-	boolean canPlaceItemInsideContainer(ItemStack itemStack);
+	boolean canPlaceItemInsideContainer(final ItemStack itemStack);
 
 	/**
 	 * Get type of continer this holder is conected too.
@@ -270,7 +257,7 @@ public interface InventoryHolders {
 	 * @param player     set the player.
 	 * @param pageNumber set pagenumber player shall open.
 	 */
-	void setPlayerViwePage(Player player, int pageNumber);
+	void setPlayerViwePage(final Player player, final int pageNumber);
 
 	/**
 	 * Get what page a player curently has open
@@ -279,7 +266,7 @@ public interface InventoryHolders {
 	 * @param player get the player some open the gui.
 	 */
 
-	int getPlayerViwePage(Player player);
+	int getPlayerViwePage(final Player player);
 
 	/**
 	 * Method to see if cache are empty.
@@ -287,7 +274,7 @@ public interface InventoryHolders {
 	 * @param player check if the cache are empty.
 	 * @return true if player exist.
 	 */
-	boolean isPlayerViwePageEmpty(Player player);
+	boolean isPlayerViwePageEmpty(final Player player);
 
 	/**
 	 * Set the defult placeholders inside inventory if container are empty, on all slots
@@ -300,7 +287,7 @@ public interface InventoryHolders {
 	 *
 	 * @param player remove the players cache data for page.
 	 */
-	void removePlayerViwePage(Player player);
+	void removePlayerViwePage(final Player player);
 
 
 	/**
@@ -309,7 +296,7 @@ public interface InventoryHolders {
 	 * @param location of the container
 	 * @param player   the player some open the container.
 	 */
-	void updateData(Location location, Player player);
+	void updateData(final Location location, final Player player);
 
 	/**
 	 * Update the inventory title for container, it take the tittle
@@ -319,7 +306,7 @@ public interface InventoryHolders {
 	 * @param cursor  items added to the chest (can be set to null).
 	 */
 
-	void updateInventoryTitle(BigInteger amounts, ItemStack cursor);
+	void updateInventoryTitle(final BigInteger amounts, final ItemStack cursor);
 
 	/**
 	 * Get if container are open or not.
@@ -335,7 +322,7 @@ public interface InventoryHolders {
 	 * @param page you want to get the inventory.
 	 * @return amount of current viwers or -1 if inventory is null.
 	 */
-	int getViewersAmount(int page);
+	int getViewersAmount(final int page);
 
 	/**
 	 * Get wivers of inventory.
@@ -343,7 +330,7 @@ public interface InventoryHolders {
 	 * @param inventory inventory you want to check.
 	 * @return amount of current viwers or -1 if inventory is null.
 	 */
-	int getViewersAmount(Inventory inventory);
+	int getViewersAmount(final Inventory inventory);
 
 	/**
 	 * Get container location inventory/inventory´s are linked to.
@@ -379,51 +366,49 @@ public interface InventoryHolders {
 	 */
 
 	/**
-	 * Open container for player. Will defult to leftklick action,
-	 * use {@link #openContainer(Player, Material, Action, int)} to set players clicktype.
+	 * Used when player try open container and this will be trigged.
 	 *
-	 * @param player        player some open container.
-	 * @param containerType type of container player open.
-	 * @param pageNumber    witch page player shall open (if the container have pages).
+	 * @param event      some are used to open container.
+	 * @param player     player some open container.
+	 * @param pageNumber witch page player shall open (if the container have pages).
 	 * @return true if it could open container.
 	 */
 
-	boolean openContainer(Player player, Material containerType, int pageNumber);
+	boolean openContainer(@NotNull final PlayerInteractEvent event, @NotNull final Player player, final int pageNumber);
 
 	/**
-	 * Open container for player.
+	 * When player interact with other container. For example link container
+	 * to x amount of other containers.
 	 *
-	 * @param player        player some open container.
-	 * @param containerType type of container player open.
-	 * @param pageNumber    witch page player shall open (if the container have pages).
-	 * @return true if it could open container.
+	 * @param event         some are used to track the clicked block.
+	 * @param linkingPlayer the player some clicking.
+	 * @return true if shall cancel event.
 	 */
-
-	boolean openContainer(Player player, Material containerType, Action action, int pageNumber);
+	boolean onContainerLinking(@NotNull final PlayerInteractEvent event, @NotNull final Player linkingPlayer);
 
 	/**
 	 * Handle inventory clickevent. For ether when player add/remove items
-	 * or change page.
-	 * To see how it is set up for Storage Unit and rest of the chest use the defult one in See also.
+	 * or change page. To see how it is set up for Storage Unit and rest of
+	 * the chest use the defult one in see also.
 	 *
 	 * @param inventoryClick the event some get trigged.
 	 * @param player         player some interact with the chest.
-	 * @return true if player successful can do the action in the inventory.
+	 * @return if this return true, so can't player/players take item/items from the clicked inventory.
 	 * @see InventoryholderStorageUnit#onClickingInsideGui(InventoryClickEvent, Player)
 	 * @see InventoryholderDefultContiners#onClickingInsideGui(InventoryClickEvent, Player)
 	 */
-	boolean onClickingInsideGui(InventoryClickEvent inventoryClick, Player player);
+	boolean onClickingInsideGui(@NotNull final InventoryClickEvent inventoryClick, @NotNull final Player player);
 
 	/**
-	 * When you break the continer it check what type of container
-	 * and will return back right type of container and remove from
-	 * cache both the inventory (if it exist) and the database.
+	 * When you break the continer this will be called, i remove all cached data
+	 * and depending on settings I set it on the item or the data get lost (only data
+	 * some are needed for place it again is keeped).
 	 *
-	 * @param player some breck the container.
+	 * @param player some break the container.
 	 * @param block  some get removed.
-	 * @return true if it could break the container.
+	 * @return true if it shall cancel the event.
 	 */
-	boolean onContainerBreak(final Player player, final Block block);
+	boolean onContainerBreak(@NotNull final Player player, @NotNull final Block block);
 
 	/**
 	 * When player close inventory.
@@ -431,6 +416,39 @@ public interface InventoryHolders {
 	 * @param player some close the inventory.
 	 * @return true if valid container some get closed.
 	 */
-	boolean onContainerClose(Player player);
+	boolean onContainerClose(@NotNull final Player player);
 
+	/**
+	 * When you place the continer this will get trigged after
+	 * the task is running, so you can't cancel the
+	 * placement of the container.
+	 *
+	 * @param player    some place the container.
+	 * @param container some get placed.
+	 * @return true if it has successful executed the task.
+	 */
+	boolean onContainerPlace(@NotNull final Player player, @NotNull final ItemStack container);
+	/*
+	 * ################################################
+	 * Data handle methods.
+	 */
+
+	/**
+	 * Use this method to save the contents to {@link ContainerData} cache.
+	 */
+	void saveToCache();
+
+	/**
+	 * Get containerdata.
+	 *
+	 * @return the data for the container.
+	 */
+	ContainerData getContainerData();
+
+	/**
+	 * Set containerdata for this container.
+	 */
+	void setContainerData(@NotNull final ContainerData containerData);
 }
+
+
