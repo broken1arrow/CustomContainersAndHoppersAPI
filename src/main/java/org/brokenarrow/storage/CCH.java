@@ -6,6 +6,7 @@ import org.brokenarrow.storage.api.RecipeCacheAPI;
 import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
 import org.brokenarrow.storage.api.runnable.*;
 import org.brokenarrow.storage.util.ConsoleColors;
+import org.brokenarrow.storage.util.command.CommandRegister;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,6 +19,10 @@ public class CCH extends JavaPlugin {
 	public void onEnable() {
 		long loadtime = System.currentTimeMillis();
 		registerClasses();
+		sendLogMsg(Level.SEVERE, "Has loaded this API, should not be added as nurmal jar, " +
+				"becuse this api not contains the needed code.");
+		sendLogMsg(Level.SEVERE, "Tell the developer of the plugin, stop use this api that way.");
+
 		sendLogMsg(Level.INFO, "=====================");
 		sendLogMsg(Level.INFO, " _____  _____  _   _ ");
 		sendLogMsg(Level.INFO, "/  __ \\/  __ \\| | | |");
@@ -36,8 +41,7 @@ public class CCH extends JavaPlugin {
 		cleanBeforeReload();
 
 	}
-
-
+	
 	public static CCH getInstance() {
 		return CCH.getPlugin(CCH.class);
 	}
@@ -49,7 +53,8 @@ public class CCH extends JavaPlugin {
 	}
 
 	/**
-	 * Get all inventorys in cache.
+	 * Get all inventorys in cache and also data some is cached.
+	 * Like contents if container is linked and soo on.
 	 *
 	 * @return InventoryHoldersCached instance.
 	 */
@@ -79,7 +84,6 @@ public class CCH extends JavaPlugin {
 		return null;
 	}
 
-
 	public AddItemsToStorageUnitAPI getAddItemsToStorageUnit() {
 		return null;
 	}
@@ -93,6 +97,15 @@ public class CCH extends JavaPlugin {
 	}
 
 	public HopperMoveTaskAPI getHopperMoveTask() {
+		return null;
+	}
+
+	/**
+	 * the class to register sub command, in this plugin.
+	 *
+	 * @return CommandRegister class (should never be null).
+	 */
+	public CommandRegister getCommandRegister() {
 		return null;
 	}
 
