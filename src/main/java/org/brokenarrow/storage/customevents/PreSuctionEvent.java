@@ -1,18 +1,15 @@
 package org.brokenarrow.storage.customevents;
 
 import org.bukkit.Location;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * event get fierd when a suction/link container try pick up item on the ground.
  */
 
-public class PreSuctionEvent extends Event implements Cancellable {
+public class PreSuctionEvent extends EventUtility {
 
 	private static final HandlerList handlers = new HandlerList();
 	private final Location itemLocation;
@@ -23,11 +20,13 @@ public class PreSuctionEvent extends Event implements Cancellable {
 	private boolean cancelled;
 
 	public PreSuctionEvent(Location itemLocation, ItemStack itemPickUp, Location toLocation, Inventory toInventory, boolean canPickUpItem) {
+		super(handlers);
 		this.itemLocation = itemLocation;
 		this.toInventory = toInventory;
 		this.toLocation = toLocation;
 		this.itemPickUp = itemPickUp;
 		this.canPickUpItem = canPickUpItem;
+		registerEvent();
 	}
 
 	/**
@@ -97,12 +96,6 @@ public class PreSuctionEvent extends Event implements Cancellable {
 	@Override
 	public void setCancelled(boolean cancel) {
 		this.cancelled = cancel;
-	}
-
-	@NotNull
-	@Override
-	public HandlerList getHandlers() {
-		return handlers;
 	}
 
 	public static HandlerList getHandlerList() {

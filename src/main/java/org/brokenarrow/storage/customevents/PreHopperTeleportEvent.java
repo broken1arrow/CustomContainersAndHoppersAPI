@@ -2,18 +2,15 @@ package org.brokenarrow.storage.customevents;
 
 
 import org.bukkit.Location;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * This event is fierd before Link/suction container try to add item to container.
  */
 
-public class PreHopperTeleportEvent extends Event implements Cancellable {
+public class PreHopperTeleportEvent extends EventUtility {
 
 	private static final HandlerList handlers = new HandlerList();
 	private final Location toLocation;
@@ -25,11 +22,13 @@ public class PreHopperTeleportEvent extends Event implements Cancellable {
 	private boolean cancelled;
 
 	public PreHopperTeleportEvent(Location toLocation, Location fromLocation, Inventory fromInventory, Inventory toInventory, ItemStack[] itemsMoved) {
+		super(handlers);
 		this.toLocation = toLocation;
 		this.fromLocation = fromLocation;
 		this.fromInventory = fromInventory;
 		this.toInventory = toInventory;
 		this.itemsMoved = itemsMoved;
+		registerEvent();
 	}
 
 	/**
@@ -122,12 +121,6 @@ public class PreHopperTeleportEvent extends Event implements Cancellable {
 	@Override
 	public void setCancelled(boolean toCancel) {
 		this.cancelled = toCancel;
-	}
-
-	@NotNull
-	@Override
-	public HandlerList getHandlers() {
-		return handlers;
 	}
 
 	public static HandlerList getHandlerList() {

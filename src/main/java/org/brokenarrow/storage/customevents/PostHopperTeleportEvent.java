@@ -1,16 +1,14 @@
 package org.brokenarrow.storage.customevents;
 
 import org.bukkit.Location;
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * This event is fierd after Link/suction container has try to add item to container.
  */
-public class PostHopperTeleportEvent extends Event {
+public class PostHopperTeleportEvent extends EventUtility {
 	private static final HandlerList handlers = new HandlerList();
 	private final Location toLocation;
 	private final Location fromLocation;
@@ -20,6 +18,7 @@ public class PostHopperTeleportEvent extends Event {
 	private final ItemStack[] itemsMoved;
 
 	public PostHopperTeleportEvent(Location toLocation, Location fromLocation, Inventory fromInventory, Inventory toInventory, boolean hasTeleportItem, ItemStack[] itemsMoved) {
+		super(handlers);
 		this.toLocation = toLocation;
 		this.fromLocation = fromLocation;
 		this.fromInventory = fromInventory;
@@ -82,12 +81,6 @@ public class PostHopperTeleportEvent extends Event {
 	 */
 	public boolean isItemTeleported() {
 		return hasTeleportItem;
-	}
-
-	@NotNull
-	@Override
-	public HandlerList getHandlers() {
-		return handlers;
 	}
 
 	public static HandlerList getHandlerList() {

@@ -1,13 +1,11 @@
 package org.brokenarrow.storage.customevents;
 
-import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * It Will only fire if the database is loaded properly.
  */
-public class PostLoadDatabase extends Event {
+public class PostLoadDatabase extends EventUtility {
 
 	private static final HandlerList handlers = new HandlerList();
 	private final boolean loadedDatabase;
@@ -15,7 +13,7 @@ public class PostLoadDatabase extends Event {
 	private final long time;
 
 	public PostLoadDatabase(boolean loadedDatabase, String typeOfDataBase, long time) {
-		super(true);
+		super(handlers, true);
 		this.loadedDatabase = loadedDatabase;
 		this.typeOfDataBase = typeOfDataBase;
 		this.time = time;
@@ -47,12 +45,6 @@ public class PostLoadDatabase extends Event {
 	 */
 	public long getTime() {
 		return time;
-	}
-
-	@NotNull
-	@Override
-	public HandlerList getHandlers() {
-		return handlers;
 	}
 
 	public static HandlerList getHandlerList() {
