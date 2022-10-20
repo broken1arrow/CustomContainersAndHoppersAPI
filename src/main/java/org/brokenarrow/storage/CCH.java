@@ -4,7 +4,10 @@ import org.brokenarrow.storage.api.DatabaseAPI;
 import org.brokenarrow.storage.api.HopperMoveItemsListenerAPI;
 import org.brokenarrow.storage.api.RecipeCacheAPI;
 import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
-import org.brokenarrow.storage.api.runnable.*;
+import org.brokenarrow.storage.api.runnable.CraftingSellTaskAPI;
+import org.brokenarrow.storage.api.runnable.HologramsTaskAPI;
+import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
+import org.brokenarrow.storage.api.runnable.SpawnContainerEffectsTaskAPI;
 import org.brokenarrow.storage.util.ConsoleColors;
 import org.brokenarrow.storage.util.command.CommandRegister;
 import org.bukkit.Bukkit;
@@ -19,9 +22,9 @@ public class CCH extends JavaPlugin {
 	public void onEnable() {
 		long loadtime = System.currentTimeMillis();
 		registerClasses();
-		sendLogMsg(Level.SEVERE, "Has loaded this API, should not be added as nurmal jar, " +
+		sendLogMsg(Level.SEVERE, "Has loaded this API, should not be added as normal jar, " +
 				"becuse this api not contains the needed code.");
-		sendLogMsg(Level.SEVERE, "Tell the developer of the plugin, stop use this api that way.");
+		sendLogMsg(Level.SEVERE, "Tell the developer of the plugin some use this api, to not provide this as a plugin or compile it with he's plugin.");
 
 		sendLogMsg(Level.INFO, "=====================");
 		sendLogMsg(Level.INFO, " _____  _____  _   _ ");
@@ -41,7 +44,7 @@ public class CCH extends JavaPlugin {
 		cleanBeforeReload();
 
 	}
-	
+
 	public static CCH getInstance() {
 		return CCH.getPlugin(CCH.class);
 	}
@@ -81,10 +84,6 @@ public class CCH extends JavaPlugin {
 	}
 
 	public CraftingSellTaskAPI getCraftingSellTask() {
-		return null;
-	}
-
-	public AddItemsToStorageUnitAPI getAddItemsToStorageUnit() {
 		return null;
 	}
 

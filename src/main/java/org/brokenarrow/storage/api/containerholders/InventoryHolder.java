@@ -8,6 +8,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
@@ -428,6 +430,25 @@ public interface InventoryHolder {
 	 * @return true if it has successful executed the task.
 	 */
 	boolean onContainerPlace(@NotNull final Player player, @NotNull final ItemStack container);
+
+	/**
+	 * When container pick up items. This get trigged when item end up ontop of a hopper or hopper minecart.
+	 *
+	 * @param event the event some used when container pick up items.
+	 * @return true if you want to cancel event.
+	 */
+	boolean onPickupItem(InventoryPickupItemEvent event);
+
+
+	/**
+	 * When container move items between containers. This get trigged when item get moved.
+	 *
+	 * @param event    the event some used when container move items between containers.
+	 * @param pushItem true if you push item to custom continer or false drag/pull items from container.
+	 * @return true if you want to cancel event.
+	 */
+	boolean onMoveItem(InventoryMoveItemEvent event, boolean pushItem);
+
 	/*
 	 * ################################################
 	 * Data handle methods.
