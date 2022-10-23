@@ -1,47 +1,23 @@
 package org.brokenarrow.storage.api;
 
+import org.brokenarrow.storage.api.containerholders.InventoryHolder;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public interface TeleportAndPickupItemsApi {
 
 	/**
-	 * List of containers it shall go thrue. Will check continer for next run
-	 * on that location and also if the cunk are loaded.
-	 * <p>
-	 * This is the logic for run the task when shall teleport from container
-	 * and pick up items to the container. Need to be a registed container
-	 * in this plugin For this shall work.
+	 * Use this method to start teleport or suction task.
+	 * It will take the settings from the container yml file to
+	 * see if it has option to pick up and teleport items.
 	 *
-	 * @param locationsList list of locations for all continer´s
+	 * @param holder the inventory holder to get all data for this container.
 	 */
-	void runTeleportSuctionTask(List<Location> locationsList);
-
-	/**
-	 * Add locations it shall teleport or picup items.
-	 *
-	 * @param location of the continer.
-	 */
-	void setLocationInList(Location location);
-
-	/**
-	 * Check if it contains location.
-	 *
-	 * @param location of the continer.
-	 * @return true if the list contains the container
-	 */
-	boolean isLocationInList(Location location);
-
-	/**
-	 * Remove location from the list.
-	 *
-	 * @param location of the container you want to remove.
-	 */
-	void removeLocationInList(Location location);
+	void linkedContainerTask(@NotNull final InventoryHolder holder);
 
 	/**
 	 * Remove all linked containers inventorys and locations from cache.
@@ -180,14 +156,6 @@ public interface TeleportAndPickupItemsApi {
 	int getNumberInList(Location containerLocation);
 
 	/**
-	 * Get time for next time it will run the task (pickup items and/or teleport item).
-	 *
-	 * @param containerLocation location of suction/link container.
-	 * @return next time it will run in milliseconds.
-	 */
-	long getDelayItemPicupTeleport(Location containerLocation);
-
-	/**
 	 * Get if items has successfully teleported items to container.
 	 *
 	 * @param containerLocation location of suction/link container.
@@ -196,10 +164,19 @@ public interface TeleportAndPickupItemsApi {
 	boolean isTeleportedItems(Location containerLocation);
 
 	/**
+	 * Get if this container is added to cache.
+	 *
+	 * @param containerLocation location of suction/link container.
+	 * @return true if the container exist.
+	 */
+	boolean isLocationInCache(Location containerLocation);
+
+	/**
 	 * Get the amount of inventories it goes thru from 0 to x amount inside the locations list.
 	 *
 	 * @param containerLocation location of suction/link container.
 	 * @return list of amount containers it has to go through.
 	 */
 	Set<Integer> getAmountLocationsGoThrue(Location containerLocation);
+
 }

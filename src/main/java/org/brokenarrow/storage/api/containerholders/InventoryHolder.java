@@ -451,6 +451,27 @@ public interface InventoryHolder {
 
 	/*
 	 * ################################################
+	 * when run a task.
+	 */
+
+	/**
+	 * Get the time when run the task
+	 *
+	 * @return time in ticks
+	 */
+	long getTimeRunTask();
+
+	void setTimeRunTask(long timeRunTask);
+
+	/**
+	 * When run a task. You can set how often this will be called with
+	 * {@link #setTimeRunTask(long)}.
+	 *
+	 * @return true if you want to run task or false and it will remove the location from list.
+	 */
+	boolean onRunTask();
+	/*
+	 * ################################################
 	 * Data handle methods.
 	 */
 
