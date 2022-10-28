@@ -1,73 +1,13 @@
 package org.brokenarrow.storage.api.containerholders;
 
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
-import java.util.Map;
 
 public interface InventoryholderStorageUnit extends InventoryHolder {
-
-	/**
-	 * Set item and amount (this type of container don´t use index). Will override the old item and set the amount
-	 * to the amount you set your itemstack to. Use {@link #addItems(ItemStack...)} if you want
-	 * to add items and not remove old items.
-	 *
-	 * @param index     you want to set the item.
-	 * @param itemStack item you want to set in the index.
-	 */
-	@Override
-	void setItem(int index, ItemStack itemStack);
-
-	/**
-	 * Get the item in a specific slot. You get item or air if the ccontainer is empty.
-	 * If you try get items outside the array length you get a exeption.
-	 *
-	 * @param index set number to zero becuse it is not used on this container type.
-	 * @return itemstack.
-	 */
-	@Override
-	ItemStack getItem(int index);
-
-	/**
-	 * This method will try add items to container and
-	 * check it wrong type or the continer are full.
-	 *
-	 * @param itemStacks items you want to add
-	 * @return items some ether not fit the continer or try
-	 * add items some not match items inside the container.
-	 */
-	@Override
-	@NotNull
-	Map<Integer, ItemStack> addItems(ItemStack... itemStacks);
-
-	/**
-	 * Set items in the container. It will override all old items
-	 * you have stored inside the container and the amount.
-	 * <p>
-	 * <p>
-	 * <p>
-	 * This container don´t have a real inventory. So it will calculate amount
-	 * of stacks you try to add and amount of every stack. You can´t add diffrent
-	 * types of item so it will compere your first stack and if you have other types
-	 * added in the array it will ignore it.
-	 *
-	 * @param itemStacks items you want to set.
-	 */
-	@Override
-	void setContents(ItemStack... itemStacks);
-
-	/**
-	 * Will only return 3000 cloned item.
-	 *
-	 * @return 3000 cloned item.
-	 */
-	@NotNull
-	@Override
-	ItemStack[] getContents();
 
 	/**
 	 * Get items in the container. You have to define
@@ -90,16 +30,12 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	ItemStack[] getContents(int amount, boolean bypassLimit);
 
 	/**
-	 * This type of container has no pages, so will only return one.
+	 * This method return ether max amount left or max stacksize.
 	 *
-	 * @param type  set type of inventory or null if
-	 *              you want chest gui with size.
-	 * @param size  size of the inventory.
-	 * @param title The description of the gui
-	 * @return one inventory.
+	 * @return one cloned item in the array with amount left or max stacksize.
 	 */
 	@Override
-	void setPagesInCache(InventoryType type, int size, String title);
+	@NotNull ItemStack[] getContents();
 
 	/**
 	 * This will convert items to itemstacks.
@@ -118,18 +54,7 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 *                  or the items max stack size.
 	 */
 
-	@Override
-	void dropItemsOnGround(ItemStack itemStack);
-
-	/**
-	 * This event are used when player add or remove items (will detect how many items player try add).
-	 *
-	 * @param event  the event.
-	 * @param player player some interact with the chest.
-	 * @return false if it can´t add the item or if contanier can´t have more items.
-	 */
-	@Override
-	boolean onClickingInsideGui(@NotNull InventoryClickEvent event, @NotNull Player player);
+	void dropItemsOnBlockBreak(ItemStack itemStack);
 
 	/**
 	 * Check if the item can be placeded inside the chest.
@@ -137,7 +62,6 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 * @param itemStack the items some hopper or player try to add.
 	 * @return true if you can place items inside.
 	 */
-	@Override
 	boolean canPlaceItemInsideContainer(ItemStack itemStack);
 
 	/**
@@ -150,28 +74,31 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	/**
 	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
 	 * <p>
+	 * See also this, for see what I use to set data it in cache.
 	 *
 	 * @param itemStack items you set to chache.
 	 */
 	void addItemsAmountInCache(ItemStack itemStack);
-
-	/**
-	 * Set the amount of items in chest.
-	 * <p>
-	 * See also this, for see what I use to amount it in cache.
-	 *
-	 * @param amount set amount in chest.
-	 */
-	void addItemsAmountInCache(long amount);
-
+	
 	/**
 	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
+	 * <p>
+	 * See also this, for see what I use to set data it in cache.
 	 * <p>
 	 *
 	 * @param itemStack items you set to chache.
 	 * @param amount    set amount in chest.
 	 */
 	void addItemsAmountInCache(final ItemStack itemStack, final long amount);
+
+
+	/**
+	 * Create inventory/inventorys if not exist.
+	 *
+	 * @param player some open inventory.
+	 * @return the inventory if it could create one.
+	 */
+	Inventory loadInventory(Player player);
 
 	/**
 	 * Get amount is left in the chest (if the container has limmit
@@ -218,7 +145,6 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 *
 	 * @return the amount of items in the container.
 	 */
-	@Override
 	BigInteger getAmount();
 
 	/**
@@ -251,23 +177,22 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 * Set the defult placeholders inside inventory if container are empty, on all slots
 	 * but not center slot.
 	 */
-	@Override
-	void setItemPlaceholderEmptyChest();
+	void updateItemPlaceholders();
 
 	/**
 	 * Set items inside the inventory if it not empty.
 	 *
 	 * @param itemStack the itemstack it will show as placeholders.
 	 */
-	void setItemPlaceholders(final ItemStack itemStack);
+	void updateItemPlaceholders(final ItemStack itemStack);
 
 	/**
-	 * Update the inventory title for container.
+	 * Update the inventory title for container. With the amounts added or
+	 * Set both to null to update it from cache.
 	 *
 	 * @param amounts amount of items inside the chest.
 	 * @param cursor  items player add to the chest.
 	 */
-	@Override
 	void updateInventoryTitle(final BigInteger amounts, final ItemStack cursor);
 
 	/**

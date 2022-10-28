@@ -1,9 +1,27 @@
 package org.brokenarrow.storage.api.containerholders;
 
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Nullable;
 
 public interface InventoryholderDefultContiners extends InventoryHolder {
+
+
+	/**
+	 * Create inventory/inventorys if not exist.
+	 */
+	void loadInventory();
+
+	/**
+	 * Create inventory/inventorys if not exist.
+	 *
+	 * @param player some open inventory.
+	 * @return the inventory if it could create one.
+	 */
+	@Nullable
+	Inventory loadInventory(final Player player);
 
 	/**
 	 * Get first page with matching item inside.
@@ -56,6 +74,17 @@ public interface InventoryholderDefultContiners extends InventoryHolder {
 	 * @param inventory inventory you whant to get the page.
 	 * @return the page of the inventory.
 	 */
-
 	int getPageIndex(final Inventory inventory);
+
+	/**
+	 * Set all need pages in the inventory if needed.
+	 * Will check if it can set more pages or if it has max amount of
+	 * pages.
+	 *
+	 * @param size          size of the inventory.
+	 * @param numberOfPages number of pages you want the containber shall have.
+	 * @param type          type of container
+	 * @param title         inventory titel.
+	 */
+	void setPagesInCache(int size, int numberOfPages, @Nullable InventoryType type, String title);
 }
