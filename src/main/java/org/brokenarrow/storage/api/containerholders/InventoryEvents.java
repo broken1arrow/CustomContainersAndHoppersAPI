@@ -94,7 +94,7 @@ public interface InventoryEvents {
 	 * @param event the event some used when container pick up items.
 	 * @return true if you want to cancel event.
 	 */
-	boolean onPickupItem(InventoryPickupItemEvent event);
+	boolean onPickupItem(@NotNull InventoryPickupItemEvent event);
 
 	/**
 	 * When container move items between containers. This get trigged when item get moved.
@@ -103,6 +103,6 @@ public interface InventoryEvents {
 	 * @param pushItem true if you push item to custom continer or false drag/pull items from container.
 	 * @return true if you want to cancel event.
 	 */
-	boolean onMoveItem(InventoryMoveItemEvent event, boolean pushItem);
+	boolean onMoveItem(@NotNull InventoryMoveItemEvent event, boolean pushItem);
 
 }

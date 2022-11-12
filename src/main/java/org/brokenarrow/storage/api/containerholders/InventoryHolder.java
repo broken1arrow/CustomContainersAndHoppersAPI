@@ -290,14 +290,14 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @return Offline owner of this inventory.
 	 */
-	OfflinePlayer getOwner();
+	OfflinePlayer getOfflineOwner();
 
 	/**
 	 * Get the owner of the container.
 	 *
 	 * @return owner´s UUID.
 	 */
-	UUID getOwnerUUID();
+	UUID getOwner();
 
 	/**
 	 * Get the time when run the task
