@@ -4,6 +4,7 @@ import org.brokenarrow.storage.api.DatabaseAPI;
 import org.brokenarrow.storage.api.HopperMoveItemsListenerAPI;
 import org.brokenarrow.storage.api.RecipeCacheAPI;
 import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
+import org.brokenarrow.storage.api.containerholders.runnable.ContainerTaskApi;
 import org.brokenarrow.storage.api.runnable.CraftingSellTaskAPI;
 import org.brokenarrow.storage.api.runnable.HologramsTaskAPI;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
@@ -76,6 +77,20 @@ public class CCH extends JavaPlugin {
 	}
 
 	public RecipeCacheAPI getRecipeCache() {
+		return null;
+	}
+
+	/**
+	 * This is methods some give you options to add
+	 * locations for run a task. If you use this method
+	 * {@link org.brokenarrow.storage.api.containerholders.InventoryHolder#onRunTask()}
+	 *
+	 * @return ContainerTaskApi you can use to add or remove locations or see if location is added.
+	 * For tread safte you can't get direct acces to the list some store locations.
+	 * @see org.brokenarrow.storage.api.containerholders.InventoryHolder
+	 */
+
+	public ContainerTaskApi getContainerTask() {
 		return null;
 	}
 
