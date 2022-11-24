@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.containerholders;
 
 
-import org.brokenarrow.storage.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;

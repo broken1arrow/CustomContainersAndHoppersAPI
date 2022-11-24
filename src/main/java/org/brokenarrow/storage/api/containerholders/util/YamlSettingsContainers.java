@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.util;
+package org.brokenarrow.storage.api.containerholders.util;
 
 import org.bukkit.inventory.ItemStack;
 

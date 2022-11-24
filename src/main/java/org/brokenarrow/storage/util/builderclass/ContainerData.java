@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.util.builderclass;
 
-import org.brokenarrow.storage.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 

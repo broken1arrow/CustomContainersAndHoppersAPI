@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.builder;
 
-import org.brokenarrow.storage.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
@@ -109,7 +109,7 @@ public interface ContainerDataApi {
 	 * @return true if is placed hopper below container
 	 */
 	boolean isHasHopperBelow();
-	
+
 	/**
 	 * Get filteritems inside the white/blacklist gui.
 	 *
