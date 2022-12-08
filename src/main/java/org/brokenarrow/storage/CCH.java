@@ -146,6 +146,25 @@ public class CCH extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(listener, this);
 	}
 
+	/**
+	 * Get if it has set it should not check for containers when load or unload chunk.
+	 * Usefull if you planed to only load a chunk for brief moment.
+	 *
+	 * @return true if it want to stop the check.
+	 */
+	public boolean isStopChunkCheck() {
+		return false;
+	}
+
+	/**
+	 * Set this if you not want to load or unload any containers, when you load and unload a chunk.
+	 * You need sett this to false when you are done.
+	 *
+	 * @param stopChunkCheck set to true to stop it to load or unload contaier in that chunk in cache.
+	 */
+	public void setStopChunkCheck(final boolean stopChunkCheck) {
+	}
+
 	public void sendLogMsg(Level logLevel, String msg) {
 		String color, msgColor;
 		if (logLevel == Level.WARNING) {
