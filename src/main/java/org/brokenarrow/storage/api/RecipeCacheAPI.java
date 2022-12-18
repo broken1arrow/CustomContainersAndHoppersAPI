@@ -1,6 +1,9 @@
 package org.brokenarrow.storage.api;
 
+import org.brokenarrow.storage.Crafting.util.MaterialGroup;
 import org.brokenarrow.storage.util.builderclass.RecipeData;
+import org.brokenarrow.storage.util.builderclass.RecipeData.IngredientsData;
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -16,39 +19,50 @@ import java.util.Set;
  */
 public interface RecipeCacheAPI {
 
+
 	/**
 	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
 	 *
-	 * @param recipeKey  unique recipe name
-	 * @param recipeData the data like amount, itemstack, amount output item and the itemstack output.
+	 * @param materialGroup  group for the recipe
+	 * @param recipeDataList the data like amount, itemstack, amount output item and the itemstack output.
 	 */
 
-	void setRecipes(final String recipeKey, final RecipeData recipeData);
+	void setRecipes(final MaterialGroup materialGroup, final List<RecipeData> recipeDataList);
 
 	/**
 	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
 	 *
-	 * @param recipeKey       unique recipe name
+	 * @param materialGroup   group for the recipe
 	 * @param recipeList      the ingriens and amount.
+	 * @param namespacedKey   the key for the recipe.
 	 * @param outputAmount    amount of items added back of the new item.
 	 * @param itemstackoutput the output item you want as result.
 	 */
-	void setRecipes(final String recipeKey, final List<RecipeData.IngredientsData> recipeList, final int outputAmount, ItemStack itemstackoutput);
+	void setRecipes(final MaterialGroup materialGroup, final List<IngredientsData> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemstackoutput);
 
 	/**
 	 * Add one or several recipe´s to the cache. If key exist it will try add the new values
-	 * (if not it will put new data to cache). If you want to replace all data use {@link #setRecipes(String, RecipeData)} or
-	 * {@link #setRecipes(String, List, int, ItemStack)}.
+	 * (if not it will put new data to cache). If you want to replace all data use {@link #setRecipes(MaterialGroup, List)} or
+	 * {@link #setRecipes(MaterialGroup, List, String, int, ItemStack)}.
 	 * <p>
 	 * It will store this and be used in autocrafter container.
 	 *
-	 * @param recipeKey       unique recipe name
+	 * @param materialGroup   group for the recipe
 	 * @param recipeList      the ingriens and amount.
 	 * @param outputAmount    amount of items added back of the new item.
+	 * @param namespacedKey   the key for the recipe.
 	 * @param itemstackoutput the output item you want as result.
 	 */
 
-	void addRecipes(final String recipeKey, final List<RecipeData.IngredientsData> recipeList, final int outputAmount, ItemStack itemstackoutput);
+	void addRecipes(final MaterialGroup materialGroup, final List<IngredientsData> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemstackoutput);
+
+	/**
+	 * Get the group a recipe outupt item belongs too.
+	 *
+	 * @param material the matrial you want to check.
+	 * @return the MaterialGroup first maching letter.
+	 */
+	MaterialGroup getMaterialGroup(final Material material);
 
 	/**
 	 * Get the map with all recipes
@@ -56,7 +70,8 @@ public interface RecipeCacheAPI {
 	 * @return return all recipes.
 	 */
 
-	Map<String, RecipeData> getRecipes();
+	Map<MaterialGroup, List<RecipeData>> getRecipes();
+
 
 	/**
 	 * Check if itemstack is same as the recipe ingredients.
@@ -82,14 +97,14 @@ public interface RecipeCacheAPI {
 	 *
 	 * @return return all recipes.
 	 */
-	RecipeData getRecipe(String key);
+	List<RecipeData> getRecipe(MaterialGroup key);
 
 	/**
 	 * Get all recipes key in map.
 	 *
 	 * @return a list of recipes.
 	 */
-	Set<String> getKeyList();
+	Set<MaterialGroup> getKeyList();
 
 	/**
 	 * Get List of all info both ingredients and result with amount.
@@ -123,7 +138,6 @@ public interface RecipeCacheAPI {
 	 * @param recipe itemstack you want from the cache.
 	 * @return list of recipe some match the recipe.
 	 */
-
 	List<RecipeData> getRecipes(ItemStack recipe);
 
 	/**
