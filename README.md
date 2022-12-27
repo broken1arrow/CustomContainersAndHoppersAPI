@@ -10,11 +10,11 @@ to access the class methods.
 To access cache for containers or playerdata 
 ```
 //And you have access to all methods you need.
-ContainerRegistryAPI.getInstance()
+CCH.getInstance().getInventoryHoldersCached()
 
 //This is to access all settings players have set or you get default from settings.yml
 //also you can get a player's party list.
-PreferenceSettingsRegisteryApi.getInstance()
+CCH.getInstance().getPreferenceSettingsRegistery()
 ```
 
 To access the containers to add or remove items. The plugin will create and make the holders automatic when the plugin start and 
