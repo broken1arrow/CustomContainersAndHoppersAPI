@@ -4,89 +4,61 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.brokenarrow.storage.CustomContainersAndHoppersAPI</groupId>
+    <parent>
+        <artifactId>parentPom</artifactId>
+        <groupId>org.example</groupId>
+        <version>0.06.0</version>
+    </parent>
+
+    <groupId>org.brokenarrow.storage.api</groupId>
     <artifactId>CustomContainersAndHoppersAPI</artifactId>
-    <version>0.5.0-SNAPSHOT</version>
+    <version>${dependency.version}</version>
 
     <properties>
-        <main.class>org.brokenarrow.storage.CCH</main.class>
+        <dependency.version>0.06.0</dependency.version>
+        <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <repositories>
-        <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
-    <dependencies>
 
+    <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
-            <!--
-               The scope indicates if this library should be packaged together with our plugin
-               when we want to publish it.
-
-               Set this to "compile" if you want all classes from this library to be copied
-               to your plugin's jar, otherwise set this to "provided".
-               <scope>provided</scope>
-           -->
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>22.0.0</version>
-            <scope>compile</scope>
         </dependency>
-
     </dependencies>
+
     <build>
-
-        <!--
-           When we are building your plugins, what plugins should we use during this process?
-
-           The plugins here extend the functionality of Maven, just like your plugin enhances Minecraft
-           These are not Minecraft plugins, but only Maven plugins!
-        -->
         <plugins>
-
-            <!--
-               The first and the most essential plugin is the compiler, that translates your
-               human readable code into bytecode.
-           -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-
-                <!--
-                   You want to check and update the latest version periodically from
-                   https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin
-               -->
-                <version>3.8.1</version>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                </configuration>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>install-jar</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <file>
+                                H:/idea/Cheststorage/CustomContainersAndHoppersAPI/target/CustomContainersAndHoppersAPI-${dependency.version}.jar
+                            </file>
+                            <groupId>org.brokenarrow.storage</groupId>
+                            <artifactId>CustomContainersAndHoppersAPI</artifactId>
+                            <version>${dependency.version}</version>
+                            <packaging>jar</packaging>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
-        <!--
-    During the build, we are going to scan all files in src/main/resources
-    folder such as plugin.yml and your settings files and replace all variables
-    such as ${main.class} with their proper values.
-
-    You can use native variables such as ${project.X} or the ones you defined above
-    in the properties section.
-    -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
+
 </project>

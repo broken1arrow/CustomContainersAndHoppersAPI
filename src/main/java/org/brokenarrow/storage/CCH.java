@@ -1,27 +1,33 @@
 package org.brokenarrow.storage;
 
+import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
 import org.brokenarrow.storage.api.DatabaseAPI;
-import org.brokenarrow.storage.api.HopperMoveItemsListenerAPI;
-import org.brokenarrow.storage.api.RecipeCacheAPI;
+import org.brokenarrow.storage.api.HologramsTaskAPI;
+import org.brokenarrow.storage.api.SpawnContainerEffectsTaskAPI;
 import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
+import org.brokenarrow.storage.api.builders.PreferenceSettingsRegisteryApi;
+import org.brokenarrow.storage.api.containerholders.cache.InventoryHoldersCacheApi;
 import org.brokenarrow.storage.api.containerholders.runnable.ContainerTaskApi;
-import org.brokenarrow.storage.api.runnable.CraftingSellTaskAPI;
-import org.brokenarrow.storage.api.runnable.HologramsTaskAPI;
+import org.brokenarrow.storage.api.containerholders.util.AddItemToContainerTaskAPI;
+import org.brokenarrow.storage.api.containerholders.util.ContainerListenerHandlerAPI;
+import org.brokenarrow.storage.api.containerholders.util.ItemMetadataUtillityApi;
+import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
-import org.brokenarrow.storage.api.runnable.SpawnContainerEffectsTaskAPI;
-import org.brokenarrow.storage.util.ConsoleColors;
-import org.brokenarrow.storage.util.command.CommandRegister;
-import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
+import org.brokenarrow.storage.api.util.command.CommandRegister;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.generator.ChunkGenerator.ChunkData;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.List;
 import java.util.logging.Level;
 
 public class CCH extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		long loadtime = System.currentTimeMillis();
+		final long loadtime = System.currentTimeMillis();
 		registerClasses();
 		sendLogMsg(Level.SEVERE, "Has loaded this API, should not be added as normal jar, " +
 				"becuse this api not contains the needed code.");
@@ -50,57 +56,93 @@ public class CCH extends JavaPlugin {
 		return CCH.getPlugin(CCH.class);
 	}
 
-	protected void cleanBeforeReload() {
-	}
-
-	private void registerClasses() {
-	}
-
-	/**
-	 * Get all inventorys in cache and also data some is cached.
-	 * Like contents if container is linked and soo on.
-	 *
-	 * @return InventoryHoldersCached instance.
-	 */
-
-	public InventoryHoldersCached getInventoryHoldersCached() {
+	public static String getPluginName() {
 		return null;
+		//	return CCH.getPlugin(CCH.class);
 	}
 
+	protected void cleanBeforeReload() {
+
+	}
+
+/*	public RegisterNbtAPI getNbtApi() {
+		return nbtApi;
+	}
+	*/
 	public DatabaseAPI getDatabaseApi() {
 		return null;
 	}
 
+	private void registerClasses() {
+
+	}
+
+	public ChunkData getChunkData() {
+		return null;
+	}
+
+	public InventoryHoldersCacheApi getInventoryHoldersCached() {
+		return null;
+	}
+
+	public PreferenceSettingsRegisteryApi getPreferenceSettingsRegistery() {
+		return null;
+	}
+
+/*	public EconomyProvider getEconomyProvider() {
+		return economyProvider;
+	}
+
+	public ProtectionProvider getProtectionProvider() {
+		return protectionProvider;
+	}
+
+	public HeavyTasks getHeavyTasks() {
+		return heavyTasks;
+	}
+
+
+	public CraftingSellTask getCraftingSellTask() {
+		return craftingSellTask;
+	}
+
+	public FilterCheckItems getFilterItems() {
+		return filterCheckItems;
+	}
+
+
+	public StackerProvider getStackerProvider() {
+		return stackerProvider;
+	}
+
+	public TickTask getTickTask() {
+		return tickTask;
+	}
+
+	public ContainerPlaceListener getContainerPlaceListener() {
+		return containerPlaceListener;
+	}
+*/
+
+/*
+	public ServerManagementPluginsProvider getCMIAndEssentialsXProvider() {
+		return serverManagementPluginsProvider;
+	}
+*/
 
 	public TeleportAndPickupItemsApi getTeleportAndPickupItems() {
 		return null;
 	}
 
-	public RecipeCacheAPI getRecipeCache() {
-		return null;
+/*//todo no api for this.
+	public CheckChunkLoadUnload getCheckChunkLoadUnload() {
+		return checkChunkLoadUnload;
 	}
 
-	/**
-	 * This is methods some give you options to add
-	 * locations for run a task. If you use this method
-	 * {@link org.brokenarrow.storage.api.containerholders.InventoryHolder#onRunTask()}
-	 *
-	 * @return ContainerTaskApi you can use to add or remove locations or see if location is added.
-	 * For tread safte you can't get direct acces to the list some store locations.
-	 * @see org.brokenarrow.storage.api.containerholders.InventoryHolder
-	 */
-
-	public ContainerTaskApi getContainerTask() {
-		return null;
+	public BlockPlacementPayment getBlockPlacementPayment() {
+		return blockPlacementPayment;
 	}
-
-	public HopperMoveItemsListenerAPI getHopperMoveItemsListener() {
-		return null;
-	}
-
-	public CraftingSellTaskAPI getCraftingSellTask() {
-		return null;
-	}
+*/
 
 	public SpawnContainerEffectsTaskAPI getSpawnContainerEffectsTask() {
 		return null;
@@ -115,11 +157,42 @@ public class CCH extends JavaPlugin {
 	}
 
 	/**
-	 * the class to register sub command, in this plugin.
+	 * All events used for check diffrent acctions preformend on the continer.
+	 * Like items puched to or from the container, player open container or break it.
 	 *
-	 * @return CommandRegister class (should never be null).
+	 *
+	 * @return the container handler api.
 	 */
-	public CommandRegister getCommandRegister() {
+	public ContainerListenerHandlerAPI getContainerListenerHandlerAPI() {
+		return null;
+	}
+
+	/**
+	 * Loading the server recipes.
+	 */
+	public void loadRecipes() {
+
+	}
+
+	public RecipeCacheAPI getRecipeCache() {
+		return null;
+	}
+
+/*	public RegisterMenuAPI getRegisterClass() {
+		return null;
+	}*/
+
+	public ContainerTaskApi getContainerTask() {
+		return null;
+	}
+
+	/**
+	 * Get all loaded spawnchunks.
+	 *
+	 * @return list of chunks loaded or null if the chunks are not loaded.
+	 */
+
+	public List<Chunk> getLoadedSpawnChunksList() {
 		return null;
 	}
 
@@ -133,17 +206,37 @@ public class CCH extends JavaPlugin {
 		return false;
 	}
 
-	/**
-	 * Check if placeholder api is installed on server or not.
-	 *
-	 * @return true if it exist.
-	 */
-	public boolean isPlaceholderAPIMissing() {
-		return false;
+	public CommandRegister getCommandRegister() {
+		return null;
 	}
 
-	public void registerEvent(Listener listener) {
-		Bukkit.getPluginManager().registerEvents(listener, this);
+	public ItemStack getRandomStack() {
+		return null;
+	}
+
+	public double getRandomStackNumber() {
+		return -1;
+	}
+
+	public AddItemToContainerTaskAPI getAddItemToContainerTask() {
+		return null;
+	}
+
+	public ItemMetadataUtillityApi getItemMetadataUtillity() {
+		return null;
+	}
+
+
+	public LoadSettingsContainersAPI getSettingsForContainers() {
+		return null;
+	}
+
+	/**
+	 * Load inventory on location.
+	 *
+	 * @param location the location to load to cache from.
+	 */
+	public void loadInventory(final Location location) {
 	}
 
 	/**
@@ -165,20 +258,8 @@ public class CCH extends JavaPlugin {
 	public void setStopChunkCheck(final boolean stopChunkCheck) {
 	}
 
-	public void sendLogMsg(Level logLevel, String msg) {
-		String color, msgColor;
-		if (logLevel == Level.WARNING) {
-			color = ConsoleColors.RED_BRIGHT;
-			msgColor = ConsoleColors.BLUE_BOLD_BRIGHT;
-		} else if (logLevel == Level.SEVERE) {
-			color = ConsoleColors.RED;
-			msgColor = ConsoleColors.BLUE_BOLD_BRIGHT;
-		} else {
-			color = ConsoleColors.GREEN;
-			msgColor = ConsoleColors.WHITE;
-		}
-		this.getServer().getLogger().log(logLevel, color + "[" + this.getName() + "] " + msgColor + msg + ConsoleColors.RESET);
+	public void sendLogMsg(final Level logLevel, final String msg) {
+		this.getServer().getLogger().log(logLevel, "[" + this.getName() + "] " + msg);
 	}
-
 
 }

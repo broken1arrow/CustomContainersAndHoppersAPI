@@ -79,7 +79,7 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 * @param itemStack items you set to chache.
 	 */
 	void addItemsAmountInCache(ItemStack itemStack);
-	
+
 	/**
 	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
 	 * <p>

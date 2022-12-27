@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.containerholders;
 
 
+import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
-import org.brokenarrow.storage.util.builderclass.ContainerData;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -328,13 +328,18 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @return true if you want to run task or false and it will remove the location from list.
 	 */
 	boolean onRunTask();
+
+	boolean isFirstCheckOfPlaceholderItem();
+
+	void setFirstCheckOfPlaceholderItem(final boolean firstCheckOfPlaceholderItem);
+
 	/*
 	 * ################################################
 	 * Data handle methods.
 	 */
 
 	/**
-	 * Use this method to save the contents to {@link ContainerData} cache.
+	 * Use this method to save the contents to {@link ContainerDataApi} cache.
 	 */
 	void saveToCache();
 
@@ -343,13 +348,12 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @return the data for the container.
 	 */
-	@NotNull
-	ContainerData getContainerData();
+	ContainerDataApi getContainerData();
 
 	/**
 	 * Set containerdata for this container.
 	 */
-	void setContainerData(@NotNull final ContainerData containerData);
+	void setContainerData(@NotNull final Object containerData);
 }
 
 

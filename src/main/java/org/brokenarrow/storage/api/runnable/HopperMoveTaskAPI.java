@@ -1,13 +1,17 @@
 package org.brokenarrow.storage.api.runnable;
 
+import org.brokenarrow.storage.api.containerholders.InventoryHolder;
 import org.bukkit.Location;
 import org.bukkit.block.Hopper;
 
 import java.util.Map;
 
-public interface HopperMoveTaskAPI extends AddOrRemoveDataFromListAPI {
+public interface HopperMoveTaskAPI {
+
 
 	void runTask();
+
+	void moveItemsToHopperTask(final InventoryHolder holder);
 
 	/**
 	 * Get if it's the first start.
@@ -48,4 +52,27 @@ public interface HopperMoveTaskAPI extends AddOrRemoveDataFromListAPI {
 	 * @param containerLocation of the container some are placed ontop of the hopper.
 	 */
 	void removeCachedHoppers(final Location containerLocation);
+
+
+	/**
+	 * Add locations it shall sell or craftItems.
+	 *
+	 * @param location of the continer.
+	 */
+	void addLocationInList(final Location location);
+
+	/**
+	 * Check if list contains location.
+	 *
+	 * @param location of the continer.
+	 * @return true if the list contains the container
+	 */
+	boolean isLocationInList(Location location);
+
+	/**
+	 * Remove location from the list.
+	 *
+	 * @param location of the container you want to remove.
+	 */
+	void removeLocationInList(final Location location);
 }

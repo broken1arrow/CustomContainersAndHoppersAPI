@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api;
 
-import org.brokenarrow.storage.util.builderclass.ContainerData;
-import org.brokenarrow.storage.util.builderclass.PreferenceSettingsData;
+import org.brokenarrow.storage.api.builders.PreferenceSettingsDataAPI;
+import org.brokenarrow.storage.api.containerholders.InventoryHolder;
 import org.bukkit.Location;
 
 import java.sql.Connection;
@@ -57,7 +57,7 @@ public interface DatabaseAPI {
 	 *
 	 * @param preferenceSettingsRegistery cached data.
 	 */
-	void saveToSQLUserCache(Map<UUID, PreferenceSettingsData> preferenceSettingsRegistery);
+	void saveToSQLUserCache(final Map<UUID, PreferenceSettingsDataAPI> preferenceSettingsRegistery);
 
 	/**
 	 * remove playerdata from the database.
@@ -80,6 +80,13 @@ public interface DatabaseAPI {
 	 * @return True if it successfully added data to cache.
 	 */
 	boolean loadFromSQLAllContainerdataToCache();
+
+	/**
+	 * Save containers from a map.
+	 *
+	 * @param continers map of containers some shall be stored.
+	 */
+	void saveContainerCacheToSQL(final Map<Location, InventoryHolder> continers);
 
 	/**
 	 * Loading all continers data from database to cache will override current data in cache.
@@ -106,9 +113,10 @@ public interface DatabaseAPI {
 	boolean getOneContainerfromSQL(Location location);
 
 	/**
-	 * Save all data from cache to database.
+	 * if it has start load data
 	 *
-	 * @param chests the continer cache.
+	 * @return true if it load data.
+	 * @return true if it load data.
 	 */
-	void saveContainerCacheToSQL(Map<Location, ContainerData> chests);
+	boolean isStartLoadContainerdata();
 }
