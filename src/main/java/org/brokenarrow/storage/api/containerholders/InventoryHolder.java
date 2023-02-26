@@ -236,9 +236,14 @@ public interface InventoryHolder extends InventoryEvents {
 	 */
 	void removePlayerViwePage(final Player player);
 
+	/**
+	 * Override this method if you want to reset data,
+	 * when they run the reload command.
+	 */
+	void reloadContainer();
 
 	/**
-	 * Update data if new data added whern the plugin runing or if it not exist.
+	 * Update data if new data added when the plugin runing or if it not exist.
 	 *
 	 * @param location of the container
 	 * @param player   the player some open the container.
