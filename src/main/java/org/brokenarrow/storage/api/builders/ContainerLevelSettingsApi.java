@@ -2,7 +2,7 @@ package org.brokenarrow.storage.api.builders;
 
 import java.util.List;
 
-public interface ContainerDataLevelSettingsApi {
+public interface ContainerLevelSettingsApi {
 
 	/**
 	 * Get what type container it is.
@@ -30,10 +30,10 @@ public interface ContainerDataLevelSettingsApi {
 	/**
 	 * get limit of amount of items, are used for storage unit/container.
 	 * <p>
-	 * If method return -1 it will be unlimit amount and everything over 1 limit
-	 * the amount of items.
+	 * If method return -1 it will be unlimit amount and everything over zero
+	 * limit amount of item you can store.
 	 *
-	 * @return aomut of items max can be stored.
+	 * @return amont of items max can be stored.
 	 */
 	String getLimitAmontOfItems();
 

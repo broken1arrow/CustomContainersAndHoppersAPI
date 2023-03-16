@@ -2,16 +2,20 @@ package org.brokenarrow.storage.api.containerholders;
 
 
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
+import org.brokenarrow.storage.api.builders.ContainerSettingsWraperAPI;
+import org.brokenarrow.storage.api.builders.ParticleEffectApi;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +53,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @return items from curent gui you close, will save all pages.
 	 */
-	@NotNull
+	@Nonnull
 	ItemStack[] getContents();
 
 	/**
@@ -60,7 +64,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @return items some not fit in the gui.
 	 * @see InventoryholderStorageUnit
 	 */
-	@NotNull
+	@Nonnull
 	Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
 
 	/**
@@ -110,7 +114,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @return return inventory you has requested
 	 * or null if it not find the inventory.
 	 */
-	@Nullable
+	@javax.annotation.Nullable
 	Inventory getInventory(final int page);
 
 	/**
@@ -245,10 +249,9 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Update data if new data added when the plugin runing or if it not exist.
 	 *
-	 * @param location of the container
 	 * @param player   the player some open the container.
 	 */
-	void updateData(final Location location, final Player player);
+	void updateData( final Player player);
 
 	/**
 	 * Update the inventory title for container, it will update all
@@ -327,6 +330,38 @@ public interface InventoryHolder extends InventoryEvents {
 	void openInventory(@NotNull Player player, @Nullable Inventory inventory);
 
 	/**
+	 * Sound when close container.
+	 *
+	 * @return sound or null.
+	 */
+	@Nullable
+	Sound getSoundWhenClose();
+
+	/**
+	 * Sound when upen container.
+	 *
+	 * @return sound or null.
+	 */
+	@Nullable
+	Sound getSoundWhenOpen();
+
+	/**
+	 * Sound when run task on container.
+	 *
+	 * @return sound or null.
+	 */
+	@Nullable
+	Sound getSoundWhenRunTask();
+
+	/**
+	 * Effect when run task on container.
+	 *
+	 * @return sound or null.
+	 */
+	@Nullable
+	ParticleEffectApi getEffectWhenRunTask();
+
+	/**
 	 * When run a task. You can set how often this will be called with
 	 * {@link #setTimeRunTask(long)}.
 	 *
@@ -335,6 +370,13 @@ public interface InventoryHolder extends InventoryEvents {
 	boolean onRunTask();
 
 	boolean isFirstCheckOfPlaceholderItem();
+
+	/**
+	 * Get amount of pages.
+	 *
+	 * @return amnount of pages.
+	 */
+	int getCurentAmountOfPages();
 
 	void setFirstCheckOfPlaceholderItem(final boolean firstCheckOfPlaceholderItem);
 
@@ -353,12 +395,16 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @return the data for the container.
 	 */
+	@Nonnull
 	ContainerDataApi getContainerData();
+
+	@Nonnull
+	ContainerSettingsWraperAPI getContainerSettingsWraper();
 
 	/**
 	 * Set containerdata for this container.
 	 */
-	void setContainerData(@NotNull final Object containerData);
+	void setContainerData(@Nonnull final ContainerDataApi containerData);
 }
 
 

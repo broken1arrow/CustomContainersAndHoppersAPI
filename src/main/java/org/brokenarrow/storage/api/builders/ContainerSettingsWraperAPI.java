@@ -1,15 +1,18 @@
 package org.brokenarrow.storage.api.builders;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Map;
 
-public interface ContainerDataWraperAPI {
+public interface ContainerSettingsWraperAPI {
 
 	/**
 	 * Get the settings for this container.
 	 *
 	 * @return Container settings for this container.
 	 */
-	ContainerDataSettingsApi getContainerDataSettings();
+	@Nullable
+	ContainerSettingsApi getContainerSettings();
 
 	/**
 	 * Get the upgrade settings for this container.
@@ -17,12 +20,14 @@ public interface ContainerDataWraperAPI {
 	 * @param level the level you want to get.
 	 * @return det data or null if the level not exist.
 	 */
-	ContainerDataLevelSettingsApi getContainerDataLevelSettings(String level);
+	@Nullable
+	ContainerLevelSettingsApi getContainerLevelSettings(String level);
 
 	/**
 	 * Get the map with all levels and levelsettings
 	 *
 	 * @return a map with all upgrades for this container.
 	 */
-	Map<String, ContainerDataLevelSettingsApi> getContainerDataLevelSettings();
+	@Nonnull
+	Map<String, ContainerLevelSettingsApi> getContainerLevelSettings();
 }

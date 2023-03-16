@@ -7,7 +7,7 @@
     <parent>
         <artifactId>parentPom</artifactId>
         <groupId>org.example</groupId>
-        <version>0.06.0</version>
+        <version>0.10.0</version>
     </parent>
 
     <groupId>org.brokenarrow.storage.api</groupId>
@@ -15,7 +15,7 @@
     <version>${dependency.version}</version>
 
     <properties>
-        <dependency.version>0.06.0</dependency.version>
+        <dependency.version>0.10.0</dependency.version>
         <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>

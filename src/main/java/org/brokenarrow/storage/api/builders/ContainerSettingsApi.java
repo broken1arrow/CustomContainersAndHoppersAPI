@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public interface ContainerDataSettingsApi {
+public interface ContainerSettingsApi {
 
 
 	/**
@@ -16,6 +16,13 @@ public interface ContainerDataSettingsApi {
 	 * @see org.brokenarrow.storage.api.containerholders.util.TypeOfContainer
 	 */
 	TypeOfContainer getContainerType();
+
+	/**
+	 * Get if it shall update the block or not
+	 *
+	 * @return true if it shall update the block.
+	 */
+	boolean isUpdateblock();
 
 	/**
 	 * Get sound type when place contanier.
