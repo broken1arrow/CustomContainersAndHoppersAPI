@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

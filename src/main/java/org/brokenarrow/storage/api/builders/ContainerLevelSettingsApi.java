@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
+
 import java.util.List;
 
 public interface ContainerLevelSettingsApi {

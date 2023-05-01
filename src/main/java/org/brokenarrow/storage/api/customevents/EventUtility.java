@@ -4,7 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 /**
  * All events require a static method named getHandlerList() which returns the same {@link HandlerList} as {@link #getHandlers()}.
@@ -66,7 +67,7 @@ public abstract class EventUtility extends Event implements Cancellable {
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public HandlerList getHandlers() {
 		return handler;
 	}

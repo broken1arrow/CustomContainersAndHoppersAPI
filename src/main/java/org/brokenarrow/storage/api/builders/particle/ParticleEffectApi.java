@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.builders;
+package org.brokenarrow.storage.api.builders.particle;
 
 import org.bukkit.Effect;
 import org.bukkit.Material;

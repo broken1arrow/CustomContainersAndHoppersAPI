@@ -2,8 +2,10 @@ package org.brokenarrow.storage.api.containerholders;
 
 
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
+import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
+import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWraperAPI;
-import org.brokenarrow.storage.api.builders.ParticleEffectApi;
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -12,7 +14,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -249,9 +250,9 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Update data if new data added when the plugin runing or if it not exist.
 	 *
-	 * @param player   the player some open the container.
+	 * @param player the player some open the container.
 	 */
-	void updateData( final Player player);
+	void updateData(final Player player);
 
 	/**
 	 * Update the inventory title for container, it will update all
@@ -327,7 +328,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @param player    the player some open inventory.
 	 * @param inventory the inventory to open.
 	 */
-	void openInventory(@NotNull Player player, @Nullable Inventory inventory);
+	void openInventory(@Nonnull Player player, @Nullable Inventory inventory);
 
 	/**
 	 * Sound when close container.
@@ -369,14 +370,14 @@ public interface InventoryHolder extends InventoryEvents {
 	 */
 	boolean onRunTask();
 
-	boolean isFirstCheckOfPlaceholderItem();
-
 	/**
 	 * Get amount of pages.
 	 *
 	 * @return amnount of pages.
 	 */
 	int getCurentAmountOfPages();
+
+	boolean isFirstCheckOfPlaceholderItem();
 
 	void setFirstCheckOfPlaceholderItem(final boolean firstCheckOfPlaceholderItem);
 
@@ -398,13 +399,55 @@ public interface InventoryHolder extends InventoryEvents {
 	@Nonnull
 	ContainerDataApi getContainerData();
 
-	@Nonnull
-	ContainerSettingsWraperAPI getContainerSettingsWraper();
 
 	/**
 	 * Set containerdata for this container.
+	 *
+	 * @param containerData The container data you want to set on this container.
 	 */
 	void setContainerData(@Nonnull final ContainerDataApi containerData);
+
+	/*
+	 * ################################################
+	 * Get static settings for the container type.
+	 */
+
+	/**
+	 * Get all set data for this container type, from the yaml file.
+	 *
+	 * @return the wrapper used to set both serttings and
+	 * the level upgrades for the container.
+	 */
+	@Nonnull
+	ContainerSettingsWraperAPI getSettingsWraper();
+
+	/**
+	 * Get the current level of settings for this container.
+	 *
+	 * @return The current level specific settings for the container.
+	 */
+	@Nullable
+	ContainerLevelSettingsApi getLevelSettings();
+
+	/**
+	 * Get the settings for a specific level for this container.
+	 *
+	 * @param level The level you want to check the settings for.
+	 * @return The settings for the level or null if level settings
+	 * are not set or the level not exist.
+	 */
+	@Nullable
+	ContainerLevelSettingsApi getLevelSettings(@Nonnull String level);
+
+	/**
+	 * Get the static settings, some not change with the level
+	 * of the container.
+	 *
+	 * @return The set settings for the container. Will return null
+	 * if could not find the settings for this container.
+	 */
+	@Nullable
+	ContainerSettingsApi getSettings();
 }
 
 

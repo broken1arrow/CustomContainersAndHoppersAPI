@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.builders;
+package org.brokenarrow.storage.api.builders.particle;
 
 import org.bukkit.Color;
 import org.jetbrains.annotations.NotNull;
