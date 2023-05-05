@@ -8,8 +8,9 @@ import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Inventory actions, for example when continer is open, breaked, close
@@ -26,8 +27,7 @@ public interface InventoryEvents {
 	 * @param pageNumber witch page player shall open (if the container have pages).
 	 * @return true if it could open container.
 	 */
-
-	boolean onOpenContainer(@NotNull final PlayerInteractEvent event, @NotNull final Player player, final int pageNumber);
+	boolean onOpenContainer(@Nonnull final PlayerInteractEvent event, @Nonnull final Player player, final int pageNumber);
 
 	/**
 	 * When player interact with other container. For example link container
@@ -37,7 +37,7 @@ public interface InventoryEvents {
 	 * @param linkingPlayer the player some clicking.
 	 * @return true if shall cancel event.
 	 */
-	boolean onContainerLinking(@NotNull final PlayerInteractEvent event, @NotNull final Player linkingPlayer);
+	boolean onContainerLinking(@Nonnull final PlayerInteractEvent event, @Nonnull final Player linkingPlayer);
 
 	/**
 	 * Handle inventory clickevent. For ether when player add/remove items
@@ -47,7 +47,7 @@ public interface InventoryEvents {
 	 * @param player         player some interact with the chest.
 	 * @return if this return true, so can't player/players take item/items from the clicked inventory.
 	 */
-	boolean onClickingInsideGui(@NotNull final InventoryClickEvent inventoryClick, @NotNull final Player player);
+	boolean onClickingInsideGui(@Nonnull final InventoryClickEvent inventoryClick, @Nonnull final Player player);
 
 	/**
 	 * This is trigged when player drag items
@@ -56,7 +56,7 @@ public interface InventoryEvents {
 	 * @param event the event some get trigged when drag items.
 	 * @return true if you want to cancel the event.
 	 */
-	boolean onInventoryItemDrag(@NotNull InventoryDragEvent event, @NotNull ItemStack clickedItem);
+	boolean onInventoryItemDrag(@Nonnull InventoryDragEvent event, @Nonnull ItemStack clickedItem);
 
 	/**
 	 * When you break the continer this will be called, i remove all cached data
@@ -67,7 +67,7 @@ public interface InventoryEvents {
 	 * @param block  some get removed.
 	 * @return true if it shall cancel the event.
 	 */
-	boolean onContainerBreak(@Nullable final Player player, @NotNull final Block block);
+	boolean onContainerBreak(@Nullable final Player player, @Nonnull final Block block);
 
 	/**
 	 * When player close inventory.
@@ -75,7 +75,7 @@ public interface InventoryEvents {
 	 * @param player some close the inventory.
 	 * @return true if valid container some get closed.
 	 */
-	boolean onContainerClose(@NotNull final Player player);
+	boolean onContainerClose(@Nonnull final Player player);
 
 	/**
 	 * When you place the continer this will get trigged after
@@ -86,7 +86,7 @@ public interface InventoryEvents {
 	 * @param container some get placed.
 	 * @return true if it has successful executed the task.
 	 */
-	boolean onContainerPlace(@NotNull final Player player, @NotNull final ItemStack container);
+	boolean onContainerPlace(@Nonnull final Player player, @Nonnull final ItemStack container);
 
 	/**
 	 * When container pick up items. This get trigged when item end up ontop of a hopper or hopper minecart.
@@ -94,7 +94,7 @@ public interface InventoryEvents {
 	 * @param event the event some used when container pick up items.
 	 * @return true if you want to cancel event.
 	 */
-	boolean onPickupItem(@NotNull InventoryPickupItemEvent event);
+	boolean onPickupItem(@Nonnull InventoryPickupItemEvent event);
 
 	/**
 	 * When container move items between containers. This get trigged when item get moved.
@@ -103,6 +103,6 @@ public interface InventoryEvents {
 	 * @param pushItem true if you push item to custom continer or false drag/pull items from container.
 	 * @return true if you want to cancel event.
 	 */
-	boolean onMoveItem(@NotNull InventoryMoveItemEvent event, boolean pushItem);
+	boolean onMoveItem(@Nonnull InventoryMoveItemEvent event, boolean pushItem);
 
 }

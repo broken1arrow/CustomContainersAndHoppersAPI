@@ -64,12 +64,6 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 */
 	boolean canPlaceItemInsideContainer(ItemStack itemStack);
 
-	/**
-	 * Set the itemstack type placeholders inside the chest.
-	 *
-	 * @param itemStack the itemstack some are added
-	 */
-	void setItemStack(ItemStack itemStack);
 
 	/**
 	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
@@ -170,7 +164,7 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 *
 	 * @return the amount you can store or -1 if it are unlimit amout you can store.
 	 */
-	BigInteger getMaxAmountOfItemsFromYmlSettings();
+	BigInteger updateMaxAmount();
 
 
 	/**
