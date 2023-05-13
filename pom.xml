@@ -6,16 +6,15 @@
 
     <parent>
         <artifactId>parentPom</artifactId>
-        <groupId>org.example</groupId>
-        <version>0.10.0</version>
+        <groupId>org.brokenarrow.storage</groupId>
+        <version>0.11.0</version>
     </parent>
 
-    <groupId>org.brokenarrow.storage.api</groupId>
+   <groupId>org.brokenarrow.storage.api</groupId>
     <artifactId>CustomContainersAndHoppersAPI</artifactId>
-    <version>${dependency.version}</version>
+    <version>0.11.0</version>
 
     <properties>
-        <dependency.version>0.10.0</dependency.version>
         <java.version>8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -48,11 +47,11 @@
                         </goals>
                         <configuration>
                             <file>
-                                H:/idea/Cheststorage/CustomContainersAndHoppersAPI/target/CustomContainersAndHoppersAPI-${dependency.version}.jar
+                                H:/idea/Cheststorage/CustomContainersAndHoppersAPI/target/CustomContainersAndHoppersAPI-${project.version}.jar
                             </file>
                             <groupId>org.brokenarrow.storage</groupId>
                             <artifactId>CustomContainersAndHoppersAPI</artifactId>
-                            <version>${dependency.version}</version>
+                            <version>${project.version}</version>
                             <packaging>jar</packaging>
                         </configuration>
                     </execution>
