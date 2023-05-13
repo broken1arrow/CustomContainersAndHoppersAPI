@@ -283,7 +283,7 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Get container location inventory/inventory´s are linked to.
 	 *
-	 * @return location of this container or null.
+	 * @return cloned location of this container.
 	 */
 	Location getLocation();
 
@@ -381,6 +381,15 @@ public interface InventoryHolder extends InventoryEvents {
 
 	void setFirstCheckOfPlaceholderItem(final boolean firstCheckOfPlaceholderItem);
 
+	/**
+	 * Check if the item is allowed to be added to container or removed.
+	 *
+	 * @param itemStack the itemstack that will be check.
+	 * @param pullItems if it pull or push items to the container.
+	 * @return true if the itemstack match.
+	 */
+	boolean itemMatching(@Nullable final ItemStack itemStack, final boolean pullItems);
+
 	/*
 	 * ################################################
 	 * Data handle methods.
@@ -448,6 +457,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 */
 	@Nullable
 	ContainerSettingsApi getSettings();
+
 }
 
 

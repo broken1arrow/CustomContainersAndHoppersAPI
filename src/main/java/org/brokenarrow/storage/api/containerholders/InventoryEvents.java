@@ -7,6 +7,7 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -103,6 +104,6 @@ public interface InventoryEvents {
 	 * @param pushItem true if you push item to custom continer or false drag/pull items from container.
 	 * @return true if you want to cancel event.
 	 */
-	boolean onMoveItem(@Nonnull InventoryMoveItemEvent event, boolean pushItem);
+	boolean onMoveItem(@Nonnull final Inventory destinationInv,@Nonnull InventoryMoveItemEvent event, boolean pushItem);
 
 }
