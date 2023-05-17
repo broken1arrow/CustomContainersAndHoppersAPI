@@ -15,7 +15,7 @@ public interface InventoryHolderLinkSuction extends InventoryHolder {
 	int getLinkRange();
 
 	TeleportAndPickupItemsApi getTeleportAndPickupItems();
-	
+
 	/**
 	 * Check if the item is allowed to be added to container or removed.
 	 *

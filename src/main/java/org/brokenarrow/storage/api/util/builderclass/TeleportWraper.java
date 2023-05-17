@@ -27,6 +27,11 @@ public class TeleportWraper {
 		return lastNumberInList;
 	}
 
+	/**
+	 * Get the inventory for this container.
+	 *
+	 * @return the inventory or null.
+	 */
 	@Nullable
 	public Inventory getCachedContainerInventory() {
 		return cachedContainerInventory;
