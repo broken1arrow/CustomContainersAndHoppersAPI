@@ -14,12 +14,16 @@ import org.brokenarrow.storage.api.containerholders.util.ItemMetadataUtillityApi
 import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
 import org.brokenarrow.storage.api.util.command.CommandRegister;
+import org.brokenarrow.storage.api.util.conversion.Time;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.generator.ChunkGenerator.ChunkData;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -249,6 +253,15 @@ public class CCH extends JavaPlugin {
 		return false;
 	}
 
+	/**
+	 * Use this to convert time. Defult it will be formated
+	 *  day hour minute second (depending what numbers is more than zero).
+	 *
+	 * @return the time class.
+	 */
+	public Time timeConversion() {
+		return null;
+	}
 
 	/**
 	 * Set this if you not want to load or unload any containers, when you load and unload a chunk.
@@ -262,5 +275,11 @@ public class CCH extends JavaPlugin {
 	public void sendLogMsg(final Level logLevel, final String msg) {
 		this.getServer().getLogger().log(logLevel, "[" + this.getName() + "] " + msg);
 	}
-
+	public void sendMessage(@Nullable final Player player, @Nonnull final String key,@Nullable final Object... placeholders) {
+	}
+	public void sendMessage(@Nullable final Level level, @Nullable final Player player, @Nonnull final String key,@Nullable final Object... placeholders) {
+	}
+	public String getPlaceholder(@Nonnull final String key,@Nullable final Object... placeholders) {
+		return "";
+	}
 }

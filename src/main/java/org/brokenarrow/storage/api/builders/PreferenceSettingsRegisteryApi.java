@@ -3,14 +3,18 @@ package org.brokenarrow.storage.api.builders;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public interface PreferenceSettingsRegisteryApi {
 
+	@Nullable
+	Map<UUID, PreferenceSettingsDataAPI> getAllSettingsData();
 
-	Map<UUID, PreferenceSettingsDataAPI> getsettingsdata();
+	@Nullable
+	PreferenceSettingsDataAPI getPlayerSettings(Player player);
 
 	/**
 	 * Add player to cache.
