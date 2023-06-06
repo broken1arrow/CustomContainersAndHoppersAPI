@@ -3,6 +3,7 @@ package org.brokenarrow.storage.api.builders;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 public interface PreferenceSettingsRegisteryApi {
 
-	@Nullable
+	@Nonnull
 	Map<UUID, PreferenceSettingsDataAPI> getAllSettingsData();
 
 	@Nullable

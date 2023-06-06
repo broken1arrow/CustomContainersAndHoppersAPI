@@ -30,6 +30,10 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.broken1arrow.Utility-Library</groupId>
+            <artifactId>Utility-Library</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

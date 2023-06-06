@@ -1,5 +1,7 @@
 package org.brokenarrow.storage;
 
+import org.broken.arrow.command.library.CommandRegister;
+import org.broken.arrow.database.library.builders.TableWrapper;
 import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
 import org.brokenarrow.storage.api.DatabaseAPI;
 import org.brokenarrow.storage.api.HologramsTaskAPI;
@@ -13,7 +15,6 @@ import org.brokenarrow.storage.api.containerholders.util.ContainerListenerHandle
 import org.brokenarrow.storage.api.containerholders.util.ItemMetadataUtillityApi;
 import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
-import org.brokenarrow.storage.api.util.command.CommandRegister;
 import org.brokenarrow.storage.api.util.conversion.Time;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -25,6 +26,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public class CCH extends JavaPlugin {
@@ -261,6 +263,81 @@ public class CCH extends JavaPlugin {
 	 */
 	public Time timeConversion() {
 		return null;
+	}
+
+	/**
+	 * Get the database command for containers.
+	 *
+	 * @param tableName name of the table.
+	 * @param instanceOfSQLite if it Sqlittle database set this to true.
+	 * @return table instance with set values.
+	 */
+	public TableWrapper getContainerRows(String tableName, boolean instanceOfSQLite) {
+		return null;
+	}
+
+	/**
+	 * Get the database command for players settings.
+	 *
+	 * @param tableName name of the table.
+	 * @param instanceOfSQLite if it Sqlittle database set this to true.
+	 * @return table instance with set values.
+	 */
+	public TableWrapper getUserSettings(String tableName, boolean instanceOfSQLite) {
+		return null;
+	}
+
+	/**
+	 * Remove a container from the database.
+	 *
+	 * @param location Location of the container.
+	 */
+	public void removeContainerfromDb(Location location) {
+	}
+
+	/**
+	 * Add container from the database to the cache.
+	 *
+	 * @param location Location of the container.
+	 */
+	public void addContainerfromDb(Location location) {
+	}
+
+	/**
+	 * Remove player from the database.
+	 *
+	 * @param uuid The uuid of the player.
+	 */
+	public void removePlayerfromDb(UUID uuid) {
+
+	}
+
+	/**
+	 * Add player from the database to the cache.
+	 *
+	 * @param  uuid  Uuid of the player.
+	 */
+	public void addPlayerfromDb(UUID uuid) {
+	}
+
+	/**
+	 * Get the table name of this container.
+	 *
+	 * @return the table name.
+	 */
+	@Nonnull
+	public String getContainerTableName(){
+		return "";
+	}
+
+	/**
+	 * Get the user table name of the container
+	 *
+	 * @return the table name.
+	 */
+	@Nonnull
+	public String getPlayerTableName(){
+		return "";
 	}
 
 	/**
