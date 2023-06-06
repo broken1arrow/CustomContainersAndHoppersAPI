@@ -15,10 +15,10 @@ public interface TeleportAndPickupItemsApi {
 
 	/**
 	 * Build data you want to set in cache.
+	 * This method do NOT set data i cache, only help method.
 	 *
 	 * @param builder the build you want to set.
 	 * @return teleportWraper with your data set.
-	 * @apiNote This method do NOT set data i cache, only help method.
 	 */
 	@Nonnull
 	TeleportWraper buildData(@Nonnull final Builder builder);
@@ -60,16 +60,18 @@ public interface TeleportAndPickupItemsApi {
 	/**
 	 * Add linked containers inventorys and locations to cache.
 	 *
+	 * This is treadsafe method to use.
+	 *
 	 * @param linkedTo the location you want to add to the link and suction container.
-	 * @apiNote This is treadsafe method to use.
 	 */
 	void addCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
 
 	/**
 	 * Remove linked containers inventorys and locations from cache.
 	 *
+	 * This is treadsafe method to use.
+	 *
 	 * @param linkedTo the location you want to remove from the link and suction container.
-	 * @apiNote This is treadsafe method to use.
 	 */
 	void removeCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
 
@@ -77,12 +79,10 @@ public interface TeleportAndPickupItemsApi {
 	 * Set teleport wraper to null and you need set new one, you can use this method to set new teleport wraper
 	 * use @link {@link #saveToCache(org.brokenarrow.storage.api.util.builderclass.TeleportWraper)}.
 	 * <p>
-	 * <p>
-	 * <p>
 	 * Or you can also use {@link #linkedContainerTask(org.brokenarrow.storage.api.containerholders.InventoryHolder)} if you want to
 	 * run suction and teleport task, it will set new teleport wraper if it is null.
 	 *
-	 * @apiNote This is treadsafe method to use.
+	 * This is treadsafe method to use.
 	 */
 	void clearTeleportWraper();
 
@@ -94,8 +94,9 @@ public interface TeleportAndPickupItemsApi {
 	 * Keep in main this is only temporary snapshot, if chunk this container are located to get unloaded
 	 * you has to replace with new snapshot of the inventory.
 	 *
+	 * This is not a treadsafe map.
+	 *
 	 * @return map with all cached data of current stored location with snapshot of inventory.
-	 * @apiNote This is not a treadsafe map.
 	 */
 	@Nullable
 	Map<Location, Inventory> getCachedLinkedInventorys();

@@ -20,7 +20,6 @@ public interface RecipeDataAPI {
 	 * <p>
 	 * It will have like this:
 	 * <p>
-	 * <p>
 	 * Recipe need 8 oak planks to make on chest.
 	 * But it can be also contain recipe some need 8 tnt to make on chest(If a custom recipe is
 	 * addeed on the server or added thru the api).

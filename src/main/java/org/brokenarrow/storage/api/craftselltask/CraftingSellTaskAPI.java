@@ -62,7 +62,7 @@ public interface CraftingSellTaskAPI {
 	 * @param location   location of the container.
 	 * @param material   the matrial output when crafting or the item some get sold.
 	 * @param typeOfTask if it sell or craft task.
-	 * @return
+	 * @return instance of CraftSellProviderApi.
 	 */
 	@Nullable
 	CraftSellProviderApi getCachedTasksProviderApi(@NonNull Location location, @NonNull Material material, @NonNull TypeOfTask typeOfTask);
@@ -92,6 +92,7 @@ public interface CraftingSellTaskAPI {
 	 *
 	 * @param location             location of the container.
 	 * @param material             the matrial output when crafting or the item some get sold.
+	 * @param amountMade the amount made.
 	 * @param uuid                 player some this container belongs too.
 	 * @param typeOfTask           the type of task you run (sell or crafting).
 	 * @param craftSellProviderApi the class for specific set data for sold or crafted items.

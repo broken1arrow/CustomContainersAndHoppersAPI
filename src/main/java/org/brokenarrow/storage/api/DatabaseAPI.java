@@ -116,7 +116,6 @@ public interface DatabaseAPI {
 	 * if it has start load data
 	 *
 	 * @return true if it load data.
-	 * @return true if it load data.
 	 */
 	boolean isStartLoadContainerdata();
 }

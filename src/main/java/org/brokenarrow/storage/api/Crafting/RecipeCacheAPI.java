@@ -92,6 +92,7 @@ public interface RecipeCacheAPI {
 	 * Get the Recipe Data some contains
 	 * recipe info.
 	 *
+	 * @param key the recipe group key.
 	 * @return return all recipes.
 	 */
 	List<RecipeDataAPI> getRecipe(MaterialGroup key);

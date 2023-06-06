@@ -44,7 +44,6 @@ public interface InventoryholderDefultContiners extends InventoryHolder {
 	 * are emty it will check next page for items
 	 * or the page befor if it has items.
 	 * <p>
-	 * <p>
 	 * If inventory not exist, it will create new one automatic
 	 * with right amount of pages.
 	 *

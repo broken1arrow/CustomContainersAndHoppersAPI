@@ -10,6 +10,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set true if it shall show the holgrams.
 	 *
 	 * @param showHologramsOnPlacedContainer if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setShowHologramsOnPlacedContainer(boolean showHologramsOnPlacedContainer);
 
@@ -17,6 +18,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall show effects when craft.
 	 *
 	 * @param showEffectsWhenCrafItems if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setShowEffectsWhenCrafItems(boolean showEffectsWhenCrafItems);
 
@@ -24,6 +26,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall show effects when sell.
 	 *
 	 * @param showEffectsWhenSellItems if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setShowEffectsWhenSellItems(boolean showEffectsWhenSellItems);
 
@@ -31,6 +34,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall play a sound when craft.
 	 *
 	 * @param soundEffectsWhenCrafItems if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenCrafItems(boolean soundEffectsWhenCrafItems);
 
@@ -38,6 +42,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall play a sound when sell items.
 	 *
 	 * @param soundEffectsWhenSellItems if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenSellItems(boolean soundEffectsWhenSellItems);
 
@@ -45,6 +50,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall play a sound when open container.
 	 *
 	 * @param soundEffectsWhenOpenClose if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenOpenClose(boolean soundEffectsWhenOpenClose);
 
@@ -52,6 +58,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall play sound or not when place the container.
 	 *
 	 * @param soundEffectsWhenPlaceContainer if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenPlaceContainer(boolean soundEffectsWhenPlaceContainer);
 
@@ -59,13 +66,15 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall play sound or not when the container pick up items.
 	 *
 	 * @param soundEffectsWhenContainerPickUpItems if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenContainerPickUpItems(boolean soundEffectsWhenContainerPickUpItems);
 
 	/**
 	 * Set to true if you want to show the owner of the container or not.
 	 *
-	 * @param displayPlayerNameOnHolo if not set, defult to false..
+	 * @param displayPlayerNameOnHolo if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setDisplayPlayerNameOnHolo(boolean displayPlayerNameOnHolo);
 
@@ -73,6 +82,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall show the border when place.
 	 *
 	 * @param showBorderSuctionWhenPlaceContainer if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setShowBorderSuctionWhenPlaceContainer(boolean showBorderSuctionWhenPlaceContainer);
 
@@ -80,6 +90,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true it shall automatic turn off linkmode.
 	 *
 	 * @param linkModeActiveTimeOrWhenTurnOff if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setHasLinkModeActiveTimeOrTurnOfAuto(boolean linkModeActiveTimeOrWhenTurnOff);
 
@@ -87,6 +98,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Set to true if it shall spawn particels on this players containers.
 	 *
 	 * @param effectOnContainer if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setEffectOnContainer(boolean effectOnContainer);
 
@@ -94,6 +106,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * If this is true it will spawn effects on container when player place it.
 	 *
 	 * @param effectOnContainerWhenPlaceContainer if not set, defult to false.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
 
@@ -109,6 +122,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * Add a player to the partylist
 	 *
 	 * @param partylistOfPlayers the player some shall be added.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setPartylistOfPlayers(List<UUID> partylistOfPlayers);
 

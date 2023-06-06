@@ -55,6 +55,7 @@ public interface InventoryEvents {
 	 * inside the inventory.
 	 *
 	 * @param event the event some get trigged when drag items.
+	 * @param clickedItem the item currently clicked on.
 	 * @return true if you want to cancel the event.
 	 */
 	boolean onInventoryItemDrag(@Nonnull InventoryDragEvent event, @Nonnull ItemStack clickedItem);
@@ -102,6 +103,7 @@ public interface InventoryEvents {
 	 *
 	 * @param event    the event some used when container move items between containers.
 	 * @param pushItem true if you push item to custom continer or false drag/pull items from container.
+	 * @param destinationInv The  destination inventory for the items.
 	 * @return true if you want to cancel event.
 	 */
 	boolean onMoveItem(@Nonnull final Inventory destinationInv,@Nonnull InventoryMoveItemEvent event, boolean pushItem);

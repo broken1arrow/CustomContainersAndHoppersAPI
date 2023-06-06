@@ -21,6 +21,7 @@ public interface InventoryHolderLinkSuction extends InventoryHolder {
 	 *
 	 * @param itemStack the itemstack that will be check.
 	 * @param pullItems if it pull or push items to the container.
+	 * @param targetInventory The inventory items get pushed too.
 	 * @return true if the itemstack match.
 	 */
 	boolean itemMatching(@Nonnull ItemStack itemStack, @Nullable Inventory targetInventory, boolean pullItems);

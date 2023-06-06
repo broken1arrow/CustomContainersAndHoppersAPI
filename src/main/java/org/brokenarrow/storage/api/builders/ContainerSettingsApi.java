@@ -129,7 +129,6 @@ public interface ContainerSettingsApi {
 	/**
 	 * Get if shall use exp or level from player.
 	 * <p>
-	 * This method set how much it will take {@link #setExperienceToTakePlayer(int)}.
 	 *
 	 * @return EXP or LVL.
 	 */

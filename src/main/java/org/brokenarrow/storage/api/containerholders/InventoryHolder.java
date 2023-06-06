@@ -48,7 +48,6 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Get the contents in the chest.
 	 * <p>
-	 * <p>
 	 * For the StorageUnit this will return diffrent type of array becuse
 	 * it not store items inside the inventory. See {@link  InventoryholderStorageUnit#getContents()}
 	 *
@@ -71,8 +70,6 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Set items in the container. It will override all old items
 	 * you have stored inside the container.
-	 * <p>
-	 * <p>
 	 * <p>
 	 * If this container have more pages it will automatic add items when
 	 * first inventory is full (it will also respect empty slots).
@@ -137,6 +134,7 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * If it has set max amount if pages/inventorys fir this container.
 	 *
+	 * @param numberOfPages Check if it set x amount of pages.
 	 * @return true if it has set max amount of pages.
 	 */
 	boolean hasSetMaxInventorys(int numberOfPages);
@@ -214,8 +212,8 @@ public interface InventoryHolder extends InventoryEvents {
 	 * (will not say if he has the inventory open or not).
 	 *
 	 * @param player get the player some open the gui.
+	 * @return number of players viwe the page.
 	 */
-
 	int getPlayerViwePage(final Player player);
 
 	/**

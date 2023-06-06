@@ -7,8 +7,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
  * This class are for when you want to add location to your container
  * and want use this method {@link org.brokenarrow.storage.api.containerholders.InventoryHolder#onRunTask()}.
  * <p>
- * <p>
- * <p>
  * You can also turn on fast Mode, it will then try run every tick (but that will quickly cuse lag
  * if you has over 800 location stored in this cache). The defult mode it will run every second and I not see
  * any reason why you want to run faster.

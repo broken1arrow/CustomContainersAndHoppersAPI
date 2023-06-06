@@ -50,8 +50,9 @@ public class TeleportWraper {
 	 * The map with all locations and inventorys for this
 	 * link and suction container.
 	 *
+	 * This is not a treadsafe map.
+	 *
 	 * @return the map with all cached inventorys.
-	 * @apiNote This is not a treadsafe map.
 	 */
 	@Nullable
 	public Map<Location, Inventory> getCachedLinkedInventory() {
@@ -61,10 +62,10 @@ public class TeleportWraper {
 	/**
 	 * Get the linked inventory from cache.
 	 *
+	 * This is not a treadsafe map you access.
 	 *
 	 * @param location of the contaner that are linked to the link and suction container.
 	 * @return the inventory or null if it not exist.
-	 * @apiNote This is not a treadsafe map you access.
 	 */
 	@Nullable
 	public Inventory getCachedLinkedInventory(final Location location) {

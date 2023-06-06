@@ -5,7 +5,6 @@ package org.brokenarrow.storage.api.containerholders.util;
  * are not valid type it will return DEFAULT.
  * <p>
  * The type of continers are (that inside "" is the string value):
- * <p>
  * <ul>
  * <li>
  * SELLCHEST = "sell_chest"
@@ -55,7 +54,7 @@ public enum TypeOfContainer {
 	 * Get the type of container. Will return {@link #DEFAULT}
 	 * if not find right type.
 	 *
-	 * @param type
+	 * @param type the type of container.
 	 * @return type of container or {@link #DEFAULT} if it not find the type.
 	 */
 	public static TypeOfContainer getType(String type) {
