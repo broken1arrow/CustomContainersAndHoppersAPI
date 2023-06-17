@@ -1,11 +1,10 @@
 package org.brokenarrow.storage.api.containerholders;
 
-
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWraperAPI;
-import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -355,10 +354,10 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Effect when run task on container.
 	 *
-	 * @return sound or null.
+	 * @return particle or null.
 	 */
 	@Nullable
-	ParticleEffectApi getEffectWhenRunTask();
+	ParticleEffectUtility<?> getEffectWhenRunTask();
 
 	/**
 	 * When run a task. You can set how often this will be called with

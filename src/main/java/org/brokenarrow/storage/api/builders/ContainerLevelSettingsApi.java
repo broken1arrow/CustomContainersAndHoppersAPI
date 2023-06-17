@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 
 import java.util.List;
 
@@ -73,18 +73,11 @@ public interface ContainerLevelSettingsApi {
 	List<String> getLore();
 
 	/**
-	 * Get effect when it pick up items
+	 * Get the particle effect.
 	 *
-	 * @return ParticleEffect class.
+	 * @return the ParticleEffectUtility instance.
 	 */
-	ParticleEffectApi getPickupEffect();
-
-	/**
-	 * Get effect on the suction border.
-	 *
-	 * @return ParticleEffect class.
-	 */
-	ParticleEffectApi getBorderEffect();
+	ParticleEffectUtility<?> getParticleEffect();
 
 	/**
 	 * Get cost for upgrade the container.

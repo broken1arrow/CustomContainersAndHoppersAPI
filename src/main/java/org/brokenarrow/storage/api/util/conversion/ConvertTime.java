@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.util.conversion;
 
+import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatter;
 import org.brokenarrow.storage.CCH;
 
 
@@ -39,68 +40,9 @@ public class ConvertTime {
 			hours = 0;
 		if (days < 0)
 			days = 0;
-		Time timeConversion = plugin.timeConversion();
+		TimeFormatter timeConversion = plugin.timeConversion();
 		if (timeConversion == null)
 			return "";
-		String convertTime = timeConversion.convertTime(days, hours,min,second);
-		if (convertTime == null)
-			convertTime = "";
-		return convertTime;
+		return timeConversion.convertTime(days, hours,min,second);
 	}
-/*	public static Time timeConversion() {
-		StringBuilder builder = new StringBuilder();
-		return (days, hours, minutes, seconds)-> {
-			builder.append(day(days));
-			if (days > 0 && hours > 0) {
-				builder.append(" ");
-			}
-			builder.append(hour(hours));
-			if ((days > 0 || hours > 0) && minutes > 0) {
-				builder.append(" ");
-			}
-			builder.append(minute(minutes));
-			if ((days > 0 || hours > 0 || minutes > 0) && seconds > 0) {
-				builder.append(" ");
-			}
-			builder.append(second(seconds));
-			return builder.toString();
-		};
-	}*/
-
-	public static String day(long amount) {
-		if (amount == 0)
-			return "";
-		if (amount <= 1)
-			return amount + plugin.getPlaceholder("Day");
-		else
-			return amount + plugin.getPlaceholder("Days");
-	}
-
-	public static String hour(long amount) {
-		if (amount == 0)
-			return "";
-		if (amount <= 1)
-			return amount + plugin.getPlaceholder("Hour");
-		else
-			return amount + plugin.getPlaceholder("Hours");
-	}
-
-	public static String minute(long amount) {
-		if (amount == 0)
-			return "";
-		if (amount <= 1)
-			return 	amount + plugin.getPlaceholder("Minute");
-		else
-			return	amount + plugin.getPlaceholder("Minutes");
-	}
-
-	public static String second(long amount) {
-		if (amount == 0)
-			return "";
-		if (amount <= 1)
-			return amount + plugin.getPlaceholder("Second");
-		else
-			return amount + plugin.getPlaceholder("Seconds");
-	}
-
 }

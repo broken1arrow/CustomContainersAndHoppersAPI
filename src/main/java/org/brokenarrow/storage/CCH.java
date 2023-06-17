@@ -2,6 +2,7 @@ package org.brokenarrow.storage;
 
 import org.broken.arrow.command.library.CommandRegister;
 import org.broken.arrow.database.library.builders.TableWrapper;
+import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatter;
 import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
 import org.brokenarrow.storage.api.DatabaseAPI;
 import org.brokenarrow.storage.api.HologramsTaskAPI;
@@ -15,7 +16,6 @@ import org.brokenarrow.storage.api.containerholders.util.ContainerListenerHandle
 import org.brokenarrow.storage.api.containerholders.util.ItemMetadataUtillityApi;
 import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
-import org.brokenarrow.storage.api.util.conversion.Time;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -261,7 +261,7 @@ public class CCH extends JavaPlugin {
 	 *
 	 * @return the time class.
 	 */
-	public Time timeConversion() {
+	public TimeFormatter timeConversion() {
 		return null;
 	}
 
@@ -359,4 +359,6 @@ public class CCH extends JavaPlugin {
 	public String getPlaceholder(@Nonnull final String key,@Nullable final Object... placeholders) {
 		return "";
 	}
+
+
 }

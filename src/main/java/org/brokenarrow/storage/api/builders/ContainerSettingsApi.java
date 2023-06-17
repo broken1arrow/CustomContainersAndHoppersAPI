@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.builders.particle.ParticleEffectApi;
+import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -91,33 +91,11 @@ public interface ContainerSettingsApi {
 	String getPreMadeEffects();
 
 	/**
-	 * Get effects some will spawn random arund the container.
+	 * Get all effects set on this container.
 	 *
-	 * @return list of visible effects some shall spawn on the container.
+	 * @return the ParticleEffectUtility instance.
 	 */
-	List<ParticleEffectApi> getEffectOnContainer();
-
-	/**
-	 * When container run a task, like crafting,sell or pick up items.
-	 * Get effects it shall run on the chest.
-	 *
-	 * @return list of diffrent effects or same effect several times.
-	 */
-	List<ParticleEffectApi> getEffectWhenContainerRunTask();
-
-	/**
-	 * Get list of effects shall show when place container.
-	 *
-	 * @return list of diffrent effects or same effect several times.
-	 */
-	List<ParticleEffectApi> getEffectWhenPlaceContainer();
-
-	/**
-	 * Get the type of effect you want to use to show the suction border.
-	 *
-	 * @return enum name on the effect and in 1.18 can it be matrial enum too.
-	 */
-	ParticleEffectApi getSuctionBorderEffect();
+	ParticleEffectUtility<?> getParticleEffect();
 
 	/**
 	 * Get how long time it will show border in seconds.
