@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
-import org.brokenarrow.storage.api.containerholders.util.FilterItem;
+import org.brokenarrow.storage.api.containerholders.util.FilterItems;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -173,7 +173,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param filterItems the items you want to add.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setFilterItems(FilterItem filterItems);
+	ContainerDataAPIBuilder setFilterItems(FilterItems filterItems);
 
 	/**
 	 * Save container contents.

@@ -2,7 +2,7 @@ package org.brokenarrow.storage.api.builders;
 
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfFilter;
-import org.brokenarrow.storage.api.containerholders.util.FilterItem;
+import org.brokenarrow.storage.api.containerholders.util.FilterItems;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -127,7 +127,7 @@ public interface ContainerDataApi {
 	 */
 	TypeOfFilter getFilterType();
 
-	FilterItem getFilterClass();
+	FilterItems getFilter();
 
 	/**
 	 * Get container contients (itemstacks).

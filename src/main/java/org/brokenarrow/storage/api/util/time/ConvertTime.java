@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.util.conversion;
+package org.brokenarrow.storage.api.util.time;
 
 import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatter;
 import org.brokenarrow.storage.CCH;

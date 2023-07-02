@@ -7,20 +7,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FilterItem {
+public class FilterItems {
 
 	private final List<ItemStack> itemStacks = new ArrayList<>();
 	private TypeOfFilter filterType;
 
-	public FilterItem(final ItemStack[] itemStacks, final TypeOfFilter filterType) {
+	public FilterItems(final ItemStack[] itemStacks, final TypeOfFilter filterType) {
 		this.itemStacks.addAll(Arrays.asList(itemStacks));
 		this.filterType = filterType;
 	}
 
-	public static FilterItem of(final ItemStack[] itemStacks, TypeOfFilter filterType) {
+	public static FilterItems of(final ItemStack[] itemStacks, TypeOfFilter filterType) {
 		if (filterType == null)
 			filterType = TypeOfFilter.META_MATCH;
-		return new FilterItem(itemStacks, filterType);
+		return new FilterItems(itemStacks, filterType);
 	}
 
 	public ItemStack[] getItemStacks() {
