@@ -19,7 +19,7 @@ public interface ContainerListenerHandlerAPI extends Listener {
 
 	boolean onItemDrag(InventoryDragEvent event);
 
-	boolean onContainerLink(final PlayerInteractEvent event);
+	boolean onContainerInteract(final PlayerInteractEvent event);
 
 	boolean onContainerOpen(PlayerInteractEvent event, int pageNumber);
 

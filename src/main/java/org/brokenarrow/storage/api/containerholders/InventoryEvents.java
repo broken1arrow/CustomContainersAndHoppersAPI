@@ -38,7 +38,7 @@ public interface InventoryEvents {
 	 * @param linkingPlayer the player some clicking.
 	 * @return true if shall cancel event.
 	 */
-	boolean onContainerLinking(@Nonnull final PlayerInteractEvent event, @Nonnull final Player linkingPlayer);
+	boolean onContainerInteract(@Nonnull final PlayerInteractEvent event, @Nonnull final Player linkingPlayer);
 
 	/**
 	 * Handle inventory clickevent. For ether when player add/remove items

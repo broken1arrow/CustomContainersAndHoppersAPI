@@ -2,7 +2,7 @@ package org.brokenarrow.storage;
 
 import org.broken.arrow.command.library.CommandRegister;
 import org.broken.arrow.database.library.builders.TableWrapper;
-import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatter;
+import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatProvider;
 import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
 import org.brokenarrow.storage.api.DatabaseAPI;
 import org.brokenarrow.storage.api.HologramsTaskAPI;
@@ -261,7 +261,7 @@ public class CCH extends JavaPlugin {
 	 *
 	 * @return the time class.
 	 */
-	public TimeFormatter timeConversion() {
+	public TimeFormatProvider timeConversion() {
 		return null;
 	}
 

@@ -20,17 +20,36 @@ public  interface ParticleEffectUtility<T> {
 	 *
 	 * @param type     The effect type to add the particle effect to.
 	 * @param particle The name of the particle.
+	 * @param flot this has diffrent usages, depending on the particle.
+	 */
+	void addParticleEffect(@Nonnull final EffectType type,@Nonnull final String particle,float flot);
+	/**
+	 * Adds a single particle effect to the specified effect type.
+	 *
+	 * @param type     The effect type to add the particle effect to.
+	 * @param particle The name of the particle.
 	 */
 	void addParticleEffect(@Nonnull final EffectType type,@Nonnull final String particle);
+
 	/**
 	 * Converts a list of particle names to a list of ParticleEffect instances.
 	 *
 	 * @param type      The effect type to add the particle effects to.
-	 * @param particles The list of particle names.
+	 * @param particles The list of particles.
 	 * @return true if the particles were successfully added, false otherwise.
 	 */
-	boolean addParticlesEffect(@Nonnull final EffectType type,@Nullable final List<String> particles);
+	boolean addParticlesEffect(@Nonnull final EffectType type,@Nullable final List<?> particles);
 
+	/**
+	 * Converts a list of particle names to a list of ParticleEffect instances.
+	 *
+	 * @param type      The effect type to add the particle effects to.
+	 * @param particles The list of particles.
+	 * @param amountOfParticels The amount of particels.
+	 * @param flot this has diffrent usages, but often it sets the speed of the partcile.
+	 * @return true if the particles were successfully added, false otherwise.
+	 */
+	boolean addParticlesEffect(@Nonnull EffectType type, @Nullable List<?> particles,int amountOfParticels, float flot);
 	/**
 	 * Adds multiple particle effects to the specified effect type based on a serialized map.
 	 *

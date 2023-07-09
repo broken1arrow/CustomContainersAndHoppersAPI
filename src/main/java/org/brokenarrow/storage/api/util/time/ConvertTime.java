@@ -1,6 +1,7 @@
 package org.brokenarrow.storage.api.util.time;
 
-import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatter;
+
+import org.broken.arrow.serialize.library.utility.converters.time.TimeFormatProvider;
 import org.brokenarrow.storage.CCH;
 
 
@@ -40,7 +41,7 @@ public class ConvertTime {
 			hours = 0;
 		if (days < 0)
 			days = 0;
-		TimeFormatter timeConversion = plugin.timeConversion();
+		TimeFormatProvider timeConversion = plugin.timeConversion();
 		if (timeConversion == null)
 			return "";
 		return timeConversion.convertTime(days, hours,min,second);
