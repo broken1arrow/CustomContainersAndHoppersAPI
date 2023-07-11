@@ -3,6 +3,7 @@ package org.brokenarrow.storage.api;
 import org.brokenarrow.storage.api.util.DatabaseType;
 import org.bukkit.Location;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -35,6 +36,10 @@ public interface DatabaseDataHandler {
 	void setDataBaseType(DatabaseType database);
 
 	/**
+	 * Load all containers to cache.
+	 */
+	void loadAllContainers();
+	/**
 	 * Removes a container from the database.
 	 *
 	 * @param location the location of the container.
@@ -56,6 +61,10 @@ public interface DatabaseDataHandler {
 	String getContainerTableName();
 
 	/**
+	 * Load a players to the cache
+	 */
+	void loadAllPlayers();
+	/**
 	 * Adds a player to the database.
 	 *
 	 * @param uniqueId the player's unique ID.
@@ -68,4 +77,9 @@ public interface DatabaseDataHandler {
 	 * @return the table name.
 	 */
 	String getPlayerTableName();
+
+	void saveAllToDatabase(String tableName, List<?> temp);
+
+	boolean isHasStartWriteToDb();
+
 }
