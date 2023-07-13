@@ -16,7 +16,7 @@ public interface AddItemToContainerTaskAPI {
 	 *
 	 * @param location of the continer.
 	 */
-	void addLocationInList(@Nonnull final Location location);
+	void removeOrAddCustomItem(@Nonnull final Location location);
 
 	/**
 	 * Check if list contains location.
@@ -38,8 +38,8 @@ public interface AddItemToContainerTaskAPI {
 	 * remove the placeholder item if the container has matching item.
 	 *
 	 * @param location of the container.
-	 * @param removeItem true if the item shall be removed.
+	 * @param isremoveItem true if the item shall be removed.
 	 */
-	void addLocationInList(@Nonnull final Location location, boolean removeItem);
+	void removeOrAddCustomItem(@Nonnull final Location location, boolean isremoveItem);
 
 }

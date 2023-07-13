@@ -82,4 +82,10 @@ public interface DatabaseDataHandler {
 
 	boolean isHasStartWriteToDb();
 
+	/**
+	 * Get the current database type
+	 *
+	 * @return the type of database set.
+	 */
+	DatabaseType getDatabaseType();
 }
