@@ -33,12 +33,18 @@ public interface DatabaseDataHandler {
 	 *
 	 * @param database the new database type.
 	 */
-	void setDataBaseType(DatabaseType database);
+	void setDataBase(DatabaseType database);
 
 	/**
 	 * Load all containers to cache.
 	 */
 	void loadAllContainers();
+
+	/**
+	 * Load all container data from database to temporary cache.
+	 */
+	void loadAllContainersTemp();
+
 	/**
 	 * Removes a container from the database.
 	 *
@@ -61,9 +67,14 @@ public interface DatabaseDataHandler {
 	String getContainerTableName();
 
 	/**
-	 * Load a players to the cache
+	 * Load a players settings to the cache.
 	 */
 	void loadAllPlayers();
+
+	/**
+	 * Load all players settings to temporary cache.
+	 */
+	void loadAllPlayersTemp();
 	/**
 	 * Adds a player to the database.
 	 *

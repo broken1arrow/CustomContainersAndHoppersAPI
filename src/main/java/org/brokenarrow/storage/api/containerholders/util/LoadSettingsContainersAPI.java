@@ -16,7 +16,7 @@ public interface LoadSettingsContainersAPI {
 	 * @return ContainerSettingsWraperAPI to acces all data for this file.
 	 */
 	@Nullable
-	ContainerSettingsWraperAPI getContainerType(final String fileName);
+	ContainerSettingsWraperAPI getContainerSettingsWraper(final String fileName);
 
 	/**
 	 * Get the settings for this container type.

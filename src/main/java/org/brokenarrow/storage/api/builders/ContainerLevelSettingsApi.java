@@ -6,13 +6,6 @@ import java.util.List;
 
 public interface ContainerLevelSettingsApi {
 
-	/**
-	 * Get what type container it is.
-	 *
-	 * @return the type of container.
-	 * @see org.brokenarrow.storage.api.containerholders.util.TypeOfContainer
-	 */
-	String getContainerType();
 
 	/**
 	 * Get icon type this container type have.
