@@ -3,6 +3,7 @@ package org.brokenarrow.storage.api.util;
 public enum DatabaseType {
 	MySQL,
 	SQlite,
+	H2,
 	;
 
 
