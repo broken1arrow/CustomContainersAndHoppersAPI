@@ -2,9 +2,9 @@ package org.brokenarrow.storage.api.containerholders.util;
 
 public enum TypeOfFilter {
 
-	TYPE_MATCH("Only match type of item"),
-	META_MATCH("Need to match exacly the item"),
-	PARTLY_MATCH("Match name, lore, type and both item has meta or not");
+	TYPE_MATCH("Only match type of item."),
+	META_MATCH("Need to match exactly the item."),
+	PARTLY_MATCH("Match name, lore, and type of items with the same meta, ignoring damage.");
 
 	private final String description;
 

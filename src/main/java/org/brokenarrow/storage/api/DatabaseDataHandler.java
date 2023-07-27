@@ -26,7 +26,7 @@ public interface DatabaseDataHandler {
 	/**
 	 * Sets the tables in the cache.
 	 */
-	void setTabels();
+	void setTables();
 
 	/**
 	 * Sets a new database instance.
@@ -50,14 +50,14 @@ public interface DatabaseDataHandler {
 	 *
 	 * @param location the location of the container.
 	 */
-	void removeContainerfromDb(Location location);
+	void removeContainerFromDb(Location location);
 
 	/**
 	 * Adds a container to the database.
 	 *
 	 * @param blockLocation the location of the container.
 	 */
-	void addContainerfromDb(Location blockLocation);
+	void addContainerFromDb(Location blockLocation);
 
 	/**
 	 * Gets the table name for containers.
@@ -80,7 +80,7 @@ public interface DatabaseDataHandler {
 	 *
 	 * @param uniqueId the player's unique ID.
 	 */
-	void addPlayerfromDb(UUID uniqueId);
+	void addPlayerFromDb(UUID uniqueId);
 
 	/**
 	 * Gets the table name for players.

@@ -318,13 +318,19 @@ public interface MainSettingsDataApi {
 	int getHologramsUpdateInterval();
 
 	/**
-	 * Time when turn of link mode for player auto. If he not change,
+	 * Time when turn of link mode for player auto. If he not changes,
 	 * So he need to turn it off self.
 	 *
 	 * @return seconds it will turn of linkmode.
 	 */
 	int getTimeBeforeItTurnOff();
 
+	/**
+	 * Get if it shall show the settings menu or only the fitter menu.
+	 *
+	 * @return true if it shall show the settings menu.
+	 */
+	boolean isShowSettingsMenu();
 	/**
 	 * Limit of blocks in a radius it shall check. If you turn on {@link #isBlockLimitEnable()}
 	 *
@@ -335,7 +341,7 @@ public interface MainSettingsDataApi {
 	/**
 	 * Limit of blocks in height it shall check. If you turn on {@link #isBlockLimitEnable()}
 	 *
-	 * @return amount of block to check in height (y derection).
+	 * @return amount of block to check y direction.
 	 */
 	int getBlockLimitRadiusHeight();
 

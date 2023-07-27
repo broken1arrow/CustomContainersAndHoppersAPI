@@ -35,7 +35,7 @@ public class FilterItems {
 		this.filterType = filterType;
 	}
 
-	public List<ItemStack> clonedFiterItems() {
+	public List<ItemStack> clonedFilterItems() {
 		return this.itemStacks.stream().map(ItemStack::new).collect(Collectors.toList());
 	}
 
