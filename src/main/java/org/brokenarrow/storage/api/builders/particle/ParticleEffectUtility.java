@@ -86,7 +86,7 @@ public  interface ParticleEffectUtility<T> {
 	 * @param player   The player associated with the particle effects.
 	 * @return true if the particle effects were successfully executed, false otherwise.
 	 */
-	boolean exicute(@Nonnull Location location, @Nonnull EffectType type,@Nullable Player player);
+	boolean execute(@Nonnull Location location, @Nonnull EffectType type, @Nullable Player player);
 
 	/**
 	 * Executes the particle effects at the specified location for the given effect type and player.
@@ -97,5 +97,5 @@ public  interface ParticleEffectUtility<T> {
 	 * @param defaultParticle The default particle effect to use if no specific particle effect is defined.
 	 * @return true if the particle effects were successfully executed, false otherwise.
 	 */
-	boolean exicute(@Nonnull final Location location,@Nonnull final EffectType type,@Nullable final Player player,@Nullable final Particle defaultParticle);
+	boolean execute(@Nonnull final Location location, @Nonnull final EffectType type, @Nullable final Player player, @Nullable final Particle defaultParticle);
 }

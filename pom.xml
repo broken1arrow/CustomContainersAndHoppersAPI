@@ -32,9 +32,14 @@
             <artifactId>annotations</artifactId>
             <scope>provided</scope>
         </dependency>
-       <dependency>
+    <!--   <dependency>
             <groupId>com.github.broken1arrow.Utility-Library</groupId>
             <artifactId>Utility-Library</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>broken_UtilityAPI</groupId>
+            <artifactId>UtilityAPI</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
