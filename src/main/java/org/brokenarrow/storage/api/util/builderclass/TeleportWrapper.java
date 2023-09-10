@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public class TeleportWraper {
+public class TeleportWrapper {
 	private final Map<Location, Inventory> cachedLinkedInventory;
 	private final Inventory cachedContainerInventory;
 	private final int locationNumberInList;
@@ -14,7 +14,7 @@ public class TeleportWraper {
 	private final boolean teleportedItems;
 	private final Builder builder;
 
-	private TeleportWraper(final Builder builder) {
+	private TeleportWrapper(final Builder builder) {
 		this.cachedLinkedInventory = builder.cachedLinkedInventory;
 		this.cachedContainerInventory = builder.cachedContainerInventory;
 		this.locationNumberInList = builder.locationNumberInList;
@@ -47,12 +47,12 @@ public class TeleportWraper {
 	}
 
 	/**
-	 * The map with all locations and inventorys for this
+	 * The map with all locations and inventory's for this
 	 * link and suction container.
 	 *
-	 * This is not a treadsafe map.
+	 * This is not a tread safe map.
 	 *
-	 * @return the map with all cached inventorys.
+	 * @return the map with all cached inventory's.
 	 */
 	@Nullable
 	public Map<Location, Inventory> getCachedLinkedInventory() {
@@ -60,18 +60,18 @@ public class TeleportWraper {
 	}
 
 	/**
-	 * Get the linked inventory from cache.
+	 * Get the linked inventory from the cache.
 	 *
-	 * This is not a treadsafe map you access.
+	 * This is not a tread safe map you access.
 	 *
-	 * @param location of the contaner that are linked to the link and suction container.
-	 * @return the inventory or null if it not exist.
+	 * @param location of the container that is linked to the link and suction container.
+	 * @return the inventory or null if it not exists.
 	 */
 	@Nullable
 	public Inventory getCachedLinkedInventory(final Location location) {
-		final Map<Location, Inventory> linkedInventorys = this.getCachedLinkedInventory();
-		if (linkedInventorys != null)
-			return linkedInventorys.get(location);
+		final Map<Location, Inventory> linkedInventors = this.getCachedLinkedInventory();
+		if (linkedInventors != null)
+			return linkedInventors.get(location);
 		return null;
 	}
 
@@ -112,8 +112,8 @@ public class TeleportWraper {
 			return this;
 		}
 
-		public TeleportWraper build() {
-			return new TeleportWraper(this);
+		public TeleportWrapper build() {
+			return new TeleportWrapper(this);
 		}
 	}
 

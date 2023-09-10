@@ -30,14 +30,14 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return amont of items max can be stored.
 	 */
-	String getLimitAmontOfItems();
+	String getLimitAmountOfItems();
 
 	/**
 	 * Get update key for this container.
 	 *
 	 * @return upgrade name.
 	 */
-	String getUppgrade();
+	String getUpgrade();
 
 	/**
 	 * Get the max range it will pick up items.
@@ -101,7 +101,7 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return a number.
 	 */
-	int getWhenBrakeContainer();
+	int getDropModeWhenBreak();
 
 	/**
 	 * Get max range you can link your link/suction container to the container you link.
@@ -115,7 +115,7 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return amount of links you can have.
 	 */
-	int getAmontOfLinks();
+	int getAmountOfLinks();
 
 	/**
 	 * Get max amount of pages the container can have.
@@ -137,7 +137,7 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return true if item shall have glow effect.
 	 */
-	boolean isDefultGlowOnOff();
+	boolean isDefaultGlowOnOff();
 
 
 	/**

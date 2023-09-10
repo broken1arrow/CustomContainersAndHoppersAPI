@@ -3,7 +3,7 @@ package org.brokenarrow.storage.api.containerholders;
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
-import org.brokenarrow.storage.api.builders.ContainerSettingsWraperAPI;
+import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
 import org.bukkit.Location;
@@ -120,7 +120,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @return return inventoy on location you has requested
 	 * or null if it not find the gui.
 	 */
-	List<Inventory> getInventorys();
+	List<Inventory> getInventors();
 
 	/**
 	 * Check if it has loaded inventorys contents.
@@ -416,7 +416,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * the level upgrades for the container.
 	 */
 	@Nonnull
-	ContainerSettingsWraperAPI getSettingsWraper();
+	ContainerSettingsWrapperAPI getSettingsWraper();
 
 	/**
 	 * Get the current level of settings for this container.

@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
 
-public interface ContainerSettingsWraperAPI {
+public interface ContainerSettingsWrapperAPI {
 
 	/**
 	 * Get the settings for this container.

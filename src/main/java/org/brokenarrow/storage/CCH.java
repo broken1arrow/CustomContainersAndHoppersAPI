@@ -13,8 +13,8 @@ import org.brokenarrow.storage.api.containerholders.cache.InventoryHoldersCacheA
 import org.brokenarrow.storage.api.containerholders.runnable.ContainerTaskApi;
 import org.brokenarrow.storage.api.containerholders.util.AddItemToContainerTaskAPI;
 import org.brokenarrow.storage.api.containerholders.util.ContainerListenerHandlerAPI;
-import org.brokenarrow.storage.api.containerholders.util.ItemMetadataUtillityApi;
 import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
+import org.brokenarrow.storage.api.metadata.ItemMetadataHelper;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -32,7 +32,7 @@ public class CCH extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		final long loadtime = System.currentTimeMillis();
+		final long loadTime = System.currentTimeMillis();
 		registerClasses();
 		sendLogMsg(Level.SEVERE, "Has loaded this API, should not be added as normal jar, " +
 				"becuse this api not contains the needed code.");
@@ -47,7 +47,7 @@ public class CCH extends JavaPlugin {
 		sendLogMsg(Level.INFO, " \\____/ \\____/\\_| |_/");
 		sendLogMsg(Level.INFO, "=====================");
 
-		sendLogMsg(Level.INFO, "Has loaded the API, took " + (System.currentTimeMillis() - loadtime) + " ms to load all data.");
+		sendLogMsg(Level.INFO, "Has loaded the API, took " + (System.currentTimeMillis() - loadTime) + " ms to load all data.");
 
 	}
 
@@ -231,10 +231,9 @@ public class CCH extends JavaPlugin {
 		return null;
 	}
 
-	public ItemMetadataUtillityApi getItemMetadataUtillity() {
+	public ItemMetadataHelper getItemMetadataUtility() {
 		return null;
 	}
-
 
 	public LoadSettingsContainersAPI getSettingsForContainers() {
 		return null;
@@ -270,9 +269,9 @@ public class CCH extends JavaPlugin {
 
 	/**
 	 * Set this if you not want to load or unload any containers, when you load and unload a chunk.
-	 * You need sett this to false when you are done.
+	 * You need set this to false when you are done.
 	 *
-	 * @param stopChunkCheck set to true to stop it to load or unload contaier in that chunk in cache.
+	 * @param stopChunkCheck set to true to stop it to load or unload a container in that chunk in a cache.
 	 */
 	public void setStopChunkCheck(final boolean stopChunkCheck) {
 	}
