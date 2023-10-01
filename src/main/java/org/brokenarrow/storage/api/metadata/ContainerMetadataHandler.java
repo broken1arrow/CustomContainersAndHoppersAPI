@@ -68,8 +68,6 @@ public enum ContainerMetadataHandler implements ContainerMetadata {
 		this.key = key;
 	}
 
-
-
 	@Override
 	@NotNull
 	public String getKey() {
