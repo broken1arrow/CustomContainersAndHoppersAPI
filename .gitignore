@@ -173,3 +173,4 @@ buildSrc/*
 .gradle/8.4/*
 CustomContainersAndHoppersAPI/build/*
 build/docs/javadoc/*
+test/
