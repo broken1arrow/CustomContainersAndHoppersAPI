@@ -120,14 +120,16 @@ public interface ItemMetadataHelper {
 	 * @param itemStack         The itemStack for which you want to retrieve the metadata.
 	 * @param valueClazz        The class to which the metadata value should be cast.
 	 * @param containerMetadata The key associated with the metadata.
-	 * @return The matched metadata value cast to the provided class, or 'null' if no match is found or the class does not match.
+	 * @param <T>               the class you provide should this method return, however due to the API changes will that not work anymore.
+	 * @return The matched metadata value cast to the provided class, or 'null' if no match found, or the class does not match.
 	 */
 	@Nullable <T> T getMetadata(@Nonnull ItemStack itemStack, @Nonnull Class<T> valueClazz, @Nonnull ContainerMetadata containerMetadata);
 
 	/**
 	 * Check if the itemStack has this metadata.
 	 *
-	 * @param itemStack The itemStack you want to check the metadata.
+	 * @param itemStack         The itemStack you want to check the metadata.
+	 * @param containerMetadata the metadata you want to provide to this method.
 	 * @return true if the player has this metadata key.
 	 */
 	boolean hasMetadata(ItemStack itemStack, ContainerMetadata containerMetadata);
@@ -135,7 +137,8 @@ public interface ItemMetadataHelper {
 	/**
 	 * Set the metadata on the player with no value set.
 	 *
-	 * @param itemStack The itemStack you want to set the metadata.
+	 * @param itemStack         The itemStack you want to set the metadata.
+	 * @param containerMetadata the metadata you want to provide to this method.
 	 */
 	void setMetadata(@Nonnull ItemStack itemStack, @Nonnull ContainerMetadata containerMetadata);
 
@@ -143,6 +146,7 @@ public interface ItemMetadataHelper {
 	 * Set the metadata on the itemStack with value.
 	 *
 	 * @param itemStack The itemStack you want to set the metadata.
+	 * @param containerMetadata the metadata you want to provide to this method.
 	 * @param value     The value to set for the specific player or null/empty
 	 *                  string if value is not needed.
 	 */

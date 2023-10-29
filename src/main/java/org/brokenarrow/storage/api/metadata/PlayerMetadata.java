@@ -81,7 +81,8 @@ public interface PlayerMetadata extends Metadata {
 	 *
 	 * @param player     The player from whom you want to retrieve the metadata.
 	 * @param valueClazz The class to check the metadata value against.
-	 * @return The matched metadata value or 'null' if no match is found.
+	 * @return The matched metadata value or 'null' if no match found.
+	 * @param <T> The data type the method will return.
 	 */
 	default @Nullable <T> T getMetadata(Player player, Class<T> valueClazz) {
 		return this.getMetadata(player, valueClazz, null);
@@ -99,7 +100,8 @@ public interface PlayerMetadata extends Metadata {
 	 * @param player      The player from whom you want to retrieve the metadata.
 	 * @param valueClazz  The class to check the metadata value against.
 	 * @param dataToMatch The value to match (can be 'null' to skip the matching by value).
-	 * @return The matched metadata value or 'null' if no match is found.
+	 * @return The matched metadata value or 'null' if no match found.
+	 * @param <T> The data type the method will return.
 	 */
 	default @Nullable <T> T getMetadata(Player player, Class<T> valueClazz, Object dataToMatch) {
 		List<MetadataValue> metadata = player.getMetadata(this.getKey());

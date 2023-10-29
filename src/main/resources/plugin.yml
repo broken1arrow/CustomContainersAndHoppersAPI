@@ -1,5 +1,5 @@
-name: CCHAPI
-version: ${project.version}
-main: ${main.class}
+name: CCH_API
+version: ${version}
+main: ${main}
 author: broken
 api-version: 1.13
