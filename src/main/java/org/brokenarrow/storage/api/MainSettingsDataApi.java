@@ -326,7 +326,7 @@ public interface MainSettingsDataApi {
 	int getTimeBeforeItTurnOff();
 
 	/**
-	 * Get if it shall show the settings menu or only the fitter menu.
+	 * Get if it shall show the settings menu or only the filter menu.
 	 *
 	 * @return true if it shall show the settings menu.
 	 */
