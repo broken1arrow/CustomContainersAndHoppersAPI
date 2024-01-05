@@ -23,7 +23,7 @@ public interface ContainerSettingsApi {
 	 *
 	 * @return true if it shall update the block.
 	 */
-	boolean isUpdateblock();
+	boolean isUpdateBlock();
 
 	/**
 	 * Get sound type when place contanier.
@@ -59,7 +59,7 @@ public interface ContainerSettingsApi {
 	 *
 	 * @return Matrial enum name.
 	 */
-	Material getBlockVisualizationBlocktypeTo();
+	Material getBlockVisualizationBlockTypeTo();
 
 	/**
 	 * Get type of block it shall use for visualization (it is used to show
@@ -67,7 +67,7 @@ public interface ContainerSettingsApi {
 	 *
 	 * @return Matrial enum name.
 	 */
-	Material getBlockVisualizationBlocktypeFrom();
+	Material getBlockVisualizationBlockTypeFrom();
 
 	/**
 	 * Get message some are ontop of the block you link too.
@@ -77,7 +77,7 @@ public interface ContainerSettingsApi {
 	String getBlockVisualizationMessageOnTop();
 
 	/**
-	 * Get items some shall be blacklisted (Is for filter and crafting list to allow or disallow items can be added).
+	 * Get items some shall be blacklisted (Is for the filter and crafting list to allow or disallow items can be added).
 	 *
 	 * @return List of items some are blacklisted.
 	 */
@@ -160,6 +160,6 @@ public interface ContainerSettingsApi {
 	 *
 	 * @return true if item shall glow.
 	 */
-	boolean isPlaceholderItemStackisGlow();
+	boolean isPlaceholderItemStacksGlow();
 
 }

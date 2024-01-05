@@ -9,7 +9,7 @@ plugins {
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
     compileOnly("org.jetbrains:annotations:20.1.0")
-    compileOnly("com.github.broken1arrow.Utility-Library:Utility-Library:0.67")
+    compileOnly("com.github.broken1arrow.Utility-Library:Utility-Library:0.72")
 }
 
 group = "org.brokenarrow.storage.api"

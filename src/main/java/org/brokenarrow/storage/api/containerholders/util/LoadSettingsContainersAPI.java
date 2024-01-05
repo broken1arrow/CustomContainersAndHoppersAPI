@@ -10,13 +10,13 @@ import java.util.Map;
 public interface LoadSettingsContainersAPI {
 
 	/**
-	 * Setings data from the file for this container.
+	 * Settings data from the file for this container.
 	 *
 	 * @param fileName the filename for get containers settings.
-	 * @return ContainerSettingsWrapperAPI to acces all data for this file.
+	 * @return ContainerSettingsWrapperAPI to access all data for this file.
 	 */
 	@Nullable
-	ContainerSettingsWrapperAPI getContainerSettingsWraper(final String fileName);
+	ContainerSettingsWrapperAPI getContainerSettingsWrapper(final String fileName);
 
 	/**
 	 * Get the settings for this container type.

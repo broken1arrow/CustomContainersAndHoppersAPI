@@ -41,8 +41,8 @@ public interface InventoryholderDefultContiners extends InventoryHolder {
 
 	/**
 	 * Get the page some has items, if one page
-	 * are emty it will check next page for items
-	 * or the page befor if it has items.
+	 * are empty it will check next page for items,
+	 * or the page before if it has items.
 	 * <p>
 	 * If inventory not exist, it will create new one automatic
 	 * with right amount of pages.
@@ -53,25 +53,25 @@ public interface InventoryholderDefultContiners extends InventoryHolder {
 	Inventory getEmptyPage();
 
 	/**
-	 * Get the number of pages for one container.
+	 * Get the amount of pages cached for one container.
 	 *
-	 * @return get number of pages the inventory has.
+	 * @return the amount of pages this container has cached.
 	 */
-	int getPagesAmount();
+	int getAmountOfPagesStored();
 
 	/**
 	 * Get the page you want to open.
 	 *
-	 * @param page the page you whant to open of this container.
+	 * @param page the page you want to open of this container.
 	 * @return inventory on that page number you put in.
 	 */
 	Inventory getPage(int page);
 
 	/**
-	 * Get page number of the inventory.
+	 * Get page for this inventory.
 	 *
-	 * @param inventory inventory you whant to get the page.
-	 * @return the page of the inventory.
+	 * @param inventory inventory you want to get the page.
+	 * @return the page number for this inventory.
 	 */
 	int getPageIndex(final Inventory inventory);
 

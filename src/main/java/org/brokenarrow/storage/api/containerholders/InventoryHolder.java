@@ -120,7 +120,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @return return inventoy on location you has requested
 	 * or null if it not find the gui.
 	 */
-	List<Inventory> getInventors();
+	List<Inventory> getInventorys();
 
 	/**
 	 * Check if it has loaded inventorys contents.
@@ -372,7 +372,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @return amnount of pages.
 	 */
-	int getCurentAmountOfPages();
+	int getCurrentAmountOfPages();
 
 	boolean isFirstCheckOfPlaceholderItem();
 
@@ -416,7 +416,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * the level upgrades for the container.
 	 */
 	@Nonnull
-	ContainerSettingsWrapperAPI getSettingsWraper();
+	ContainerSettingsWrapperAPI getSettingsWrapper();
 
 	/**
 	 * Get the current level of settings for this container.
