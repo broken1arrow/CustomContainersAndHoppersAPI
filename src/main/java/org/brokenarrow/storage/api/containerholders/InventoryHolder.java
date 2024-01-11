@@ -47,8 +47,8 @@ public interface InventoryHolder extends InventoryEvents {
 	/**
 	 * Get the contents in the chest.
 	 * <p>
-	 * For the StorageUnit this will return diffrent type of array becuse
-	 * it not store items inside the inventory. See {@link  InventoryholderStorageUnit#getContents()}
+	 * For the StorageUnit this will return different type of array because
+	 * it not stores items inside the inventory. See {@link  InventoryholderStorageUnit#getContents()}
 	 *
 	 * @return items from curent gui you close, will save all pages.
 	 */

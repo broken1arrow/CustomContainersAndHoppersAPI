@@ -79,7 +79,7 @@ public interface InventoryEvents {
 	boolean onContainerClose(@Nonnull final Player player);
 
 	/**
-	 * When you place the container this will get trigged after
+	 * When you place the container this will get trigger after
 	 * the task is running, so you can't cancel the
 	 * placement of the container.
 	 *
