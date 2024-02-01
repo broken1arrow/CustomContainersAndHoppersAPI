@@ -117,6 +117,9 @@ public class SetSignContainer {
 		Block block = blockLoc.getBlock();
 		if (block.getBlockData() instanceof Directional) {
 			Directional directionalMeta = (Directional) block.getBlockData();
+			BlockFace blockFace = directionalMeta.getFacing();
+			if (blockFace == BlockFace.UP || blockFace == BlockFace.DOWN)
+				return BlockFace.EAST;
 			return directionalMeta.getFacing();
 		}
 		return null;

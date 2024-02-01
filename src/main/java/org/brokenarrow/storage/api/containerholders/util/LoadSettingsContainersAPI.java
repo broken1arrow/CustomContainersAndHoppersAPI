@@ -30,7 +30,7 @@ public interface LoadSettingsContainersAPI {
 	 * Get the level settings for this container type. So
 	 *
 	 * @param fileName the filename for get containers settings.
-	 * @param containerUpdate the update if the container ether current or other update you want to get.
+	 * @param containerUpdate the update if the container ether current or next update you want to get.
 	 * @return the level settings for the container from the file.
 	 */
 	ContainerLevelSettingsApi getContainerSettingsInCache(final String fileName, final String containerUpdate);
