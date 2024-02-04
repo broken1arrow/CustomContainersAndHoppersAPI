@@ -99,4 +99,6 @@ public interface DatabaseDataHandler {
 	 * @return the type of database set.
 	 */
 	DatabaseType getDatabaseType();
+
+	String getSignTableName();
 }

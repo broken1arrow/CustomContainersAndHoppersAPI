@@ -16,6 +16,7 @@ import org.brokenarrow.storage.api.containerholders.util.ContainerListenerHandle
 import org.brokenarrow.storage.api.containerholders.util.LoadSettingsContainersAPI;
 import org.brokenarrow.storage.api.metadata.ItemMetadataHelper;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
+import org.brokenarrow.storage.api.util.sign.SignCacheApi;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -286,6 +287,7 @@ public class CCH extends JavaPlugin {
 	public String getPlaceholder(@Nonnull final String key,@Nullable final Object... placeholders) {
 		return "";
 	}
-
-
+	public SignCacheApi getSignCache() {
+		return null;
+	}
 }

@@ -148,6 +148,27 @@ public interface ContainerSettingsApi {
 	 */
 	boolean isShallCostBeActiveWhenPlaceContainer();
 
+	boolean isSignIsEnable();
+
+	String getPreferredSignFace();
+
+	/**
+	 * Retrieve a copy of the text.
+	 *
+	 * @return the sign text copy.
+	 */
+	List<String> getSignText();
+
+	/**
+	 * Retrieve a copy of the text and replace placeholders.
+	 *
+	 * @param placeholders the placeholders you want to replace.
+	 * @return the sign text with the placeholders translated.
+	 */
+	List<String> getSignText(Object... placeholders);
+
+	Material getDefaultSignMaterial();
+
 	/**
 	 * Get placeholder item.
 	 *

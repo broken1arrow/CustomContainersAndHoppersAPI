@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -109,6 +111,8 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsDataAPIBuilder setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
+
+	PreferenceSettingsDataAPIBuilder setPlacingSignMode(PlacingSignMode placingSignMode);
 
 	/**
 	 * If it shall show the message to player when craft or sell.

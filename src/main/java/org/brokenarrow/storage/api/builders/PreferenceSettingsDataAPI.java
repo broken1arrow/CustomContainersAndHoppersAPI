@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
+
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -107,7 +109,7 @@ public interface PreferenceSettingsDataAPI {
 	 *
 	 * @return list of players or if not exist empty arraylist.
 	 */
-	List<UUID> getPartylistOfPlayers();
+	List<UUID> getPartyListOfPlayers();
 
 	/**
 	 * If player wants a message when the container craft or sell items.
@@ -115,6 +117,8 @@ public interface PreferenceSettingsDataAPI {
 	 * @return true if player want the message.
 	 */
 	boolean isShowNotesMessage();
+
+	PlacingSignMode getPlacingSignMode();
 
 	/**
 	 * Get instance of the builder class to get set values
