@@ -53,7 +53,7 @@ public class SignData implements ConfigurationSerializable {
 		return this;
 	}
 
-	@NotNull
+    @NotNull
 	@Override
 	public Map<String, Object> serialize() {
 		Map<String, Object> map = new LinkedHashMap<>();

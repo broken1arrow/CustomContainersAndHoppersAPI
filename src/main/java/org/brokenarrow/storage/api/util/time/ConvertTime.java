@@ -6,7 +6,7 @@ import org.brokenarrow.storage.CCH;
 
 
 /**
- * Convert millseconds to days, houers,minutes,seconds.
+ * Convert milliseconds to days, hours,minutes,seconds.
  */
 
 public class ConvertTime {
