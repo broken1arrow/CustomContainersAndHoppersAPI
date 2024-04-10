@@ -18,7 +18,7 @@ import java.util.Set;
 public interface RecipeCacheAPI {
 
 	/**
-	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
+	 * Set one or several recipe´s to the cache. It will store this and be used in auto-crafter container.
 	 *
 	 * @param materialGroup  group for the recipe
 	 * @param recipeDataList the data like amount, itemstack, amount output item and the itemstack output.
@@ -27,7 +27,7 @@ public interface RecipeCacheAPI {
 	void setRecipes(final MaterialGroup materialGroup, final List<RecipeDataAPI> recipeDataList);
 
 	/**
-	 * Set one or several recipe´s to the cache. It will store this and be used in autocrafter container.
+	 * Set one or several recipe´s to the cache. It will store this and be used in auto-crafter container.
 	 *
 	 * @param materialGroup   group for the recipe
 	 * @param recipeList      the ingriens and amount.
@@ -38,7 +38,7 @@ public interface RecipeCacheAPI {
 	void setRecipes(final MaterialGroup materialGroup, final List<IngredientsDataApi> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemstackoutput);
 
 	/**
-	 * Add one or several recipe´s to the cache. If key exist it will try add the new values
+	 * Add one or several recipe´s to the cache. If key exist it will try to add the new values
 	 * (if not it will put new data to cache). If you want to replace all data use {@link #setRecipes(MaterialGroup, List)} or
 	 * {@link #setRecipes(MaterialGroup, List, String, int, ItemStack)}.
 	 * <p>
@@ -54,10 +54,10 @@ public interface RecipeCacheAPI {
 	void addRecipes(final MaterialGroup materialGroup, final List<IngredientsDataApi> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemstackoutput);
 
 	/**
-	 * Get the group a recipe outupt item belongs too.
+	 * Get the group a recipe output item belongs too.
 	 *
-	 * @param material the matrial you want to check.
-	 * @return the MaterialGroup first maching letter.
+	 * @param material the material you want to check.
+	 * @return the MaterialGroup first matching letter.
 	 */
 	MaterialGroup getMaterialGroup(final Material material);
 
@@ -75,7 +75,7 @@ public interface RecipeCacheAPI {
 	 *
 	 * @param ingredientsData class some contains ingredients
 	 * @param itemStacks      the items you want to check against the ingredients.
-	 * @return true if find a match.
+	 * @return true if it finds a match.
 	 */
 	boolean itemIsSimilar(IngredientsDataApi ingredientsData, ItemStack... itemStacks);
 
@@ -100,15 +100,15 @@ public interface RecipeCacheAPI {
 	/**
 	 * Get all recipes key in map.
 	 *
-	 * @return a list of recipes.
+	 * @return a set of recipes.
 	 */
 	Set<MaterialGroup> getKeyList();
 
 	/**
 	 * Get List of all info both ingredients and result with amount.
 	 *
-	 * @param data List of recipes seach inside for the ingredients.
-	 * @return RecipeData class you can acces all recipe data like ingredients and result.
+	 * @param data List of recipes search inside for the ingredients.
+	 * @return RecipeData class you can access all recipe data like ingredients and result.
 	 */
 	List<IngredientsDataApi> getRecipeDataList(RecipeDataAPI data);
 
@@ -116,16 +116,16 @@ public interface RecipeCacheAPI {
 	 * Get List of ingredients for one of the ingredient need for the recipe.
 	 *
 	 * @param ingredientsData class some contains the ingredient or ingredients.
-	 * @return true if find a match.
+	 * @return a list of ingredients if is set, other case will it be empty.
 	 */
 	List<ItemStack> getIngredientsList(IngredientsDataApi ingredientsData);
 
 	/**
 	 * Get IngredientsData with ingredients and amount needed for the output item.
 	 *
-	 * @param data        List of recipes seach inside for the ingredients.
+	 * @param data        List of recipes search inside for the ingredients.
 	 * @param ingredients the ingredient you want to know amount of items.
-	 * @return itemStackData class you can acces ingredients and amount getters.
+	 * @return itemStackData class you can access ingredients and amount getters.
 	 */
 
 	IngredientsDataApi getIngredientsData(RecipeDataAPI data, ItemStack ingredients);
@@ -139,14 +139,14 @@ public interface RecipeCacheAPI {
 	List<RecipeDataAPI> getRecipes(ItemStack recipe);
 
 	/**
-	 * Check if it prevent override or not.
+	 * Check if it prevents override or not.
 	 *
-	 * @return true if it prevent override.
+	 * @return true if it prevents override.
 	 */
 	boolean isPreventOverride();
 
 	/**
-	 * Set this to false to override a recipe in cache.
+	 * Set this too false to override a recipe in cache.
 	 * Do not override recipes some start with 'minecraft:'
 	 *
 	 * @param preventOverride set it to false if you want to override recipe in cache.
