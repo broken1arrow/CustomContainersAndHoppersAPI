@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.containerholders;
+package org.brokenarrow.storage.api.containerholder;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

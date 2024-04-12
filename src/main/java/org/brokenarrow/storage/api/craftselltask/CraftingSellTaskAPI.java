@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.craftselltask;
 
-import org.brokenarrow.storage.api.containerholders.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.customevents;
 
 
-import org.brokenarrow.storage.api.containerholders.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;

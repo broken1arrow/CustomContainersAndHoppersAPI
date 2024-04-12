@@ -1,11 +1,11 @@
-package org.brokenarrow.storage.api.containerholders;
+package org.brokenarrow.storage.api.containerholder;
 
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
-import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;

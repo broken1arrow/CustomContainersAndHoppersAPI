@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.containerholders.util;
+package org.brokenarrow.storage.api.containerholder.util;
 
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;

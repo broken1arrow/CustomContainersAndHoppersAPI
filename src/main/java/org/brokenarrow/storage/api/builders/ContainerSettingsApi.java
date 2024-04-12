@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
-import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,7 +14,7 @@ public interface ContainerSettingsApi {
 	 * Get what type container it is.
 	 *
 	 * @return the type of container.
-	 * @see org.brokenarrow.storage.api.containerholders.util.TypeOfContainer
+	 * @see TypeOfContainer
 	 */
 	TypeOfContainer getContainerType();
 

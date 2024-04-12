@@ -1,11 +1,12 @@
-package org.brokenarrow.storage.api.containerholders.runnable;
+package org.brokenarrow.storage.api.containerholder.runnable;
 
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * This class are for when you want to add location to your container
- * and want use this method {@link org.brokenarrow.storage.api.containerholders.InventoryHolder#onRunTask()}.
+ * and want use this method {@link InventoryHolder#onRunTask()}.
  * <p>
  * You can also turn on fast Mode, it will then try run every tick (but that will quickly cuse lag
  * if you has over 800 location stored in this cache). The defult mode it will run every second and I not see

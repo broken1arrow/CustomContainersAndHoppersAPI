@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.containerholders.util.TypeOfContainer;
-import org.brokenarrow.storage.api.containerholders.util.TypeOfFilter;
-import org.brokenarrow.storage.api.containerholders.util.FilterItems;
+import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholder.util.TypeOfFilter;
+import org.brokenarrow.storage.api.containerholder.util.FilterItems;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 

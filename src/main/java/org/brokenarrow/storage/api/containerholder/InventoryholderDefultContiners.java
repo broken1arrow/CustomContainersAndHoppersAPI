@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.containerholders;
+package org.brokenarrow.storage.api.containerholder;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;

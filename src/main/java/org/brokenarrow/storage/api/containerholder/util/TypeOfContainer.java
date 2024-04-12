@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.containerholders.util;
+package org.brokenarrow.storage.api.containerholder.util;
 
 /**
  * All diffrent chest types stored here. If one container

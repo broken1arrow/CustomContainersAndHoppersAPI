@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api;
 
 import org.brokenarrow.storage.api.builders.PreferenceSettingsDataAPI;
-import org.brokenarrow.storage.api.containerholders.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 
 import java.sql.Connection;

@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api;
 
-import org.brokenarrow.storage.api.containerholders.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper;
 import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper.Builder;
 import org.bukkit.Location;
@@ -79,7 +79,7 @@ public interface TeleportAndPickupItemsApi {
 	 * Set teleport wrapper to null, and you need set new one, you can use this method to set a new teleport wrapper
 	 * use @link {@link #saveToCache(org.brokenarrow.storage.api.util.builderclass.TeleportWrapper)}.
 	 * <p>
-	 * Or you can also use {@link #linkedContainerTask(org.brokenarrow.storage.api.containerholders.InventoryHolder)} if you want to
+	 * Or you can also use {@link #linkedContainerTask(InventoryHolder)} if you want to
 	 * run suction and teleport task, it will set a new teleport wrapper if it is null.
 	 *
 	 * This is tread safe method to use.

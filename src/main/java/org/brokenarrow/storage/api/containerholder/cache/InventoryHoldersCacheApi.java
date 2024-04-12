@@ -1,7 +1,7 @@
-package org.brokenarrow.storage.api.containerholders.cache;
+package org.brokenarrow.storage.api.containerholder.cache;
 
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
-import org.brokenarrow.storage.api.containerholders.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,7 +28,7 @@ public interface InventoryHoldersCacheApi {
 	 * @return Inventory holder instance you created if owner is null it will try get cached instance or null if it not exist.
 	 */
 	@Nullable
-	InventoryHolder createAndGetInventoryHolder(@NotNull final Location location, final UUID containerOwner);
+    InventoryHolder createAndGetInventoryHolder(@NotNull final Location location, final UUID containerOwner);
 
 	/**
 	 * This method will create empty ContainerData instance.
