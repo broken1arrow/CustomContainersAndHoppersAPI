@@ -16,6 +16,8 @@ public class ContainerInteraction {
     private final CCH plugin = CCH.getInstance();
     private final PlayerMetadataHandler metadataActivateLinkMode = PlayerMetadataHandler.ACTIVATE_LINK_TO_CONTAINER;
     private final InventoryHoldersCacheApi inventoryHoldersCached = plugin.getInventoryHoldersCached();
+
+
     public boolean onContainerOpen(final PlayerInteractEvent event, final int pageNumber) {
         final Block clickedBlock = event.getClickedBlock();
         final Player player = event.getPlayer();
@@ -30,7 +32,7 @@ public class ContainerInteraction {
                 event.setCancelled(true);
             return false;
         }
-        DatabaseSettings databaseSettings= plugin.getDatabaseSettingCache();
+        DatabaseSettings databaseSettings = plugin.getDatabaseSettingCache();
 
         if (!databaseSettings.isCacheContainersData() && databaseSettings.isCacheLoadWhenOpenContainer()) {
             plugin.getDatabaseManager().addContainerFromDb(containerLocation);
@@ -45,7 +47,7 @@ public class ContainerInteraction {
             if (inventoryHolder != null && !metadataActivateLinkMode.hasMetadata(player)) {
                 if (inventoryHolder.getTimeRunTask() > 0 && !plugin.getContainerTask().isLocationInList(containerLocation))
                     plugin.getCheckChunkLoadUnload().addToCache(containerLocation, containerLocation.getChunk().getChunkSnapshot());
-                return inventoryHolder.onOpenContainer(event, player, pageNumber);
+                return inventoryHolder.onContainerInteract(event, player, pageNumber);
             }
         }
         return false;

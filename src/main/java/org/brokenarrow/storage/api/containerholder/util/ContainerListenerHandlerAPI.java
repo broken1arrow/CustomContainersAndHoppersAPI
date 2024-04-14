@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.containerholder.util;
 
+import org.brokenarrow.storage.api.containerholder.interaction.ContainerInteraction;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -19,9 +20,7 @@ public interface ContainerListenerHandlerAPI extends Listener {
 
 	boolean onItemDrag(InventoryDragEvent event);
 
-	boolean onContainerInteract(final PlayerInteractEvent event);
-
-	boolean onContainerOpen(PlayerInteractEvent event, int pageNumber);
+	boolean onContainerInteract(final PlayerInteractEvent event,int page);
 
 	boolean onContainerClose(InventoryCloseEvent event);
 
@@ -38,4 +37,6 @@ public interface ContainerListenerHandlerAPI extends Listener {
 	boolean onChunkLoad(final ChunkLoadEvent event);
 
 	boolean onChunkUnload(final ChunkUnloadEvent event);
+
+    ContainerInteraction getContainerInteraction();
 }
