@@ -8,12 +8,15 @@ import org.brokenarrow.storage.api.DatabaseDataHandler;
 import org.brokenarrow.storage.api.HologramsTaskAPI;
 import org.brokenarrow.storage.api.SpawnContainerEffectsTaskAPI;
 import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
+import org.brokenarrow.storage.api.builders.ChunkLoadUnload;
+import org.brokenarrow.storage.api.builders.DatabaseSettings;
 import org.brokenarrow.storage.api.builders.PreferenceSettingsRegisteryApi;
 import org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi;
 import org.brokenarrow.storage.api.containerholder.runnable.ContainerTaskApi;
 import org.brokenarrow.storage.api.containerholder.util.AddItemToContainerTaskAPI;
 import org.brokenarrow.storage.api.containerholder.util.ContainerListenerHandlerAPI;
 import org.brokenarrow.storage.api.containerholder.util.LoadSettingsContainersAPI;
+import org.brokenarrow.storage.api.hooks.Protections;
 import org.brokenarrow.storage.api.metadata.ItemMetadataHelper;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
 import org.brokenarrow.storage.api.util.sign.SignCacheApi;
@@ -239,7 +242,10 @@ public class CCH extends JavaPlugin {
 	public LoadSettingsContainersAPI getSettingsForContainers() {
 		return null;
 	}
-
+	public DatabaseSettings getDatabaseSettingCache() {return null;}
+	public ChunkLoadUnload getCheckChunkLoadUnload() {
+		return null;
+	}
 	/**
 	 * Load inventory on location.
 	 *
@@ -290,4 +296,8 @@ public class CCH extends JavaPlugin {
 	public SignCacheApi getSignCache() {
 		return null;
 	}
+
+	public Protections getProtectionProvider() {
+        return null;
+    }
 }

@@ -9,6 +9,9 @@ import java.util.Map;
 public interface HopperMoveTaskAPI {
 
 
+	/**
+	 * Will go through all containers some have hopes below and move items to a container.
+	 */
 	void runTask();
 
 	void moveItemsToHopperTask(final InventoryHolder holder);
