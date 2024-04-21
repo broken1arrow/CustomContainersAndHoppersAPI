@@ -147,10 +147,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * @param title         set the title on the gui some be created.
 	 * @param inventorySize set inventory size, as defult it will take settings from containers yml files.
 	 * @return A inventory with your settings.
-	 * @deprecated minecraft not use Strings, but Component to set text (I use this method to set titles {@link #updateTitle}).
-	 * <p> Use {@link InventoryHolder#createInventory(InventoryType, Component, Integer)}
 	 */
-	@Deprecated()
 	Inventory createInventory(final InventoryType inventoryType, final String title, final Integer inventorySize);
 
 	/**

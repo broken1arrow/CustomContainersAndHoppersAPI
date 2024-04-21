@@ -3,9 +3,13 @@ package org.brokenarrow.storage.api.containerholder.cache;
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public interface InventoryHoldersCacheApi {
@@ -60,4 +64,13 @@ public interface InventoryHoldersCacheApi {
 	 */
 	boolean removeInventoryHolder(final Location location);
 
+	Map<Location, InventoryHolder> getInventoryHolders();
+
+	boolean removeLocationChunkData(Location location);
+
+	Set<World> getSpawnChunk();
+
+	ContainerDataApi getContainerData(Location location);
+
+	List<Location> getChunkData(Object chunkSnapshot);
 }
