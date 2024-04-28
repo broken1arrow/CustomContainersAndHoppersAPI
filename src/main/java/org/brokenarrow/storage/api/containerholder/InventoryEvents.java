@@ -2,6 +2,7 @@ package org.brokenarrow.storage.api.containerholder;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
@@ -19,6 +20,19 @@ import javax.annotation.Nullable;
  */
 public interface InventoryEvents {
 
+    /**
+     * Used to open a container. By default, this method typically only accepts left-click actions on blocks.
+     * <p>
+     * Note: Only a valid container with an inventory is accepted by default. This behavior can be adjusted if implemented in a custom class.
+     *
+     * @param clickedBlock The block that the player is clicking on.
+     * @param clickAction  The action performed by the player.
+     * @param player       The player who is opening the inventory.
+     * @param pageNumber   The page to open, starting from 0 to a certain amount. If the container has multiple pages, it will open the
+     *                     specified page; otherwise, it will open the first page.
+     * @return True if the player was able to open the container.
+     */
+    boolean onOpenContainer(@Nonnull final Block clickedBlock, @Nonnull final Action clickAction, @Nonnull final Player player, final int pageNumber);
 
     /**
      * When player interact with a container.
