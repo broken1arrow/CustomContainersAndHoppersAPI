@@ -6,16 +6,19 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-public interface InventoryholderDefultContiners extends InventoryHolder {
+/**
+ * The inventory holder for more normal containers, such as paged containers, crafting and sell containers.
+ */
+public interface InventoryHolderDefaultContainers extends InventoryHolder {
 
 
 	/**
-	 * Create inventory/inventorys if not exist.
+	 * Create inventory/inventory's if not exist.
 	 */
 	void loadInventory();
 
 	/**
-	 * Create inventory/inventorys if not exist.
+	 * Create inventory/inventory's if not exist.
 	 *
 	 * @param player some open inventory.
 	 * @return the inventory if it could create one.

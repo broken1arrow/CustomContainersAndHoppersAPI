@@ -12,11 +12,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This handle the check the adjacent blocks to a container
+ * you try to place.
+ */
 public class CheckAdjacentBlock {
-	private static List<Location> locationList = new ArrayList<>();
-	private static Map<Location, Material> locationMat = new HashMap<>();
-	private static CCH plugin = CCH.getInstance();
+	private static final List<Location> locationList = new ArrayList<>();
+	private static final Map<Location, Material> locationMat = new HashMap<>();
+	private static final CCH plugin = CCH.getInstance();
 
+	/**
+	 * This method checks if the sign is attached to the container.
+	 *
+	 * @param center the container location.
+	 * @return true if fund a match and remove it.
+	 */
 	public static boolean isAirOrAttachedToContainer(Location center) {
 		if (center.getWorld() == null) return false;
 		int radius = 1;
@@ -37,12 +47,23 @@ public class CheckAdjacentBlock {
 		return false;
 	}
 
+	/**
+	 * Retrieve the sign data.
+	 *
+	 * @param block the block you want to retrieve the location from.
+	 * @return the sign data or null if not fount it.
+	 */
 	private static SignData getSignData(Block block) {
 		//System.out.println("working " + block.getType());
 		locationList.add(block.getLocation());
 		return plugin.getSignCache().getSign(block.getLocation());
 	}
 
+	/**
+	 * This checks if the still sitting a sign on the container.
+	 *
+	 * @param center the container from were the container is placed.
+	 */
 	private static void check(Location center) {
 		locationList.forEach(loc -> {
 			if (locationMat.get(loc) == null)

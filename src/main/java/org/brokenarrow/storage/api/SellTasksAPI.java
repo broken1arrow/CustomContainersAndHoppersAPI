@@ -3,7 +3,10 @@ package org.brokenarrow.storage.api;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
-public interface SelltasksAPI {
+/**
+ * To sell items.
+ */
+public interface SellTasksAPI {
 
 	/**
 	 * Get the itemstack sold.

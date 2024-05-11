@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Preferences for the player.
+ */
 public interface PreferenceSettingsDataAPI {
 
 
 	/**
-	 * If player has holgrams on or off.
+	 * If player has holograms on or off.
 	 *
 	 * @return true if the player have it on.
 	 */
@@ -118,6 +121,11 @@ public interface PreferenceSettingsDataAPI {
 	 */
 	boolean isShowNotesMessage();
 
+	/**
+	 * Get the placing mode for the sign.
+	 *
+	 * @return the mode used for sign placement.
+	 */
 	PlacingSignMode getPlacingSignMode();
 
 	/**

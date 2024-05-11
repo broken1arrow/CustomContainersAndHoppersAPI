@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * event get fierd when a suction/link container try pick up item on the ground.
+ * event get fired when a suction/link container try pick up item on the ground.
  */
 
 public class PreSuctionEvent extends EventUtility {
@@ -19,6 +19,15 @@ public class PreSuctionEvent extends EventUtility {
 	private final boolean canPickUpItem;
 	private boolean cancelled;
 
+	/**
+	 * Creates instance when container try to pick up items in an area.
+	 *
+	 * @param itemLocation the location of the item.
+	 * @param itemPickUp the item it tries to pickup.
+	 * @param toLocation the location where the item ends up.
+	 * @param toInventory the inventory the items end up.
+	 * @param canPickUpItem if it could pick up items.
+	 */
 	public PreSuctionEvent(Location itemLocation, ItemStack itemPickUp, Location toLocation, Inventory toInventory, boolean canPickUpItem) {
 		super(handlers);
 		this.itemLocation = itemLocation;
@@ -98,6 +107,11 @@ public class PreSuctionEvent extends EventUtility {
 		this.cancelled = cancel;
 	}
 
+	/**
+	 * Get the list of event handlers.
+	 *
+	 * @return the instance of the HandlerList;
+	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

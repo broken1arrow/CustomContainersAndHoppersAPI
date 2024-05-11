@@ -7,6 +7,9 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 
+/**
+ * The inventory holder for containers that pick up items on ground or teleport items between containers.
+ */
 public interface InventoryHolderLinkSuction extends InventoryHolder {
 
 	/**

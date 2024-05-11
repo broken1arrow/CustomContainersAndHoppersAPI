@@ -3,6 +3,9 @@ package org.brokenarrow.storage.api;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The main settings for the plugin.
+ */
 public interface MainSettingsDataApi {
 
 	/**
@@ -455,5 +458,10 @@ public interface MainSettingsDataApi {
 	 */
 	Map<String, List<String>> getContainerList();
 
+	/**
+	 * Retrieve the builder for get the instance when set the data.
+	 *
+	 * @return the MainSettingsDataApiBuilder instance.
+	 */
 	MainSettingsDataApiBuilder getBuilder();
 }

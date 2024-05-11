@@ -9,11 +9,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public interface PreferenceSettingsRegisteryApi {
+/**
+ * Cache for players settings and party list of players
+ */
+public interface PreferenceSettingsRegistryApi {
 
+	/**
+	 * Retrieve all players set preferences.
+	 * @return returns the map with the players preferences.
+	 */
 	@Nonnull
 	Map<UUID, PreferenceSettingsDataAPI> getAllSettingsData();
 
+	/**
+	 * Retrieve the players set preferences.
+	 *
+	 * @param player the player you want to get the settings.
+	 * @return returns the players preferences.
+	 */
 	@Nullable
 	PreferenceSettingsDataAPI getPlayerSettings(Player player);
 
@@ -22,15 +35,15 @@ public interface PreferenceSettingsRegisteryApi {
 	 *
 	 * @param playerUUID    player you want to add.
 	 * @param preferenceSettings  data player has
-	 * @param forceloadData if you want to override old data in cache (old data will be lost).
+	 * @param forceLoadData if you want to override old data in cache (old data will be lost).
 	 */
 
-	void setPlayerData(UUID playerUUID, PreferenceSettingsDataAPI preferenceSettings, boolean forceloadData);
+	void setPlayerData(UUID playerUUID, PreferenceSettingsDataAPI preferenceSettings, boolean forceLoadData);
 
 	/**
-	 * Get the partylist of players, player curently have.
+	 * Get the party-list of players, player currently have.
 	 *
-	 * @param player you want tog get the partylist from.
+	 * @param player you want tog get the party-list from.
 	 * @return list of players or if not exist empty arraylist.
 	 */
 
@@ -45,7 +58,7 @@ public interface PreferenceSettingsRegisteryApi {
 	List<UUID> getPlayers(UUID playerUuid);
 
 	/**
-	 * Remove a player from partylist.
+	 * Remove a player from party-list.
 	 *
 	 * @param player      some has added player.
 	 * @param addedPlayer the player some has joined party.
@@ -53,28 +66,28 @@ public interface PreferenceSettingsRegisteryApi {
 	void removePlayer(Player player, UUID addedPlayer);
 
 	/**
-	 * Remove all players in the partylist
+	 * Remove all players in the party-list
 	 *
 	 * @param player some this map contains.
 	 */
 	void removeAllPlayer(Player player);
 
 	/**
-	 * add a player to the partylist
+	 * add a player to the party-list
 	 *
-	 * @param player      some add the player to the partylist.
+	 * @param player      some add the player to the party-list.
 	 * @param addedplayer the player some shall be added.
 	 */
 
 	void setPlayers(Player player, Player addedplayer);
 
 	/**
-	 * add a player to the partylist some are offline.
+	 * add a player to the party-list some are offline.
 	 *
-	 * @param player      some add the player to the partylist.
-	 * @param addedplayer the player some shall be added.
+	 * @param player      some add the player to the party-list.
+	 * @param addedPlayer the player some shall be added.
 	 */
-	void setPlayers(Player player, OfflinePlayer addedplayer);
+	void setPlayers(Player player, OfflinePlayer addedPlayer);
 
 	/**
 	 * if player has suction border on or off.
@@ -85,7 +98,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isShowSuctionBorderWhenPlaceContainer(UUID player);
 
 	/**
-	 * set true or false if it shall show the border when place.
+	 * set true or false if it shall show the border when placed.
 	 *
 	 * @param player                              some has set this setting.
 	 * @param showBorderSuctionWhenPlaceContainer set it to true if you want to show border.
@@ -93,7 +106,7 @@ public interface PreferenceSettingsRegisteryApi {
 	void setShowSuctionBorderWhenPlaceContainer(Player player, boolean showBorderSuctionWhenPlaceContainer);
 
 	/**
-	 * if player has holgrams on or off.
+	 * if player has holograms on or off.
 	 *
 	 * @param player some has set this setting.
 	 * @return true if the player has it on.
@@ -101,7 +114,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isShowHologramsOnPlacedContainer(Player player);
 
 	/**
-	 * if player has holgrams on or off.
+	 * if player has holograms on or off.
 	 *
 	 * @param player some has set this setting.
 	 * @return true if the player has it on.
@@ -127,7 +140,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isTimerSettingWhenLinkHopper(UUID player);
 
 	/**
-	 * Set true if it shall automatic turn off linkmode.
+	 * Set true if it shall automatically turn off linkmode.
 	 *
 	 * @param player        some has set this setting.
 	 * @param timmerOnOrOff set it to true if you want to automatic turn off linkmode.
@@ -144,7 +157,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isEffectsOnContainer(UUID player);
 
 	/**
-	 * Set if it shall spawn particels on this players
+	 * Set if it shall spawn particles on these players
 	 * containers.
 	 *
 	 * @param player            some has set this setting.
@@ -193,7 +206,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isShowEffectsWhenSellItems(UUID player);
 
 	/**
-	 * Set if it shall show effects when sell.
+	 * Set if it shall show effects when sold.
 	 *
 	 * @param player                   some has set this setting.
 	 * @param showEffectsWhenSellItems set to true if you want to spawn effects.
@@ -201,7 +214,7 @@ public interface PreferenceSettingsRegisteryApi {
 	void setShowEffectsWhenSellItems(Player player, boolean showEffectsWhenSellItems);
 
 	/**
-	 * If this is true, it will play a sound when craft.
+	 * If this is true, it will play a sound when crafted.
 	 *
 	 * @param player some has set this setting.
 	 * @return true if the player has it on.
@@ -209,7 +222,7 @@ public interface PreferenceSettingsRegisteryApi {
 	boolean isSoundEffectsWhenCrafItems(UUID player);
 
 	/**
-	 * If this is true, it will play a sound when craft.
+	 * If this is true, it will play a sound when crafted.
 	 *
 	 * @param player some has set this setting.
 	 * @return true if the player has it on.
@@ -220,9 +233,9 @@ public interface PreferenceSettingsRegisteryApi {
 	 * Set if it shall play a sound when craft.
 	 *
 	 * @param player                    some has set this setting.
-	 * @param soundEffectsWhenCrafItems set to true if you want to have sound effect when container craft items.
+	 * @param soundEffectsWhenCraftItems set to true if you want to have sound effect when container craft items.
 	 */
-	void setSoundEffectsWhenCrafItems(Player player, boolean soundEffectsWhenCrafItems);
+	void setSoundEffectsWhenCraftItems(Player player, boolean soundEffectsWhenCraftItems);
 
 	/**
 	 * If this is true, it will play a sound when sell.
@@ -306,8 +319,20 @@ public interface PreferenceSettingsRegisteryApi {
 	 */
 	void setSoundEffectsWhenPlaceContainer(Player player, boolean soundEffectsWhenPlace);
 
+	/**
+	 * If it should show a notes when player craft or sell items.
+	 *
+	 * @param player the player-
+	 * @return true if the player could be found.
+	 */
 	boolean isShowNotesMessage(UUID player);
 
+	/**
+	 * Set if it should show notes messages.
+	 *
+	 * @param player the player to set it on.
+	 * @param showNotes true if it shall show notes.
+	 */
 	void setShowNotesMessage(Player player, boolean showNotes);
 
 }

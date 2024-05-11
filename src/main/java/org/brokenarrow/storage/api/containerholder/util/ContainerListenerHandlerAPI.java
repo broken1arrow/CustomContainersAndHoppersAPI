@@ -1,42 +1,19 @@
 package org.brokenarrow.storage.api.containerholder.util;
 
-import org.brokenarrow.storage.api.containerholder.interaction.ContainerInteraction;
+import org.brokenarrow.storage.api.containerholder.interaction.ContainerInteractionAPI;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
-import org.bukkit.event.inventory.InventoryPickupItemEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.world.ChunkLoadEvent;
-import org.bukkit.event.world.ChunkUnloadEvent;
 
+/**
+ * The Interface handle all listener events for the containers.
+ */
 public interface ContainerListenerHandlerAPI extends Listener {
+    /**
+     * Retrieve the methods used for the container events.
+     *
+     * @return the instance with all methods used to
+     * check if it valid container or normal container.
+     */
+    ContainerInteractionAPI getContainerInteraction();
 
-	boolean onInventoryClick(InventoryClickEvent event);
 
-	boolean onItemDrag(InventoryDragEvent event);
-
-	boolean onContainerInteract(final PlayerInteractEvent event,int page);
-
-	boolean onContainerClose(InventoryCloseEvent event);
-
-	boolean onContainerPlace(final BlockPlaceEvent event);
-
-	boolean onContainerBreak(BlockBreakEvent event);
-
-	boolean onBlockExplode(final EntityExplodeEvent event);
-
-	boolean onPickupItem(InventoryPickupItemEvent event);
-
-	boolean onMoveItem(InventoryMoveItemEvent event, boolean pushItem);
-
-	boolean onChunkLoad(final ChunkLoadEvent event);
-
-	boolean onChunkUnload(final ChunkUnloadEvent event);
-
-    ContainerInteraction getContainerInteraction();
 }

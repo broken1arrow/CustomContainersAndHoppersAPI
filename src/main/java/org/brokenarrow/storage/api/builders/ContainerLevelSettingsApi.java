@@ -4,6 +4,9 @@ import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 
 import java.util.List;
 
+/**
+ * The container settings for specific level.
+ */
 public interface ContainerLevelSettingsApi {
 
 

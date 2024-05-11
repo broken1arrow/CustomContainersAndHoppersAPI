@@ -4,12 +4,23 @@ import org.bukkit.Location;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Run the task to add items to a container.
+ */
 public interface AddItemToContainerTaskAPI {
 
-
+	/**
+	 * run the container task
+	 */
 	void runTask();
 
-	boolean isAlredyChecked(Location location);
+	/**
+	 * check if it already checks the location.
+	 *
+	 * @param location the location you want to cech.
+	 * @return true if it already check the location.
+	 */
+	boolean isAlreadyChecked(Location location);
 
 	/**
 	 * Add locations it shall sell or craftItems.

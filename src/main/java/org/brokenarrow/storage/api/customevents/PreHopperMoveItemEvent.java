@@ -24,6 +24,16 @@ public class PreHopperMoveItemEvent extends EventUtility {
 	private final ItemStack item;
 	private boolean cancelled;
 
+	/**
+	 * Before it moves the item.
+	 *
+	 * @param inventoryHolder the holder that currently evoke this event.
+	 * @param toLocation Location where items should end up.
+	 * @param fromLocation Location where items coming from.
+	 * @param fromInventory the inventory items currently is placed.
+	 * @param toInventory the inventory the items will be added.
+	 * @param item the item.
+	 */
 	public PreHopperMoveItemEvent(@NotNull final InventoryHolder inventoryHolder, final Location toLocation, final Location fromLocation, final Inventory fromInventory, final Inventory toInventory, @NotNull final ItemStack item) {
 		super(handlers);
 		this.inventoryHolder = inventoryHolder;
@@ -36,8 +46,9 @@ public class PreHopperMoveItemEvent extends EventUtility {
 	}
 
 	/**
-	 * Get the inventoryHolder some is involved in this event. You get acces to everything inside
-	 * {@link InventoryHolder} and other classes some exstends InventoryHolder interface (need then cast to right class if you want acces all methods).
+	 * Get the inventoryHolder some is involved in this event. You get access to everything inside
+	 * {@link InventoryHolder} and other classes some extends InventoryHolder interface (need then
+	 * cast to right class if you want access all methods).
 	 *
 	 * @return inventoryHolder instance.
 	 */
@@ -119,6 +130,11 @@ public class PreHopperMoveItemEvent extends EventUtility {
 		this.cancelled = cancel;
 	}
 
+	/**
+	 * Get the list of event handlers.
+	 *
+	 * @return the instance of the HandlerList;
+	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

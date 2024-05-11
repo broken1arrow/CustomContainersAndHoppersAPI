@@ -60,7 +60,9 @@ public enum ContainerMetadataHandler implements ContainerMetadata {
 	 * Metadata key for retrieving the number of free placements remaining in the container.
 	 */
 	AMOUNT_FREE_PLACEMENT("AMOUNT_FREE_PLACEMENT"),
-
+	/**
+	 * Metadata key for retrieving the location.
+	 */
 	LOCATION("Location");
 
 	private final String key;

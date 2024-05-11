@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The base holder for all custom containers.
+ */
 public interface InventoryHolder extends InventoryEvents {
 
 	/**
@@ -48,7 +51,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 * Get the contents in the chest.
 	 * <p>
 	 * For the StorageUnit this will return different type of array because
-	 * it not stores items inside the inventory. See {@link  InventoryholderStorageUnit#getContents()}
+	 * it not stores items inside the inventory. See {@link  InventoryHolderStorageUnit#getContents()}
 	 *
 	 * @return items from curent gui you close, will save all pages.
 	 */
@@ -61,7 +64,7 @@ public interface InventoryHolder extends InventoryEvents {
 	 *
 	 * @param itemStacks items hopper try to add
 	 * @return items some not fit in the gui.
-	 * @see InventoryholderStorageUnit
+	 * @see InventoryHolderStorageUnit
 	 */
 	@Nonnull
 	Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
@@ -371,8 +374,19 @@ public interface InventoryHolder extends InventoryEvents {
 	 */
 	int getCurrentAmountOfPages();
 
+	/**
+	 * This tells if it has checked the container for a valid placeholder item.
+	 *
+	 * @return True if it has checked the container contains the placeholder item.
+	 */
 	boolean isFirstCheckOfPlaceholderItem();
 
+	/**
+	 * Set this if it has checked the container contains the valid placeholder item,
+	 * when pull items from the container.
+	 *
+	 * @param firstCheckOfPlaceholderItem if it has checked the item already.
+	 */
 	void setFirstCheckOfPlaceholderItem(final boolean firstCheckOfPlaceholderItem);
 
 	/*

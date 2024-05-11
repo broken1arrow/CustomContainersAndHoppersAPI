@@ -2,6 +2,9 @@ package org.brokenarrow.storage.api.Crafting;
 
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * The ingredients for the crafting recipe.
+ */
 public interface IngredientsDataApi {
 
 	/**

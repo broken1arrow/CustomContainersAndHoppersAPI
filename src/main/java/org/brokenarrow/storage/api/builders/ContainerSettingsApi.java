@@ -7,6 +7,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
+/**
+ * The container settings.
+ */
 public interface ContainerSettingsApi {
 
 
@@ -105,9 +108,8 @@ public interface ContainerSettingsApi {
 	int getSuctionBorderShowTime();
 
 	/**
-	 * Get if shall use exp or level from player.
-	 * <p>
-	 *
+	 * Get if it shall use exp or level from player.
+	 * <p>&nbsp;</p>
 	 * @return EXP or LVL.
 	 */
 	String getTakeLevelOrExp();
@@ -148,8 +150,18 @@ public interface ContainerSettingsApi {
 	 */
 	boolean isShallCostBeActiveWhenPlaceContainer();
 
+	/**
+	 * If the sign placing is enable or not.
+	 *
+	 * @return true if it turns on.
+	 */
 	boolean isSignIsEnable();
 
+	/**
+	 * Retrieve the preferred facing of the sign.
+	 *
+	 * @return the facing.
+	 */
 	String getPreferredSignFace();
 
 	/**
@@ -167,6 +179,11 @@ public interface ContainerSettingsApi {
 	 */
 	List<String> getSignText(Object... placeholders);
 
+	/**
+	 * Retrieve the default Material for the sign.
+	 *
+	 * @return the material set as default.
+	 */
 	Material getDefaultSignMaterial();
 
 	/**

@@ -89,8 +89,19 @@ public interface DatabaseDataHandler {
 	 */
 	String getPlayerTableName();
 
+	/**
+	 * Save all data to database.
+	 *
+	 * @param tableName the name of the tabel.
+	 * @param temp the list of data to save.
+	 */
 	void saveAllToDatabase(String tableName, List<?> temp);
 
+	/**
+	 * Gets the table name for players.
+	 *
+	 * @return the table name.
+	 */
 	boolean isHasStartWriteToDb();
 
 	/**
@@ -100,5 +111,10 @@ public interface DatabaseDataHandler {
 	 */
 	DatabaseType getDatabaseType();
 
+	/**
+	 * Retrieves the table name for the signs.
+	 *
+	 * @return the name of the signs table.
+	 */
 	String getSignTableName();
 }

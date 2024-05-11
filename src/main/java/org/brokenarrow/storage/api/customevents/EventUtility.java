@@ -39,6 +39,9 @@ public abstract class EventUtility extends Event implements Cancellable {
 		this.handler = handler;
 	}
 
+	/**
+	 * Register this event.
+	 */
 	public void registerEvent() {
 		Bukkit.getPluginManager().callEvent(this);
 	}
@@ -66,6 +69,11 @@ public abstract class EventUtility extends Event implements Cancellable {
 	public void setCancelled(final boolean cancel) {
 	}
 
+	/**
+	 * The handler set for the event.
+	 *
+	 * @return the handler.
+	 */
 	@Override
 	@Nonnull
 	public HandlerList getHandlers() {

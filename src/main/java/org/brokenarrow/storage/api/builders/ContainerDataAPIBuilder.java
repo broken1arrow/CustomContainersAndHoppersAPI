@@ -10,9 +10,10 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Helpclass to build your data.
+ * Interface to set and build the data.
  */
 public interface ContainerDataAPIBuilder {
+
 	/**
 	 * Set the player some placed the container.
 	 *
@@ -199,5 +200,10 @@ public interface ContainerDataAPIBuilder {
 	 */
 	ContainerDataAPIBuilder setAmountOfItems(BigInteger amountOfItems);
 
+	/**
+	 * Build your data you have changed and add to cache.
+	 *
+	 * @return the instance of ContainerDataApi.
+	 */
 	ContainerDataApi build();
 }

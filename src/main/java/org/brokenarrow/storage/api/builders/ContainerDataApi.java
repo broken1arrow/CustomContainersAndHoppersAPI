@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * The container data set.
+ */
 public interface ContainerDataApi {
 
 	/**
@@ -25,7 +28,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return current update.
 	 */
-	String getCurentUpgrade();
+	String getCurrentUpgrade();
 
 	/**
 	 * Get type of container.
@@ -44,26 +47,26 @@ public interface ContainerDataApi {
 	/**
 	 * Get number of pages the container have.
 	 *
-	 * @return amount  if pages this continer have.
+	 * @return amount  if pages this container have.
 	 */
 	int getNumberOfPages();
 
 	/**
-	 * Get number of free placments.
+	 * Get number of free placements.
 	 *
-	 * @return amount of free placments.
+	 * @return amount of free placements.
 	 */
 	int getAmountPlaceForFree();
 
 	/**
-	 * Get the number of items the continer have picked up.
+	 * Get the number of items the container have picked up.
 	 *
 	 * @return total amount.
 	 */
 	long getTotalAmountPickedUp();
 
 	/**
-	 * Get the number of items the continer have teleported.
+	 * Get the number of items the container have teleported.
 	 *
 	 * @return total amount.
 	 */
@@ -127,17 +130,22 @@ public interface ContainerDataApi {
 	 */
 	TypeOfFilter getFilterType();
 
+	/**
+	 * Retrieve the filter items.
+	 *
+	 * @return the FilterItems instance with the list of filter items.
+	 */
 	FilterItems getFilter();
 
 	/**
-	 * Get container contients (itemstacks).
+	 * Get container contents (itemstacks).
 	 *
-	 * @return itemstaks or air if no item exist.
+	 * @return itemstacks or air if no item exist.
 	 */
 	ItemStack[] getChestContents();
 
 	/**
-	 * Get link and suction contianer all location it are linked too.
+	 * Get link and suction container all location it are linked too.
 	 *
 	 * @return list of location or null/empty list of not exist any locations.
 	 */
@@ -146,7 +154,7 @@ public interface ContainerDataApi {
 	/**
 	 * Get total amount of items inside the container.
 	 *
-	 * @return amount of items the contriner have.
+	 * @return amount of items the container have.
 	 */
 	BigInteger getAmountOfItems();
 
@@ -156,7 +164,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder getBulder();
+	ContainerDataAPIBuilder getBuilder();
 
 	/**
 	 * Get the serilzed data from this file.

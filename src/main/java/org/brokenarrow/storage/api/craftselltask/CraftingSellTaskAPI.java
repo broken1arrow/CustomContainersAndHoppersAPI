@@ -13,6 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Data provided when either sell or craft items.
+ */
 public interface CraftingSellTaskAPI {
 
 	/**
@@ -54,6 +57,12 @@ public interface CraftingSellTaskAPI {
 	@Nullable
 	CraftSellDataApi getCachedTasks(@NonNull Location location, @NonNull Material material);
 
+	/**
+	 * Checks if task in the cache.
+	 *
+	 * @param location location you want to check.
+	 * @return true if it in cache.
+	 */
 	boolean isTaskCached(@NotNull Location location);
 
 	/**
@@ -120,5 +129,5 @@ public interface CraftingSellTaskAPI {
 	 *
 	 * @return list of all curently saved data on items get sold or crafted.
 	 */
-	Collection<CraftSellDataApi> getCachedCraftSellPrividerList();
+	Collection<CraftSellDataApi> getCachedCraftSellProviderList();
 }

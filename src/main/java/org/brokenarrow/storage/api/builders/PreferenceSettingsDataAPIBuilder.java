@@ -5,11 +5,14 @@ import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * The class to set and build the preferences for the user.
+ */
 public interface PreferenceSettingsDataAPIBuilder {
 
 
 	/**
-	 * Set true if it shall show the holgrams.
+	 * Set true if it shall show the holograms.
 	 *
 	 * @param showHologramsOnPlacedContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
@@ -17,7 +20,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	PreferenceSettingsDataAPIBuilder setShowHologramsOnPlacedContainer(boolean showHologramsOnPlacedContainer);
 
 	/**
-	 * Set to true if it shall show effects when craft.
+	 * Set to true if it shall show effects when crafted.
 	 *
 	 * @param showEffectsWhenCrafItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
@@ -112,6 +115,13 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 */
 	PreferenceSettingsDataAPIBuilder setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
 
+	/**
+	 * Set the sign-mode it should place the sign.
+	 *
+	 *
+	 * @param placingSignMode the mode you want the sign to have.
+	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
+	 */
 	PreferenceSettingsDataAPIBuilder setPlacingSignMode(PlacingSignMode placingSignMode);
 
 	/**
@@ -125,10 +135,10 @@ public interface PreferenceSettingsDataAPIBuilder {
 	/**
 	 * Add a player to the partylist
 	 *
-	 * @param partylistOfPlayers the player some shall be added.
+	 * @param partyListOfPlayers the player some shall be added.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setPartylistOfPlayers(List<UUID> partylistOfPlayers);
+	PreferenceSettingsDataAPIBuilder setPartyListOfPlayers(List<UUID> partyListOfPlayers);
 
 	/**
 	 * build your data you have set before.

@@ -12,10 +12,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * In this class you add your inventory holder.
+ */
 public interface InventoryHoldersCacheApi {
 
 	/**
-	 * If you want add new container and not want to override the old one.
+	 * If you want to add new container and not want to override the old one.
 	 *
 	 * @param containerData the containerdata you set on this container.
 	 * @param location the location of the container.
@@ -57,20 +60,48 @@ public interface InventoryHoldersCacheApi {
 	InventoryHolder getInventoryHolder(final Location location);
 
 	/**
-	 * remove a inventory holder.
+	 * remove an inventory holder.
 	 *
 	 * @param location were you want to remove it.
 	 * @return true if it could the old inventory holder.
 	 */
 	boolean removeInventoryHolder(final Location location);
 
+	/**
+	 * Retrieve the inventory holders cached.
+	 *
+	 * @return map with the inventory holders.
+	 */
 	Map<Location, InventoryHolder> getInventoryHolders();
 
+	/**
+	 * Remove the location from the chunk list.
+	 *
+	 * @param location the container location you want to remove from chunk list.
+	 * @return true if the location exist in the list.
+	 */
 	boolean removeLocationChunkData(Location location);
 
+	/**
+	 * Retrieve all worlds the containers is placed in.
+	 *
+	 * @return a set of worlds.
+	 */
 	Set<World> getSpawnChunk();
 
+	/**
+	 * Retrieve the Containerdata for the container location.
+	 *
+	 * @param location the location the container is placed in
+	 * @return the containerdata or null if it does not exist.
+	 */
 	ContainerDataApi getContainerData(Location location);
 
+	/**
+	 * Retrieve list of locations from the specific chunk.
+	 *
+	 * @param chunkSnapshot the chunk the container is placed in
+	 * @return the list of locations associated to that chunk.
+	 */
 	List<Location> getChunkData(Object chunkSnapshot);
 }

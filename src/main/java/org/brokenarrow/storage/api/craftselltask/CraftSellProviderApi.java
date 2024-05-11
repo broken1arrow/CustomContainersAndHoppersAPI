@@ -4,11 +4,14 @@ import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * The provider for the sell and crafting task.
+ */
 public interface CraftSellProviderApi {
 
 
 	/**
-	 * Get the output item some ether get crafted or sold.
+	 * Get the output item some either get crafted or sold.
 	 *
 	 * @return output item.
 	 */
@@ -16,7 +19,7 @@ public interface CraftSellProviderApi {
 	ItemStack getItemStack();
 
 	/**
-	 * Get the type of task curently running.
+	 * Get the type of task currently running.
 	 *
 	 * @return the type of task.
 	 */

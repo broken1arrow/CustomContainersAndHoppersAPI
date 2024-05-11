@@ -1,10 +1,10 @@
 package org.brokenarrow.storage.api.containerholder.util;
 
 /**
- * All diffrent chest types stored here. If one container
+ * All different chest types stored here. If one container
  * are not valid type it will return DEFAULT.
  * <p>
- * The type of continers are (that inside "" is the string value):
+ * The type of containers are (that inside "" is the string value).
  * <ul>
  * <li>
  * SELLCHEST = "sell_chest"
@@ -32,20 +32,61 @@ package org.brokenarrow.storage.api.containerholder.util;
 
 public enum TypeOfContainer {
 
-
+	/**
+	 * paged_chest
+	 */
 	PAGEDCONTAINER("paged_chest"),
+
+	/**
+	 * craft_chest
+	 */
 	CRAFTINGCONTAINER("craft_chest"),
+
+	/**
+	 * sell_chest
+	 */
 	SELLCHEST("sell_chest"),
+
+	/**
+	 * bigchest
+	 */
 	STORAGEUNIT("bigchest"),
+	/**
+	 * hopper
+	 */
 	LINKEDCONTAINER("hopper"),
+
+	/**
+	 * storage_container
+	 */
 	STORAGE_CONTAINER("storage_container"),
+	/**
+	 * the link suction container.
+	 */
 	LINK_SUCTION_CONTAINER("link_suction_container"),
+	/**
+	 * the paged container.
+	 */
 	PAGED_CONTAINER("paged_container"),
+	/**
+	 * the craft container.
+	 */
 	CRAFTING_CONTAINER("craft_container"),
+	/**
+	 * the sell container.
+	 */
 	SELL_CONTAINER("sell_container"),
+	/**
+	 * Is not a valid container.
+	 */
 	DEFAULT("null");
 	private final String type;
 
+	/**
+	 * Construct a container type.
+	 *
+	 * @param type the type.
+	 */
 	TypeOfContainer(final String type) {
 		this.type = type;
 	}
@@ -55,7 +96,7 @@ public enum TypeOfContainer {
 	 * if not find right type.
 	 *
 	 * @param type the type of container.
-	 * @return type of container or {@link #DEFAULT} if it not find the type.
+	 * @return type of container or {@link #DEFAULT} if it not finds the type.
 	 */
 	public static TypeOfContainer getType(String type) {
 		if (type == null) return DEFAULT;
@@ -107,6 +148,12 @@ public enum TypeOfContainer {
 		return false;
 	}
 
+	/**
+	 * Old way to convert the name to the new format.
+	 * @param container the container type.
+	 *
+	 * @return the type.
+	 */
 	public static TypeOfContainer covertOldFormat(final TypeOfContainer container) {
 
 		if (container == CRAFTINGCONTAINER)
@@ -123,6 +170,11 @@ public enum TypeOfContainer {
 			return container;
 	}
 
+	/**
+	 * Retrieve the type of container.
+	 *
+	 * @return the type.
+	 */
 	public String getType() {
 		return type;
 	}

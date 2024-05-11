@@ -6,6 +6,10 @@ import org.bukkit.block.Hopper;
 
 import java.util.Map;
 
+/**
+ * This is for manually move items instead of relaying on a placeholder item
+ * inside the container to trigger the move event.
+ */
 public interface HopperMoveTaskAPI {
 
 
@@ -14,6 +18,11 @@ public interface HopperMoveTaskAPI {
 	 */
 	void runTask();
 
+	/**
+	 * When run the task to manually move items from custom container to hopper below.
+	 *
+	 * @param holder the InventoryHolder instance to run the task on.
+	 */
 	void moveItemsToHopperTask(final InventoryHolder holder);
 
 	/**

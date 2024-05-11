@@ -7,7 +7,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
 
-public interface InventoryholderStorageUnit extends InventoryHolder {
+/**
+ * The inventory holder for the chest that can only store 1 item
+ * but with either unlimited amount or limit amount, depending on the settings.
+ */
+public interface InventoryHolderStorageUnit extends InventoryHolder {
 
 	/**
 	 * Get items in the container. You have to define
@@ -78,8 +82,7 @@ public interface InventoryholderStorageUnit extends InventoryHolder {
 	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
 	 * <p>
 	 * See also this, for see what I use to set data it in cache.
-	 * <p>
-	 *
+	 * <p>&nbsp;</p>
 	 * @param itemStack items you set to chache.
 	 * @param amount    set amount in chest.
 	 */

@@ -1,15 +1,13 @@
 package org.brokenarrow.storage.api.customevents;
 
-
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * This event is fierd before Link/suction container try to add item to container.
+ * This event is fired before Link/suction container try to add item to container.
  */
-
 public class PreHopperTeleportEvent extends EventUtility {
 
 	private static final HandlerList handlers = new HandlerList();
@@ -21,6 +19,16 @@ public class PreHopperTeleportEvent extends EventUtility {
 	private final ItemStack[] itemsMoved;
 	private boolean cancelled;
 
+	/**
+	 * Before teleport items to a container.
+	 *
+	 *
+	 * @param toLocation Location where items should end up.
+	 * @param fromLocation Location where items coming from.
+	 * @param fromInventory the inventory items currently is placed.
+	 * @param toInventory the inventory the items will be added.
+	 * @param itemsMoved the arrays of items to move.
+	 */
 	public PreHopperTeleportEvent(Location toLocation, Location fromLocation, Inventory fromInventory, Inventory toInventory, ItemStack[] itemsMoved) {
 		super(handlers);
 		this.toLocation = toLocation;
@@ -123,6 +131,11 @@ public class PreHopperTeleportEvent extends EventUtility {
 		this.cancelled = toCancel;
 	}
 
+	/**
+	 * Get the list of event handlers.
+	 *
+	 * @return the instance of the HandlerList;
+	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

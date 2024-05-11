@@ -12,6 +12,13 @@ public class PostLoadDatabase extends EventUtility {
 	private final String typeOfDataBase;
 	private final long time;
 
+	/**
+	 * This constructor create the instance and set your provided data.
+	 *
+	 * @param loadedDatabase if it has loaded the database.
+	 * @param typeOfDataBase the type of database loaded.
+	 * @param time the time it took to load.
+	 */
 	public PostLoadDatabase(boolean loadedDatabase, String typeOfDataBase, long time) {
 		super(handlers, true);
 		this.loadedDatabase = loadedDatabase;
@@ -20,7 +27,7 @@ public class PostLoadDatabase extends EventUtility {
 	}
 
 	/**
-	 * Get if it load to database or not.
+	 * Get if it loads to database or not.
 	 *
 	 * @return true if database is loaded.
 	 */
@@ -47,6 +54,11 @@ public class PostLoadDatabase extends EventUtility {
 		return time;
 	}
 
+	/**
+	 * The static handler.
+	 *
+	 * @return the handler.
+	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

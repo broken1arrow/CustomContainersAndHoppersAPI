@@ -10,8 +10,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+/**
+ * This build data to set in cache when either teleport or pick up items to a container.
+ */
 public interface TeleportAndPickupItemsApi {
-
 
 	/**
 	 * Build data you want to set in the cache.

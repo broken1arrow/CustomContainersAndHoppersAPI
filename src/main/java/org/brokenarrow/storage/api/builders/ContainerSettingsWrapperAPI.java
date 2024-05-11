@@ -4,6 +4,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+/**
+ * The containers settings.
+ */
 public interface ContainerSettingsWrapperAPI {
 
 	/**

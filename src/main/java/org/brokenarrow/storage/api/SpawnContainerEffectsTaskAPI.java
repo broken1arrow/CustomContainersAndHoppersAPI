@@ -4,8 +4,13 @@ import org.bukkit.Location;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Interface for handle the surrounding logic to add och remove the effects at the specific location to cache.
+ */
 public interface SpawnContainerEffectsTaskAPI {
-
+	/**
+	 * To run the effect task .
+	 */
 	void runTask();
 
 	/**

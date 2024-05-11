@@ -5,7 +5,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-public interface Protections {
+/**
+ * The protections checks used.
+ */
+public interface Protection {
 
     /**
      * check if all protection allow open the container
@@ -20,25 +23,26 @@ public interface Protections {
     /**
      * If it allows t0o place the container.
      *
-     * @param player
-     * @param containerPlaceLocation
-     * @return
+     * @param player the player exicute acction.
+     * @param containerPlaceLocation the location of this handling.
+     * @return true if player allows to place container.
      */
     boolean checkIfProviderAllowPlace(Player player, Location containerPlaceLocation);
 
     /**
      * check if all protection allow break the container
      *
-     * @param player
-     * @param location
-     * @param event
-     * @return
+     * @param player the player execute action.
+     * @param location the location of this handling.
+     * @param event the break event when player break the container.
+     * @return true if player allows to break container.
      */
     boolean checkIfProviderAllowBreak(Player player, Location location, BlockBreakEvent event);
 
     /**
      * check if all protection allow to explode the container
      *
+     * @param player the player execute action.
      * @param location location of the container
      * @return true if all protections on that location allows to explode the container.
      */

@@ -7,6 +7,9 @@ import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
 import javax.annotation.Nullable;
 import java.util.Map;
 
+/**
+ * Interface to set the containers settings and also for their specific levels.
+ */
 public interface LoadSettingsContainersAPI {
 
 	/**
