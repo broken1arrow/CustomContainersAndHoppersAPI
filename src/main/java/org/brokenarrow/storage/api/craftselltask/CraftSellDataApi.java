@@ -15,7 +15,7 @@ public interface CraftSellDataApi {
 	 *
 	 * @return the CraftSellProvider instance.
 	 */
-	CraftSellProviderApi getCraftSellProviderApi();
+	CraftSellProvider getCraftSellProviderApi();
 
 	/**
 	 * Get the type of task currently running.
@@ -24,19 +24,6 @@ public interface CraftSellDataApi {
 	 */
 	TypeOfTask getTaskType();
 
-	/**
-	 * Get the total balance player currently has sell for.
-	 *
-	 * @return the amount se sold for.
-	 */
-	double getTotalSell();
-
-	/**
-	 * Get amount player currently crafted.
-	 *
-	 * @return the amount crafted.
-	 */
-	int getTotalCraft();
 	/**
 	 * Get the player that own the container that currently did
 	 * crafting or sell task.

@@ -11,10 +11,10 @@ import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
- * Data provided when either sell or craft items.
+ * Data provided when either sell or craft items and also the tasks
+ * to sell and craft from a InventoryHolder is provided.
  */
 public interface CraftingSellTaskAPI {
 
@@ -26,17 +26,16 @@ public interface CraftingSellTaskAPI {
 	void craftingTask(@NotNull final InventoryHolder inventoryHolder);
 
 	/**
-	 * The task for sell all items in container.
-	 * '
+	 * The task for sale all items in container.
 	 *
 	 * @param inventoryHolder the inventory holder to get all data for this container.
 	 */
 	void sellTask(@NotNull final InventoryHolder inventoryHolder);
 
 	/**
-	 * Get if it have finish crafing one item.
+	 * Get if it has finish crafting one item.
 	 *
-	 * @return true if it have finish craft one item.
+	 * @return true if it has finish craft one item.
 	 */
 	boolean isFinishCrafting();
 
@@ -45,7 +44,7 @@ public interface CraftingSellTaskAPI {
 	 *
 	 * @return map with the data set.
 	 */
-	Map<String, CraftSellDataApi> getCachedTasks();
+	Map<CraftSellMapKey, CraftSellDataApi> getCachedTasks();
 
 	/**
 	 * Get specific data on one container.
@@ -65,16 +64,6 @@ public interface CraftingSellTaskAPI {
 	 */
 	boolean isTaskCached(@NotNull Location location);
 
-	/**
-	 * Get the item and amount get crafted or sold.
-	 *
-	 * @param location   location of the container.
-	 * @param material   the matrial output when crafting or the item some get sold.
-	 * @param typeOfTask if it sell or craft task.
-	 * @return instance of CraftSellProviderApi.
-	 */
-	@Nullable
-	CraftSellProviderApi getCachedTasksProviderApi(@NonNull Location location, @NonNull Material material, @NonNull TypeOfTask typeOfTask);
 
 	/**
 	 * Put data to cache. Will remove the old data and replace with the new data.
@@ -85,28 +74,7 @@ public interface CraftingSellTaskAPI {
 	 */
 	void putCachedTasks(@NonNull Location location, @NonNull Material material, @NonNull CraftSellDataApi craftSellData);
 
-	/**
-	 * Put data to cache. Will remove the old data and replace with the new data.
-	 *
-	 * @param location             location of the container.
-	 * @param material             the matrial output when crafting or the item some get sold.
-	 * @param uuid                 player some this container belongs too.
-	 * @param typeOfTask           the type of task you run (sell or crafting).
-	 * @param craftSellProviderApi the class for specific set data for sold or crafted items.
-	 */
-	void putCachedTasks(@NonNull Location location, @NonNull Material material, @NonNull UUID uuid, @NonNull TypeOfTask typeOfTask, @NonNull CraftSellProviderApi craftSellProviderApi);
 
-	/**
-	 * Add data to cache. Will keep the old data and add new data ontop of this.
-	 *
-	 * @param location             location of the container.
-	 * @param material             the matrial output when crafting or the item some get sold.
-	 * @param amountMade the amount made.
-	 * @param uuid                 player some this container belongs too.
-	 * @param typeOfTask           the type of task you run (sell or crafting).
-	 * @param craftSellProviderApi the class for specific set data for sold or crafted items.
-	 */
-	void addCachedTasks(@NonNull Location location, @NonNull Material material, @NonNull UUID uuid, int amountMade, @NonNull TypeOfTask typeOfTask, @NonNull CraftSellProviderApi craftSellProviderApi);
 
 	/**
 	 * Remove one container from the list.
@@ -122,7 +90,7 @@ public interface CraftingSellTaskAPI {
 	 *
 	 * @return list of curently saved data on items get sold or crafted.
 	 */
-	List<CraftSellProviderApi> getCachedCraftSellList();
+	List<CraftSellProvider> getCachedCraftSellList();
 
 	/**
 	 * Get list of CraftSellProviders curently added.
