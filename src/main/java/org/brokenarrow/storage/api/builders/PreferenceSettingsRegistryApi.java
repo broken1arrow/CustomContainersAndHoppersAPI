@@ -31,6 +31,15 @@ public interface PreferenceSettingsRegistryApi {
 	PreferenceSettingsDataAPI getPlayerSettings(Player player);
 
 	/**
+	 * Retrieve the players set preferences.
+	 *
+	 * @param uuid the player from the uuid.
+	 * @return returns the players preferences.
+	 */
+	@Nullable
+	PreferenceSettingsDataAPI getPlayerSettings(UUID uuid);
+
+	/**
 	 * Add player to cache.
 	 *
 	 * @param playerUUID    player you want to add.
