@@ -171,9 +171,8 @@ public interface InventoryHolder extends InventoryEvents {
 	 * check if inventory exist for a container.
 	 *
 	 * @param inventory of the container
-	 * @return true if it exist.
+	 * @return true if it exists.
 	 */
-
 	boolean containsClickedInventory(final Inventory inventory);
 
 
