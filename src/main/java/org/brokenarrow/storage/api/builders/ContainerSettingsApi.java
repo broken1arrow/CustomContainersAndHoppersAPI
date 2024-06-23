@@ -187,9 +187,9 @@ public interface ContainerSettingsApi {
 	Material getDefaultSignMaterial();
 
 	/**
-	 * Get placeholder item.
+	 * Retrieve placeholder item, used as placeholder.
 	 *
-	 * @return material type.
+	 * @return item-stack set for the placeholder.
 	 */
 	ItemStack getPlaceholderItem();
 
