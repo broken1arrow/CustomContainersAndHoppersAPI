@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.util.sign;
 
-import org.broken.arrow.serialize.library.utility.converters.LocationSerializer;
-import org.broken.arrow.serialize.library.utility.converters.SpigotBlockFace;
-import org.broken.arrow.serialize.library.utility.serialize.ConfigurationSerializable;
+import org.broken.arrow.library.serialize.utility.converters.LocationSerializer;
+import org.broken.arrow.library.serialize.utility.converters.SpigotBlockFace;
+import org.broken.arrow.library.serialize.utility.serialize.ConfigurationSerializable;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.broken.arrow.serialize.library.utility.converters.LocationSerializer.serializeLoc;
+import static org.broken.arrow.library.serialize.utility.converters.LocationSerializer.serializeLoc;
 
 /**
  * Represents data associated with a sign.

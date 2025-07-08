@@ -10,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-import static org.broken.arrow.serialize.library.utility.converters.LocationSerializer.deserializeLoc;
-import static org.broken.arrow.serialize.library.utility.converters.LocationSerializer.serializeLoc;
+import static org.broken.arrow.library.serialize.utility.converters.LocationSerializer.deserializeLoc;
+import static org.broken.arrow.library.serialize.utility.converters.LocationSerializer.serializeLoc;
 
 /**
  * A set of methods to interact with metadata associated with a player.

@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.util.sign;
 
-import org.broken.arrow.logging.library.Logging;
+import org.broken.arrow.library.logging.Logging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class SignText {
 				if (signLines.size() < 4)
 					signLines.add(line);
 				else
-					log.log(()-> Logging.of("Can't add this line '" + line + "', because this doesn't fit inside the sign."));
+					log.log(()-> "Can't add this line '" + line + "', because this doesn't fit inside the sign.");
 			}
 		}
 		return this;
@@ -69,7 +69,7 @@ public class SignText {
 					signLines.add(line);
 				}
 				else {
-					log.log(() -> Logging.of("Can't add this line '" + line + "', because this doesn't fit inside the sign."));
+					log.log(() -> "Can't add this line '" + line + "', because this doesn't fit inside the sign.");
 				}
 			}
 		}
@@ -85,14 +85,14 @@ public class SignText {
 	 */
 	public SignText setSignLine(int index, String line) {
 		if (index > 3) {
-			log.log(()-> Logging.of("You can't have more than 4 rows on a sign, you try to access index '" + index + "'."));
+			log.log(()-> "You can't have more than 4 rows on a sign, you try to access index '" + index + "'.");
 			return this;
 		}
 		if (signLines.size() > index) {
 			signLines.add(index, line);
 		}
 		else {
-			log.log(() -> Logging.of("Index number '" + index + "' is out of range."));
+			log.log(() -> "Index number '" + index + "' is out of range.");
 		}
 		return this;
 	}

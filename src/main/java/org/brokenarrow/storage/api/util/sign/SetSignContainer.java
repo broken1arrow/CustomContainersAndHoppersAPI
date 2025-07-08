@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.util.sign;
 
 
-import org.broken.arrow.serialize.library.utility.Pair;
+import org.broken.arrow.library.serialize.utility.Pair;
 import org.brokenarrow.storage.api.util.ServerVersion;
 import org.bukkit.Location;
 import org.bukkit.Material;
