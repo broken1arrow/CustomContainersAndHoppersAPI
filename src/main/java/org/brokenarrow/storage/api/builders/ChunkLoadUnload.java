@@ -5,6 +5,7 @@ import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -38,15 +39,26 @@ public interface ChunkLoadUnload {
     /**
      * Loads chunk data to the cache.
      *
-     * @param chunkSnapshot The chunk snapshot to load to the cache.
+     * @param chunk The chunk to retrieve the chunk snapshot to add.
      */
-    void loadToCache(final Object chunkSnapshot);
+    void loadToCache(@NotNull final Chunk chunk);
 
     /**
-     * Retrieves the cached chunks.
+     * Loads chunk data to the cache.
+     *
+     * @param chunkSnapshot The chunk snapshot to add.
+     */
+    void loadToCache(@NotNull final ChunkSnapshot chunkSnapshot);
+
+    /**
+     * Retrieves the cached chunks. This cache can
+     * contain outdated chunk data, as it only contains
+     * the snapshot of the actual chunk. It does not get
+     * live updates.
      *
      * @return A map containing cached chunks.
      */
+    @NotNull
     Map<String, Chunk> getCachedChunks();
 
     /**

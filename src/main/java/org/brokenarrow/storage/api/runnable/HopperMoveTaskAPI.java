@@ -14,7 +14,7 @@ public interface HopperMoveTaskAPI {
 
 
 	/**
-	 * Will go through all containers some have hopes below and move items to a container.
+	 * Will go through all containers some has hopes below and move items to a container.
 	 */
 	void runTask();
 
@@ -42,7 +42,7 @@ public interface HopperMoveTaskAPI {
 	void setCachedHoppers(final Location containerLocation, final Hopper hopperInv);
 
 	/**
-	 * Check if this location alredy cache an hopper.
+	 * Check if this location already cache a hopper.
 	 *
 	 * @param location of the container.
 	 * @return true if have cache hopper.
@@ -57,11 +57,11 @@ public interface HopperMoveTaskAPI {
 	Map<Location, Hopper> getCachedHoppers();
 
 	/**
-	 * Remove cached hopper, becuse it store a snapshot of the block
-	 * It need remove the old one when load the chunk after it have
+	 * Remove cached hopper, because it stores a snapshot of the block
+	 * It needs remove the old one when load the chunk after it have
 	 * be unloaded.
 	 *
-	 * @param containerLocation of the container some are placed ontop of the hopper.
+	 * @param containerLocation of the container some are placed on top of the hopper.
 	 */
 	void removeCachedHoppers(final Location containerLocation);
 
@@ -69,14 +69,14 @@ public interface HopperMoveTaskAPI {
 	/**
 	 * Add locations it shall sell or craftItems.
 	 *
-	 * @param location of the continer.
+	 * @param location of the container.
 	 */
 	void addLocationInList(final Location location);
 
 	/**
 	 * Check if list contains location.
 	 *
-	 * @param location of the continer.
+	 * @param location of the container.
 	 * @return true if the list contains the container
 	 */
 	boolean isLocationInList(Location location);
