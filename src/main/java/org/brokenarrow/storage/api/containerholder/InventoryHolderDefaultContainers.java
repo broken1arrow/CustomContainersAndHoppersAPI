@@ -49,10 +49,12 @@ public interface InventoryHolderDefaultContainers extends InventoryHolder {
 	 * <p>
 	 * If inventory not exist, it will create new one automatic
 	 * with right amount of pages.
+	 * </p>
+	 * You can also use this method {@link #getInventory()} to get the
+	 * first empty page. As this container can have several pages.
 	 *
 	 * @return inventory with 1 or more empty slots.
 	 */
-
 	Inventory getEmptyPage();
 
 	/**

@@ -8,6 +8,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  * Cache for players settings and party list of players
@@ -38,7 +39,11 @@ public interface PreferenceSettingsRegistryApi {
 	 */
 	@Nullable
 	PreferenceSettingsDataAPI getPlayerSettings(UUID uuid);
-
+	
+	void setInCache(final Player player, final Consumer<PreferenceSettingModify> preferencesCallback);
+	
+	void setInCache(final UUID uuid, final Consumer<PreferenceSettingModify> preferencesCallback);
+	
 	/**
 	 * Add player to cache.
 	 *
@@ -56,7 +61,7 @@ public interface PreferenceSettingsRegistryApi {
 	 * @return list of players or if not exist empty arraylist.
 	 */
 
-	List<UUID> getPlayers(Player player);
+	List<UUID> getPlayersFromParty(Player player);
 
 	/**
 	 * Get the partylist of players, player curently have.
@@ -64,7 +69,7 @@ public interface PreferenceSettingsRegistryApi {
 	 * @param playerUuid you want tog get the partylist from.
 	 * @return list of players or if not exist empty arraylist.
 	 */
-	List<UUID> getPlayers(UUID playerUuid);
+	List<UUID> getPlayersFromParty(UUID playerUuid);
 
 	/**
 	 * Remove a player from party-list.
@@ -72,31 +77,56 @@ public interface PreferenceSettingsRegistryApi {
 	 * @param player      some has added player.
 	 * @param addedPlayer the player some has joined party.
 	 */
-	void removePlayer(Player player, UUID addedPlayer);
-
+	void removePlayerFromParty(Player player, UUID addedPlayer);
+	
+	/**
+	 * Remove a player from party-list.
+	 *
+	 * @param player      some has added player.
+	 * @param addedPlayer the player some has joined party.
+	 */
+	void removePlayerFromParty(UUID player, UUID addedPlayer);
+	
 	/**
 	 * Remove all players in the party-list
 	 *
-	 * @param player some this map contains.
+	 * @param player some this cache contains.
 	 */
 	void removeAllPlayer(Player player);
-
+	
+	/**
+	 * Remove all players in the party-list
+	 *
+	 * @param player some this cache contains.
+	 */
+	void removeAllPlayer(UUID player);
+	
 	/**
 	 * add a player to the party-list
 	 *
 	 * @param player      some add the player to the party-list.
-	 * @param addedplayer the player some shall be added.
+	 * @param addedPlayer the player some shall be added.
 	 */
 
-	void setPlayers(Player player, Player addedplayer);
-
+	void addPlayerToParty(Player player, Player addedPlayer);
+	
+	/**
+	 * add a player to the party-list
+	 *
+	 * @param player      some add the player to the party-list.
+	 * @param addedPlayer the player some shall be added.
+	 */
+	
+	void addPlayerToParty(UUID player, OfflinePlayer addedPlayer);
+	
+	
 	/**
 	 * add a player to the party-list some are offline.
 	 *
 	 * @param player      some add the player to the party-list.
 	 * @param addedPlayer the player some shall be added.
 	 */
-	void setPlayers(Player player, OfflinePlayer addedPlayer);
+	void addPlayerToParty(Player player, OfflinePlayer addedPlayer);
 
 	/**
 	 * if player has suction border on or off.
@@ -131,12 +161,12 @@ public interface PreferenceSettingsRegistryApi {
 	boolean isShowHologramsOnPlacedContainer(UUID player);
 
 	/**
-	 * set true or false if it shall show the holgrams.
+	 * set true or false if it shall show the holograms.
 	 *
 	 * @param player                         some has set this setting.
-	 * @param showHologramsOnPlacedContainer set it to true if you want to show holgrams.
+	 * @param showHologramsOnPlacedContainer set it to true if you want to show holograms.
 	 */
-	void setshowHologramsOnPlacedContainer(Player player, boolean showHologramsOnPlacedContainer);
+	void setShowHologramsOnPlacedContainer(final UUID player, boolean showHologramsOnPlacedContainer);
 
 	/**
 	 * if player has time on or off. If this is true
@@ -343,5 +373,6 @@ public interface PreferenceSettingsRegistryApi {
 	 * @param showNotes true if it shall show notes.
 	 */
 	void setShowNotesMessage(Player player, boolean showNotes);
+	
 
 }
