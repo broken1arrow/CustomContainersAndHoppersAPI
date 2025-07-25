@@ -7,7 +7,6 @@ plugins {
     `maven-publish`
 }
 
-apply(plugin = "com.gradleup.shadow")
 repositories {
     mavenLocal()
     mavenCentral()
