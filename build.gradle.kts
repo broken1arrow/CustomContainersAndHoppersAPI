@@ -6,7 +6,7 @@ val utilityVersion = "0.125"
 
 dependencies {
     implementation("org.bstats:bstats-bukkit:3.0.2")
-    
+
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.1")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
     compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
@@ -22,11 +22,6 @@ dependencies {
     compileOnly("com.github.angeschossen:LandsAPI:5.15.2")
     compileOnly("org.popcraft:bolt-bukkit:1.1.68")
 
-
-    // JetsHopper system dependency
-    compileOnly(files("/media/broken/Ny volym/PluginsJarUseForAPI/JetsHoppers-3.2.12.jar"))
-    // CMILib system dependency
-    compileOnly(files("/media/broken/Ny volym/PluginsJarUseForAPI//CMILib-0.0.20.jar"))
 }
 
 group = "org.brokenarrow.storage.api"
