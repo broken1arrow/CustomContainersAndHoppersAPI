@@ -5,7 +5,17 @@ plugins {
 val utilityVersion = "0.125"
 
 dependencies {
-    implementation("org.bstats:bstats-bukkit:3.0.2")
+    compileOnly("org.bstats:bstats-bukkit:3.0.2")
+
+    compileOnly("com.github.broken1arrow.Utility-Library:menu-library:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:title-update:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:serialize-utility:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:yaml-utility:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:commands:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:nbt:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:conversation-prompt:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:database:${utilityVersion}")
+    compileOnly("com.github.broken1arrow.Utility-Library:block-visualization:${utilityVersion}")
 
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.15.1")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
