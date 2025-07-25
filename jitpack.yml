@@ -1,0 +1,9 @@
+before_install:
+  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+  - source ./install-jdk.sh --feature 17
+  - wget https://services.gradle.org/distributions/gradle-8.5-bin.zip
+  - unzip -d gradle gradle-8.5-bin.zip
+  - export GRADLE_HOME=$PWD/gradle/gradle-8.5
+  - export PATH=$GRADLE_HOME/bin:$PATH
+jdk:
+  - openjdk17
