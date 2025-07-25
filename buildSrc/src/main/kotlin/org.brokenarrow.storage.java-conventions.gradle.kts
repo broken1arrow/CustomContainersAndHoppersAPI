@@ -53,6 +53,19 @@ repositories {
     maven {
         url = uri("https://repo.maven.apache.org/maven2/")
     }
+
+    maven {
+        name = "CodeMC"
+        url = uri("https://repo.codemc.io/repository/maven-public/")
+    }
+
+    maven { url = uri("https://repo.codemc.io/repository/maven-public/") }
+
+    maven { url = uri("https://libraries.minecraft.net/") }
+
+    maven { url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") }
+
+    maven { url = uri("https://repo.extendedclip.com/content/repositories/placeholderapi/") }
 }
 
 group = "org.brokenarrow.storage"
