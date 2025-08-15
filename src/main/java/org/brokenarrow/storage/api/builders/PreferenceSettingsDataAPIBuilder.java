@@ -146,4 +146,36 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @return PreferenceSettingsDataAPI instance;
 	 */
 	PreferenceSettingsDataAPI build();
+
+	boolean isShowHologramsOnPlacedContainer();
+
+	boolean isShowEffectsWhenCraftItems();
+
+	boolean isShowEffectsWhenSellItems();
+
+	boolean isSoundEffectsWhenCraftItems();
+
+	boolean isSoundEffectsWhenSellItems();
+
+	boolean isSoundEffectsWhenOpenClose();
+
+	boolean isSoundEffectsWhenPlaceContainer();
+
+	boolean isSoundEffectsWhenContainerPickUpItems();
+
+	boolean isDisplayPlayerNameOnHolo();
+
+	boolean isShowBorderSuctionWhenPlaceContainer();
+
+	boolean isHasLinkModeActiveTimeOrWhenTurnOf();
+
+	boolean isEffectOnContainer();
+
+	boolean isEffectOnContainerWhenPlaceContainer();
+
+	boolean isShowNotesMessage();
+
+	List<UUID> getPartyListOfPlayers();
+
+	PlacingSignMode getPlacingSignMode();
 }

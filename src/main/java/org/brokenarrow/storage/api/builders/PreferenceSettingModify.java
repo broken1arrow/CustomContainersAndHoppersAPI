@@ -7,27 +7,24 @@ import java.util.List;
 import java.util.UUID;
 
 public class PreferenceSettingModify {
-    
-    private final PreferenceSettingsDataAPI preferenceSettingsData;
+
     private final PreferenceSettingsDataAPIBuilder builder;
     
-    public PreferenceSettingModify(PreferenceSettingsDataAPI preferenceSettingsData) {
-        this.preferenceSettingsData = preferenceSettingsData;
+    public PreferenceSettingModify(final PreferenceSettingsDataAPI preferenceSettingsData) {
         this.builder = preferenceSettingsData.getBuilder();
     }
     
     public boolean isShowHologramsOnPlacedContainer() {
-        return preferenceSettingsData.isShowHologramsOnPlacedContainer();
+        return this.builder.isShowHologramsOnPlacedContainer();
     }
-    
-    
+
     public PreferenceSettingModify setShowHologramsOnPlacedContainer(final boolean showHologramsOnPlacedContainer) {
         this.builder.setShowHologramsOnPlacedContainer(showHologramsOnPlacedContainer);
         return this;
     }
     
     public boolean isShowEffectsWhenCraftItems() {
-        return preferenceSettingsData.isShowEffectsWhenCrafItems();
+        return this.builder.isShowEffectsWhenCraftItems();
     }
     
     
@@ -37,7 +34,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isShowEffectsWhenSellItems() {
-        return preferenceSettingsData.isShowEffectsWhenSellItems();
+        return this.builder.isShowEffectsWhenSellItems();
     }
     
     public PreferenceSettingModify setShowEffectsWhenSellItems(final boolean showEffectsWhenSellItems) {
@@ -46,7 +43,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isSoundEffectsWhenCraftItems() {
-        return preferenceSettingsData.isSoundEffectsWhenCrafItems();
+        return this.builder.isSoundEffectsWhenCraftItems();
     }
     
     
@@ -56,7 +53,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isSoundEffectsWhenSellItems() {
-        return preferenceSettingsData.isSoundEffectsWhenSellItems();
+        return this.builder.isSoundEffectsWhenSellItems();
     }
     
     
@@ -66,7 +63,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isSoundEffectsWhenOpenClose() {
-        return preferenceSettingsData.isSoundEffectsWhenOpenClose();
+        return this.builder.isSoundEffectsWhenOpenClose();
     }
     
     
@@ -76,7 +73,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isSoundEffectsWhenPlaceContainer() {
-        return this.preferenceSettingsData.isShowBorderSuctionWhenPlaceContainer();
+        return this.builder.isSoundEffectsWhenPlaceContainer();
     }
     
     
@@ -84,9 +81,10 @@ public class PreferenceSettingModify {
         this.builder.setSoundEffectsWhenPlaceContainer(soundEffectsWhenPlaceContainer);
         return this;
     }
-    
+
+
     public boolean isSoundEffectsWhenContainerPickUpItems() {
-        return this.preferenceSettingsData.isSoundEffectsWhenContainerPickUpItems();
+        return this.builder.isSoundEffectsWhenContainerPickUpItems();
     }
     
     
@@ -96,7 +94,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isDisplayPlayerNameOnHolo() {
-        return this.preferenceSettingsData.isDisplayPlayerNameOnHolo();
+        return this.builder.isDisplayPlayerNameOnHolo();
     }
     
     
@@ -106,7 +104,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isShowBorderSuctionWhenPlaceContainer() {
-        return this.preferenceSettingsData.isShowBorderSuctionWhenPlaceContainer();
+        return this.builder.isShowBorderSuctionWhenPlaceContainer();
     }
     
     
@@ -116,7 +114,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isHasLinkModeActiveTimeOrWhenTurnOf() {
-        return this.preferenceSettingsData.isHasLinkModeActiveTimeOrWhenTurnOf();
+        return this.builder.isHasLinkModeActiveTimeOrWhenTurnOf();
     }
     
     
@@ -126,7 +124,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isEffectOnContainer() {
-        return this.preferenceSettingsData.isEffectOnContainer();
+        return this.builder.isEffectOnContainer();
     }
     
     
@@ -136,7 +134,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isEffectOnContainerWhenPlaceContainer() {
-        return this.preferenceSettingsData.isEffectOnContainerWhenPlaceContainer();
+        return this.builder.isEffectOnContainerWhenPlaceContainer();
     }
     
     
@@ -146,7 +144,7 @@ public class PreferenceSettingModify {
     }
     
     public boolean isShowNotesMessage() {
-        return this.preferenceSettingsData.isShowNotesMessage();
+        return this.builder.isShowNotesMessage();
     }
     
     
@@ -156,7 +154,7 @@ public class PreferenceSettingModify {
     }
     
     public List<UUID> getPartyListOfPlayers() {
-        return this.preferenceSettingsData.getPartyListOfPlayers();
+        return this.builder.getPartyListOfPlayers();
     }
     
     
@@ -166,7 +164,7 @@ public class PreferenceSettingModify {
     }
     
     public PlacingSignMode getPlacingSignMode() {
-        return this.preferenceSettingsData.getPlacingSignMode();
+        return this.builder.getPlacingSignMode();
     }
     
     
@@ -179,5 +177,5 @@ public class PreferenceSettingModify {
     public PreferenceSettingsDataAPI apply() {
         return builder.build();
     }
-    
+
 }
