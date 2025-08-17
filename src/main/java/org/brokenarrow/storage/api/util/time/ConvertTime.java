@@ -9,7 +9,7 @@ import org.brokenarrow.storage.CCH;
  * Convert milliseconds to days, hours,minutes,seconds.
  */
 
-public class ConvertTime {
+public class ConvertTime implements TimeFormatProvider {
 
 	private static final long millisToSeconds = 1000;
 	private static final long millisToMinute = millisToSeconds * 60;
@@ -34,7 +34,6 @@ public class ConvertTime {
 	 * @return time formatted after days hours, minutes and seconds.
 	 */
 	public static String toTime(long seconds) {
-
 		long time = System.currentTimeMillis() + (1000 * seconds);
 		long currentTime = System.currentTimeMillis();
 		long second = 0;

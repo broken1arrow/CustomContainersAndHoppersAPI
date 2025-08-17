@@ -1,13 +1,8 @@
 package org.brokenarrow.storage;
 
 import org.broken.arrow.library.command.CommandRegister;
-import org.broken.arrow.library.serialize.utility.converters.time.TimeFormatProvider;
 import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
-import org.brokenarrow.storage.api.DatabaseAPI;
-import org.brokenarrow.storage.api.DatabaseDataHandler;
-import org.brokenarrow.storage.api.HologramsTaskAPI;
-import org.brokenarrow.storage.api.SpawnContainerEffectsTaskAPI;
-import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
+import org.brokenarrow.storage.api.*;
 import org.brokenarrow.storage.api.builders.ChunkLoadUnload;
 import org.brokenarrow.storage.api.builders.DatabaseSettings;
 import org.brokenarrow.storage.api.builders.PreferenceSettingsRegistryApi;
@@ -20,6 +15,7 @@ import org.brokenarrow.storage.api.hooks.Protection;
 import org.brokenarrow.storage.api.metadata.ItemMetadataHelper;
 import org.brokenarrow.storage.api.runnable.HopperMoveTaskAPI;
 import org.brokenarrow.storage.api.util.sign.SignCacheApi;
+import org.brokenarrow.storage.api.util.time.ConvertTime;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -344,7 +340,7 @@ public class CCH extends JavaPlugin {
 	 *
 	 * @return the time class.
 	 */
-	public TimeFormatProvider timeConversion() {
+	public ConvertTime timeConversion() {
 		return null;
 	}
 

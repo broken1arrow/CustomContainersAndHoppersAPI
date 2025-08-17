@@ -11,6 +11,13 @@ import java.util.UUID;
 public interface CraftSellDataApi {
 
 	/**
+	 * The unique id for every object.
+	 *
+	 * @return the id for this object.
+	 */
+	int getID();
+
+	/**
 	 * Get the instance of the CraftSellProvider.
 	 *
 	 * @return the CraftSellProvider instance.
@@ -39,5 +46,6 @@ public interface CraftSellDataApi {
 	 * @return the location where this accrued.
 	 */
 	Location getLocation();
+
 
 }
