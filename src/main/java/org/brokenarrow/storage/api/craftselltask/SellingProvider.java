@@ -3,7 +3,7 @@ package org.brokenarrow.storage.api.craftselltask;
 /**
  * interface that you can get what is currently sold.
  */
-public interface SellProvider extends CraftSellProvider {
+public interface SellingProvider extends TaskProvider {
 
 	/**
 	 * Get the total amount sold.
@@ -17,5 +17,5 @@ public interface SellProvider extends CraftSellProvider {
 	 *
 	 * @return total amount sold.
 	 */
-	double getCostAmount();
+	double getSoldAmount();
 }

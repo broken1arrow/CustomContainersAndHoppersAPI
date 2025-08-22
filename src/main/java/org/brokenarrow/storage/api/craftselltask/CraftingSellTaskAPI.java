@@ -1,6 +1,7 @@
 package org.brokenarrow.storage.api.craftselltask;
 
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
+import org.brokenarrow.storage.api.stats.Stats;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -45,17 +46,17 @@ public interface CraftingSellTaskAPI {
      *
      * @return a map of player UUIDs to their cached task data
      */
-    Map<UUID, CraftSellCacheApi> getLoggedCraftSellTasks();
+    Map<UUID, TaskExecutedCacheApi<TaskDataApi, Stats>>  getLoggedCraftSellTasks();
 
     /**
      * Retrieves the entire cache of crafting and selling tasks for a player.
      *
      * @param uuid the player whose cache should be retrieved
-     * @return the {@link CraftSellCacheApi} for the player,
+     * @return the {@link TaskExecutedCacheApi} for the player,
      *         or {@code null} if none exists
      */
     @Nullable
-    CraftSellCacheApi getLoggedCraftSellTask(@Nonnull UUID uuid);
+    TaskExecutedCacheApi<TaskDataApi, Stats> getLoggedCraftSellTask(@Nonnull UUID uuid);
 
     /**
      * Retrieves the cached task data for a specific crafting or selling container.
@@ -63,10 +64,10 @@ public interface CraftingSellTaskAPI {
      * @param uuid     the player associated with the task
      * @param location the location of the container
      * @param material the output material when crafting, or the item sold
-     * @return the {@link CraftSellDataApi} for the container, or {@code null} if none exists
+     * @return the {@link TaskDataApi} for the container, or {@code null} if none exists
      */
     @Nullable
-    CraftSellDataApi getLoggedCraftSellTask(@Nonnull final UUID uuid, @Nonnull final Location location, @Nonnull final Material material);
+    TaskDataApi getLoggedCraftSellTask(@Nonnull final UUID uuid, @Nonnull final Location location, @Nonnull final Material material);
 
     /**
      * Checks whether any task exists in the cache for the given location.
@@ -105,7 +106,7 @@ public interface CraftingSellTaskAPI {
      * @param material      the output material when crafting, or the item sold
      * @param craftSellData the task data to store in the cache
      */
-    void putLoggedCraftSellTask(@Nonnull final UUID uuid, @NonNull Location location, @NonNull Material material, @NonNull CraftSellDataApi craftSellData);
+    void putLoggedCraftSellTask(@Nonnull final UUID uuid, @NonNull Location location, @NonNull Material material, @NonNull TaskDataApi craftSellData);
 
 
     /**
