@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.Crafting.util;
+package org.brokenarrow.storage.api.craftselltask.message;
 
 import org.brokenarrow.storage.api.MainSettingsDataApi;
 
@@ -9,7 +9,7 @@ public interface MessageSenderApi {
 
     MainSettingsDataApi getMainSettings();
 
-    TaskSectionApi getTaskSection();
+    TaskMessageSectionApi getTaskSection();
 
     void setMessageEntry(String key, Object... placeholders);
 

@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.craftselltask;
 
-import org.brokenarrow.storage.api.Crafting.util.MessageSenderApi;
+import org.brokenarrow.storage.api.craftselltask.message.MessageSenderApi;
 import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
 import org.brokenarrow.storage.api.stats.Stats;
 import org.bukkit.entity.Player;

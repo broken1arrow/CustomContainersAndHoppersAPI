@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * This class is used for cache recipes. You can ether use
+ * This class is used for cache recipes. You can either use
  * any of set methods or add method for put a recipe to cache.
  * <p>
  * For build a recipe to add to cache see:
@@ -30,7 +30,7 @@ public interface RecipeCacheAPI {
 	 * Set one or several recipe´s to the cache. It will store this and be used in auto-crafter container.
 	 *
 	 * @param materialGroup   group for the recipe
-	 * @param recipeList      the ingriens and amount.
+	 * @param recipeList      the ingredients and amount.
 	 * @param namespacedKey   the key for the recipe.
 	 * @param outputAmount    amount of items added back of the new item.
 	 * @param itemstackoutput the output item you want as result.
@@ -48,10 +48,10 @@ public interface RecipeCacheAPI {
 	 * @param recipeList      the ingriens and amount.
 	 * @param outputAmount    amount of items added back of the new item.
 	 * @param namespacedKey   the key for the recipe.
-	 * @param itemstackoutput the output item you want as result.
+	 * @param itemStackOutput the output item you want as result.
 	 */
 
-	void addRecipes(final MaterialGroup materialGroup, final List<IngredientsDataApi> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemstackoutput);
+	void addRecipes(final MaterialGroup materialGroup, final List<IngredientsDataApi> recipeList, final String namespacedKey, final int outputAmount, final ItemStack itemStackOutput);
 
 	/**
 	 * Get the group a recipe output item belongs too.
@@ -71,7 +71,7 @@ public interface RecipeCacheAPI {
 
 
 	/**
-	 * Check if itemstack is same as the recipe ingredients.
+	 * Check if item-stack is same as the recipe ingredients.
 	 *
 	 * @param ingredientsData class some contains ingredients
 	 * @param itemStacks      the items you want to check against the ingredients.
@@ -80,7 +80,7 @@ public interface RecipeCacheAPI {
 	boolean itemIsSimilar(IngredientsDataApi ingredientsData, ItemStack... itemStacks);
 
 	/**
-	 * Check if itemstack is same as the recipe ingredients.
+	 * Check if item-stack is same as the recipe ingredients.
 	 *
 	 * @param ingredientsData class some contains ingredients
 	 * @param itemStack       the items you want to check against the ingredients.
@@ -133,7 +133,7 @@ public interface RecipeCacheAPI {
 	/**
 	 * Get list of matching recipe from this cache.
 	 *
-	 * @param recipe itemstack you want from the cache.
+	 * @param recipe item-stack you want from the cache.
 	 * @return list of recipe some match the recipe.
 	 */
 	List<RecipeDataAPI> getRecipes(ItemStack recipe);

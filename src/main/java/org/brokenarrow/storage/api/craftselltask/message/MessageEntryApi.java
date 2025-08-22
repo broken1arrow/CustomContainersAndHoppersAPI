@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.Crafting.util;
+package org.brokenarrow.storage.api.craftselltask.message;
 
 public interface MessageEntryApi {
     String getKey();

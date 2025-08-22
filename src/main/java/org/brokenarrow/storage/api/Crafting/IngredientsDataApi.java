@@ -7,18 +7,18 @@ import org.bukkit.inventory.ItemStack;
  */
 public interface IngredientsDataApi {
 
-	/**
-	 * Get the list of items you can use for this recipe.
-	 *
-	 * @return itemstack array of ingredients some can be used.
-	 */
-	ItemStack[] getIngredientsList();
+    /**
+     * Get the list of items you can use for this recipe.
+     *
+     * @return item-stack array of ingredients some can be used.
+     */
+    ItemStack[] getIngredientsList();
 
-	/**
-	 * Get amount you need for this recipe.
-	 *
-	 * @return amount you need to make the recipe.
-	 */
-	int getAmountNeeded() ;
+    /**
+     * Get amount you need for this recipe.
+     *
+     * @return amount you need to make the recipe.
+     */
+    int getAmountNeeded();
 
 }
