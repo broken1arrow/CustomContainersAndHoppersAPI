@@ -104,12 +104,26 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
     void clearTaskResults();
 
     /**
-     * Use this to send a header for your message.
+     * Sends the header for a multi-line message to the player.
+     * <p>
+     * The header is sent once per {@link TypeOfTask} and is typically used to
+     * provide context for the following body messages, such as a title or timestamp.
+     *
+     * @param taskType the type of task (e.g., crafting or selling) this header belongs to
+     * @param player   the player who will receive the message
+     * @param sender   the {@link MessageSenderApi} used to assemble and send the message
      */
     void sendHeaderMessage(@Nonnull TypeOfTask taskType, @NotNull Player player, @NotNull MessageSenderApi sender);
 
     /**
-     * Use this to send a footer for your message.
+     * Sends the footer for a multi-line message to the player.
+     * <p>
+     * The footer is sent once per {@link TypeOfTask} and is typically used to
+     * summarize the results of the executed tasks, such as totals or earnings.
+     *
+     * @param taskType the type of task (e.g., crafting or selling) this footer belongs to
+     * @param player   the player who will receive the message
+     * @param sender   the {@link MessageSenderApi} used to assemble and send the message
      */
     void sendFooterMessage(@Nonnull TypeOfTask taskType, @NotNull Player player, @NotNull MessageSenderApi sender);
 

@@ -29,12 +29,20 @@ public interface TaskProvider {
 	ItemStack getItemStack();
 
 	/**
-	 * Use this to tell how every executed task data shall be sent to the player.
+	 * Sends the body messages for a multi-line message to the player.
 	 * <p>
-	 * For selling or crafting is this used to tell the item type and either amount
-	 * of money you get or items crafted of one item type. So it will create new chat
-	 * line for every item type. You can set header and footer inside {@link TaskExecutedCacheApi#sendHeaderMessage(TypeOfTask, Player, MessageSenderApi)}  and
-	 * {@link TaskExecutedCacheApi#sendFooterMessage(TypeOfTask, Player, MessageSenderApi)}
+	 * Each executed task generates a separate body line, describing its results.
+	 * For example:
+	 * <ul>
+	 *   <li>For crafting, this may show the item type and the amount crafted.</li>
+	 *   <li>For selling, this may show the item type, amount sold, and earnings.</li>
+	 * </ul>
+	 * Use {@link TaskExecutedCacheApi#sendHeaderMessage(TypeOfTask, Player, MessageSenderApi)}
+	 * and {@link TaskExecutedCacheApi#sendFooterMessage(TypeOfTask, Player, MessageSenderApi)}
+	 * to send the header and footer around these body lines.
+	 *
+	 * @param player the player who will receive the messages
+	 * @param sender the {@link MessageSenderApi} used to assemble and send each line
 	 */
 	void sendBodyMessage(@Nonnull final Player player, @Nonnull final MessageSenderApi sender);
 
