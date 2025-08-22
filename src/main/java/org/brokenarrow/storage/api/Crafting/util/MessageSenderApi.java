@@ -16,4 +16,5 @@ public interface MessageSenderApi {
     MessageEntryApi getMessageEntry();
 
 
+    void resetMessageEntry();
 }
