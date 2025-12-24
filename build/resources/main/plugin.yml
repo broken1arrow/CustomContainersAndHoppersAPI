@@ -1,5 +1,5 @@
 name: CCH_API
-version: 0.40.0
+version: 0.41.0
 main: org.brokenarrow.storage.CCH
 author: broken
 api-version: 1.13
