@@ -5,11 +5,11 @@ package org.brokenarrow.storage.api.craftselltask;
  */
 public interface CraftingProvider extends TaskProvider {
 
-		/**
-		 * Retrieves the amount of this item type crafted.
-		 *
-		 * @return The amount crafted.
-		 */
-		int getAmountCrafted();
+    /**
+     * Retrieves the amount of this item type crafted.
+     *
+     * @return The amount crafted.
+     */
+    int getAmountCrafted();
 
 }

@@ -1,9 +1,7 @@
 package org.brokenarrow.storage.api.craftselltask;
 
-import org.brokenarrow.storage.api.craftselltask.message.MessageSenderApi;
 import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
 import org.brokenarrow.storage.api.stats.Stats;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -50,12 +48,20 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
     /**
      * Adds or updates a cached task result.
      * <p>
-     * If a result already exists for the given key, it will be replaced.
+     * If no statistics exist yet for the task type of the given data,
+     * the provided {@code newStats} instance will be used.
+     * <p>
+     * To explicitly replace existing statistics for a task type,
+     * use {@link #setStat(TypeOfTask, Stats)}.
      *
-     * @param key  the key associated with the task
-     * @param data the task data to store
+     * @param key      the key associated with the task
+     * @param newStats the statistics instance to use if no stats are currently present
+     *                 for the task type
+     * @param data     the task data to store
+     * @param amount   the amount produced by the task
+     * @throws NullPointerException if any required argument is {@code null}
      */
-    void putTaskResult(@Nonnull final TaskCacheKey key, @Nonnull final D data);
+    void putTaskResult(@Nonnull final TaskCacheKey key,@Nonnull final Stats newStats, @Nonnull final D data, final int amount);
 
     /**
      * Returns a map of all statistics for this container,
@@ -80,16 +86,19 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
      * @param stats    the updated statistics
      * @return the updated statistics
      */
-    S updateStat(@Nonnull TypeOfTask taskType, @Nonnull S stats);
+    S setStat(@Nonnull TypeOfTask taskType, @Nonnull S stats);
 
     /**
      * Updates the statistics from a given task data object.
      * <p>
      * Typically called after a task is executed to record progress or results.
      *
-     * @param data the task data used to update statistics
+     * @param craftSellData the task data used to update statistics
+     * @param newStats the statistics instance to use if no stats are currently present
+     *                 for the task type.
+     * @param amount   the amount produced by the task
      */
-    void updateStatFromData(@NotNull D data);
+    void updateStatFromData(@NotNull TaskDataApi craftSellData, @Nullable final Stats newStats, final int amount);
 
     /**
      * Removes a cached task result for the given key, if present.
@@ -102,30 +111,5 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
      * Clears all cached task results for this container.
      */
     void clearTaskResults();
-
-    /**
-     * Sends the header for a multi-line message to the player.
-     * <p>
-     * The header is sent once per {@link TypeOfTask} and is typically used to
-     * provide context for the following body messages, such as a title or timestamp.
-     *
-     * @param taskType the type of task (e.g., crafting or selling) this header belongs to
-     * @param player   the player who will receive the message
-     * @param sender   the {@link MessageSenderApi} used to assemble and send the message
-     */
-    void sendHeaderMessage(@Nonnull TypeOfTask taskType, @NotNull Player player, @NotNull MessageSenderApi sender);
-
-    /**
-     * Sends the footer for a multi-line message to the player.
-     * <p>
-     * The footer is sent once per {@link TypeOfTask} and is typically used to
-     * summarize the results of the executed tasks, such as totals or earnings.
-     *
-     * @param taskType the type of task (e.g., crafting or selling) this footer belongs to
-     * @param player   the player who will receive the message
-     * @param sender   the {@link MessageSenderApi} used to assemble and send the message
-     */
-    void sendFooterMessage(@Nonnull TypeOfTask taskType, @NotNull Player player, @NotNull MessageSenderApi sender);
-
 
 }

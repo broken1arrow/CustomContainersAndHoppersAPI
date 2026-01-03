@@ -1,7 +1,6 @@
 package org.brokenarrow.storage.api.craftselltask;
 
 import org.brokenarrow.storage.api.craftselltask.message.MessageSenderApi;
-import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -37,8 +36,7 @@ public interface TaskProvider {
 	 *   <li>For crafting, this may show the item type and the amount crafted.</li>
 	 *   <li>For selling, this may show the item type, amount sold, and earnings.</li>
 	 * </ul>
-	 * Use {@link TaskExecutedCacheApi#sendHeaderMessage(TypeOfTask, Player, MessageSenderApi)}
-	 * and {@link TaskExecutedCacheApi#sendFooterMessage(TypeOfTask, Player, MessageSenderApi)}
+
 	 * to send the header and footer around these body lines.
 	 *
 	 * @param player the player who will receive the messages
