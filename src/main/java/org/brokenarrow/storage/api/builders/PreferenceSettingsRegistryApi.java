@@ -39,9 +39,30 @@ public interface PreferenceSettingsRegistryApi {
 	 */
 	@Nullable
 	PreferenceSettingsDataAPI getPlayerSettings(UUID uuid);
-	
+
+    /**
+     * Adds or updates a player's preference data in the cache.
+     * <p>
+     * The provided callback is invoked to modify the player's preferences
+     * before they are stored.
+     *
+     * @param player the player whose preferences should be cached;
+     *               the player's UUID will be used as the cache key
+     * @param preferencesCallback a callback used to modify the player's
+     *                            preference settings
+     */
 	void setInCache(final Player player, final Consumer<PreferenceSettingModify> preferencesCallback);
-	
+
+    /**
+     * Adds or updates a player's preference data in the cache.
+     * <p>
+     * The provided callback is invoked to modify the player's preferences
+     * before they are stored.
+     *
+     * @param uuid the UUID of the player whose preferences should be cached
+     * @param preferencesCallback a callback used to modify the player's
+     *                            preference settings
+     */
 	void setInCache(final UUID uuid, final Consumer<PreferenceSettingModify> preferencesCallback);
 	
 	/**

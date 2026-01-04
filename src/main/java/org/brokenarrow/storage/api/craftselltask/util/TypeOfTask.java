@@ -30,14 +30,29 @@ public enum TypeOfTask {
 		this.footerKey = footerKey;
 	}
 
+    /**
+     * Get the header key used in the config.
+     *
+     * @return the header key.
+     */
 	public String headerKey() {
 		return headerKey;
 	}
 
+    /**
+     * Get the body key used in the config.
+     *
+     * @return the body key.
+     */
 	public String bodyKey() {
 		return bodyKey;
 	}
 
+    /**
+     * Get the footer key used in the config.
+     *
+     * @return the footer key.
+     */
 	public String footerKey() {
 		return footerKey;
 	}

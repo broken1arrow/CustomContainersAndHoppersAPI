@@ -10,11 +10,29 @@ import org.bukkit.entity.Player;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
+/**
+ * Represents a structured message describing tasks that have been performed.
+ * <p>
+ * This API provides read-only access to data produced by executed tasks within
+ * the plugin in a unified format. It is intended to make it easy to construct
+ * messages consisting of:
+ * <ul>
+ *   <li>a header (context such as task type or timestamp)</li>
+ *   <li>a body (one or more entries describing individual task results, such as
+ *       items sold, items crafted, or money earned)</li>
+ *   <li>a footer (optional summary data, such as totals)</li>
+ * </ul>
+ * <p>
+ * Typical use cases include displaying statistics for selling, crafting, or
+ * similar task-based actions, where both per-task details and aggregated totals
+ * can be sent to a player, written to logs, or otherwise processed as needed.
+ */
 public interface TaskMessageSectionApi {
+
     /**
-     * Retrieve the containers' location.
+     * Retrieves the container's location.
      *
-     * @return the location of the container.
+     * @return the location of the container
      */
     @Nonnull
     Location getLocation();
@@ -71,9 +89,9 @@ public interface TaskMessageSectionApi {
     void onFooter(@Nonnull final Consumer<Stats> footerConsumer);
 
     /**
-     * The type of task this tore data for.
+     * Returns the type of task this data represents.
      *
-     * @return the task typ for example sell or crafting.
+     * @return the task type (for example, selling or crafting)
      */
     TypeOfTask getTaskType();
 }
