@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.craftselltask.message;
 
+import org.brokenarrow.storage.api.crafting.stats.TaskStatsProvider;
 import org.brokenarrow.storage.api.craftselltask.TaskDataApi;
 import org.brokenarrow.storage.api.craftselltask.TaskProvider;
 import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
@@ -43,7 +44,7 @@ public interface TaskMessageSectionApi {
      * The provided consumer is invoked once for each completed task and can be used
      * to send per-task information to the player (for example, one entry per craft
      * or sale), depending on how
-     * {@link TaskProvider#sendBodyMessage(Player, MessageSenderApi)} is configured.
+     * {@link TaskProvider#sendBodyMessage(Player, MessageCollectorApi)} is configured.
      *
      * @param body a consumer that handles individual task data
      * @throws NullPointerException if {@code body} is {@code null}
@@ -67,7 +68,7 @@ public interface TaskMessageSectionApi {
      *                       must not be {@code null}
      * @throws NullPointerException if {@code headerConsumer} is {@code null}
      */
-    void onHeader(@Nonnull final Consumer<Stats> headerConsumer);
+    void onHeader(@Nonnull final Consumer<TaskStatsProvider> headerConsumer);
 
     /**
      * Sends the footer for a multi-line message to the player.
@@ -86,7 +87,7 @@ public interface TaskMessageSectionApi {
      *                       must not be {@code null}
      * @throws NullPointerException if {@code footerConsumer} is {@code null}
      */
-    void onFooter(@Nonnull final Consumer<Stats> footerConsumer);
+    void onFooter(@Nonnull final Consumer<TaskStatsProvider> footerConsumer);
 
     /**
      * Returns the type of task this data represents.

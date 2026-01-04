@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.craftselltask;
 
+import org.brokenarrow.storage.api.crafting.stats.TaskStatsProvider;
 import org.brokenarrow.storage.api.craftselltask.util.TypeOfTask;
-import org.brokenarrow.storage.api.stats.Stats;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,7 +21,7 @@ import java.util.UUID;
  * @param <D> the type of task data stored in the cache
  * @param <S> the type of statistics associated with tasks
  */
-public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
+public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends TaskStatsProvider> {
 
     /**
      * Returns the unique identifier of the player that owns or placed this container.
@@ -52,16 +52,16 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
      * the provided {@code newStats} instance will be used.
      * <p>
      * To explicitly replace existing statistics for a task type,
-     * use {@link #setStat(TypeOfTask, Stats)}.
+     * use {@link #setStat(TypeOfTask, TaskStatsProvider)}.
      *
      * @param key      the key associated with the task
-     * @param newStats the statistics instance to use if no stats are currently present
+     * @param statsProvider the statistics instance to use if no stats are currently present
      *                 for the task type
      * @param data     the task data to store
      * @param amount   the amount produced by the task
      * @throws NullPointerException if any required argument is {@code null}
      */
-    void putTaskResult(@Nonnull final TaskCacheKey key,@Nonnull final Stats newStats, @Nonnull final D data, final int amount);
+    void putTaskResult(@Nonnull final TaskCacheKey key,@Nonnull final S statsProvider, @Nonnull final D data, final int amount);
 
     /**
      * Returns a map of all statistics for this container,
@@ -94,11 +94,11 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends Stats> {
      * Typically called after a task is executed to record progress or results.
      *
      * @param craftSellData the task data used to update statistics
-     * @param newStats the statistics instance to use if no stats are currently present
+     * @param statsProvider the statistics instance to use if no stats are currently present
      *                 for the task type.
      * @param amount   the amount produced by the task
      */
-    void updateStatFromData(@NotNull TaskDataApi craftSellData, @Nullable final Stats newStats, final int amount);
+    void updateStatFromData(@NotNull TaskDataApi craftSellData, @Nullable final S statsProvider, final int amount);
 
     /**
      * Removes a cached task result for the given key, if present.

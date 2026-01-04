@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.craftselltask;
 
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
-import org.brokenarrow.storage.api.stats.Stats;
+import org.brokenarrow.storage.api.crafting.stats.TaskStatsProvider;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
@@ -45,7 +45,7 @@ public interface CraftingSellTaskAPI {
      *
      * @return a map of player UUIDs to their cached task data
      */
-    Map<UUID, TaskExecutedCacheApi<TaskDataApi, Stats>> getLoggedCraftSellTasks();
+    Map<UUID, TaskExecutedCacheApi<TaskDataApi, TaskStatsProvider>> getLoggedCraftSellTasks();
 
     /**
      * Retrieves the entire cache of crafting and selling tasks for a player.
@@ -55,7 +55,7 @@ public interface CraftingSellTaskAPI {
      * or {@code null} if none exists
      */
     @Nullable
-    TaskExecutedCacheApi<TaskDataApi, Stats> getLoggedCraftSellTask(@Nonnull UUID uuid);
+    TaskExecutedCacheApi<TaskDataApi, TaskStatsProvider> getLoggedCraftSellTask(@Nonnull UUID uuid);
 
     /**
      * Retrieves the cached task data for a specific crafting or selling container.
@@ -108,7 +108,7 @@ public interface CraftingSellTaskAPI {
      * @param craftSellData the task data to store in the cache
      * @param amount        the amount produced by the task.
      */
-    void putLoggedCraftSellTask(@Nonnull final UUID uuid, Location location, final Material material, @Nonnull final Stats newStats, final TaskDataApi craftSellData, final int amount);
+    void putLoggedCraftSellTask(@Nonnull final UUID uuid, Location location, final Material material, @Nonnull final TaskStatsProvider newStats, final TaskDataApi craftSellData, final int amount);
 
 
     /**

@@ -445,9 +445,9 @@ public interface MainSettingsDataApi {
 	List<String> getDebugMessages();
 
 	/**
-	 * List of materials you want to limit.
+	 * Map of materials you want to limit.
 	 *
-	 * @return list of materials or empty list.
+	 * @return map of materials or empty list.
 	 */
 	Map<String, Integer> getListOfBlocksToCheck();
 
