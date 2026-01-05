@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  * A per-player container that temporarily stores results of executed tasks.
@@ -49,19 +50,21 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends TaskStats
      * Adds or updates a cached task result.
      * <p>
      * If no statistics exist yet for the task type of the given data,
-     * the provided {@code newStats} instance will be used.
+     * the provided {@code statsProvider} instance is stored and used.
+     * <p>
+     * The supplied callback is invoked with the resolved stats provider,
+     * allowing the caller to update task-specific statistics.
      * <p>
      * To explicitly replace existing statistics for a task type,
      * use {@link #setStat(TypeOfTask, TaskStatsProvider)}.
      *
-     * @param key      the key associated with the task
-     * @param statsProvider the statistics instance to use if no stats are currently present
-     *                 for the task type
-     * @param data     the task data to store
-     * @param amount   the amount produced by the task
-     * @throws NullPointerException if any required argument is {@code null}
+     * @param key the key associated with the task
+     * @param taskData the task data to store
+     * @param statsProvider the stats provider to use if none exists yet
+     *                     for the task type
+     * @param callBack callback invoked with the resolved stats provider
      */
-    void putTaskResult(@Nonnull final TaskCacheKey key,@Nonnull final S statsProvider, @Nonnull final D data, final int amount);
+    void putTaskResult(@Nonnull final TaskCacheKey key, @Nonnull final D taskData,final @NotNull S statsProvider, @Nonnull final Consumer<S> callBack);
 
     /**
      * Returns a map of all statistics for this container,
@@ -80,6 +83,24 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends TaskStats
     S getStat(@Nonnull TypeOfTask taskType);
 
     /**
+     * Resolves the {@link TaskStatsProvider} for the given task type and invokes the
+     * supplied callback with it.
+     * <p>
+     * If no stats provider is currently registered for the task type, the provided
+     * {@code taskStatsProvider} is stored and used. This method does not create
+     * providers automatically. The caller is responsible for supplying the correct
+     * implementation for the task type.
+     * <p>
+     * To explicitly replace an existing stats provider for a task type,
+     * use {@link #setStat(TypeOfTask, TaskStatsProvider)} instead of this method.
+     *
+     * @param taskType the task type the stats belong to
+     * @param taskStatsProvider the stats provider to register if none exists
+     * @param callBack the callback invoked with the resolved stats provider
+     */
+    void getOrCreateStatsProvider(@Nonnull final TypeOfTask taskType, @Nonnull final S taskStatsProvider, @Nonnull final Consumer<S> callBack);
+
+    /**
      * Updates the statistics for a specific task type.
      *
      * @param taskType the type of task
@@ -88,17 +109,6 @@ public interface TaskExecutedCacheApi<D extends TaskDataApi, S extends TaskStats
      */
     S setStat(@Nonnull TypeOfTask taskType, @Nonnull S stats);
 
-    /**
-     * Updates the statistics from a given task data object.
-     * <p>
-     * Typically called after a task is executed to record progress or results.
-     *
-     * @param craftSellData the task data used to update statistics
-     * @param statsProvider the statistics instance to use if no stats are currently present
-     *                 for the task type.
-     * @param amount   the amount produced by the task
-     */
-    void updateStatFromData(@NotNull TaskDataApi craftSellData, @Nullable final S statsProvider, final int amount);
 
     /**
      * Removes a cached task result for the given key, if present.

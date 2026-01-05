@@ -10,6 +10,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  * Data provided when either sell or craft items and also the tasks
@@ -103,12 +104,12 @@ public interface CraftingSellTaskAPI {
      * @param uuid          the player associated with the task
      * @param location      the location of the container
      * @param material      the output material when crafting, or the item sold
-     * @param newStats      the statistics instance to use if no stats are currently present
-     *                      for the task type
      * @param craftSellData the task data to store in the cache
-     * @param amount        the amount produced by the task.
+     * @param statsProvider the statistics instance to use if no stats are currently present
+     *                      for the task type
+     * @param callBack callback invoked with the resolved stats provider
      */
-    void putLoggedCraftSellTask(@Nonnull final UUID uuid, Location location, final Material material, @Nonnull final TaskStatsProvider newStats, final TaskDataApi craftSellData, final int amount);
+    void putLoggedCraftSellTask(@Nonnull final UUID uuid, Location location, final Material material, @Nonnull final TaskDataApi craftSellData, @Nonnull final TaskStatsProvider statsProvider, @Nonnull final Consumer<TaskStatsProvider> callBack);
 
 
     /**

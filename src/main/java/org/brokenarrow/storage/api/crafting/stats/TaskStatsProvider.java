@@ -67,7 +67,6 @@ public interface TaskStatsProvider {
 
     /**
      * Returns the statistics backing this provider.
-     * <p>
      *
      * @return the stats associated with this task type
      */
