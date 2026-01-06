@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.containerholder.cache;
 
+import org.broken.arrow.library.serialize.utility.Pair;
+import org.brokenarrow.storage.api.builders.ChunkKeyAPI;
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
@@ -104,4 +106,6 @@ public interface InventoryHoldersCacheApi {
 	 * @return the list of locations associated to that chunk.
 	 */
 	List<Location> getChunkData(Object chunkSnapshot);
+
+    List<Pair<ChunkKeyAPI,Location>>  getChunks();
 }

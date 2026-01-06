@@ -58,8 +58,7 @@ public interface ChunkLoadUnload {
      *
      * @return A map containing cached chunks.
      */
-    @NotNull
-    Map<String, Chunk> getCachedChunks();
+    @NotNull Map<ChunkKeyAPI, Chunk> getCachedChunks();
 
     /**
      * Handles chunk load events.
