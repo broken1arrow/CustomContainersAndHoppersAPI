@@ -3,6 +3,7 @@ package org.brokenarrow.storage.api.builders;
 import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.jetbrains.annotations.NotNull;
@@ -89,7 +90,7 @@ public interface ChunkLoadUnload {
      * @param chunkZ The Z-coordinate of the chunk.
      * @return The chunk data.
      */
-    Chunk getChunkData(int chunkX, int chunkZ);
+    Chunk getChunkData(final @NotNull World world, int chunkX, int chunkZ);
 
     /**
      * Retrieves chunk data based on location.

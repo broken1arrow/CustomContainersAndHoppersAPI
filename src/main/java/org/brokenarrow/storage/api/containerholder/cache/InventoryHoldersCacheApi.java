@@ -1,6 +1,5 @@
 package org.brokenarrow.storage.api.containerholder.cache;
 
-import org.broken.arrow.library.serialize.utility.Pair;
 import org.brokenarrow.storage.api.builders.ChunkKeyAPI;
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
@@ -107,5 +106,5 @@ public interface InventoryHoldersCacheApi {
 	 */
 	List<Location> getChunkData(Object chunkSnapshot);
 
-    List<Pair<ChunkKeyAPI,Location>>  getChunks();
+    Set<ChunkKeyAPI> getChunks();
 }
