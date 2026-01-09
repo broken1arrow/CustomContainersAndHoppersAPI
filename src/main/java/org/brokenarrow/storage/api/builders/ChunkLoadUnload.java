@@ -1,11 +1,13 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -98,5 +100,5 @@ public interface ChunkLoadUnload {
      * @param location The location of the chunk.
      * @return The chunk data.
      */
-    Chunk getChunkData(Location location);
+    Chunk getChunkData(@Nullable final Location location);
 }

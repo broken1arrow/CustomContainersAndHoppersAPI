@@ -1,6 +1,7 @@
 package org.brokenarrow.storage.api.containerholder.cache;
 
-import org.brokenarrow.storage.api.builders.ChunkKeyAPI;
+import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
+import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.brokenarrow.storage.api.builders.ContainerDataApi;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
@@ -73,7 +74,7 @@ public interface InventoryHoldersCacheApi {
 	 *
 	 * @return map with the inventory holders.
 	 */
-	Map<Location, InventoryHolder> getInventoryHolders();
+	Map<BlockKeyResolver, InventoryHolder> getInventoryHolders();
 
 	/**
 	 * Remove the location from the chunk list.
