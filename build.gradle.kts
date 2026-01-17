@@ -2,7 +2,7 @@
 plugins {
    id("org.brokenarrow.storage.java-conventions")
 }
-val utilityVersion = "b7a4b5d287"
+val utilityVersion = "475dcd7c0a"
 
 dependencies {
     compileOnly("org.bstats:bstats-bukkit:3.0.2")

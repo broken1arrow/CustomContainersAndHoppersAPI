@@ -8,4 +8,6 @@ public interface BlockKeyResolver {
 
     @Nullable
     Location getLocation();
+
+    boolean isSet();
 }
