@@ -6,6 +6,10 @@ import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.jetbrains.annotations.NotNull;
@@ -61,6 +65,14 @@ public interface ChunkCache {
      */
     void chunkUnLoad(ChunkUnloadEvent event);
 
+    void onJoin(final PlayerJoinEvent event);
+
+    void onMove(final PlayerMoveEvent event);
+
+    void onQuit(final PlayerQuitEvent event);
+
+    void onTeleport(final PlayerTeleportEvent event);
+
     /**
      * Retrieves the cached chunks. This cache can
      * contain outdated chunk data, as it only contains
@@ -93,4 +105,6 @@ public interface ChunkCache {
 
 
     void logNotFoundChunk(@NotNull Location location);
+
+
 }
