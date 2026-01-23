@@ -154,7 +154,7 @@ public interface ChunkCache {
      * @param event the player move event
      */
     void onMove(final PlayerMoveEvent event);
-    
+
     /**
      * Handles player teleport events.
      *
