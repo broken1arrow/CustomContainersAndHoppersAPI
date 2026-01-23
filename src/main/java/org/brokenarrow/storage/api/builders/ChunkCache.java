@@ -1,6 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
 import org.brokenarrow.storage.api.chunkevent.ChunkCacheEntryApi;
+import org.brokenarrow.storage.api.chunkevent.PlayerChunkTrackerApi;
 import org.brokenarrow.storage.api.chunkevent.Relevance;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.bukkit.Chunk;
@@ -227,4 +228,16 @@ public interface ChunkCache {
      * @param location the location of the missing chunk
      */
     void logNotFoundChunk(@NotNull Location location);
+
+    /**
+     * Returns the player chunk tracker used to drive chunk relevance updates.
+     *
+     * <p>
+     * The returned tracker is responsible for translating player lifecycle
+     * and movement events into relevance changes within this cache.
+     *
+     * @return the player chunk tracker instance
+     */
+    @Nonnull
+    PlayerChunkTrackerApi getPlayerChunkTracker();
 }
