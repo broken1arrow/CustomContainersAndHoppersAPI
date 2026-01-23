@@ -136,16 +136,6 @@ public interface ChunkCache {
     void onJoin(final PlayerJoinEvent event);
 
     /**
-     * Handles player movement events.
-     *
-     * <p>
-     * Used to update chunk relevance as the player moves between chunks.
-     *
-     * @param event the player move event
-     */
-    void onMove(final PlayerMoveEvent event);
-
-    /**
      * Handles player quit events.
      *
      * <p>
@@ -155,6 +145,16 @@ public interface ChunkCache {
      */
     void onQuit(final PlayerQuitEvent event);
 
+    /**
+     * Handles player movement events.
+     *
+     * <p>
+     * Used to update chunk relevance as the player moves between chunks.
+     *
+     * @param event the player move event
+     */
+    void onMove(final PlayerMoveEvent event);
+    
     /**
      * Handles player teleport events.
      *
