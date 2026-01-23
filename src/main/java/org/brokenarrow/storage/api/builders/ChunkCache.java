@@ -1,21 +1,24 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.chunkevent.ChunkCacheEntryApi;
+import org.brokenarrow.storage.api.chunkevent.Relevance;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * Interface for managing chunk load and unload events.
  */
-public interface ChunkLoadUnload {
+public interface ChunkCache {
 
     /**
      * Adds a chunk snapshot to the cache.
@@ -25,19 +28,10 @@ public interface ChunkLoadUnload {
      */
     void addToCache(Location containerLocation, ChunkSnapshot chunkSnapshot);
 
-    /**
-     * Sets chunk data in the cache.
-     *
-     * @param chunk The chunk to cache.
-     */
-    void setCachedChunks(Chunk chunk);
+    void setChunkData(@Nonnull Location location, Consumer<ChunkCacheEntryApi> callback);
 
-    /**
-     * Sets chunk data in the cache based on location.
-     *
-     * @param location The location of the chunk to cache.
-     */
-    void setCachedChunks(final Location location);
+    @Nonnull
+    Relevance getRelevance(Location location);
 
     /**
      * Loads chunk data to the cache.
@@ -54,16 +48,6 @@ public interface ChunkLoadUnload {
     void loadToCache(@NotNull final ChunkSnapshot chunkSnapshot);
 
     /**
-     * Retrieves the cached chunks. This cache can
-     * contain outdated chunk data, as it only contains
-     * the snapshot of the actual chunk. It does not get
-     * live updates.
-     *
-     * @return A map containing cached chunks.
-     */
-    @NotNull Map<ChunkKeyAPI, Chunk> getCachedChunks();
-
-    /**
      * Handles chunk load events.
      *
      * @param event The ChunkLoadEvent to handle.
@@ -78,6 +62,22 @@ public interface ChunkLoadUnload {
     void chunkUnLoad(ChunkUnloadEvent event);
 
     /**
+     * Retrieves the cached chunks. This cache can
+     * contain outdated chunk data, as it only contains
+     * the snapshot of the actual chunk. It does not get
+     * live updates.
+     *
+     * @return A map containing cached chunks.
+     */
+    Map<ChunkKeyAPI, ChunkCacheEntryApi> getCache();
+
+    @Nullable
+    ChunkCacheEntryApi getCache(Location location);
+
+    @Nullable
+    ChunkCacheEntryApi getCache(ChunkKeyAPI chunkKey);
+
+    /**
      * Checks if the cache contains data for a specific location.
      *
      * @param location The location to check.
@@ -85,20 +85,12 @@ public interface ChunkLoadUnload {
      */
     boolean cachedChunksContainsKey(Location location);
 
-    /**
-     * Retrieves chunk data based on chunk coordinates.
-     *
-     * @param chunkX The X-coordinate of the chunk.
-     * @param chunkZ The Z-coordinate of the chunk.
-     * @return The chunk data.
-     */
-    Chunk getChunkData(final @NotNull World world, int chunkX, int chunkZ);
+    void setChunkData(@Nonnull ChunkKeyAPI key, Consumer<ChunkCacheEntryApi> callback);
 
-    /**
-     * Retrieves chunk data based on location.
-     *
-     * @param location The location of the chunk.
-     * @return The chunk data.
-     */
-    Chunk getChunkData(@Nullable final Location location);
+    void removeChunk(Location location);
+
+    void removeChunk(ChunkKeyAPI chunkKey);
+
+
+    void logNotFoundChunk(@NotNull Location location);
 }

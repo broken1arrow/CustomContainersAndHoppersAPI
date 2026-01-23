@@ -3,7 +3,7 @@ package org.brokenarrow.storage;
 import org.broken.arrow.library.command.CommandRegister;
 import org.brokenarrow.storage.api.Crafting.RecipeCacheAPI;
 import org.brokenarrow.storage.api.*;
-import org.brokenarrow.storage.api.builders.ChunkLoadUnload;
+import org.brokenarrow.storage.api.builders.ChunkCache;
 import org.brokenarrow.storage.api.builders.DatabaseSettings;
 import org.brokenarrow.storage.api.builders.PreferenceSettingsRegistryApi;
 import org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi;
@@ -313,7 +313,7 @@ public class CCH extends JavaPlugin {
 	 *
 	 * @return The ChunkLoadUnload instance.
 	 */
-	public ChunkLoadUnload getCheckChunkLoadUnload() {
+	public ChunkCache getCheckChunkLoadUnload() {
 		return null;
 	}
 	/**
