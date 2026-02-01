@@ -113,7 +113,16 @@ public interface InventoryHoldersCacheApi {
 	 */
 	ContainerDataApi getContainerData(Location location);
 
-	/**
+    /**
+     * Retrieve list of locations from the specific chunk.
+     *
+     * @param chunk the chunk the container is placed in
+     * @return the list of locations associated to that chunk.
+     */
+  @Nullable
+    List<Location> getChunkData(ChunkKeyAPI chunk);
+
+    /**
 	 * Retrieve list of locations from the specific chunk.
 	 *
 	 * @param chunkSnapshot the chunk the container is placed in

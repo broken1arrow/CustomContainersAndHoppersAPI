@@ -4,7 +4,6 @@ import org.brokenarrow.storage.api.chunkevent.ChunkCacheEntryApi;
 import org.brokenarrow.storage.api.chunkevent.PlayerChunkTrackerApi;
 import org.brokenarrow.storage.api.chunkevent.Relevance;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
-import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -45,7 +44,7 @@ public interface ChunkCache {
      * @param location the location used to resolve the chunk key
      * @param callback a consumer used to modify the cached chunk entry
      */
-    void setChunkData(@Nonnull final Location location,@Nonnull final Consumer<ChunkCacheEntryApi> callback);
+    void setChunkLoadContainerTask(@Nonnull final Location location, @Nonnull final Consumer<ChunkCacheEntryApi> callback);
 
     /**
      * Modifies cached chunk data using a callback, resolved from a chunk key.
@@ -57,7 +56,7 @@ public interface ChunkCache {
      * @param key      the chunk key identifying the cached entry
      * @param callback a consumer used to modify the cached chunk entry
      */
-    void setChunkData(@Nonnull final ChunkKeyAPI key,@Nonnull final Consumer<ChunkCacheEntryApi> callback);
+    void setChunkLoadContainerTask(@Nonnull final ChunkKeyAPI key, @Nonnull final Consumer<ChunkCacheEntryApi> callback);
 
     /**
      * Determines the current relevance state of the chunk at the given location.
@@ -79,20 +78,11 @@ public interface ChunkCache {
      * This method does not perform any relevance checks and does not
      * require the chunk to be currently loaded.
      *
-     * @param location the location representing the chunk where the container is placed.
-     * @param chunkSnapshot     the snapshot of the chunk to cache
+     * @param location      the location representing the chunk where the container is placed.
+     * @param chunkSnapshot the snapshot of the chunk to cache
      */
-    void addToCache(@Nonnull final Location location,@Nonnull final ChunkSnapshot chunkSnapshot);
+    void addToCache(@Nonnull final Location location, @Nonnull final ChunkSnapshot chunkSnapshot);
 
-    /**
-     * Loads a chunk snapshot directly into the cache for the
-     * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
-     * and not update the chunk cache.
-     * <p>
-     *
-     * @param chunk the loaded chunk to update the InventoryHolders set.
-     */
-    void loadToCache(@NotNull final Chunk chunk);
 
     /**
      * Loads a chunk snapshot directly into the cache for the
@@ -101,9 +91,21 @@ public interface ChunkCache {
      * <p>
      * This method does not require the chunk to be currently loaded.
      *
+     * @param chunkKey the snapshot to update the InventoryHolders set.
+     */
+    void loadContainerHolderTask(@NotNull ChunkKeyAPI chunkKey);
+
+    /**
+     * Loads a chunk snapshot directly into the cache for the
+     * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
+     * and not update the chunk cache.
+     * <p>
+     * This method does not require the chunk to be currently loaded.
+     *
+     * @param chunkKey      the snapshot to update the InventoryHolders set.
      * @param chunkSnapshot the snapshot to update the InventoryHolders set.
      */
-    void loadToCache(@NotNull final ChunkSnapshot chunkSnapshot);
+    void loadContainerHolderTask(@NotNull final ChunkKeyAPI chunkKey, @Nullable final ChunkSnapshot chunkSnapshot);
 
     /**
      * Handles a chunk load event.
