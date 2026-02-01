@@ -33,7 +33,10 @@ public enum PlayerMetadataHandler implements PlayerMetadata {
 	/**
 	 * This key is used when player open settings gui.
 	 */
-	INVENTORY_SETTINGS_FOR_GUI_MENU("INVENTORY_SETTINGS_FOR_MAIN_GUI_MENU");
+	INVENTORY_SETTINGS_FOR_GUI_MENU("INVENTORY_SETTINGS_FOR_MAIN_GUI_MENU"),
+
+    CCH_DEBUG("CCH_Debug");
+
 	private final String metadataKey;
 	final Plugin plugin = CCH.getInstance();
 

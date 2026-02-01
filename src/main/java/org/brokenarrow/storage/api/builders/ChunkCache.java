@@ -72,19 +72,6 @@ public interface ChunkCache {
     Relevance getRelevance(@Nonnull final Location location);
 
     /**
-     * Adds the container holder to the cache at the given container location.
-     *
-     * <p>
-     * This method does not perform any relevance checks and does not
-     * require the chunk to be currently loaded.
-     *
-     * @param location      the location representing the chunk where the container is placed.
-     * @param chunkSnapshot the snapshot of the chunk to cache
-     */
-    void addToCache(@Nonnull final Location location, @Nonnull final ChunkSnapshot chunkSnapshot);
-
-
-    /**
      * Loads a chunk snapshot directly into the cache for the
      * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
      * and not update the chunk cache.
