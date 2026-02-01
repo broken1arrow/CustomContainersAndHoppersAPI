@@ -5,6 +5,7 @@ import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
+import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
@@ -276,15 +277,24 @@ public interface InventoryHolder extends InventoryEvents {
   int getViewersAmount(final int page);
 
 
-  /**
-   * Get container location inventory/inventory´s are linked to.
-   *
-   * @return cloned location of this container.
-   */
-  @Nullable
-  Location getLocation();
+    /**
+     * Get container location inventory/inventory´s are linked to.
+     *
+     * @return cloned location of this container.
+     */
+    @Nullable
+    Location getLocation();
 
-  /**
+    /**
+     * Get container {@link BlockKeyResolver} inventory/inventory´s are linked to.
+     *
+     * @return {@link BlockKeyResolver} of this container, where you can access the lazy loaded location,
+     * the world id and coordinates.
+     */
+    @Nonnull
+    BlockKeyResolver getBlockLocation();
+
+    /**
    * Get the last user of the container.
    *
    * @return player some open the container last.
