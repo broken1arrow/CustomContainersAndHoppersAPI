@@ -106,10 +106,10 @@ public interface InventoryHoldersCacheApi {
 	Set<World> getSpawnChunk();
 
 	/**
-	 * Retrieve the Containerdata for the container location.
+	 * Retrieve the Container data for the container location.
 	 *
 	 * @param location the location the container is placed in
-	 * @return the containerdata or null if it does not exist.
+	 * @return the container data or null if it does not exist.
 	 */
 	ContainerDataApi getContainerData(Location location);
 

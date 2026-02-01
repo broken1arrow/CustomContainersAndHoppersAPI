@@ -220,18 +220,6 @@ public interface ChunkCache {
     void removeChunk(@Nonnull final ChunkKeyAPI chunkKey);
 
     /**
-     * Logs a missing chunk cache entry for diagnostic purposes. Will have a 5 seconds
-     * delay when using this when data is missing.
-     *
-     * <p>
-     * Intended for debugging or warning output when chunk data
-     * is expected but not present.
-     *
-     * @param location the location of the missing chunk
-     */
-    void logNotFoundChunk(@NotNull Location location);
-
-    /**
      * Returns the player chunk tracker used to drive chunk relevance updates.
      *
      * <p>
