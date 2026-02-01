@@ -23,7 +23,7 @@ public interface SpawnContainerEffectsTaskAPI {
 	/**
 	 * Check if list contains location.
 	 *
-	 * @param location of the continer.
+	 * @param location of the container.
 	 * @return true if the list contains the container
 	 */
 	boolean isLocationInList(@Nonnull final Location location);
