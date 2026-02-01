@@ -203,7 +203,7 @@ public interface InventoryHolder extends InventoryEvents {
    * @param player     set the player.
    * @param pageNumber set pagenumber player shall open.
    */
-  void setPlayerViwePage(final Player player, final int pageNumber);
+  void setPlayerViewPage(final Player player, final int pageNumber);
 
   /**
    * Get what page a player curently has open
@@ -212,7 +212,7 @@ public interface InventoryHolder extends InventoryEvents {
    * @param player get the player some open the gui.
    * @return number of players viwe the page.
    */
-  int getPlayerViwePage(final Player player);
+  int getPlayerViewPage(final Player player);
 
   /**
    * Method to see if cache are empty.
@@ -220,14 +220,14 @@ public interface InventoryHolder extends InventoryEvents {
    * @param player check if the cache are empty.
    * @return true if player exist.
    */
-  boolean isPlayerViwePageEmpty(final Player player);
+  boolean isPlayerViewPageEmpty(final Player player);
 
   /**
    * Get players currently wivers the curent inventory.
    *
    * @return map with players and the page they are on.
    */
-  Map<UUID, Integer> getWivers();
+  Map<UUID, Integer> getViewers();
 
 
   /**
@@ -235,7 +235,7 @@ public interface InventoryHolder extends InventoryEvents {
    *
    * @param player remove the players cache data for page.
    */
-  void removePlayerViwePage(final Player player);
+  void removePlayerViewPage(final Player player);
 
   /**
    * Override this method if you want to reset data,
@@ -281,6 +281,7 @@ public interface InventoryHolder extends InventoryEvents {
    *
    * @return cloned location of this container.
    */
+  @Nullable
   Location getLocation();
 
   /**
