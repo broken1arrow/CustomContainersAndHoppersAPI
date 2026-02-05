@@ -72,6 +72,37 @@ public interface ChunkCache {
     Relevance getRelevance(@Nonnull final Location location);
 
     /**
+     * Determines whether the chunk at the given location is loaded or not.
+     *
+     * <p>
+     * This method is a convenience wrapper around {@link #getRelevance(Location)}
+     * that maps the returned {@link Relevance} to a boolean result.
+     *
+     * <p>
+     * If more detailed information about the evaluated state is required, use
+     * {@link #isLocationLoaded(Location, Consumer)} to observe the relevance result.
+     *
+     * @param location the location used to resolve the chunk
+     * @return {@code true} if the chunk is considered loaded, otherwise {@code false}
+     */
+    boolean isLocationLoaded(@NotNull final Location location);
+
+    /**
+     * Determines whether the chunk at the given location is loaded or not, also exposing
+     * the evaluated {@link Relevance} state.
+     *
+     * <p>
+     * The observer does not influence the outcome of this method, it is purely
+     * observational. Callers that require full control of the result are recommended
+     * to use {@link #getRelevance(Location)} instead.
+     *
+     * @param location the location used to resolve the chunk
+     * @param observer an optional consumer that will receive the evaluated relevance
+     * @return {@code true} if the chunk is considered loaded, otherwise {@code false}
+     */
+    boolean isLocationLoaded(@NotNull final Location location, @Nullable final Consumer<Relevance> observer);
+
+    /**
      * Loads a chunk snapshot directly into the cache for the
      * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
      * and not update the chunk cache.
@@ -154,6 +185,7 @@ public interface ChunkCache {
      * @param event the player teleport event
      */
     void onTeleport(final PlayerTeleportEvent event);
+
 
     /**
      * Returns the full internal chunk cache.
