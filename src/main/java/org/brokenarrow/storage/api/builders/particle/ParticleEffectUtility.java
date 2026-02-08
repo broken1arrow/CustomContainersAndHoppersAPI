@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Represents a particle effect with various utility methods for managing particle effects.
@@ -50,14 +49,6 @@ public  interface ParticleEffectUtility<T> {
 	 * @return true if the particles were successfully added, false otherwise.
 	 */
 	boolean addParticlesEffect(@Nonnull EffectType type, @Nullable List<?> particles,int amountOfParticels, float flot);
-	/**
-	 * Adds multiple particle effects to the specified effect type based on a serialized map.
-	 *
-	 * @param type          The effect type to add the particle effects to.
-	 * @param path          The path in the serialized map where the particle effects are located.
-	 * @param serializedMap The serialized map containing the particle effects.
-	 */
-	void addAllParticleEffect(@Nonnull final EffectType type,@Nonnull final String path,@Nonnull final Map<String, Object> serializedMap);
 
 	/**
 	 * Retrieves the list of particle effects for the specified effect type.
