@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.containerholder.util;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class FilterItems {
 	}
 
 	/**
-	 * Retrieve all itemstacks set.
+	 * Retrieve all itemsStacks set.
 	 *
 	 * @return array of itemstacks.
 	 */
@@ -105,6 +106,20 @@ public class FilterItems {
 	public boolean removeItem(final int index) {
 		return this.itemStacks.remove(index) != null;
 	}
+
+    /**
+     * Check if is any items is set and not air.
+     *
+     */
+    public boolean isItemsSet() {
+        if(this.itemStacks.isEmpty())
+            return false;
+
+        return this.itemStacks.stream().allMatch(itemStack -> {
+            System.out.println("itemStack  " + itemStack );
+            return itemStack != null && itemStack.getType() != Material.AIR;
+        });
+    }
 
 	/**
 	 * Clear the list.

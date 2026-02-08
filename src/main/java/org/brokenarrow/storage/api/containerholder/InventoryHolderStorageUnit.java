@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.math.BigInteger;
+import java.util.Map;
 
 /**
  * The inventory holder for the chest that can only store 1 item
@@ -40,6 +41,42 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	 */
 	@Override
 	@NotNull ItemStack[] getContents();
+
+    /**
+     * Sets the item and its amount in this container.
+     * <p>
+     * This container type does not use an index; calling this method will override
+     * any existing item and set the amount to match the provided {@code ItemStack}.
+     * Use {@link #addItems(ItemStack...)} to add items without removing existing ones.
+     * <p>
+     * If lock mode is active, the item may be rejected if it does not match the
+     * configured filter. The lock state can be checked via {@link #isLockModeActive()},
+     * and item validity can be verified using {@link #isItemBlocked(ItemStack)}.
+     *
+     * @param index     ignored by this container type
+     * @param itemStack the item to set
+     */
+    @Override
+    public void setItem(final int index, final ItemStack itemStack);
+
+    /**
+     * Attempts to add the given items to this container.
+     * <p>
+     * Items may fail to be added if the container is full, the item type is not
+     * compatible with the container, or the item is rejected by an active lock
+     * filter. If lock mode is active, only items matching the configured filter
+     * are accepted.
+     * <p>
+     * The lock state can be checked via {@link #isLockModeActive()}, and item
+     * validity can be verified using {@link #isItemBlocked(ItemStack)}.
+     *
+     * @param itemStacks the items to add
+     * @return a map of items that could not be added, indexed by their original
+     *         position in the input array
+     */
+    @Override
+    @NotNull
+    Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
 
 	/**
 	 * This will convert items to itemstacks.
@@ -200,5 +237,26 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	 * @param amount    amount you want to add in the container.
 	 */
 	void saveToCache(final ItemStack itemStack, final int amount);
+    /**
+     * Determines whether the container is currently operating in lock mode.
+     * <p>
+     * Lock mode is considered active when a filter exists and at least one
+     * filter item has been configured. When active, only items matching the
+     * filter are allowed.
+     *
+     * @return {@code true} if lock mode is active, otherwise {@code false}
+     */
+    boolean isLockModeActive() ;
 
+    /**
+     * Checks whether the given item is blocked by the container's filter.
+     * <p>
+     * An item is considered blocked when lock mode is active and the item does
+     * not match any of the configured filter items. If lock mode is inactive,
+     * this method always returns {@code false}.
+     *
+     * @param itemStack the item to check
+     * @return {@code true} if the item is blocked by the filter, otherwise {@code false}
+     */
+    boolean isItemBlocked(@NotNull final ItemStack itemStack) ;
 }
