@@ -2,6 +2,7 @@ package org.brokenarrow.storage.api.containerholder.util;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -110,13 +111,23 @@ public class FilterItems {
     /**
      * Check if is any items is set and not air.
      *
+     * @return Returns {@code true} if it finds a match and {@code false} if the list is empty.
+     */
+    public boolean findMatch(@NotNull final ItemStack itemStack) {
+        if(this.itemStacks.isEmpty())
+            return false;
+        return this.itemStacks.stream().noneMatch(stack -> stack.isSimilar(itemStack));
+    }
+
+    /**
+     * Check if is any items is set and not air.
+     *
      */
     public boolean isItemsSet() {
         if(this.itemStacks.isEmpty())
             return false;
 
         return this.itemStacks.stream().allMatch(itemStack -> {
-            System.out.println("itemStack  " + itemStack );
             return itemStack != null && itemStack.getType() != Material.AIR;
         });
     }
