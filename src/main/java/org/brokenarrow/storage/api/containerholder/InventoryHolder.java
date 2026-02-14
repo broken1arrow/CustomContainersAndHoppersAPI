@@ -1,9 +1,11 @@
 package org.brokenarrow.storage.api.containerholder;
 
-import org.brokenarrow.storage.api.builders.ContainerDataApi;
+import org.brokenarrow.storage.api.builders.ContainerDataHandler;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
+import org.brokenarrow.storage.api.builders.ContainerRead;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
+import org.brokenarrow.storage.api.builders.ContainerWrite;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
@@ -21,6 +23,8 @@ import java.awt.*;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * The base holder for all custom containers.
@@ -405,7 +409,7 @@ public interface InventoryHolder extends InventoryEvents {
      */
 
     /**
-     * Use this method to save the contents to {@link ContainerDataApi} cache.
+     * Use this method to save the contents to {@link ContainerRead} cache.
      */
     void saveToCache();
 
@@ -415,15 +419,22 @@ public interface InventoryHolder extends InventoryEvents {
      * @return the data for the container.
      */
     @Nonnull
-    ContainerDataApi getContainerData();
+    ContainerDataHandler getContainerData();
 
+     void updateContainerData(Consumer<ContainerWrite> callback);
+
+
+     void readContainerData(Consumer<ContainerRead> callback);
+
+
+     <T> T readContainerData(final Function<ContainerRead, T> callback);
 
     /**
      * Set containerdata for this container.
      *
      * @param containerData The container data you want to set on this container.
      */
-    void setContainerData(@Nonnull final ContainerDataApi containerData);
+    void setContainerData(@Nonnull final ContainerRead containerData);
 
     /*
      * ################################################

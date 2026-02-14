@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.brokenarrow.storage.api.containerholder.util.FilterItems;
+import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 
@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Interface to set and build the data.
  */
-public interface ContainerDataAPIBuilder {
+public interface ContainerWrite extends ContainerRead{
 
 	/**
 	 * Set the player some placed the container.
@@ -20,7 +20,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param playerId player uuid.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setPlayerId(UUID playerId);
+	ContainerWrite setPlayerId(UUID playerId);
 
 	/**
 	 * Set update of this container. It used when read yaml file for get right update.
@@ -28,7 +28,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param upgrade name, use a yaml key to get the update.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setUpgrade(String upgrade);
+	ContainerWrite setUpgrade(String upgrade);
 
 	/**
 	 * Set Chesttype of this container.
@@ -36,7 +36,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param typeOfContainer type of container.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTypeOfContainer(TypeOfContainer typeOfContainer);
+	ContainerWrite setTypeOfContainer(TypeOfContainer typeOfContainer);
 
 	/**
 	 * The filename for this container type.
@@ -44,7 +44,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param containerFileName the yaml filename the conainer shall take settings from.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setContainerFileName(String containerFileName);
+	ContainerWrite setContainerFileName(String containerFileName);
 
 	/**
 	 * Set number of pages for this container
@@ -52,15 +52,15 @@ public interface ContainerDataAPIBuilder {
 	 * @param numberOfPages the amount of pages to set.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setNumberOfPages(int numberOfPages);
+	ContainerWrite setNumberOfPages(int numberOfPages);
 
 	/**
 	 * Set amount free placements.
 	 *
-	 * @param amountPlaceForFree you set.
+	 * @param remainingFreePlacements you set.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setAmountPlaceForFree(int amountPlaceForFree);
+	ContainerWrite setRemainingFreePlacements(int remainingFreePlacements);
 
 	/**
 	 * Set amount of item container pickup.
@@ -68,7 +68,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param totalAmountPickedUp total amount picked up.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTotalAmountPickedUp(long totalAmountPickedUp);
+	ContainerWrite setTotalAmountPickedUp(long totalAmountPickedUp);
 
 	/**
 	 * Add amount of item container pickup.
@@ -76,7 +76,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param amountPickedUp total amount picked up.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder addTotalAmountPickedUp(long amountPickedUp);
+	ContainerWrite addTotalAmountPickedUp(long amountPickedUp);
 
 	/**
 	 * Set total amount of items teleported.
@@ -84,7 +84,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param totalAmountTeleportedItems total amount teleported items.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTotalAmountTeleportedItems(long totalAmountTeleportedItems);
+	ContainerWrite setTotalAmountTeleportedItems(long totalAmountTeleportedItems);
 
 	/**
 	 * Add amount of items teleported.
@@ -92,7 +92,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param amountTeleportedItems total amount teleported items.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder addTotalAmountTeleportedItems(long amountTeleportedItems);
+	ContainerWrite addTotalAmountTeleportedItems(long amountTeleportedItems);
 
 	/**
 	 * Set total amount of items sold.
@@ -100,7 +100,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param totalAmountItemsSold total amount items sold.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTotalAmountItemsSold(long totalAmountItemsSold);
+	ContainerWrite setTotalAmountItemsSold(long totalAmountItemsSold);
 
 	/**
 	 * Add amount of items sold.
@@ -108,7 +108,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param amountItemsSold total amount items sold.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder addTotalAmountItemsSold(long amountItemsSold);
+	ContainerWrite addTotalAmountItemsSold(long amountItemsSold);
 
 	/**
 	 * Set total amount of items crafted.
@@ -116,7 +116,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param totalCraftAmount total craft amount.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTotalCraftAmount(long totalCraftAmount);
+	ContainerWrite setTotalCraftAmount(long totalCraftAmount);
 
 	/**
 	 * add amount of item crafted.
@@ -124,7 +124,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param craftAmount total amount crafted.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder addTotalCraftAmount(long craftAmount);
+	ContainerWrite addTotalCraftAmount(long craftAmount);
 
 	/**
 	 * Set time on container before it reset the counter,
@@ -133,7 +133,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param timeBeforeReset the continer curently have.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTimeBeforeReset(long timeBeforeReset);
+	ContainerWrite setTimeBeforeReset(long timeBeforeReset);
 
 	/**
 	 * Set amount of item sold.
@@ -141,7 +141,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param totalSoldAmount total amount sold.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setTotalSoldAmount(double totalSoldAmount);
+	ContainerWrite setTotalSoldAmount(double totalSoldAmount);
 
 	/**
 	 * Set amount of item sold.
@@ -149,7 +149,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param soldAmount amount sold.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder addTotalSoldAmount(double soldAmount);
+	ContainerWrite addTotalSoldAmount(double soldAmount);
 
 	/**
 	 * Set if it shall be white or black list.
@@ -157,7 +157,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param filterWhiteBlack set it to true if you want white list.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setFilterWhiteBlack(boolean filterWhiteBlack);
+	ContainerWrite setFilterWhiteBlack(boolean filterWhiteBlack);
 
 	/**
 	 * Set if this container has a hopper
@@ -166,7 +166,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param hasHopperBelow set to true if is placed hopper below container
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setHasHopperBelow(boolean hasHopperBelow);
+	ContainerWrite setHasHopperBelow(boolean hasHopperBelow);
 
 	/**
 	 * Set filteritems.
@@ -174,7 +174,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param filterItems the items you want to add.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setFilterItems(FilterItems filterItems);
+	ContainerWrite setFilterItems(FilterItems filterItems);
 
 	/**
 	 * Save container contents.
@@ -182,7 +182,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param chestContents the itemstacks some shall be saved
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setChestContents(ItemStack[] chestContents);
+	ContainerWrite setChestContents(ItemStack[] chestContents);
 
 	/**
 	 * Set locations for the container has linked too.
@@ -190,7 +190,7 @@ public interface ContainerDataAPIBuilder {
 	 * @param linkContainerLinkedToLocation location of the container you has linked too.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setLinkContainerLinkedToLocation(List<Location> linkContainerLinkedToLocation);
+	ContainerWrite setLinkContainerLinkedToLocation(List<Location> linkContainerLinkedToLocation);
 
 	/**
 	 * Set amount of items continer have.
@@ -198,12 +198,12 @@ public interface ContainerDataAPIBuilder {
 	 * @param amountOfItems amount of items.
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder setAmountOfItems(BigInteger amountOfItems);
+	ContainerWrite setAmountOfItems(BigInteger amountOfItems);
 
 	/**
 	 * Build your data you have changed and add to cache.
 	 *
 	 * @return the instance of ContainerDataApi.
 	 */
-	ContainerDataApi build();
+	ContainerRead build();
 }

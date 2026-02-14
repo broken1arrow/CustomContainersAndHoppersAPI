@@ -259,4 +259,12 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      * @return {@code true} if the item is blocked by the filter, otherwise {@code false}
      */
     boolean isItemBlocked(@NotNull final ItemStack itemStack) ;
+
+    /**
+     * Returns the locked {@link ItemStack} for this container.
+     *
+     * @return the locked ItemStack, or an ItemStack of {@link org.bukkit.Material#AIR}
+     *         if lock mode is inactive or no locked item is set.
+     */
+    @NotNull ItemStack getItemLocked();
 }

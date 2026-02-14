@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * The container data set.
  */
-public interface ContainerDataApi {
+public interface ContainerRead {
 
 	/**
 	 * Get the player some place the container.
@@ -56,7 +56,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return amount of free placements.
 	 */
-	int getAmountPlaceForFree();
+	int getRemainingFreePlacements();
 
 	/**
 	 * Get the number of items the container have picked up.
@@ -164,7 +164,7 @@ public interface ContainerDataApi {
 	 *
 	 * @return builder instance.
 	 */
-	ContainerDataAPIBuilder getBuilder();
+	ContainerWrite getBuilder();
 
 	/**
 	 * Get the serilzed data from this file.
