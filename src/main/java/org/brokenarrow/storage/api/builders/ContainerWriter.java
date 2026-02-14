@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Interface to set and build the data.
  */
-public interface ContainerWrite extends ContainerRead{
+public interface ContainerWriter extends ContainerReader {
 
 	/**
 	 * Set the player some placed the container.
@@ -20,7 +20,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param playerId player uuid.
 	 * @return builder instance.
 	 */
-	ContainerWrite setPlayerId(UUID playerId);
+	ContainerWriter setPlayerId(UUID playerId);
 
 	/**
 	 * Set update of this container. It used when read yaml file for get right update.
@@ -28,7 +28,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param upgrade name, use a yaml key to get the update.
 	 * @return builder instance.
 	 */
-	ContainerWrite setUpgrade(String upgrade);
+	ContainerWriter setUpgrade(String upgrade);
 
 	/**
 	 * Set Chesttype of this container.
@@ -36,7 +36,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param typeOfContainer type of container.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTypeOfContainer(TypeOfContainer typeOfContainer);
+	ContainerWriter setTypeOfContainer(TypeOfContainer typeOfContainer);
 
 	/**
 	 * The filename for this container type.
@@ -44,7 +44,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param containerFileName the yaml filename the conainer shall take settings from.
 	 * @return builder instance.
 	 */
-	ContainerWrite setContainerFileName(String containerFileName);
+	ContainerWriter setContainerFileName(String containerFileName);
 
 	/**
 	 * Set number of pages for this container
@@ -52,7 +52,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param numberOfPages the amount of pages to set.
 	 * @return builder instance.
 	 */
-	ContainerWrite setNumberOfPages(int numberOfPages);
+	ContainerWriter setNumberOfPages(int numberOfPages);
 
 	/**
 	 * Set amount free placements.
@@ -60,7 +60,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param remainingFreePlacements you set.
 	 * @return builder instance.
 	 */
-	ContainerWrite setRemainingFreePlacements(int remainingFreePlacements);
+	ContainerWriter setRemainingFreePlacements(int remainingFreePlacements);
 
 	/**
 	 * Set amount of item container pickup.
@@ -68,7 +68,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param totalAmountPickedUp total amount picked up.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTotalAmountPickedUp(long totalAmountPickedUp);
+	ContainerWriter setTotalAmountPickedUp(long totalAmountPickedUp);
 
 	/**
 	 * Add amount of item container pickup.
@@ -76,7 +76,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param amountPickedUp total amount picked up.
 	 * @return builder instance.
 	 */
-	ContainerWrite addTotalAmountPickedUp(long amountPickedUp);
+	ContainerWriter addTotalAmountPickedUp(long amountPickedUp);
 
 	/**
 	 * Set total amount of items teleported.
@@ -84,7 +84,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param totalAmountTeleportedItems total amount teleported items.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTotalAmountTeleportedItems(long totalAmountTeleportedItems);
+	ContainerWriter setTotalAmountTeleportedItems(long totalAmountTeleportedItems);
 
 	/**
 	 * Add amount of items teleported.
@@ -92,7 +92,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param amountTeleportedItems total amount teleported items.
 	 * @return builder instance.
 	 */
-	ContainerWrite addTotalAmountTeleportedItems(long amountTeleportedItems);
+	ContainerWriter addTotalAmountTeleportedItems(long amountTeleportedItems);
 
 	/**
 	 * Set total amount of items sold.
@@ -100,7 +100,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param totalAmountItemsSold total amount items sold.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTotalAmountItemsSold(long totalAmountItemsSold);
+	ContainerWriter setTotalAmountItemsSold(long totalAmountItemsSold);
 
 	/**
 	 * Add amount of items sold.
@@ -108,7 +108,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param amountItemsSold total amount items sold.
 	 * @return builder instance.
 	 */
-	ContainerWrite addTotalAmountItemsSold(long amountItemsSold);
+	ContainerWriter addTotalAmountItemsSold(long amountItemsSold);
 
 	/**
 	 * Set total amount of items crafted.
@@ -116,7 +116,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param totalCraftAmount total craft amount.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTotalCraftAmount(long totalCraftAmount);
+	ContainerWriter setTotalCraftAmount(long totalCraftAmount);
 
 	/**
 	 * add amount of item crafted.
@@ -124,7 +124,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param craftAmount total amount crafted.
 	 * @return builder instance.
 	 */
-	ContainerWrite addTotalCraftAmount(long craftAmount);
+	ContainerWriter addTotalCraftAmount(long craftAmount);
 
 	/**
 	 * Set time on container before it reset the counter,
@@ -133,7 +133,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param timeBeforeReset the continer curently have.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTimeBeforeReset(long timeBeforeReset);
+	ContainerWriter setTimeBeforeReset(long timeBeforeReset);
 
 	/**
 	 * Set amount of item sold.
@@ -141,7 +141,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param totalSoldAmount total amount sold.
 	 * @return builder instance.
 	 */
-	ContainerWrite setTotalSoldAmount(double totalSoldAmount);
+	ContainerWriter setTotalSoldAmount(double totalSoldAmount);
 
 	/**
 	 * Set amount of item sold.
@@ -149,7 +149,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param soldAmount amount sold.
 	 * @return builder instance.
 	 */
-	ContainerWrite addTotalSoldAmount(double soldAmount);
+	ContainerWriter addTotalSoldAmount(double soldAmount);
 
 	/**
 	 * Set if it shall be white or black list.
@@ -157,7 +157,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param filterWhiteBlack set it to true if you want white list.
 	 * @return builder instance.
 	 */
-	ContainerWrite setFilterWhiteBlack(boolean filterWhiteBlack);
+	ContainerWriter setFilterWhiteBlack(boolean filterWhiteBlack);
 
 	/**
 	 * Set if this container has a hopper
@@ -166,7 +166,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param hasHopperBelow set to true if is placed hopper below container
 	 * @return builder instance.
 	 */
-	ContainerWrite setHasHopperBelow(boolean hasHopperBelow);
+	ContainerWriter setHasHopperBelow(boolean hasHopperBelow);
 
 	/**
 	 * Set filteritems.
@@ -174,7 +174,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param filterItems the items you want to add.
 	 * @return builder instance.
 	 */
-	ContainerWrite setFilterItems(FilterItems filterItems);
+	ContainerWriter setFilterItems(FilterItems filterItems);
 
 	/**
 	 * Save container contents.
@@ -182,7 +182,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param chestContents the itemstacks some shall be saved
 	 * @return builder instance.
 	 */
-	ContainerWrite setChestContents(ItemStack[] chestContents);
+	ContainerWriter setChestContents(ItemStack[] chestContents);
 
 	/**
 	 * Set locations for the container has linked too.
@@ -190,7 +190,7 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param linkContainerLinkedToLocation location of the container you has linked too.
 	 * @return builder instance.
 	 */
-	ContainerWrite setLinkContainerLinkedToLocation(List<Location> linkContainerLinkedToLocation);
+	ContainerWriter setLinkedLocations(List<Location> linkContainerLinkedToLocation);
 
 	/**
 	 * Set amount of items continer have.
@@ -198,12 +198,12 @@ public interface ContainerWrite extends ContainerRead{
 	 * @param amountOfItems amount of items.
 	 * @return builder instance.
 	 */
-	ContainerWrite setAmountOfItems(BigInteger amountOfItems);
+	ContainerWriter setAmountOfItems(BigInteger amountOfItems);
 
 	/**
 	 * Build your data you have changed and add to cache.
 	 *
 	 * @return the instance of ContainerDataApi.
 	 */
-	ContainerRead build();
+	ContainerReader build();
 }

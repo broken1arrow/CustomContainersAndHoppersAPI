@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.containerholder.cache;
 
+import org.brokenarrow.storage.api.builders.ContainerWriter;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
-import org.brokenarrow.storage.api.builders.ContainerRead;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -23,7 +23,7 @@ public interface InventoryHoldersCacheApi {
 	 * If you want to add new container and not want to override the old one.
      * <p>
      * Not recommended to be used if you are unsure if the world is loaded and
-     * not null, use the {@link #addInventoryHolder(BlockKeyResolver, ContainerRead, UUID, boolean)}
+     * not null, use the {@link #addInventoryHolder(BlockKeyResolver, ContainerWriter, UUID, boolean)}
      * as you can use the uuid for the world, and it will later on try to resolve the location.
 	 *
 	 * @param containerData the container data you set on this container.
@@ -31,7 +31,7 @@ public interface InventoryHoldersCacheApi {
 	 * @param containerOwner the owner of the container (not recommended to set this to null).
 	 * @param forceInData if you want to override the old container set it to true.
 	 */
-	void addInventoryHolder(@NotNull final ContainerRead containerData , @NotNull final Location location, @NotNull final UUID containerOwner, final boolean forceInData);
+	void addInventoryHolder(@NotNull final ContainerWriter containerData , @NotNull final Location location, @NotNull final UUID containerOwner, final boolean forceInData);
 
     /**
      * If you want to add new container and not want to override the old one.
@@ -41,7 +41,7 @@ public interface InventoryHoldersCacheApi {
      * @param containerOwner the owner of the container (not recommended to set this to null).
      * @param forceInData if you want to override the old container set it to true.
      */
-    void addInventoryHolder(BlockKeyResolver keyResolver, @NotNull ContainerRead containerData, @NotNull UUID containerOwner, boolean forceInData);
+    void addInventoryHolder(BlockKeyResolver keyResolver, @NotNull ContainerWriter containerData, @NotNull UUID containerOwner, boolean forceInData);
 
     /**
 	 * This method will create empty ContainerData instance.
@@ -63,7 +63,7 @@ public interface InventoryHoldersCacheApi {
 	 * @return Inventory holder instance you created if owner is null it will try get cached instance or null if it not exist.
 	 */
 	@Nullable
-	InventoryHolder createAndGetInventoryHolder(@NotNull final ContainerRead containerData , @NotNull final Location location, final UUID containerOwner);
+	InventoryHolder createAndGetInventoryHolder(@NotNull final ContainerWriter containerData , @NotNull final Location location, final UUID containerOwner);
 
     /**
 	 * Get the cached inventory holder of this container.
@@ -111,7 +111,7 @@ public interface InventoryHoldersCacheApi {
 	 * @param location the location the container is placed in
 	 * @return the container data or null if it does not exist.
 	 */
-	ContainerRead getContainerData(Location location);
+	ContainerWriter getContainerData(Location location);
 
     /**
      * Retrieve list of locations from the specific chunk.

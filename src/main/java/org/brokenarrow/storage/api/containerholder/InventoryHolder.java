@@ -1,11 +1,10 @@
 package org.brokenarrow.storage.api.containerholder;
 
-import org.brokenarrow.storage.api.builders.ContainerDataHandler;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
-import org.brokenarrow.storage.api.builders.ContainerRead;
+import org.brokenarrow.storage.api.builders.ContainerReader;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
-import org.brokenarrow.storage.api.builders.ContainerWrite;
+import org.brokenarrow.storage.api.builders.ContainerWriter;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
@@ -409,32 +408,54 @@ public interface InventoryHolder extends InventoryEvents {
      */
 
     /**
-     * Use this method to save the contents to {@link ContainerRead} cache.
+     * Use this method to save the contents to {@link ContainerReader} cache.
      */
     void saveToCache();
 
     /**
-     * Get containerdata.
+     * Get container data for this inventory holder.
      *
      * @return the data for the container.
      */
     @Nonnull
-    ContainerDataHandler getContainerData();
-
-     void updateContainerData(Consumer<ContainerWrite> callback);
-
-
-     void readContainerData(Consumer<ContainerRead> callback);
-
-
-     <T> T readContainerData(final Function<ContainerRead, T> callback);
+    ContainerWriter getContainerData();
 
     /**
-     * Set containerdata for this container.
+     * Provides scoped write access to this container.
+     * <p>
+     * The given consumer receives a {@link ContainerWriter} allowing
+     * controlled mutation of the container state.
+     *
+     * @param callback the write callback
+     */
+     void write(Consumer<ContainerWriter> callback);
+
+    /**
+     * Provides read-only access to this container.
+     * <p>
+     * The given consumer receives a {@link ContainerReader}
+     * which exposes only getter methods.
+     *
+     * @param callback the read callback
+     */
+     void read(Consumer<ContainerReader> callback);
+
+    /**
+     * Provides read-only access to this container and returns
+     * a computed result from the given function.
+     *
+     * @param callback the read callback
+     * @param <T> the return type
+     * @return the value returned by the function
+     */
+     <T> T read(final Function<ContainerReader, T> callback);
+
+    /**
+     * Set container data for this container.
      *
      * @param containerData The container data you want to set on this container.
      */
-    void setContainerData(@Nonnull final ContainerRead containerData);
+    void setContainerData(@Nonnull final ContainerWriter containerData);
 
     /*
      * ################################################

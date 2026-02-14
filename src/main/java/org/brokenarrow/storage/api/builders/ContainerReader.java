@@ -14,7 +14,7 @@ import java.util.UUID;
 /**
  * The container data set.
  */
-public interface ContainerRead {
+public interface ContainerReader {
 
 	/**
 	 * Get the player some place the container.
@@ -149,7 +149,7 @@ public interface ContainerRead {
 	 *
 	 * @return list of location or null/empty list of not exist any locations.
 	 */
-	List<Location> getLinkContainerLinkedToLocation();
+	List<Location> getLinkedLocations();
 
 	/**
 	 * Get total amount of items inside the container.
@@ -164,7 +164,7 @@ public interface ContainerRead {
 	 *
 	 * @return builder instance.
 	 */
-	ContainerWrite getBuilder();
+	ContainerWriter getBuilder();
 
 	/**
 	 * Get the serilzed data from this file.
