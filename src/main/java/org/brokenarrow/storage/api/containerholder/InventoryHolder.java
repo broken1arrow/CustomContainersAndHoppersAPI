@@ -1,10 +1,12 @@
 package org.brokenarrow.storage.api.containerholder;
 
+import org.broken.arrow.library.serialize.utility.converters.particleeffect.ParticleEffectAccessor;
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
-import org.brokenarrow.storage.api.builders.ContainerReader;
+import org.brokenarrow.storage.api.containerholder.modal.ContainerReader;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
-import org.brokenarrow.storage.api.builders.ContainerWriter;
+import org.brokenarrow.storage.api.containerholder.modal.ContainerSnapshot;
+import org.brokenarrow.storage.api.containerholder.modal.ContainerWriter;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
@@ -21,6 +23,7 @@ import javax.annotation.Nullable;
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -370,7 +373,7 @@ public interface InventoryHolder extends InventoryEvents {
      * @return particle or null.
      */
     @Nullable
-    ParticleEffectUtility<?> getEffectWhenRunTask();
+    ParticleEffectUtility<ParticleEffectAccessor> getEffectWhenRunTask();
 
     /**
      * When run a task. You can set how often this will be called with
@@ -408,9 +411,18 @@ public interface InventoryHolder extends InventoryEvents {
      */
 
     /**
-     * Use this method to save the contents to {@link ContainerReader} cache.
+     * Updates the internal state and returns an immutable snapshot
+     * representing the current data.
+     * <p>
+     * This method must be called from the main thread because it accesses
+     * inventory contents. If the container has no changes, it
+     * will return an empty {@link Optional}.
+     *
+     * @return an {@link Optional} containing an immutable {@link ContainerSnapshot}
+     *         of the current state, or empty if nothing has changed
      */
-    void saveToCache();
+    @Nonnull
+    Optional<ContainerSnapshot> getSnapshot();
 
     /**
      * Get container data for this inventory holder.

@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.broken.arrow.library.serialize.utility.converters.particleeffect.ParticleEffectAccessor;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 
 import java.util.List;
@@ -73,7 +74,7 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return the ParticleEffectUtility instance.
 	 */
-	ParticleEffectUtility<?> getParticleEffect();
+	ParticleEffectUtility<ParticleEffectAccessor> getParticleEffect();
 
 	/**
 	 * Get cost for upgrade the container.

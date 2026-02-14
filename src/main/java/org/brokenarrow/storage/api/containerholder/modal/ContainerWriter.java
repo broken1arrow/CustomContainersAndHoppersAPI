@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.builders;
+package org.brokenarrow.storage.api.containerholder.modal;
 
 import org.brokenarrow.storage.api.containerholder.util.FilterItems;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
@@ -200,10 +200,5 @@ public interface ContainerWriter extends ContainerReader {
 	 */
 	ContainerWriter setAmountOfItems(BigInteger amountOfItems);
 
-	/**
-	 * Build your data you have changed and add to cache.
-	 *
-	 * @return the instance of ContainerDataApi.
-	 */
-	ContainerReader build();
+
 }

@@ -122,6 +122,7 @@ public class FilterItems {
     /**
      * Check if is any items is set and not air.
      *
+     * @return Returns {@code true} if all items is not air.
      */
     public boolean isItemsSet() {
         if(this.itemStacks.isEmpty())

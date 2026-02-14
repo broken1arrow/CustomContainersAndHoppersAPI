@@ -104,7 +104,7 @@ public interface ChunkCache {
 
     /**
      * Loads a chunk snapshot directly into the cache for the
-     * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
+     * {@link org.brokenarrow.storage.api.containerholder.modal.InventoryHoldersCacheApi}
      * and not update the chunk cache.
      * <p>
      * This method does not require the chunk to be currently loaded.
@@ -115,7 +115,7 @@ public interface ChunkCache {
 
     /**
      * Loads a chunk snapshot directly into the cache for the
-     * {@link org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi}
+     * {@link org.brokenarrow.storage.api.containerholder.modal.InventoryHoldersCacheApi}
      * and not update the chunk cache.
      * <p>
      * This method does not require the chunk to be currently loaded.

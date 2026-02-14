@@ -8,7 +8,7 @@ import org.brokenarrow.storage.api.*;
 import org.brokenarrow.storage.api.builders.ChunkCache;
 import org.brokenarrow.storage.api.builders.DatabaseSettings;
 import org.brokenarrow.storage.api.builders.PreferenceSettingsRegistryApi;
-import org.brokenarrow.storage.api.containerholder.cache.InventoryHoldersCacheApi;
+import org.brokenarrow.storage.api.containerholder.modal.InventoryHoldersCacheApi;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
 import org.brokenarrow.storage.api.containerholder.runnable.ContainerTaskApi;

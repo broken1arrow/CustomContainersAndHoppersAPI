@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.broken.arrow.library.serialize.utility.converters.particleeffect.ParticleEffectAccessor;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Material;
@@ -29,21 +30,21 @@ public interface ContainerSettingsApi {
 	boolean isUpdateBlock();
 
 	/**
-	 * Get sound type when place contanier.
+	 * Get sound type when place container.
 	 *
 	 * @return sound enum name.
 	 */
 	org.bukkit.Sound getSoundWhenPlaceContainer();
 
 	/**
-	 * Get sound type when open contanier.
+	 * Get sound type when open container.
 	 *
 	 * @return sound enum name.
 	 */
 	org.bukkit.Sound getSoundWhenOpenContainer();
 
 	/**
-	 * Get sound type when close contanier.
+	 * Get sound type when close container.
 	 *
 	 * @return sound enum name.
 	 */
@@ -98,7 +99,7 @@ public interface ContainerSettingsApi {
 	 *
 	 * @return the ParticleEffectUtility instance.
 	 */
-	ParticleEffectUtility<?> getParticleEffect();
+	ParticleEffectUtility<ParticleEffectAccessor> getParticleEffect();
 
 	/**
 	 * Get how long time it will show border in seconds.

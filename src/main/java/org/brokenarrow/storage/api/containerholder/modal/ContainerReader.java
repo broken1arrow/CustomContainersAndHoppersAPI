@@ -1,4 +1,4 @@
-package org.brokenarrow.storage.api.builders;
+package org.brokenarrow.storage.api.containerholder.modal;
 
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfFilter;
@@ -138,7 +138,7 @@ public interface ContainerReader {
 	FilterItems getFilter();
 
 	/**
-	 * Get container contents (itemstacks).
+	 * Get container contents (itemStacks).
 	 *
 	 * @return itemstacks or air if no item exist.
 	 */
@@ -158,13 +158,6 @@ public interface ContainerReader {
 	 */
 	BigInteger getAmountOfItems();
 
-	/**
-	 * Get instance of the builder class to get set values
-	 * and change old values.
-	 *
-	 * @return builder instance.
-	 */
-	ContainerWriter getBuilder();
 
 	/**
 	 * Get the serilzed data from this file.
