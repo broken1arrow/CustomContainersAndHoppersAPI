@@ -174,3 +174,5 @@ buildSrc/*
 CustomContainersAndHoppersAPI/build/*
 build/docs/javadoc/*
 test/
+build/publications/maven/module.json
+build/publications/maven/pom-default.xml
