@@ -20,8 +20,10 @@ public interface DatabaseDataHandler {
 
 	/**
 	 * Saves all data from the cache to the database. This method saves data for all tables.
+     *
+     * @param disabling Set this true if you not want the runnable task to run.
 	 */
-	void saveAll();
+	void saveAll(final boolean disabling);
 
 	/**
 	 * Sets the tables in the cache.

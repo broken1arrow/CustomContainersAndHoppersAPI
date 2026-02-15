@@ -107,7 +107,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 
 
 	/**
-	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
+	 * Set´s the amount and itemStack to cache (will only save 1 item to cache).
 	 * <p>
 	 * See also this, for see what I use to set data it in cache.
 	 *
@@ -116,7 +116,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	void addItemsAmountInCache(ItemStack itemStack);
 
 	/**
-	 * Set´s the amount and itemstack to cache (will only save 1 item to cache).
+	 * Set´s the amount and itemStack to cache (will only save 1 item to cache).
 	 * <p>
 	 * See also this, for see what I use to set data it in cache.
 	 * <p>&nbsp;</p>
@@ -125,9 +125,8 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	 */
 	void addItemsAmountInCache(final ItemStack itemStack, final long amount);
 
-
 	/**
-	 * Create inventory/inventorys if not exist.
+	 * Create inventory/inventories if not exist.
 	 *
 	 * @param player some open inventory.
 	 * @return the inventory if it could create one.
@@ -172,7 +171,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	 * @param subtract true if you want to remove items.
 	 * @return the amount of items after add or subtract.
 	 */
-	BigInteger addSubtractAmount(final BigInteger amount, final boolean subtract);
+	BigInteger alterAmount(final BigInteger amount, final boolean subtract);
 
 	/**
 	 * Get the amount of items inside the container.
@@ -229,14 +228,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	 */
 	void updateInventoryTitle(final BigInteger amounts, final ItemStack cursor);
 
-	/**
-	 * Save item and the amount to cache. Will override old
-	 * amount and item added inside the container.
-	 *
-	 * @param itemStack the item you want to add.
-	 * @param amount    amount you want to add in the container.
-	 */
-	void saveToCache(final ItemStack itemStack, final int amount);
+
     /**
      * Determines whether the container is currently operating in lock mode.
      * <p>
