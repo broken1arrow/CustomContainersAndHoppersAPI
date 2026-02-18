@@ -60,7 +60,7 @@ public interface InventoryHolder extends InventoryEvents {
      * For the StorageUnit this will return different type of array because
      * it not stores items inside the inventory. See {@link  InventoryHolderStorageUnit#getContents()}
      *
-     * @return items from curent gui you close, will save all pages.
+     * @return items from current gui you close, will save all pages.
      */
     @Nonnull
     ItemStack[] getContents();
@@ -86,6 +86,11 @@ public interface InventoryHolder extends InventoryEvents {
      */
     @Nonnull
     Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
+
+    /**
+     * Clear the inventory, remove all items inside the inventory.
+     */
+    void clear();
 
     /**
      * Get a Inventory for a container. Will return first
@@ -520,6 +525,8 @@ public interface InventoryHolder extends InventoryEvents {
      */
     @Nullable
     String getTitle(String text, UUID viewer);
+
+
 }
 
 

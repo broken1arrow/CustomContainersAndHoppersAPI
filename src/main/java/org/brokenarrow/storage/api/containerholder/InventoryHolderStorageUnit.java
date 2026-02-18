@@ -14,33 +14,6 @@ import java.util.Map;
  */
 public interface InventoryHolderStorageUnit extends InventoryHolder {
 
-	/**
-	 * Get items in the container. You have to define
-	 * the amount you want to get from container.
-	 * <p>
-	 * For check amount inside use {@link #getAmount()}
-	 * <p>
-	 * The idea behind this is the huge amount some can be stored
-	 * in this container and to reduce the strain on the server
-	 * it only creates stacks after the amount you specify.
-	 * <p>
-	 * It will check if the amount you want exist or
-	 * will return empty ItemStack array. Also You can´t get more an
-	 * 4000 items if you not set bypassLimit to true.
-	 *
-	 * @param amount      you want to get from the container.
-	 * @param bypassLimit set to true if you want to force more than 4000 items. If you set the amount too high it will cause problems.
-	 * @return array if itemStack´s or null if a container is empty or you specify number bigger a contents container have.
-	 */
-	ItemStack[] getContents(int amount, boolean bypassLimit);
-
-	/**
-	 * This method return ether max amount left or max stacksize.
-	 *
-	 * @return one cloned item in the array with amount left or max stacksize.
-	 */
-	@Override
-	@NotNull ItemStack[] getContents();
 
     /**
      * Sets the item and its amount in this container.
@@ -77,6 +50,38 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
     @Override
     @NotNull
     Map<Integer, ItemStack> addItems(final ItemStack... itemStacks);
+
+    /**
+     * Get items in the container. You have to define
+     * the amount you want to get from container.
+     * <p>
+     * For check amount inside use {@link #getAmount()}
+     * <p>
+     * The idea behind this is the huge amount some can be stored
+     * in this container and to reduce the strain on the server
+     * it only creates stacks after the amount you specify.
+     * <p>
+     * It will check if the amount you want to exist or
+     * will return empty ItemStack array. Also, you can´t get more than a
+     * double chest of items if you not set bypassLimit to true.
+     *
+     * @param amount      you want to get from the container.
+     * @param bypassLimit set to true if you want to force more than 4000 items. If you set the amount too high it will cause problems.
+     * @return array if itemStack´s or null if a container is empty, or you specify number bigger a contents container have.
+     */
+    ItemStack[] getContents(int amount, boolean bypassLimit);
+
+    /**
+     * This method return a double chest of items if it more than what fits
+     * inside that container or if it below it will fill the slots with the items left.
+     * Due to how this container works, this is just copy and will not alter the actual
+     * content inside the chest.
+     *
+     * @return one cloned item in the array with amount left or max stack size.
+     */
+    @Override
+    @NotNull
+    ItemStack[] getContents();
 
 	/**
 	 * This will convert items to itemstacks.

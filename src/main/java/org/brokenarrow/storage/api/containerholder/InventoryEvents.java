@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.containerholder;
 
+import org.brokenarrow.storage.api.containerholder.util.Reason;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
@@ -113,4 +114,11 @@ public interface InventoryEvents {
      */
     boolean onMoveItem(@Nonnull final Inventory destinationInv, @Nonnull InventoryMoveItemEvent event, boolean pushItem);
 
+    /**
+     * When it removes the task when chunk is no longer loaded or
+     * the time is set below zero.
+     *
+     * @param reason The reason for the removal.
+     */
+    void removedFromTask(@Nonnull final Reason reason);
 }
