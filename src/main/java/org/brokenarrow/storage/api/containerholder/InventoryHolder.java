@@ -93,7 +93,7 @@ public interface InventoryHolder extends InventoryEvents {
     void clear();
 
     /**
-     * Get a Inventory for a container. Will return first
+     * Get an Inventory for a container. Will return first
      * page always.
      *
      * @return return first inventory or null if it not contains any inventories.

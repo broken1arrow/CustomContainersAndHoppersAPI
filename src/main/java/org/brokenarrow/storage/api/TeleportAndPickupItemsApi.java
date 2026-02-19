@@ -1,29 +1,22 @@
 package org.brokenarrow.storage.api;
 
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.teleport.SuctionItemHandler;
+import org.brokenarrow.storage.api.containerholder.teleport.TeleportItemHandler;
 import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper;
-import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper.Builder;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * This build data to set in cache when either teleport or pick up items to a container.
  */
 public interface TeleportAndPickupItemsApi {
 
-	/**
-	 * Build data you want to set in the cache.
-	 * This method do NOT set data I cache, only help method.
-	 *
-	 * @param builder the build you want to set.
-	 * @return teleportWrapper with your data set.
-	 */
-	@Nonnull
-	TeleportWrapper buildData(@Nonnull final Builder builder);
 
 	/**
 	 * Use this method to start teleport or suction task.
@@ -35,31 +28,17 @@ public interface TeleportAndPickupItemsApi {
 	void linkedContainerTask(@Nonnull final InventoryHolder holder);
 
 	/**
-	 * Remove all linked containers inventory's and locations from the cache.
-	 */
-	void removeAllCachedLinkContainerInventors();
-
-
-	/**
-	 * Save data to cache.
-	 *
-	 * @param builder the build you want to set.
-	 */
-	void saveToCache(@Nonnull final Builder builder);
-
-	/**
-	 * Save data to cache.
-	 *
-	 * @param teleportWrapper data you want to set to cache.
-	 */
-	void saveToCache(@Nonnull final TeleportWrapper teleportWrapper);
-
-	/**
 	 * Remove the Suction/link container's inventory from the cache.
 	 */
-	void removeCachedContainerInventory();
+	void removeCachedInventories();
 
-	/**
+    void setTeleportHandler(@Nonnull TeleportItemHandler teleportHandler);
+
+    void setSuctionHandler(SuctionItemHandler suctionHandler);
+
+    void saveToCache(@Nonnull Consumer<TeleportWrapper> consumer);
+
+    /**
 	 * Add linked containers inventory's and locations to cache.
 	 *
 	 * This is tread safe method to use.
@@ -79,7 +58,7 @@ public interface TeleportAndPickupItemsApi {
 
 	/**
 	 * Set teleport wrapper to null, and you need set new one, you can use this method to set a new teleport wrapper
-	 * use @link {@link #saveToCache(org.brokenarrow.storage.api.util.builderclass.TeleportWrapper)}.
+	 * use @link {@link #saveToCache(Consumer)}.
 	 * <p>
 	 * Or you can also use {@link #linkedContainerTask(InventoryHolder)} if you want to
 	 * run suction and teleport task, it will set a new teleport wrapper if it is null.

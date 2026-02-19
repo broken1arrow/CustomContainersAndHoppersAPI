@@ -4,32 +4,76 @@ import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Wrapper class for teleport items.
  */
 public class TeleportWrapper {
-	private final Map<Location, Inventory> cachedLinkedInventory;
-	private final Inventory cachedContainerInventory;
-	private final int locationNumberInList;
-	private final int lastNumberInList;
-	private final boolean teleportedItems;
-	private final Builder builder;
+	private  Map<Location, Inventory> cachedLinkedInventory = new HashMap<>();
+	private  Inventory cachedContainerInventory;
+	private  int locationNumberInList;
+	private  int lastNumberInList;
+	private  boolean teleportedItems;
 
-	/**
-	 * Constructs TeleportWrapper object.
-	 */
-	private TeleportWrapper(final Builder builder) {
-		this.cachedLinkedInventory = builder.cachedLinkedInventory;
-		this.cachedContainerInventory = builder.cachedContainerInventory;
-		this.locationNumberInList = builder.locationNumberInList;
-		this.lastNumberInList = builder.lastNumberInList;
-		this.teleportedItems = builder.teleportedItems;
-		this.builder = builder;
-	}
+    /**
+     * Sets the cached linked inventory map.
+     *
+     * @param cachedLinkedInventory The map containing cached linked inventories.
+     * @return The builder instance.
+     */
+    public TeleportWrapper setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
+        this.cachedLinkedInventory = cachedLinkedInventory;
+        return this;
+    }
 
-	/**
+    /**
+     * Sets the cached container inventory.
+     *
+     * @param cachedContainerInventory The cached container inventory.
+     * @return The builder instance.
+     */
+    public TeleportWrapper setCachedContainerInventory(final Inventory cachedContainerInventory) {
+        this.cachedContainerInventory = cachedContainerInventory;
+        return this;
+    }
+
+    /**
+     * Sets the location number in the list.
+     *
+     * @param locationNumberInList The location number in the list.
+     * @return The builder instance.
+     */
+    public TeleportWrapper setLocationNumberInList(final int locationNumberInList) {
+        this.locationNumberInList = locationNumberInList;
+        return this;
+    }
+
+    /**
+     * Sets the last number in the list.
+     *
+     * @param lastNumberInList The last number in the list.
+     * @return The builder instance.
+     */
+    public TeleportWrapper setLastNumberInList(final int lastNumberInList) {
+        this.lastNumberInList = lastNumberInList;
+        return this;
+    }
+
+    /**
+     * Sets whether items were teleported.
+     *
+     * @param teleportedItems True if items were teleported, false otherwise.
+     * @return The builder instance.
+     */
+    public TeleportWrapper setTeleportedItems(final boolean teleportedItems) {
+        this.teleportedItems = teleportedItems;
+        return this;
+    }
+
+
+    /**
 	 * Gets the last number in the list.
 	 *
 	 * @return The last number in the list.
@@ -69,7 +113,7 @@ public class TeleportWrapper {
 	/**
 	 * The map with all locations and inventory's for this
 	 * link and suction container.
-	 *
+	 * <p>
 	 * This is not a tread safe map.
 	 *
 	 * @return the map with all cached inventory's.
@@ -93,91 +137,6 @@ public class TeleportWrapper {
 		if (linkedInventors != null)
 			return linkedInventors.get(location);
 		return null;
-	}
-
-	/**
-	 * Gets the builder instance for creating TeleportWrapper objects.
-	 *
-	 * @return The builder instance.
-	 */
-	public Builder getBuilder() {
-		return builder;
-	}
-
-	/**
-	 * Builder class for constructing TeleportWrapper objects.
-	 */
-	public static class Builder {
-
-		private Map<Location, Inventory> cachedLinkedInventory;
-		private Inventory cachedContainerInventory;
-		private int locationNumberInList;
-		private int lastNumberInList;
-		private boolean teleportedItems;
-
-		/**
-		 * Sets the cached linked inventory map.
-		 *
-		 * @param cachedLinkedInventory The map containing cached linked inventories.
-		 * @return The builder instance.
-		 */
-		public Builder setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
-			this.cachedLinkedInventory = cachedLinkedInventory;
-			return this;
-		}
-
-		/**
-		 * Sets the cached container inventory.
-		 *
-		 * @param cachedContainerInventory The cached container inventory.
-		 * @return The builder instance.
-		 */
-		public Builder setCachedContainerInventory(final Inventory cachedContainerInventory) {
-			this.cachedContainerInventory = cachedContainerInventory;
-			return this;
-		}
-
-		/**
-		 * Sets the location number in the list.
-		 *
-		 * @param locationNumberInList The location number in the list.
-		 * @return The builder instance.
-		 */
-		public Builder setLocationNumberInList(final int locationNumberInList) {
-			this.locationNumberInList = locationNumberInList;
-			return this;
-		}
-
-		/**
-		 * Sets the last number in the list.
-		 *
-		 * @param lastNumberInList The last number in the list.
-		 * @return The builder instance.
-		 */
-		public Builder setLastNumberInList(final int lastNumberInList) {
-			this.lastNumberInList = lastNumberInList;
-			return this;
-		}
-
-		/**
-		 * Sets whether items were teleported.
-		 *
-		 * @param teleportedItems True if items were teleported, false otherwise.
-		 * @return The builder instance.
-		 */
-		public Builder setTeleportedItems(final boolean teleportedItems) {
-			this.teleportedItems = teleportedItems;
-			return this;
-		}
-
-		/**
-		 * Builds a TeleportWrapper object based on the builder configuration.
-		 *
-		 * @return The constructed TeleportWrapper object.
-		 */
-		public TeleportWrapper build() {
-			return new TeleportWrapper(this);
-		}
 	}
 
 }
