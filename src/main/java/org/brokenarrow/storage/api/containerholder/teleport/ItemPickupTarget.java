@@ -6,6 +6,7 @@ import javax.annotation.Nonnull;
 import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public interface ItemPickupTarget {
 
@@ -13,5 +14,5 @@ public interface ItemPickupTarget {
 
     SuctionRange getSuctionRange();
 
-    void filter(Function<ItemStack,Boolean> item);
+    void filter(Predicate<ItemStack> item);
 }
