@@ -99,7 +99,7 @@ public interface InventoryHolder extends InventoryEvents {
      * @return return first inventory or null if it not contains any inventories.
      */
     @Nullable
-    Inventory getInventory();
+    Inventory getPage();
 
     /**
      * Get size some are set inside yml file.
@@ -120,39 +120,35 @@ public interface InventoryHolder extends InventoryEvents {
      */
 
     /**
-     * Get a Inventory for a container. Type what page you want to get.
+     * Get the page you want to open.
      *
-     * @param page of the inventory.
-     * @return return inventory you has requested
-     * or null if it not find the inventory.
+     * @param page the page you want to open of this container.
+     * @return inventory on that page number you put in.
      */
-    @javax.annotation.Nullable
-    Inventory getInventory(final int page);
+    @Nullable
+    Inventory getPage(final int page);
 
     /**
-     * Get a Inventory for a container.
+     * Get an Inventory for a container.
      *
-     * @return return inventoy on location you has requested
-     * or null if it not find the gui.
+     * @return return the list of inventories set.
      */
-    List<Inventory> getInventorys();
+    List<Inventory> getInventories();
 
     /**
-     * Check if it has loaded inventorys contents.
+     * Check if it has loaded inventories contents.
      *
      * @return true if it has loaded items to container.
      */
     boolean isLoadedInventory();
 
-
     /**
-     * If it has set max amount if pages/inventorys fir this container.
+     * If it has set max amount if pages/inventories for this container.
      *
      * @param numberOfPages Check if it set x amount of pages.
      * @return true if it has set max amount of pages.
      */
-    boolean hasSetMaxInventorys(int numberOfPages);
-
+    boolean hasSetMaxInventories(int numberOfPages);
 
     /**
      * Create an inventory for containers.

@@ -30,7 +30,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      * @param itemStack the item to set
      */
     @Override
-    public void setItem(final int index, final ItemStack itemStack);
+     void setItem(final int index, final ItemStack itemStack);
 
     /**
      * Attempts to add the given items to this container.
@@ -103,12 +103,20 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
 	void dropItemsOnBlockBreak(ItemStack itemStack);
 
 	/**
-	 * Check if the item can be placeded inside the chest.
+	 * Check if the item can be placed inside the chest.
 	 *
 	 * @param itemStack the items some hopper or player try to add.
 	 * @return true if you can place items inside.
 	 */
 	boolean canPlaceItemInsideContainer(ItemStack itemStack);
+
+    /**
+     * Check if the item can be placed inside the chest.
+     *
+     * @param stack the itemStack added to the container.
+     * @return true if you can place items inside.
+     */
+    boolean canAcceptItemType(ItemStack stack);
 
 
 	/**
@@ -264,4 +272,6 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      *         if lock mode is inactive or no locked item is set.
      */
     @NotNull ItemStack getItemLocked();
+
+
 }

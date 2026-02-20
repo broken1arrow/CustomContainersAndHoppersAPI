@@ -8,7 +8,8 @@ import javax.annotation.Nonnull;
 @FunctionalInterface
 public interface SuctionItemHandler {
 
-   boolean apply(@Nonnull final ItemStack itemOnGround,@Nonnull final Entity itemStackEntity,@Nonnull final SuctionRange suctionRange);
+   void apply(ItemPickupTarget itemPickupHelper);
+
 
 
 }

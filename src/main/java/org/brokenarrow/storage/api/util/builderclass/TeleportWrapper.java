@@ -16,6 +16,7 @@ public class TeleportWrapper {
 	private  int locationNumberInList;
 	private  int lastNumberInList;
 	private  boolean teleportedItems;
+    private int addCurrentTeleportedItems;
 
     /**
      * Sets the cached linked inventory map.
@@ -139,4 +140,16 @@ public class TeleportWrapper {
 		return null;
 	}
 
+    public void addCurrentTeleportedItems(final int add) {
+        this.addCurrentTeleportedItems += add;
+
+    }
+
+    public int getAddCurrentTeleportedItems() {
+        return addCurrentTeleportedItems;
+    }
+
+    public void clearAddCurrentTeleportedItems() {
+        addCurrentTeleportedItems = 0;
+    }
 }

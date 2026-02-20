@@ -6,6 +6,7 @@ import org.brokenarrow.storage.api.containerholder.teleport.TeleportItemHandler;
 import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -17,26 +18,25 @@ import java.util.function.Consumer;
  */
 public interface TeleportAndPickupItemsApi {
 
-
-	/**
-	 * Use this method to start teleport or suction task.
-	 * It will take the settings from the container yml file to
-	 * see if it has option to pick up and teleport items.
-	 *
-	 * @param holder the inventory holder to get all data for this container.
-	 */
-	void linkedContainerTask(@Nonnull final InventoryHolder holder);
-
-	/**
-	 * Remove the Suction/link container's inventory from the cache.
-	 */
-	void removeCachedInventories();
+    /**
+     * Use this method to start teleport or suction task.
+     * It will take the settings from the container yml file to
+     * see if it has option to pick up and teleport items.
+     *
+     * @param holder the inventory holder to get all data for this container.
+     */
+    void linkedContainerTask(@NotNull InventoryHolder holder, Consumer<TeleportAndPickupItemsApi> callback);
 
     void setTeleportHandler(@Nonnull TeleportItemHandler teleportHandler);
 
     void setSuctionHandler(SuctionItemHandler suctionHandler);
 
     void saveToCache(@Nonnull Consumer<TeleportWrapper> consumer);
+
+    /**
+     * Remove the Suction/link container's inventory from the cache.
+     */
+    void removeCachedInventories();
 
     /**
 	 * Add linked containers inventory's and locations to cache.
@@ -60,7 +60,7 @@ public interface TeleportAndPickupItemsApi {
 	 * Set teleport wrapper to null, and you need set new one, you can use this method to set a new teleport wrapper
 	 * use @link {@link #saveToCache(Consumer)}.
 	 * <p>
-	 * Or you can also use {@link #linkedContainerTask(InventoryHolder)} if you want to
+	 * Or you can also use {@link #linkedContainerTask(InventoryHolder,Consumer)} if you want to
 	 * run suction and teleport task, it will set a new teleport wrapper if it is null.
 	 *
 	 * This is tread safe method to use.
