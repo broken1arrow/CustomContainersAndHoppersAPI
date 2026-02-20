@@ -202,4 +202,6 @@ public interface ContainerSettingsApi {
 	boolean isPlaceholderItemStacksGlow();
 
     String getLinkMenu();
+
+    String getFilterMenu();
 }

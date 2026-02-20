@@ -48,7 +48,7 @@ public class FilterItems {
 	 * @return array of itemstacks.
 	 */
 	public ItemStack[] getItemStacks() {
-		return this.itemStacks.toArray(new ItemStack[itemStacks.size()]);
+		return this.itemStacks.toArray(new ItemStack[0]);
 	}
 
 	/**
@@ -77,7 +77,14 @@ public class FilterItems {
 	public List<ItemStack> clonedFilterItems() {
 		return this.itemStacks.stream().map(ItemStack::new).collect(Collectors.toList());
 	}
-
+    /**
+     * This method check if the stacks is set or the list is empty.
+     *
+     * @return Returns true if the list is empty.
+     */
+    public boolean isEmpty() {
+        return this.itemStacks.isEmpty();
+    }
 	/**
 	 * Add the item to the list.
 	 *
