@@ -3,6 +3,7 @@ package org.brokenarrow.storage.api;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.brokenarrow.storage.api.containerholder.teleport.SuctionItemHandler;
 import org.brokenarrow.storage.api.containerholder.teleport.TeleportItemHandler;
+import org.brokenarrow.storage.api.containerholder.teleport.TeleportTarget;
 import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
@@ -14,102 +15,137 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 /**
- * This build data to set in cache when either teleport or pick up items to a container.
+ * API for handling item teleportation and ground item suction
+ * linked to a container.
+ * <p>
+ * Implementations manage cached container data and execute
+ * teleport or pickup logic based on container configuration.
  */
 public interface TeleportAndPickupItemsApi {
 
     /**
-     * Use this method to start teleport or suction task.
-     * It will take the settings from the container yml file to
-     * see if it has option to pick up and teleport items.
+     * Starts the linked container task (teleportation and/or suction).
+     * <p>
+     * The container configuration (YAML) determines whether
+     * teleporting and/or item pickup is enabled.
      *
-     * @param holder the inventory holder to get all data for this container.
+     * @param holder   the inventory holder representing the source container
+     * @param callback callback invoked after the task initializes
      */
     void linkedContainerTask(@NotNull InventoryHolder holder, Consumer<TeleportAndPickupItemsApi> callback);
 
+    /**
+     * Sets the handler responsible for teleporting items.
+     * <p>
+     * The handler is executed after validating that the target container
+     * can accept the items.
+     * <p>
+     * The {@link TeleportTarget} provides access to both vanilla and custom
+     * inventories. Always check {@link TeleportTarget#isCustom()} before
+     * directly accessing a custom inventory implementation, as doing so
+     * without validation may cause errors.
+     *
+     * @param teleportHandler handler responsible for processing item teleportation
+     */
     void setTeleportHandler(@Nonnull TeleportItemHandler teleportHandler);
 
+    /**
+     * Sets the handler responsible for suction (picking up) ground items.
+     * <p>
+     * This method is executed only for valid item entities (not mobs).
+     * It may run multiple times if multiple item stacks are processed.
+     *
+     * @param suctionHandler handler responsible for processing item pickup
+     */
     void setSuctionHandler(SuctionItemHandler suctionHandler);
 
+    /**
+     * Saves data to the cache using a {@link TeleportWrapper}.
+     *
+     * @param consumer consumer used to modify or initialize the teleport wrapper
+     */
     void saveToCache(@Nonnull Consumer<TeleportWrapper> consumer);
 
     /**
-     * Remove the Suction/link container's inventory from the cache.
+     * Removes this container’s cached inventory data.
      */
     void removeCachedInventories();
 
     /**
-	 * Add linked containers inventory's and locations to cache.
-	 *
-	 * This is tread safe method to use.
-	 *
-	 * @param linkedTo the location you want to add to the link and suction container.
-	 */
+     * Adds a linked container's inventory and location to the cache.
+     * <p>
+     * This method is thread-safe.
+     *
+     * @param linkedTo the location of the linked container
+     */
 	void addCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
 
-	/**
-	 * Remove linked containers inventory's and locations from the cache.
-	 *
-	 * This is tread safe method to use.
-	 *
-	 * @param linkedTo the location you want to remove from the link and suction container.
-	 */
+    /**
+     * Removes a linked container's inventory and location from the cache.
+     * <p>
+     * This method is thread-safe.
+     *
+     * @param linkedTo the location of the linked container
+     */
 	void removeCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
 
-	/**
-	 * Set teleport wrapper to null, and you need set new one, you can use this method to set a new teleport wrapper
-	 * use @link {@link #saveToCache(Consumer)}.
-	 * <p>
-	 * Or you can also use {@link #linkedContainerTask(InventoryHolder,Consumer)} if you want to
-	 * run suction and teleport task, it will set a new teleport wrapper if it is null.
-	 *
-	 * This is tread safe method to use.
-	 */
+    /**
+     * Clears the current {@link TeleportWrapper}.
+     * <p>
+     * After calling this method, a new wrapper must be set using
+     * {@link #saveToCache(Consumer)}.
+     * <p>
+     * Alternatively, calling {@link #linkedContainerTask(InventoryHolder, Consumer)}
+     * will automatically create a new wrapper if none exists.
+     * <p>
+     * This method is thread-safe.
+     */
 	void clearTeleportWrapper();
 
-	/**
-	 * Get the map of stored inventory's on location. Is a snapshot of inventory/inventory's
-	 * on the containers you have linked from your hopper/chest or barrel. Is use less resources
-	 * when you cache it instead of call getState() all the time.
-	 * <p>
-	 * Keep in main this is only temporary snapshot, if chunk this container is located to get unloaded
-	 * you have to replace with a new snapshot of the inventory.
-	 *
-	 * This is not a tread safe map.
-	 *
-	 * @return map with all cached data of current stored location with a snapshot of inventory.
-	 */
+    /**
+     * Returns a snapshot of cached linked container inventories.
+     * <p>
+     * This snapshot reduces resource usage compared to repeatedly calling
+     * {@code getState()} on containers.
+     * <p>
+     * Note: The snapshot is temporary. If the chunk containing a linked
+     * container unloads, the snapshot becomes invalid and must be refreshed.
+     * <p>
+     * This map is NOT thread-safe.
+     *
+     * @return a map of linked container locations to their cached inventory snapshots,
+     *         or {@code null} if none exist.
+     */
 	@Nullable
 	Map<Location, Inventory> getCachedLinkedInventors();
 
-	/**
-	 * Get all data cached for the link and suction container.
-	 *
-	 * @return the teleport wrapper, if it set.
-	 */
+    /**
+     * Returns the cached {@link TeleportWrapper}.
+     *
+     * @return the teleport wrapper, or {@code null} if not set
+     */
 	@Nullable
 	TeleportWrapper getTeleportWrapper();
 
-	/**
-	 * Get the number of location it will process next, in the array for the containers some are linked
-	 * to Suction/link container.
-	 *
-	 * @return the number it will process next or -1 if it are null.
-	 */
+    /**
+     * Returns the index of the next linked container to be processed.
+     *
+     * @return the next index to process, or {@code -1} if no containers exist
+     */
 	int getNumberInList();
 
-	/**
-	 * Get if items has successfully teleported items to container.
-	 *
-	 * @return true if the item has been moved.
-	 */
+    /**
+     * Indicates whether items were successfully teleported.
+     *
+     * @return {@code true} if at least one item was moved
+     */
 	boolean isTeleportedItems();
 
-	/**
-	 * Get if this container is added to cache.
-	 *
-	 * @return true if the container exist.
-	 */
+    /**
+     * Indicates whether this container is currently stored in the cache.
+     *
+     * @return {@code true} if the container exists in the cache
+     */
 	boolean isLocationInCache();
 
 }

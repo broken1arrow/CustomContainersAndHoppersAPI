@@ -61,7 +61,7 @@ public interface ContainerSettingsApi {
 	 * Get type of block it shall use for visualization (it is used to show
 	 * what container you have linked to).
 	 *
-	 * @return Matrial enum name.
+	 * @return Material enum name.
 	 */
 	Material getBlockVisualizationBlockTypeTo();
 
@@ -69,7 +69,7 @@ public interface ContainerSettingsApi {
 	 * Get type of block it shall use for visualization (it is used to show
 	 * what container you have linked from).
 	 *
-	 * @return Matrial enum name.
+	 * @return Material enum name.
 	 */
 	Material getBlockVisualizationBlockTypeFrom();
 
@@ -201,4 +201,5 @@ public interface ContainerSettingsApi {
 	 */
 	boolean isPlaceholderItemStacksGlow();
 
+    String getLinkMenu();
 }

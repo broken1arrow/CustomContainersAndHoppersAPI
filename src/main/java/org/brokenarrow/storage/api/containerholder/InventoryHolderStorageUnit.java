@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.containerholder;
 
+import org.brokenarrow.storage.api.TeleportAndPickupItemsApi;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -274,4 +275,5 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
     @NotNull ItemStack getItemLocked();
 
 
+    TeleportAndPickupItemsApi getTeleportAndPickupItems();
 }

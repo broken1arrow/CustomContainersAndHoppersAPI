@@ -158,6 +158,13 @@ public interface ContainerReader {
 	 */
 	BigInteger getAmountOfItems();
 
+    /**
+     * Returns the minimum number of items that must remain
+     * in this container after a transfer operation.
+     *
+     * @return  the reserve amount, zero means no minimum is enforced.
+     */
+    BigInteger getThreshold();
 
 	/**
 	 * Get the serilzed data from this file.
