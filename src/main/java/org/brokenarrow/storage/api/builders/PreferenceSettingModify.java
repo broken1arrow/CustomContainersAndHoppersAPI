@@ -1,20 +1,21 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
-import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
+import org.brokenarrow.storage.api.player.modal.PlayerContainerTypeSettingsAPI;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
 import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public class PreferenceSettingModify {
 
-    private final PreferenceSettingsDataAPIBuilder builder;
+    private final PreferenceSettingsWriter builder;
     ;
 
-    public PreferenceSettingModify(final PreferenceSettingsDataAPI preferenceSettingsData) {
-        this.builder = preferenceSettingsData.getBuilder();
+    public PreferenceSettingModify(final PreferenceSettingsWriter preferenceSettingsData) {
+        this.builder = preferenceSettingsData;
     }
     
     public boolean isShowHologramsOnPlacedContainer() {
@@ -176,27 +177,18 @@ public class PreferenceSettingModify {
         return this;
     }
 
-    public LinkSuctionMode getLinkSuctionMode(){
-        return this.builder.getLinkSuctionMode();
+    public Map<String, PlayerContainerTypeSettingsAPI> getPlayerContainerSettings(){
+        return this.builder.getPlayerContainerSettings();
     }
 
-    public PreferenceSettingModify setLinkSuctionMode(LinkSuctionMode linkSuctionMode){
-        this.builder.setLinkSuctionMode(linkSuctionMode);
+    public PreferenceSettingModify setPlayerContainerSettingsAPI(@Nonnull final String key, @Nonnull final Consumer<PlayerContainerTypeSettingsAPI> callaback){
+        this.builder.setPlayerContainerSettings(key,callaback);
         return this;
-    }
-
-    public PreferenceSettingModify setContainerFeatureMode(final ContainerFeatureMode containerFeatureMode) {
-        this.builder.setContainerFeatureMode(containerFeatureMode);
-        return this;
-    }
-
-    public ContainerFeatureMode getContainerFeatureMode(){
-        return this.builder.getContainerFeatureMode();
     }
 
     @Nonnull
-    public PreferenceSettingsDataAPI apply() {
-        return builder.build();
+    public PreferenceSettingsWriter apply() {
+        return builder;
     }
 
 }

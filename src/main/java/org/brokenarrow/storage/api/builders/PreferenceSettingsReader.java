@@ -1,7 +1,6 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
-import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
+import org.brokenarrow.storage.api.player.modal.PlayerContainerTypeSettingsAPI;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.UUID;
 /**
  * Preferences for the player.
  */
-public interface PreferenceSettingsDataAPI {
+public interface PreferenceSettingsReader {
 
 
 	/**
@@ -26,7 +25,7 @@ public interface PreferenceSettingsDataAPI {
 	 *
 	 * @return true if the player has it on.
 	 */
-	boolean isShowEffectsWhenCrafItems();
+	boolean isShowEffectsWhenCraftItems();
 
 	/**
 	 * if it shall show effects when sell items.
@@ -40,7 +39,7 @@ public interface PreferenceSettingsDataAPI {
 	 *
 	 * @return true if the player has it on.
 	 */
-	boolean isSoundEffectsWhenCrafItems();
+	boolean isSoundEffectsWhenCraftItems();
 
 	/**
 	 * If this is true, it will play a sound when sell.
@@ -110,7 +109,7 @@ public interface PreferenceSettingsDataAPI {
 	boolean isEffectOnContainerWhenPlaceContainer();
 
 	/**
-	 * Get the partylist of players, player curently have.
+	 * Get the party list of players, player currently have.
 	 *
 	 * @return list of players or if not exist empty arraylist.
 	 */
@@ -130,19 +129,15 @@ public interface PreferenceSettingsDataAPI {
 	 */
 	PlacingSignMode getPlacingSignMode();
 
-    LinkSuctionMode getLinkSuctionMode();
-
-    ContainerFeatureMode getContainerFeatureMode();
-	/**
-	 * Get instance of the builder class to get set values
-	 * and change old values.
-	 *
-	 * @return builder instance.
-	 */
-	PreferenceSettingsDataAPIBuilder getBuilder();
+    /**
+     * Retrieve the settings player set for each container type.
+     *
+     * @return a map with the set settings for each container type by their filename.
+     */
+    Map<String, PlayerContainerTypeSettingsAPI> getPlayerContainerSettings();
 
 	/**
-	 * This method serilze the data.
+	 * This method serialize the data.
 	 *
 	 * @return map with key and values.
 	 */

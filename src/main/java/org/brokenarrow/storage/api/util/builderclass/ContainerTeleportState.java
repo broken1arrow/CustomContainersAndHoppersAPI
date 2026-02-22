@@ -8,15 +8,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Wrapper class for teleport items.
+ * Persistent runtime state for a container's teleport system.
+ *
+ * <p>
+ * This object stores cached inventories and traversal metadata used
+ * to distribute teleport attempts across linked containers in a
+ * round-robin fashion.
+ * </p>
+ *
+ * <p>
+ * The traversal indices are preserved between teleport runs to ensure
+ * fair distribution and to avoid repeatedly targeting the same container
+ * when multiple links are configured.
+ * </p>
+ *
+ * <p>
+ * Per-run transfer statistics (such as the current teleported amount)
+ * are reset before each teleport execution.
+ * </p>
+ *
+ * <p>
+ * This class is not thread-safe and is intended for synchronous use
+ * within the server thread.
+ * </p>
  */
-public class TeleportWrapper {
+public class ContainerTeleportState {
 	private  Map<Location, Inventory> cachedLinkedInventory = new HashMap<>();
 	private  Inventory cachedContainerInventory;
 	private  int locationNumberInList;
 	private  int lastNumberInList;
 	private  boolean teleportedItems;
-    private int addCurrentTeleportedItems;
+    private int currentTeleportedItems;
 
     /**
      * Sets the cached linked inventory map.
@@ -24,7 +46,7 @@ public class TeleportWrapper {
      * @param cachedLinkedInventory The map containing cached linked inventories.
      * @return The builder instance.
      */
-    public TeleportWrapper setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
+    public ContainerTeleportState setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
         this.cachedLinkedInventory = cachedLinkedInventory;
         return this;
     }
@@ -35,7 +57,7 @@ public class TeleportWrapper {
      * @param cachedContainerInventory The cached container inventory.
      * @return The builder instance.
      */
-    public TeleportWrapper setCachedContainerInventory(final Inventory cachedContainerInventory) {
+    public ContainerTeleportState setCachedContainerInventory(final Inventory cachedContainerInventory) {
         this.cachedContainerInventory = cachedContainerInventory;
         return this;
     }
@@ -46,7 +68,7 @@ public class TeleportWrapper {
      * @param locationNumberInList The location number in the list.
      * @return The builder instance.
      */
-    public TeleportWrapper setLocationNumberInList(final int locationNumberInList) {
+    public ContainerTeleportState setLocationNumberInList(final int locationNumberInList) {
         this.locationNumberInList = locationNumberInList;
         return this;
     }
@@ -57,7 +79,7 @@ public class TeleportWrapper {
      * @param lastNumberInList The last number in the list.
      * @return The builder instance.
      */
-    public TeleportWrapper setLastNumberInList(final int lastNumberInList) {
+    public ContainerTeleportState setLastNumberInList(final int lastNumberInList) {
         this.lastNumberInList = lastNumberInList;
         return this;
     }
@@ -68,17 +90,16 @@ public class TeleportWrapper {
      * @param teleportedItems True if items were teleported, false otherwise.
      * @return The builder instance.
      */
-    public TeleportWrapper setTeleportedItems(final boolean teleportedItems) {
+    public ContainerTeleportState setTeleportedItems(final boolean teleportedItems) {
         this.teleportedItems = teleportedItems;
         return this;
     }
 
-
     /**
-	 * Gets the last number in the list.
-	 *
-	 * @return The last number in the list.
-	 */
+     * Returns the last index within the resolved target location list.
+     *
+     * @return the last traversal index
+     */
 	public int getLastNumberInList() {
 		return lastNumberInList;
 	}
@@ -93,11 +114,11 @@ public class TeleportWrapper {
 		return cachedContainerInventory;
 	}
 
-	/**
-	 * Gets the location number in the list.
-	 *
-	 * @return The location number in the list.
-	 */
+    /**
+     * Returns the current index within the resolved target location list.
+     *
+     * @return the zero-based traversal index
+     */
 	public int getLocationNumberInList() {
 		return locationNumberInList;
 	}
@@ -111,13 +132,19 @@ public class TeleportWrapper {
 		return teleportedItems;
 	}
 
-	/**
-	 * The map with all locations and inventory's for this
-	 * link and suction container.
-	 * <p>
-	 * This is not a tread safe map.
-	 *
-	 * @return the map with all cached inventory's.
+
+     /**
+     * Returns the cached linked inventories resolved for this teleport cycle.
+     *
+     * <p>
+     * The map keys represent linked container locations, and the values
+     * are their corresponding inventories.
+     * </p>
+     *
+     * <p>
+     * This map is not thread-safe.
+     * </p>
+	 * @return the map with all cached inventories.
 	 */
 	@Nullable
 	public Map<Location, Inventory> getCachedLinkedInventory() {
@@ -140,16 +167,29 @@ public class TeleportWrapper {
 		return null;
 	}
 
+    /**
+     * Add amount teleported.
+     *
+     * @param add amount to add.
+     */
     public void addCurrentTeleportedItems(final int add) {
-        this.addCurrentTeleportedItems += add;
+        this.currentTeleportedItems += add;
 
     }
 
-    public int getAddCurrentTeleportedItems() {
-        return addCurrentTeleportedItems;
+    /**
+     * Retrieve current teleported amount.
+     *
+     * @return Returns the amount currently teleported.
+     */
+    public int getCurrentTeleportedItems() {
+        return currentTeleportedItems;
     }
 
-    public void clearAddCurrentTeleportedItems() {
-        addCurrentTeleportedItems = 0;
+    /**
+     * Reset the amount of teleported items.
+     */
+    public void resetCurrentTeleportedItems() {
+        currentTeleportedItems = 0;
     }
 }

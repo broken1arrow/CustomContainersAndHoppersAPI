@@ -1,16 +1,18 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
-import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
+import org.brokenarrow.storage.api.player.modal.PlayerContainerTypeSettingsAPI;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
+import javax.annotation.Nonnull;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  * The class to set and build the preferences for the user.
  */
-public interface PreferenceSettingsDataAPIBuilder {
+public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 
 
 	/**
@@ -19,7 +21,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param showHologramsOnPlacedContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setShowHologramsOnPlacedContainer(boolean showHologramsOnPlacedContainer);
+	PreferenceSettingsWriter setShowHologramsOnPlacedContainer(boolean showHologramsOnPlacedContainer);
 
 	/**
 	 * Set to true if it shall show effects when crafted.
@@ -27,7 +29,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param showEffectsWhenCrafItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setShowEffectsWhenCrafItems(boolean showEffectsWhenCrafItems);
+	PreferenceSettingsWriter setShowEffectsWhenCrafItems(boolean showEffectsWhenCrafItems);
 
 	/**
 	 * Set to true if it shall show effects when sell.
@@ -35,7 +37,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param showEffectsWhenSellItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setShowEffectsWhenSellItems(boolean showEffectsWhenSellItems);
+	PreferenceSettingsWriter setShowEffectsWhenSellItems(boolean showEffectsWhenSellItems);
 
 	/**
 	 * Set to true if it shall play a sound when craft.
@@ -43,7 +45,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param soundEffectsWhenCrafItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenCrafItems(boolean soundEffectsWhenCrafItems);
+	PreferenceSettingsWriter setSoundEffectsWhenCrafItems(boolean soundEffectsWhenCrafItems);
 
 	/**
 	 * Set to true if it shall play a sound when sell items.
@@ -51,7 +53,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param soundEffectsWhenSellItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenSellItems(boolean soundEffectsWhenSellItems);
+	PreferenceSettingsWriter setSoundEffectsWhenSellItems(boolean soundEffectsWhenSellItems);
 
 	/**
 	 * Set to true if it shall play a sound when open container.
@@ -59,7 +61,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param soundEffectsWhenOpenClose if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenOpenClose(boolean soundEffectsWhenOpenClose);
+	PreferenceSettingsWriter setSoundEffectsWhenOpenClose(boolean soundEffectsWhenOpenClose);
 
 	/**
 	 * Set to true if it shall play sound or not when place the container.
@@ -67,7 +69,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param soundEffectsWhenPlaceContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenPlaceContainer(boolean soundEffectsWhenPlaceContainer);
+	PreferenceSettingsWriter setSoundEffectsWhenPlaceContainer(boolean soundEffectsWhenPlaceContainer);
 
 	/**
 	 * Set to true if it shall play sound or not when the container pick up items.
@@ -75,7 +77,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param soundEffectsWhenContainerPickUpItems if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setSoundEffectsWhenContainerPickUpItems(boolean soundEffectsWhenContainerPickUpItems);
+	PreferenceSettingsWriter setSoundEffectsWhenContainerPickUpItems(boolean soundEffectsWhenContainerPickUpItems);
 
 	/**
 	 * Set to true if you want to show the owner of the container or not.
@@ -83,7 +85,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param displayPlayerNameOnHolo if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setDisplayPlayerNameOnHolo(boolean displayPlayerNameOnHolo);
+	PreferenceSettingsWriter setDisplayPlayerNameOnHolo(boolean displayPlayerNameOnHolo);
 
 	/**
 	 * Set to true if it shall show the border when place.
@@ -91,7 +93,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param showBorderSuctionWhenPlaceContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setShowBorderSuctionWhenPlaceContainer(boolean showBorderSuctionWhenPlaceContainer);
+	PreferenceSettingsWriter setShowBorderSuctionWhenPlaceContainer(boolean showBorderSuctionWhenPlaceContainer);
 
 	/**
 	 * Set to true it shall automatic turn off linkmode.
@@ -99,7 +101,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param linkModeActiveTimeOrWhenTurnOff if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setHasLinkModeActiveTimeOrTurnOfAuto(boolean linkModeActiveTimeOrWhenTurnOff);
+	PreferenceSettingsWriter setHasLinkModeActiveTimeOrTurnOfAuto(boolean linkModeActiveTimeOrWhenTurnOff);
 
 	/**
 	 * Set to true if it shall spawn particels on this players containers.
@@ -107,7 +109,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param effectOnContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setEffectOnContainer(boolean effectOnContainer);
+	PreferenceSettingsWriter setEffectOnContainer(boolean effectOnContainer);
 
 	/**
 	 * If this is true it will spawn effects on container when player place it.
@@ -115,7 +117,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param effectOnContainerWhenPlaceContainer if not set, defult to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
+	PreferenceSettingsWriter setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
 
 	/**
 	 * Set the sign-mode it should place the sign.
@@ -124,7 +126,7 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param placingSignMode the mode you want the sign to have.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setPlacingSignMode(PlacingSignMode placingSignMode);
+	PreferenceSettingsWriter setPlacingSignMode(PlacingSignMode placingSignMode);
 
 	/**
 	 * If it shall show the message to player when craft or sell.
@@ -132,61 +134,31 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 * @param showNotesMessage sert this to true if you want to show the message.
 	 * @return this class.
 	 */
-	PreferenceSettingsDataAPIBuilder setShowNotesMessage(boolean showNotesMessage);
+	PreferenceSettingsWriter setShowNotesMessage(boolean showNotesMessage);
 
 	/**
-	 * Add a player to the partylist
+	 * Add a player to the party list
 	 *
 	 * @param partyListOfPlayers the player some shall be added.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsDataAPIBuilder setPartyListOfPlayers(List<UUID> partyListOfPlayers);
+	PreferenceSettingsWriter setPartyListOfPlayers(List<UUID> partyListOfPlayers);
 
-    void setLinkSuctionMode(final LinkSuctionMode linkSuctionMode);
+    /**
+     * Get the player container settings for each type of container.
+     *
+     * @param key the file name for the container to set the data.
+     * @param playerContainerSettings The settings to set.
+     * @return The class for chain the call.
+     */
+     PreferenceSettingsWriter setPlayerContainerSettings(@Nonnull final String key, @Nonnull final Consumer<PlayerContainerTypeSettingsAPI> playerContainerSettings);
 
-    void setContainerFeatureMode(final ContainerFeatureMode containerFeatureMode);
-	/**
-	 * build your data you have set before.
-	 *
-	 * @return PreferenceSettingsDataAPI instance;
-	 */
-	PreferenceSettingsDataAPI build();
-
-	boolean isShowHologramsOnPlacedContainer();
-
-	boolean isShowEffectsWhenCraftItems();
-
-	boolean isShowEffectsWhenSellItems();
-
-	boolean isSoundEffectsWhenCraftItems();
-
-	boolean isSoundEffectsWhenSellItems();
-
-	boolean isSoundEffectsWhenOpenClose();
-
-	boolean isSoundEffectsWhenPlaceContainer();
-
-	boolean isSoundEffectsWhenContainerPickUpItems();
-
-	boolean isDisplayPlayerNameOnHolo();
-
-	boolean isShowBorderSuctionWhenPlaceContainer();
-
-	boolean isHasLinkModeActiveTimeOrWhenTurnOf();
-
-	boolean isEffectOnContainer();
-
-	boolean isEffectOnContainerWhenPlaceContainer();
-
-	boolean isShowNotesMessage();
-
-	List<UUID> getPartyListOfPlayers();
-
-	PlacingSignMode getPlacingSignMode();
-
-    LinkSuctionMode getLinkSuctionMode();
-
-    ContainerFeatureMode getContainerFeatureMode();
-
+    /**
+     * Get the player container settings for each type of container.
+     *
+     * @param playerContainerSettingsMap The map of settings to set.
+     * @return The class for chain the call.
+     */
+    PreferenceSettingsWriter setPlayerContainerSettings(final Map<String, PlayerContainerTypeSettingsAPI> playerContainerSettingsMap);
 
 }

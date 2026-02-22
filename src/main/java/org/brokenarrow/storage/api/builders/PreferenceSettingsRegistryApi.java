@@ -16,11 +16,12 @@ import java.util.function.Consumer;
 public interface PreferenceSettingsRegistryApi {
 
 	/**
-	 * Retrieve all players set preferences.
-	 * @return returns the map with the players preferences.
-	 */
+     * Retrieve all players set preferences.
+     *
+     * @return returns the map with the players preferences.
+     */
 	@Nonnull
-	Map<UUID, PreferenceSettingsDataAPI> getAllSettingsData();
+    Map<UUID, PreferenceSettingsWriter> getAllSettingsData();
 
 	/**
 	 * Retrieve the players set preferences.
@@ -29,7 +30,7 @@ public interface PreferenceSettingsRegistryApi {
 	 * @return returns the players preferences.
 	 */
 	@Nullable
-	PreferenceSettingsDataAPI getPlayerSettings(Player player);
+    PreferenceSettingsReader getPlayerSettings(Player player);
 
 	/**
 	 * Retrieve the players set preferences.
@@ -38,7 +39,7 @@ public interface PreferenceSettingsRegistryApi {
 	 * @return returns the players preferences.
 	 */
 	@Nullable
-	PreferenceSettingsDataAPI getPlayerSettings(UUID uuid);
+    PreferenceSettingsReader getPlayerSettings(UUID uuid);
 
     /**
      * Adds or updates a player's preference data in the cache.
@@ -73,7 +74,7 @@ public interface PreferenceSettingsRegistryApi {
 	 * @param forceLoadData if you want to override old data in cache (old data will be lost).
 	 */
 
-	void setPlayerData(UUID playerUUID, PreferenceSettingsDataAPI preferenceSettings, boolean forceLoadData);
+	void setPlayerData(UUID playerUUID, PreferenceSettingsWriter preferenceSettings, boolean forceLoadData);
 
 	/**
 	 * Get the party-list of players, player currently have.
@@ -148,5 +149,5 @@ public interface PreferenceSettingsRegistryApi {
 	 * @param addedPlayer the player some shall be added.
 	 */
 	void addPlayerToParty(Player player, OfflinePlayer addedPlayer);
-
+    
 }

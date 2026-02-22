@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api;
 
-import org.brokenarrow.storage.api.builders.PreferenceSettingsDataAPI;
+import org.brokenarrow.storage.api.builders.PreferenceSettingsReader;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 
@@ -57,7 +57,7 @@ public interface DatabaseAPI {
 	 *
 	 * @param preferenceSettingsRegistery cached data.
 	 */
-	void saveToSQLUserCache(final Map<UUID, PreferenceSettingsDataAPI> preferenceSettingsRegistery);
+	void saveToSQLUserCache(final Map<UUID, PreferenceSettingsReader> preferenceSettingsRegistery);
 
 	/**
 	 * remove playerdata from the database.

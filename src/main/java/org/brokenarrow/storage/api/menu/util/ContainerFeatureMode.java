@@ -30,7 +30,7 @@ public enum ContainerFeatureMode {
     /**
      * Gets the description of what the mode does.
      *
-     * @return The text description of the interaction requirements.
+     * @return The description of what this feature mode enables or disables.
      */
 	public String getDescription() {
 		return description;
@@ -39,7 +39,7 @@ public enum ContainerFeatureMode {
     /**
      * Checks if the link mode is still enabled.
      *
-     * @return returns tru if linking is enabled.
+     * @return returns true if linking is enabled.
      */
     public boolean isLinkEnabled() {
         return this == ENABLED || this == SUCTION_DISABLED;
@@ -63,7 +63,6 @@ public enum ContainerFeatureMode {
 	public static ContainerFeatureMode of(String mode) {
 		if (mode == null)
 			return ENABLED;
-
 		ContainerFeatureMode[] values = values();
 		for (ContainerFeatureMode signMode : values) {
 			if (signMode.name().equalsIgnoreCase(mode))

@@ -2,9 +2,9 @@ package org.brokenarrow.storage.api;
 
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.brokenarrow.storage.api.containerholder.teleport.SuctionItemHandler;
-import org.brokenarrow.storage.api.containerholder.teleport.TeleportItemHandler;
+import org.brokenarrow.storage.api.containerholder.teleport.TeleportTransferHandler;
 import org.brokenarrow.storage.api.containerholder.teleport.TeleportTarget;
-import org.brokenarrow.storage.api.util.builderclass.TeleportWrapper;
+import org.brokenarrow.storage.api.util.builderclass.ContainerTeleportState;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
@@ -47,7 +47,7 @@ public interface TeleportAndPickupItemsApi {
      *
      * @param teleportHandler handler responsible for processing item teleportation
      */
-    void setTeleportHandler(@Nonnull TeleportItemHandler teleportHandler);
+    void setTeleportHandler(@Nonnull TeleportTransferHandler teleportHandler);
 
     /**
      * Sets the handler responsible for suction (picking up) ground items.
@@ -60,11 +60,11 @@ public interface TeleportAndPickupItemsApi {
     void setSuctionHandler(SuctionItemHandler suctionHandler);
 
     /**
-     * Saves data to the cache using a {@link TeleportWrapper}.
+     * Saves data to the cache using a {@link ContainerTeleportState}.
      *
      * @param consumer consumer used to modify or initialize the teleport wrapper
      */
-    void saveToCache(@Nonnull Consumer<TeleportWrapper> consumer);
+    void saveToCache(@Nonnull Consumer<ContainerTeleportState> consumer);
 
     /**
      * Removes this container’s cached inventory data.
@@ -90,7 +90,7 @@ public interface TeleportAndPickupItemsApi {
 	void removeCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
 
     /**
-     * Clears the current {@link TeleportWrapper}.
+     * Clears the current {@link ContainerTeleportState}.
      * <p>
      * After calling this method, a new wrapper must be set using
      * {@link #saveToCache(Consumer)}.
@@ -120,12 +120,12 @@ public interface TeleportAndPickupItemsApi {
 	Map<Location, Inventory> getCachedLinkedInventors();
 
     /**
-     * Returns the cached {@link TeleportWrapper}.
+     * Returns the cached {@link ContainerTeleportState}.
      *
      * @return the teleport wrapper, or {@code null} if not set
      */
 	@Nullable
-	TeleportWrapper getTeleportWrapper();
+    ContainerTeleportState getTeleportWrapper();
 
     /**
      * Returns the index of the next linked container to be processed.

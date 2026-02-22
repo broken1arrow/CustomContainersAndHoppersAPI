@@ -1,6 +1,6 @@
 package org.brokenarrow.storage.api.util.sign;
 
-import org.brokenarrow.storage.api.builders.PreferenceSettingsDataAPI;
+import org.brokenarrow.storage.api.builders.PreferenceSettingsReader;
 import org.bukkit.Location;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -85,7 +85,7 @@ public interface SignCacheApi {
      * @param amount         The amount associated with the sign.
      * @return True if the sign was successfully placed, false otherwise.
      */
-    boolean placeSignAuto(@NotNull Location location, PreferenceSettingsDataAPI playerSettings, ItemStack itemStack, String amount);
+    boolean placeSignAuto(@NotNull Location location, PreferenceSettingsReader playerSettings, ItemStack itemStack, String amount);
 
     /**
      * Manually places a sign at the specified location based on player preferences.
@@ -95,5 +95,5 @@ public interface SignCacheApi {
      * @param itemStack      The item stack representing the sign.
      * @return True if the sign was successfully placed, false otherwise.
      */
-    boolean placeSignManual(Location location, PreferenceSettingsDataAPI playerSettings, @Nullable ItemStack itemStack);
+    boolean placeSignManual(Location location, PreferenceSettingsReader playerSettings, @Nullable ItemStack itemStack);
 }
