@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
+import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
 import javax.annotation.Nonnull;
@@ -9,7 +11,8 @@ import java.util.UUID;
 public class PreferenceSettingModify {
 
     private final PreferenceSettingsDataAPIBuilder builder;
-    
+    ;
+
     public PreferenceSettingModify(final PreferenceSettingsDataAPI preferenceSettingsData) {
         this.builder = preferenceSettingsData.getBuilder();
     }
@@ -172,7 +175,25 @@ public class PreferenceSettingModify {
         this.builder.setPlacingSignMode(placingSignMode);
         return this;
     }
-    
+
+    public LinkSuctionMode getLinkSuctionMode(){
+        return this.builder.getLinkSuctionMode();
+    }
+
+    public PreferenceSettingModify setLinkSuctionMode(LinkSuctionMode linkSuctionMode){
+        this.builder.setLinkSuctionMode(linkSuctionMode);
+        return this;
+    }
+
+    public PreferenceSettingModify setContainerFeatureMode(final ContainerFeatureMode containerFeatureMode) {
+        this.builder.setContainerFeatureMode(containerFeatureMode);
+        return this;
+    }
+
+    public ContainerFeatureMode getContainerFeatureMode(){
+        return this.builder.getContainerFeatureMode();
+    }
+
     @Nonnull
     public PreferenceSettingsDataAPI apply() {
         return builder.build();

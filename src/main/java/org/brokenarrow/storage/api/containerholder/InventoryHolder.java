@@ -4,7 +4,7 @@ import org.broken.arrow.library.serialize.utility.converters.particleeffect.Part
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.containerholder.modal.ContainerReader;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
-import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
+import org.brokenarrow.storage.api.builders.ContainerSettings;
 import org.brokenarrow.storage.api.containerholder.modal.ContainerSnapshot;
 import org.brokenarrow.storage.api.containerholder.modal.ContainerWriter;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
@@ -482,7 +482,7 @@ public interface InventoryHolder extends InventoryEvents {
      * the level upgrades for the container.
      */
     @Nonnull
-    ContainerSettingsWrapperAPI getSettingsWrapper();
+    ContainerSettings getSettingsWrapper();
 
     /**
      * Get the current level of settings for this container.

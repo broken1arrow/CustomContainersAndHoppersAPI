@@ -7,9 +7,17 @@ import java.util.Map;
 /**
  * The containers settings.
  */
-public interface ContainerSettingsWrapperAPI {
+public interface ContainerSettings {
 
-	/**
+    /**
+     * Get the name of the file that set these settings.
+     *
+     * @return the file name.
+     */
+    @Nonnull
+    String getFileName();
+
+    /**
 	 * Get the settings for this container.
 	 *
 	 * @return Container settings for this container.
@@ -27,7 +35,7 @@ public interface ContainerSettingsWrapperAPI {
 	ContainerLevelSettingsApi getContainerLevelSettings(String level);
 
 	/**
-	 * Get the map with all levels and levelsettings
+	 * Get the map with all levels and level settings
 	 *
 	 * @return a map with all upgrades for this container.
 	 */

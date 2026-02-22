@@ -2,7 +2,7 @@ package org.brokenarrow.storage.api.containerholder.util;
 
 import org.brokenarrow.storage.api.builders.ContainerLevelSettingsApi;
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
-import org.brokenarrow.storage.api.builders.ContainerSettingsWrapperAPI;
+import org.brokenarrow.storage.api.builders.ContainerSettings;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -19,7 +19,7 @@ public interface LoadSettingsContainersAPI {
 	 * @return ContainerSettingsWrapperAPI to access all data for this file.
 	 */
 	@Nullable
-	ContainerSettingsWrapperAPI getContainerSettingsWrapper(final String fileName);
+    ContainerSettings getContainerSettingsWrapper(final String fileName);
 
 	/**
 	 * Get the settings for this container type.
@@ -44,5 +44,5 @@ public interface LoadSettingsContainersAPI {
 	 *
 	 * @return the map with all values for all containers.
 	 */
-	Map<String, ContainerSettingsWrapperAPI> getContainerSettings();
+	Map<String, ContainerSettings> getContainerSettings();
 }

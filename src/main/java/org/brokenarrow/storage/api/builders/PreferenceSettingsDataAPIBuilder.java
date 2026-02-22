@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
+import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
 import java.util.List;
@@ -140,6 +142,9 @@ public interface PreferenceSettingsDataAPIBuilder {
 	 */
 	PreferenceSettingsDataAPIBuilder setPartyListOfPlayers(List<UUID> partyListOfPlayers);
 
+    void setLinkSuctionMode(final LinkSuctionMode linkSuctionMode);
+
+    void setContainerFeatureMode(final ContainerFeatureMode containerFeatureMode);
 	/**
 	 * build your data you have set before.
 	 *
@@ -178,4 +183,10 @@ public interface PreferenceSettingsDataAPIBuilder {
 	List<UUID> getPartyListOfPlayers();
 
 	PlacingSignMode getPlacingSignMode();
+
+    LinkSuctionMode getLinkSuctionMode();
+
+    ContainerFeatureMode getContainerFeatureMode();
+
+
 }

@@ -1,5 +1,7 @@
 package org.brokenarrow.storage.api.builders;
 
+import org.brokenarrow.storage.api.menu.util.ContainerFeatureMode;
+import org.brokenarrow.storage.api.menu.util.LinkSuctionMode;
 import org.brokenarrow.storage.api.util.sign.PlacingSignMode;
 
 import java.util.List;
@@ -128,6 +130,9 @@ public interface PreferenceSettingsDataAPI {
 	 */
 	PlacingSignMode getPlacingSignMode();
 
+    LinkSuctionMode getLinkSuctionMode();
+
+    ContainerFeatureMode getContainerFeatureMode();
 	/**
 	 * Get instance of the builder class to get set values
 	 * and change old values.
@@ -142,4 +147,6 @@ public interface PreferenceSettingsDataAPI {
 	 * @return map with key and values.
 	 */
 	Map<String, Object> serialize();
+
+;
 }
