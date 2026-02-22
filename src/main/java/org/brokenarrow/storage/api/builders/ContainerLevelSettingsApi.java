@@ -41,7 +41,7 @@ public interface ContainerLevelSettingsApi {
 	 *
 	 * @return upgrade name.
 	 */
-	String getUpgrade();
+	String getNextUpgrade();
 
 	/**
 	 * Get the max range it will pick up items.
