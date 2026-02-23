@@ -4,5 +4,6 @@ import javax.annotation.Nonnull;
 
 @FunctionalInterface
 public interface SuctionItemHandler {
+
     void apply(@Nonnull final Filter item);
 }

@@ -26,5 +26,11 @@ public interface SupportsFilterButton {
      */
     void onFilterButtonClick(@Nonnull final MenuContext context);
 
+    /**
+     * Check if the filter is active or not.
+     *
+     * @param player The player that clicked on the button.
+     * @return true if the filter is active.
+     */
     boolean isFilterActive(@Nonnull Player player);
 }
