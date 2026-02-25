@@ -52,7 +52,7 @@ public interface PreferenceSettingsRegistryApi {
      * @param preferencesCallback a callback used to modify the player's
      *                            preference settings
      */
-	void setInCache(final Player player, final Consumer<PreferenceSettingModify> preferencesCallback);
+	void writePlayer(final Player player, final Consumer<PreferenceSettingsWriter> preferencesCallback);
 
     /**
      * Adds or updates a player's preference data in the cache.
@@ -64,7 +64,7 @@ public interface PreferenceSettingsRegistryApi {
      * @param preferencesCallback a callback used to modify the player's
      *                            preference settings
      */
-	void setInCache(final UUID uuid, final Consumer<PreferenceSettingModify> preferencesCallback);
+	void writePlayer(final UUID uuid, final Consumer<PreferenceSettingsWriter> preferencesCallback);
 	
 	/**
 	 * Add player to cache.

@@ -96,17 +96,17 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 	PreferenceSettingsWriter setShowBorderSuctionWhenPlaceContainer(boolean showBorderSuctionWhenPlaceContainer);
 
 	/**
-	 * Set to true it shall automatic turn off linkmode.
+	 * Set to true it shall automatic turn off link mode.
 	 *
-	 * @param linkModeActiveTimeOrWhenTurnOff if not set, defult to false.
+	 * @param linkModeActiveTimeOrWhenTurnOff if not set, default to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
-	PreferenceSettingsWriter setHasLinkModeActiveTimeOrTurnOfAuto(boolean linkModeActiveTimeOrWhenTurnOff);
+	PreferenceSettingsWriter setLinkModeActiveTimeOrTurnOfAuto(boolean linkModeActiveTimeOrWhenTurnOff);
 
 	/**
-	 * Set to true if it shall spawn particels on this players containers.
+	 * Set to true if it shall spawn particles on these players containers.
 	 *
-	 * @param effectOnContainer if not set, defult to false.
+	 * @param effectOnContainer if not set, default to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsWriter setEffectOnContainer(boolean effectOnContainer);
@@ -114,7 +114,7 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 	/**
 	 * If this is true it will spawn effects on container when player place it.
 	 *
-	 * @param effectOnContainerWhenPlaceContainer if not set, defult to false.
+	 * @param effectOnContainerWhenPlaceContainer if not set, default to false.
 	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsWriter setEffectOnContainerWhenPlaceContainer(boolean effectOnContainerWhenPlaceContainer);
