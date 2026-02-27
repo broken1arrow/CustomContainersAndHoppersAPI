@@ -17,7 +17,6 @@ import java.util.function.Consumer;
  * and contains a {@link TaskDataApi} with details about the task execution.
  * Data in this cache is short-lived and is typically cleared after being processed
  * or sent back to the player.
- * <p>
  *
  * @param <D> the type of task data stored in the cache
  * @param <S> the type of statistics associated with tasks

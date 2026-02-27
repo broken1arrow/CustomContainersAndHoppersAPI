@@ -94,10 +94,9 @@ public interface ContainerInteractionAPI {
      * Handles item move events.
      *
      * @param event    The InventoryMoveItemEvent to handle.
-     * @param pushItem Whether the item is being pushed.
      * @return True if the event is successfully handled, false otherwise.
      */
-    boolean onMoveItem(@NotNull final InventoryMoveItemEvent event,final boolean pushItem);
+    boolean onMoveItem(@NotNull final InventoryMoveItemEvent event);
 
     /**
      * Handles chunk load events.

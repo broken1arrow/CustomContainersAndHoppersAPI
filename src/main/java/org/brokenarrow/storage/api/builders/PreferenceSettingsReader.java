@@ -143,5 +143,5 @@ public interface PreferenceSettingsReader {
 	 */
 	Map<String, Object> serialize();
 
-;
+
 }

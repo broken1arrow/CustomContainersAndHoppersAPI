@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * Cache for players settings and party list of players
@@ -53,6 +54,20 @@ public interface PreferenceSettingsRegistryApi {
      *                            preference settings
      */
 	void writePlayer(final Player player, final Consumer<PreferenceSettingsWriter> preferencesCallback);
+
+	/**
+	 * Adds or updates a player's preference data in the cache.
+	 * <p>
+	 * The provided callback is invoked to modify the player's preferences
+	 * before they are stored.
+	 *
+	 * @param player the player whose preferences should be cached;
+	 *               the player's UUID will be used as the cache key
+	 * @param preferencesCallback a callback used to modify the player's
+	 *                            preference settings
+	 * @return Returns the class instance provided.
+	 */
+	<T> T writePlayer(final Player player, final Function<PreferenceSettingsWriter,T> preferencesCallback);
 
     /**
      * Adds or updates a player's preference data in the cache.

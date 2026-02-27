@@ -19,7 +19,7 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 	 * Set true if it shall show the holograms.
 	 *
 	 * @param showHologramsOnPlacedContainer if not set, defult to false.
-	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
+	 * @return an instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsWriter setShowHologramsOnPlacedContainer(boolean showHologramsOnPlacedContainer);
 
@@ -27,7 +27,7 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 	 * Set to true if it shall show effects when crafted.
 	 *
 	 * @param showEffectsWhenCrafItems if not set, defult to false.
-	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
+	 * @return an instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsWriter setShowEffectsWhenCrafItems(boolean showEffectsWhenCrafItems);
 
@@ -35,7 +35,7 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
 	 * Set to true if it shall show effects when sell.
 	 *
 	 * @param showEffectsWhenSellItems if not set, defult to false.
-	 * @return a instance of  PreferenceSettingsDataAPIBuilder.
+	 * @return an instance of  PreferenceSettingsDataAPIBuilder.
 	 */
 	PreferenceSettingsWriter setShowEffectsWhenSellItems(boolean showEffectsWhenSellItems);
 
@@ -159,6 +159,6 @@ public interface PreferenceSettingsWriter extends PreferenceSettingsReader {
      * @param playerContainerSettingsMap The map of settings to set.
      * @return The class for chain the call.
      */
-    PreferenceSettingsWriter setPlayerContainerSettings(final Map<String, PlayerContainerTypeSettingsAPI> playerContainerSettingsMap);
+	PreferenceSettingsWriter setPlayerContainerSettings(final Map<String, PlayerContainerTypeSettingsAPI> playerContainerSettingsMap);
 
 }

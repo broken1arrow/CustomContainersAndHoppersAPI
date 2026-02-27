@@ -176,16 +176,16 @@ public interface InventoryHolder extends InventoryEvents {
     Inventory createInventory(final InventoryType inventoryType, final Component title, final Integer inventorySize);
 
     /**
-     * check if inventory exist for a container.
+     * Check if inventory exist for a container.
      *
      * @param inventory of the container
      * @return true if it exists.
      */
-    boolean containsClickedInventory(final Inventory inventory);
+    boolean containsClickedInventory(@Nonnull final Inventory inventory);
 
 
     /**
-     * When you break container it collect all pages of items
+     * When you break container it collects all pages of items
      * and drop it on the ground.
      *
      * @return return true after it has finished.

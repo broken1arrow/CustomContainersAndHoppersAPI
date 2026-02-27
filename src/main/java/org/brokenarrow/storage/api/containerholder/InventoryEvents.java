@@ -1,6 +1,7 @@
 package org.brokenarrow.storage.api.containerholder;
 
 import org.brokenarrow.storage.api.containerholder.util.Reason;
+import org.brokenarrow.storage.api.player.modal.PlayerMeta;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
@@ -11,6 +12,7 @@ import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -33,28 +35,30 @@ public interface InventoryEvents {
      *                     specified page; otherwise, it will open the first page.
      * @return True if the player was able to open the container.
      */
-    boolean onOpenContainer(@Nonnull final Block clickedBlock, @Nonnull final Action clickAction, @Nonnull final Player player, final int pageNumber);
+    boolean onOpenContainer(@NotNull PlayerMeta playerMeta,@Nonnull final Block clickedBlock, @Nonnull final Action clickAction, @Nonnull final Player player, final int pageNumber);
 
     /**
      * When player interact with a container.
      *
+     * @param playerMeta The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
      * @param event      the event some get trigger when player clicking on or interacting with the block.
      * @param player     the player some clicking.
      * @param pageNumber the page to open or set it to 0 if you want the first page
      *                   or not needed to provide the specific page.
      * @return true if it shall cancel event.
      */
-    boolean onContainerInteract(@Nonnull final PlayerInteractEvent event, @Nonnull final Player player, final int pageNumber);
+    boolean onContainerInteract(@Nonnull final PlayerMeta playerMeta, @Nonnull final PlayerInteractEvent event, @Nonnull final Player player, final int pageNumber);
 
     /**
      * Handle inventory click-event. For ether when player add/remove items
      * or change page.
      *
+     * @param playerMeta The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
      * @param inventoryClick the event some get triggered.
      * @param player         player some interact with the chest.
      * @return if this return true, so can't player/players take item/items from the clicked inventory.
      */
-    boolean onClickingInsideGui(@Nonnull final InventoryClickEvent inventoryClick, @Nonnull final Player player);
+    boolean onClickingInsideGui(@Nonnull final PlayerMeta playerMeta, @Nonnull final InventoryClickEvent inventoryClick, @Nonnull final Player player);
 
     /**
      * This is triggered when player drag items
@@ -67,9 +71,9 @@ public interface InventoryEvents {
     boolean onInventoryItemDrag(@Nonnull InventoryDragEvent event, @Nonnull ItemStack clickedItem);
 
     /**
-     * When you break the container this will be called, I remove all cached data
-     * and depending on settings I set it on the item, or the data get lost (only data
-     * some are needed for place it again is keeped).
+     * When you break the container this will be called. The cached data is removed
+     * and depending on settings set for this inventoryHolder instance (Only data
+     * some are needed for place it again is kept).
      *
      * @param player some break the container.
      * @param block  some get removed.
@@ -80,10 +84,11 @@ public interface InventoryEvents {
     /**
      * When player close inventory.
      *
-     * @param player some close the inventory.
+     * @param playerMeta The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
+     * @param player     some close the inventory.
      * @return true if valid container some get closed.
      */
-    boolean onContainerClose(@Nonnull final Player player);
+    boolean onContainerClose(@Nonnull final PlayerMeta playerMeta, @Nonnull final Player player);
 
     /**
      * When you place the container this will get trigger after
