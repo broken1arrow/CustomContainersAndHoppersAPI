@@ -75,11 +75,12 @@ public interface InventoryEvents {
      * and depending on settings set for this inventoryHolder instance (Only data
      * some are needed for place it again is kept).
      *
-     * @param player some break the container.
-     * @param block  some get removed.
+     * @param playerMeta The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
+     * @param player     some break the container.
+     * @param block      some get removed.
      * @return true if it shall cancel the event.
      */
-    boolean onContainerBreak(@Nullable final Player player, @Nonnull final Block block);
+    boolean onContainerBreak(@NotNull final PlayerMeta playerMeta, @Nullable final Player player, @Nonnull final Block block);
 
     /**
      * When player close inventory.
