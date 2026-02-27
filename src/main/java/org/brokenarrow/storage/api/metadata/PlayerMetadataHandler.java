@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 import javax.annotation.Nonnull;
 
 /**
- * This methods is for set the metadata key on the player.
+ * These methods are for set the metadata key on the player.
  */
 public enum PlayerMetadataHandler implements PlayerMetadata {
 
