@@ -9,11 +9,11 @@ import java.util.function.Function;
 
 public interface PlayerSessionCached {
 
-    void writeLiveData(Player player, Consumer<PlayerMeta> preferencesCallback);
+    void writeLiveData(final Player player,final Consumer<PlayerMeta> callback);
 
-    <T> T writeLiveData(Player player, Function<PlayerMeta, T> preferencesCallback);
+    <T> T writeLiveData(final Player player,final Function<PlayerMeta, T> callback);
 
-    void removePlayer(Player player);
+    void removePlayer(final Player player);
 
     Map<UUID, PlayerMeta> getCache();
 }
