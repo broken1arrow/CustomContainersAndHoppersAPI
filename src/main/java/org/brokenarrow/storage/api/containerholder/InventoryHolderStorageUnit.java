@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -31,7 +32,17 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      * @param itemStack the item to set
      */
     @Override
-     void setItem(final int index, final ItemStack itemStack);
+    void setItem(final int index, final ItemStack itemStack);
+
+    /**
+     * This method set the itemStack inside this container, if itemStack is null
+     * it will clear the contents and set amount to zero and ignore the amount you provide.
+     *
+     * @param itemStack the itemStack some are set.
+     * @param amount the amount to set with the item.
+     */
+    void setItem(@Nullable ItemStack itemStack, @NotNull BigInteger amount);
+
 
     /**
      * Attempts to add the given items to this container.
@@ -46,7 +57,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      *
      * @param itemStacks the items to add
      * @return a map of items that could not be added, indexed by their original
-     *         position in the input array
+     * position in the input array
      */
     @Override
     @NotNull
@@ -84,32 +95,32 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
     @NotNull
     ItemStack[] getContents();
 
-	/**
-	 * This will convert items to itemstacks.
-	 *
-	 * @return true if it exist items in the container.
-	 */
-	@Override
-	boolean dropItemsOnBlockBreak();
+    /**
+     * This will convert items to itemstacks.
+     *
+     * @return true if it exist items in the container.
+     */
+    @Override
+    boolean dropItemsOnBlockBreak();
 
-	/**
-	 * Drop items 1 stack at the time, if you try drop 128 items
-	 * they become invisible (but can be picked up). so to avoid
-	 * this it will drop a maximum of 64 items at the same tick.
-	 *
-	 * @param itemStack add itemstacks some get converted to 64 items at max
-	 *                  or the items max stack size.
-	 */
+    /**
+     * Drop items 1 stack at the time, if you try drop 128 items
+     * they become invisible (but can be picked up). so to avoid
+     * this it will drop a maximum of 64 items at the same tick.
+     *
+     * @param itemStack add itemstacks some get converted to 64 items at max
+     *                  or the items max stack size.
+     */
 
-	void dropItemsOnBlockBreak(ItemStack itemStack);
+    void dropItemsOnBlockBreak(ItemStack itemStack);
 
-	/**
-	 * Check if the item can be placed inside the chest.
-	 *
-	 * @param itemStack the items some hopper or player try to add.
-	 * @return true if you can place items inside.
-	 */
-	boolean canPlaceItemInsideContainer(ItemStack itemStack);
+    /**
+     * Check if the item can be placed inside the chest.
+     *
+     * @param itemStack the items some hopper or player try to add.
+     * @return true if you can place items inside.
+     */
+    boolean canPlaceItemInsideContainer(ItemStack itemStack);
 
     /**
      * Check if the item can be placed inside the chest.
@@ -120,127 +131,128 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
     boolean canAcceptItemType(ItemStack stack);
 
 
-	/**
-	 * Set´s the amount and itemStack to cache (will only save 1 item to cache).
-	 * <p>
-	 * See also this, for see what I use to set data it in cache.
-	 *
-	 * @param itemStack items you set to chache.
-	 */
-	void addItemsAmountInCache(ItemStack itemStack);
+    /**
+     * Set´s the amount and itemStack to cache (will only save 1 item to cache).
+     * <p>
+     * See also this, for see what I use to set data it in cache.
+     *
+     * @param itemStack items you set to chache.
+     */
+    void addItemsAmountInCache(ItemStack itemStack);
 
-	/**
-	 * Set´s the amount and itemStack to cache (will only save 1 item to cache).
-	 * <p>
-	 * See also this, for see what I use to set data it in cache.
-	 * <p>&nbsp;</p>
-	 * @param itemStack items you set to chache.
-	 * @param amount    set amount in chest.
-	 */
-	void addItemsAmountInCache(final ItemStack itemStack, final long amount);
+    /**
+     * Set´s the amount and itemStack to cache (will only save 1 item to cache).
+     * <p>
+     * See also this, for see what I use to set data it in cache.
+     * <p>&nbsp;</p>
+     *
+     * @param itemStack items you set to chache.
+     * @param amount    set amount in chest.
+     */
+    void addItemsAmountInCache(final ItemStack itemStack, final long amount);
 
-	/**
-	 * Create inventory/inventories if not exist.
-	 *
-	 * @param player some open inventory.
-	 * @return the inventory if it could create one.
-	 */
-	Inventory loadInventory(Player player);
+    /**
+     * Create inventory/inventories if not exist.
+     *
+     * @param player some open inventory.
+     * @return the inventory if it could create one.
+     */
+    Inventory loadInventory(Player player);
 
-	/**
-	 * Get amount is left in the chest (if the container has limmit
-	 * of amount you can add).
-	 *
-	 * @return amount is left inside the container.
-	 */
-	BigInteger getAmountLeft();
+    /**
+     * Get amount is left in the chest (if the container has limmit
+     * of amount you can add).
+     *
+     * @return amount is left inside the container.
+     */
+    BigInteger getAmountLeft();
 
-	/**
-	 * Set the amount of items in the container.
-	 *
-	 * @param amount the amount of items you want to set.
-	 */
-	void setAmount(final BigInteger amount);
+    /**
+     * Set the amount of items in the container.
+     *
+     * @param amount the amount of items you want to set.
+     */
+    void setAmount(final BigInteger amount);
 
-	/**
-	 * Subtract the number of items from the container.
-	 *
-	 * @param amount the number of items you want to remove.
-	 * @return the amount of items after subtract.
-	 */
-	BigInteger subtractAmount(final BigInteger amount);
+    /**
+     * Subtract the number of items from the container.
+     *
+     * @param amount the number of items you want to remove.
+     * @return the amount of items after subtract.
+     */
+    BigInteger subtractAmount(final BigInteger amount);
 
-	/**
-	 * Add several items to the container.
-	 *
-	 * @param amount the number of items you want to add.
-	 * @return the amount of items after add.
-	 */
-	BigInteger addAmount(final BigInteger amount);
+    /**
+     * Add several items to the container.
+     *
+     * @param amount the number of items you want to add.
+     * @return the amount of items after add.
+     */
+    BigInteger addAmount(final BigInteger amount);
 
-	/**
-	 * Add or Subtract the amount of items added to the container.
-	 *
-	 * @param amount   the amount of items you want to add/remove.
-	 * @param subtract true if you want to remove items.
-	 * @return the amount of items after add or subtract.
-	 */
-	BigInteger alterAmount(final BigInteger amount, final boolean subtract);
+    /**
+     * Add or Subtract the amount of items added to the container.
+     *
+     * @param amount   the amount of items you want to add/remove.
+     * @param subtract true if you want to remove items.
+     * @return the amount of items after add or subtract.
+     */
+    BigInteger alterAmount(final BigInteger amount, final boolean subtract);
 
-	/**
-	 * Get the amount of items inside the container.
-	 *
-	 * @return the amount of items in the container.
-	 */
-	BigInteger getAmount();
+    /**
+     * Get the amount of items inside the container.
+     *
+     * @return the amount of items in the container.
+     */
+    BigInteger getAmount();
 
-	/**
-	 * Get the amount of items inside the container.
-	 * This method are not exact, if amount is over
-	 * Intriger max value it will return Intriger max
-	 * value.
-	 *
-	 * @return the amount of items in the container or Intriger max value.
-	 */
-	int getAmountInt();
+    /**
+     * Get the amount of items inside the container.
+     * This method are not exact, if amount is over
+     * Intriger max value it will return Intriger max
+     * value.
+     *
+     * @return the amount of items in the container or Intriger max value.
+     */
+    int getAmountInt();
 
-	/**
-	 * Get the max amount of items you can store inside the container.
-	 *
-	 * @return the amount of items in the container or -1 if it unlimit amount.
-	 */
-	BigInteger getMaxAmount();
+    /**
+     * Get the max amount of items you can store inside the container.
+     *
+     * @return the amount of items in the container or -1 if it unlimit amount.
+     */
+    BigInteger getMaxAmount();
 
-	/**
-	 * The maxamount of items you can stor inside this container type
-	 * ,take settings from yml file.
-	 *
-	 * @return the amount you can store or -1 if it are unlimit amout you can store.
-	 */
-	BigInteger updateMaxAmount();
+    /**
+     * The maxamount of items you can stor inside this container type
+     * ,take settings from yml file.
+     *
+     * @return the amount you can store or -1 if it are unlimit amout you can store.
+     */
+    BigInteger updateMaxAmount();
 
 
-	/**
-	 * Set the defult placeholders inside inventory if container are empty, on all slots
-	 * but not center slot.
-	 */
-	void updateItemPlaceholders();
+    /**
+     * Set the defult placeholders inside inventory if container are empty, on all slots
+     * but not center slot.
+     */
+    void updateItemPlaceholders();
 
-	/**
-	 * Set items inside the inventory if it not empty.
-	 *
-	 * @param itemStack the itemstack it will show as placeholders.
-	 */
-	void updateItemPlaceholders(final ItemStack itemStack);
+    /**
+     * Set items inside the inventory if it not empty.
+     *
+     * @param itemStack the itemstack it will show as placeholders.
+     */
+    void updateItemPlaceholders(final ItemStack itemStack);
 
-	/**
-	 * Update the inventory title for container. With the amounts added or
-	 * Set both to null to update it from cache.
-	 *
-	 * @param amounts amount of items inside the chest.
-	 * @param cursor  items player add to the chest.
-	 */
-	void updateInventoryTitle(final BigInteger amounts, final ItemStack cursor);
+    /**
+     * Update the inventory title for container. With the amounts added or
+     * Set both to null to update it from cache.
+     *
+     * @param amounts amount of items inside the chest.
+     * @param cursor  items player add to the chest.
+     */
+    void updateInventoryTitle(final BigInteger amounts, final ItemStack cursor);
 
 
     /**
@@ -252,7 +264,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      *
      * @return {@code true} if lock mode is active, otherwise {@code false}
      */
-    boolean isLockModeActive() ;
+    boolean isLockModeActive();
 
     /**
      * Checks whether the given item is blocked by the container's filter.
@@ -264,13 +276,13 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      * @param itemStack the item to check
      * @return {@code true} if the item is blocked by the filter, otherwise {@code false}
      */
-    boolean isItemBlocked(@NotNull final ItemStack itemStack) ;
+    boolean isItemBlocked(@NotNull final ItemStack itemStack);
 
     /**
      * Returns the locked {@link ItemStack} for this container.
      *
      * @return the locked ItemStack, or an ItemStack of {@link org.bukkit.Material#AIR}
-     *         if lock mode is inactive or no locked item is set.
+     * if lock mode is inactive or no locked item is set.
      */
     @NotNull ItemStack getItemLocked();
 
