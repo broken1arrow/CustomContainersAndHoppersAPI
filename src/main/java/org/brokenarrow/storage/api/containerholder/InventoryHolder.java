@@ -522,7 +522,12 @@ public interface InventoryHolder extends InventoryEvents {
     @Nullable
     String getTitle(String text, UUID viewer);
 
-
+    /**
+     * Set if it shall add placeholder item.
+     * @param inventorySource the inventory involved in the event.
+     * @return true if it shall replace the item.
+     */
+    boolean setPlaceholder(@Nonnull final Inventory inventorySource);
 }
 
 
