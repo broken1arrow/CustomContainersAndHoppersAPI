@@ -11,12 +11,14 @@ import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -528,6 +530,16 @@ public interface InventoryHolder extends InventoryEvents {
      * @return true if it shall replace the item.
      */
     boolean setPlaceholder(@Nonnull final Inventory inventorySource);
+
+    /**
+     * Create the container, it will create one from the settings and data set in the holder.
+     *
+     * @param dropMethod the method if it shall drop the items on ground 1 and for keep the items inside the chest 2.
+     * @param material the type of material for the chest to drop.
+     * @return the itemStack with the set nbt data in the item.
+     */
+    @Nonnull
+    ItemStack createContainer(int dropMethod, @NotNull Material material);
 }
 
 
