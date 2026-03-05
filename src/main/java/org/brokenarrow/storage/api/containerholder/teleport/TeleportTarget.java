@@ -48,7 +48,7 @@ public interface TeleportTarget {
      *
      * @param items the items to insert
      * @return a map of slot index to remaining {@link ItemStack} that
-     *         could not be added
+     * could not be added
      */
     Map<Integer, ItemStack> addItems(ItemStack... items);
 
@@ -58,7 +58,7 @@ public interface TeleportTarget {
      *
      * @return the Bukkit inventory
      * @throws Validate.ValidateExceptions if this target does not
-     *         represent a Bukkit inventory
+     *                                     represent a Bukkit inventory
      */
     default Inventory getBukkit() {
         throw new Validate.ValidateExceptions("Not a Bukkit inventory target");
@@ -70,7 +70,7 @@ public interface TeleportTarget {
      *
      * @return the custom inventory holder
      * @throws Validate.ValidateExceptions if this target does not
-     *         represent a custom inventory
+     *                                     represent a custom inventory
      */
     default InventoryHolder getCustom() {
         throw new Validate.ValidateExceptions("Not a custom inventory target");
@@ -85,10 +85,10 @@ public interface TeleportTarget {
      * </p>
      *
      * @return an {@link Optional} containing the slot-based target,
-     *         or empty if not supported
+     * or empty if not supported
      */
-    default Optional<SlotBasedTeleportTarget > slotBased() {
-        if(this instanceof SlotBasedTeleportTarget  )
+    default Optional<SlotBasedTeleportTarget> slotBased() {
+        if (this instanceof SlotBasedTeleportTarget)
             return Optional.of((SlotBasedTeleportTarget) this);
         return Optional.empty();
     }
@@ -103,11 +103,11 @@ public interface TeleportTarget {
      * </p>
      *
      * @return an {@link Optional} containing aggregated storage support,
-     *         or empty if not supported
+     * or empty if not supported
      */
     default Optional<AggregatedStorageSupport> aggregated() {
-        if(this instanceof AggregatedStorageSupport )
-                    return Optional.of((AggregatedStorageSupport) this);
+        if (this instanceof AggregatedStorageSupport)
+            return Optional.of((AggregatedStorageSupport) this);
         return Optional.empty();
     }
 
@@ -116,7 +116,7 @@ public interface TeleportTarget {
      * inventory implementation rather than a standard Bukkit inventory.
      *
      * @return {@code true} if this target is custom-based,
-     *         {@code false} otherwise
+     * {@code false} otherwise
      */
     boolean isCustom();
 }

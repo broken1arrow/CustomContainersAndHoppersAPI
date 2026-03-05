@@ -121,7 +121,7 @@ public interface ContainerInteractionAPI {
      * @param item  The ItemStack being pushed.
      * @return True if the correct item is being pushed, false otherwise.
      */
-    boolean checkCorrectItemGetPushed(@NotNull final InventoryMoveItemEvent event, @NotNull final ItemStack item);
+    boolean checkPullItem(@NotNull final InventoryMoveItemEvent event, @NotNull final ItemStack item);
 
     void onJoin(PlayerJoinEvent e);
 

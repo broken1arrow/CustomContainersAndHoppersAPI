@@ -1,7 +1,6 @@
 package org.brokenarrow.storage.api.metadata;
 
 
-import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
@@ -9,9 +8,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.List;
-
-import static org.broken.arrow.library.serialize.utility.converters.LocationSerializer.deserializeLoc;
-import static org.broken.arrow.library.serialize.utility.converters.LocationSerializer.serializeLoc;
 
 /**
  * A set of methods to interact with metadata associated with a player.
@@ -50,7 +46,7 @@ public interface PlayerMetadata extends Metadata {
 	@Nonnull
 	default String getFirstValue(Player player) {
 		List<MetadataValue> metadata = player.getMetadata(this.getKey());
-		return metadata.size() > 0 ? metadata.get(0).value() + "" : "";
+		return !metadata.isEmpty() ? metadata.get(0).value() + "" : "";
 	}
 
 	/**
@@ -69,7 +65,7 @@ public interface PlayerMetadata extends Metadata {
 	@Nonnull
 	default MetadataValue getFirstMetadata(Player player) {
 		List<MetadataValue> metadata = player.getMetadata(this.getKey());
-		return metadata.size() > 0 ? metadata.get(0) : new FixedMetadataValue(this.getPlugin(), "");
+		return !metadata.isEmpty() ? metadata.get(0) : new FixedMetadataValue(this.getPlugin(), "");
 	}
 
 	/**
@@ -155,24 +151,5 @@ public interface PlayerMetadata extends Metadata {
 		player.removeMetadata(this.getKey(), this.getPlugin());
 	}
 
-	/**
-	 * Retrieves the location of the open container or its associated menu for the player.
-	 *
-	 * @param player The player to check for metadata.
-	 * @return The location of the open container or its associated menu, or null if not set.
-	 */
-	default Location getLocation(final Player player) {
-		return deserializeLoc(this.getFirstValue(player));
-	}
-
-	/**
-	 * Sets the location of the open container or its associated menu for the player.
-	 *
-	 * @param player   The player to set the metadata for.
-	 * @param location The location to set.
-	 */
-	default void setLocation(final Player player, final Location location) {
-		this.setMetadata(player, serializeLoc(location));
-	}
 
 }
