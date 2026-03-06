@@ -127,4 +127,8 @@ public interface InventoryEvents {
      * @param reason The reason for the removal.
      */
     void removedFromTask(@Nonnull final Reason reason);
+
+    void onContainerChunkUnload();
+
+    void onContainerChunkLoad();
 }
