@@ -10,6 +10,7 @@ import org.brokenarrow.storage.api.containerholder.modal.ContainerWriter;
 import org.brokenarrow.storage.api.builders.particle.ParticleEffectUtility;
 import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.brokenarrow.storage.api.containerholder.util.TypeOfContainer;
+import org.brokenarrow.storage.api.containerholder.util.UpdateReason;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -251,14 +252,15 @@ public interface InventoryHolder extends InventoryEvents {
      * Override this method if you want to reset data,
      * when they run the reload command.
      */
-    void reloadContainer();
+    void reloadContainer(final UpdateReason reason);
 
     /**
-     * Update data if new data added when the plugin runing or if it not exist.
+     * Update data if new data added when the plugin running or if it not exist.
      *
      * @param player the player some open the container.
+     * @param reason the reason for update the data.
      */
-    void updateData(final Player player);
+    void updateData(final Player player,@Nonnull final UpdateReason reason);
 
     /**
      * Update the inventory title for container, it will update all

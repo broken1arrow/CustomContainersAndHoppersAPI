@@ -67,6 +67,11 @@ public interface TeleportAndPickupItemsApi {
     void saveToCache(@Nonnull Consumer<ContainerTeleportState> consumer);
 
     /**
+     * Refresh set data taken from the container settings.
+     */
+    void refresh();
+
+    /**
      * Removes this container’s cached inventory data.
      */
     void removeCachedInventories();
