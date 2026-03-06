@@ -258,7 +258,7 @@ public interface InventoryHolder extends InventoryEvents {
      * Update data if new data added when the plugin running or if it not exist.
      *
      * @param player the player some open the container.
-     * @param reason the reason for update the data.
+     * @param reason the reason for the update of the data.
      */
     void updateData(final Player player,@Nonnull final UpdateReason reason);
 
@@ -276,14 +276,13 @@ public interface InventoryHolder extends InventoryEvents {
      *
      * @return true if player have open the container.
      */
-
     boolean isIfContainerAreOpen();
 
     /**
-     * Get wivers of inventory.
+     * Get viewers of inventory.
      *
      * @param page you want to get the inventory.
-     * @return amount of current viwers or -1 if inventory is null.
+     * @return amount of current viewers or -1 if inventory is null.
      */
     int getViewersAmount(final int page);
 
@@ -357,7 +356,7 @@ public interface InventoryHolder extends InventoryEvents {
     Sound getSoundWhenClose();
 
     /**
-     * Sound when upen container.
+     * Sound when open container.
      *
      * @return sound or null.
      */
