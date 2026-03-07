@@ -1,6 +1,9 @@
 package org.brokenarrow.storage.api.chunkevent;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.annotation.Nonnull;
+import java.util.UUID;
 
 /**
  * Represents volatile, per-chunk state used to determine {@link Relevance}.
@@ -56,9 +59,10 @@ public interface ChunkCacheEntryApi {
      * <p>
      * Implementations must ensure the reference count never becomes negative.
      *
+     * @param uuid the player that currently enter the chunk or leave the chunk.
      * @param delta the amount to add or subtract
      */
-    void addPlayerRefs(int delta);
+    void addPlayerRefs(@NotNull final UUID uuid, int delta);
 
     /**
      * Marks this chunk as observed at the given tick.
