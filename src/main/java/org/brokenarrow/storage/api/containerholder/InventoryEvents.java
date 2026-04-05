@@ -10,7 +10,6 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,7 +34,7 @@ public interface InventoryEvents {
      *                     specified page; otherwise, it will open the first page.
      * @return True if the player was able to open the container.
      */
-    boolean onOpenContainer(@NotNull PlayerMeta playerMeta,@Nonnull final Block clickedBlock, @Nonnull final Action clickAction, @Nonnull final Player player, final int pageNumber);
+    boolean onOpenContainer(@NotNull PlayerMeta playerMeta, @Nonnull final Block clickedBlock, @Nonnull final Action clickAction, @Nonnull final Player player, final int pageNumber);
 
     /**
      * When player interact with a container.
@@ -53,7 +52,7 @@ public interface InventoryEvents {
      * Handle inventory click-event. For ether when player add/remove items
      * or change page.
      *
-     * @param playerMeta The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
+     * @param playerMeta     The metadata set on the player, it is a temporary cache that change depending on what player do for actions.
      * @param inventoryClick the event some get triggered.
      * @param player         player some interact with the chest.
      * @return if this return true, so can't player/players take item/items from the clicked inventory.
@@ -111,14 +110,20 @@ public interface InventoryEvents {
     boolean onPickupItem(@Nonnull InventoryPickupItemEvent event);
 
     /**
-     * When container move items between containers. This get triggered when item get moved.
+     * Called when an item is transferred between inventories.
+     * <p>
+     * This method resolves the relevant {@link InventoryHolder} and delegates
+     * the handling of the transfer to it. Implementations may use the provided
+     * context to decide whether the transfer should be allowed or canceled.
      *
-     * @param event          the event some used when container move items between containers.
-     * @param pushItem       true if you push item to custom container or false drag/pull items from a container.
-     * @param destinationInv The destination inventory for the items.
-     * @return true if you want to cancel event.
+     * @param event the {@link InventoryMoveItemEvent} representing the transfer
+     * @param customHolderBelow true if a custom {@link InventoryHolder} was detected
+     *  *                          in the container below the source inventory
+     * @param pushItem true if the item is being pushed into the container,
+     *                 false if it is being pulled from another container
+     * @return true to cancel the transfer, false to allow it.
      */
-    boolean onMoveItem(@Nonnull final Inventory destinationInv, @Nonnull InventoryMoveItemEvent event, boolean pushItem);
+    boolean onMoveItem(@Nonnull InventoryMoveItemEvent event, boolean customHolderBelow, final boolean pushItem);
 
     /**
      * When it removes the task when chunk is no longer loaded or
