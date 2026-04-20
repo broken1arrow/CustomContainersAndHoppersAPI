@@ -2,20 +2,21 @@
 plugins {
    id("org.brokenarrow.storage.java-conventions")
 }
-val utilityVersion = "407b1da5d4"
+val utilityVersion = "0.134"
 
 dependencies {
     compileOnly("org.bstats:bstats-bukkit:3.0.2")
 
-    compileOnly("com.github.broken1arrow.Utility-Library:menu-library:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:title-update:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:serialize-utility:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:yaml-utility:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:commands:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:nbt:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:conversation-prompt:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:database:${utilityVersion}")
-    compileOnly("com.github.broken1arrow.Utility-Library:block-visualization:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:menu-library:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:title-update:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:serialize-utility:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:yaml-utility:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:commands:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:nbt:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:conversation-prompt:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:database:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:block-visualization:${utilityVersion}")
+    compileOnly("org.broken.arrow.library:chunk-relevance:${utilityVersion}")
 
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.15.1")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")

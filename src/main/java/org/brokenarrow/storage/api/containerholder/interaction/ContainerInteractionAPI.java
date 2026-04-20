@@ -3,16 +3,8 @@ package org.brokenarrow.storage.api.containerholder.interaction;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
-import org.bukkit.event.inventory.InventoryPickupItemEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.ItemStack;
@@ -123,11 +115,4 @@ public interface ContainerInteractionAPI {
      */
     boolean checkPullItem(@NotNull final InventoryMoveItemEvent event, @NotNull final ItemStack item);
 
-    void onJoin(PlayerJoinEvent e);
-
-    void onMove(PlayerMoveEvent e);
-
-    void onQuit(PlayerQuitEvent e);
-
-    void onTeleport(PlayerTeleportEvent e);
 }

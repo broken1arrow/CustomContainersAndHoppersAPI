@@ -1,5 +1,6 @@
 package org.brokenarrow.storage.api.chunkevent;
 
+import org.broken.arrow.library.chunk.tracking.event.status.Relevance;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
