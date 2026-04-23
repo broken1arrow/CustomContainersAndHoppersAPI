@@ -5,9 +5,9 @@ import org.broken.arrow.library.chunk.tracking.chunk.ChunkEntry;
 import org.broken.arrow.library.chunk.tracking.chunk.PlayerChunkTracker;
 import org.broken.arrow.library.chunk.tracking.event.status.Relevance;
 import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
+import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
-import org.bukkit.event.world.ChunkLoadEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
@@ -122,15 +122,15 @@ public interface ChunkCache {
     void loadContainerHolderTask(@NotNull final ChunkKeyAPI chunkKey, @Nullable final ChunkSnapshot chunkSnapshot);
 
     /**
-     * Force load data to the cache, if the chunk is not loaded later with players, this
-     * call will not do so much.
+     * Force load data to the cache, if the chunk contains with players this
+     * call will not result more than be added to the general cache.
      *
      * <p>
      * Typically used to update cached chunk data.
      *
-     * @param event the chunk load event
+     * @param chunk the chunk that could be added to cache.
      */
-    void chunkLoad(final ChunkLoadEvent event);
+    void forceLoadToCache(@Nonnull final Chunk chunk);
 
 
     /**
