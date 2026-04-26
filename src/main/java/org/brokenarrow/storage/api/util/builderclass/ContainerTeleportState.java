@@ -34,7 +34,6 @@ import java.util.Map;
  */
 public class ContainerTeleportState {
 	private  Map<Location, Inventory> cachedLinkedInventory = new HashMap<>();
-	private  Inventory cachedContainerInventory;
 	private  int locationNumberInList;
 	private  int lastNumberInList;
 	private  boolean teleportedItems;
@@ -48,17 +47,6 @@ public class ContainerTeleportState {
      */
     public ContainerTeleportState setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
         this.cachedLinkedInventory = cachedLinkedInventory;
-        return this;
-    }
-
-    /**
-     * Sets the cached container inventory.
-     *
-     * @param cachedContainerInventory The cached container inventory.
-     * @return The builder instance.
-     */
-    public ContainerTeleportState setCachedContainerInventory(final Inventory cachedContainerInventory) {
-        this.cachedContainerInventory = cachedContainerInventory;
         return this;
     }
 
@@ -104,16 +92,7 @@ public class ContainerTeleportState {
 		return lastNumberInList;
 	}
 
-	/**
-	 * Get the inventory for this container.
-	 *
-	 * @return the inventory or null.
-	 */
-	@Nullable
-	public Inventory getCachedContainerInventory() {
-		return cachedContainerInventory;
-	}
-
+	
     /**
      * Returns the current index within the resolved target location list.
      *
