@@ -3,9 +3,10 @@ package org.brokenarrow.storage.api.util.builderclass;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Persistent runtime state for a container's teleport system.
@@ -33,10 +34,10 @@ import java.util.Map;
  * </p>
  */
 public class ContainerTeleportState {
-	private  Map<Location, Inventory> cachedLinkedInventory = new HashMap<>();
-	private  int locationNumberInList;
-	private  int lastNumberInList;
-	private  boolean teleportedItems;
+    private Map<Location, Inventory> cachedLinkedInventory = new ConcurrentHashMap<>();
+    private int locationNumberInList;
+    private int lastNumberInList;
+    private boolean teleportedItems;
     private int currentTeleportedItems;
 
     /**
@@ -88,31 +89,31 @@ public class ContainerTeleportState {
      *
      * @return the last traversal index
      */
-	public int getLastNumberInList() {
-		return lastNumberInList;
-	}
+    public int getLastNumberInList() {
+        return lastNumberInList;
+    }
 
-	
+
     /**
      * Returns the current index within the resolved target location list.
      *
      * @return the zero-based traversal index
      */
-	public int getLocationNumberInList() {
-		return locationNumberInList;
-	}
+    public int getLocationNumberInList() {
+        return locationNumberInList;
+    }
 
-	/**
-	 * Checks if items were teleported.
-	 *
-	 * @return True if items were teleported, false otherwise.
-	 */
-	public boolean isTeleportedItems() {
-		return teleportedItems;
-	}
+    /**
+     * Checks if items were teleported.
+     *
+     * @return True if items were teleported, false otherwise.
+     */
+    public boolean isTeleportedItems() {
+        return teleportedItems;
+    }
 
 
-     /**
+    /**
      * Returns the cached linked inventories resolved for this teleport cycle.
      *
      * <p>
@@ -123,28 +124,66 @@ public class ContainerTeleportState {
      * <p>
      * This map is not thread-safe.
      * </p>
-	 * @return the map with all cached inventories.
-	 */
-	@Nullable
-	public Map<Location, Inventory> getCachedLinkedInventory() {
-		return cachedLinkedInventory;
-	}
+     *
+     * @return the map with all cached inventories.
+     */
+    @Nullable
+    public Map<Location, Inventory> getCachedLinkedInventory() {
+        return cachedLinkedInventory;
+    }
 
-	/**
-	 * Get the linked inventory from the cache.
-	 * <p>
-	 * This is not a tread safe map you access.
-	 *
-	 * @param location of the container that is linked to the link and suction container.
-	 * @return the inventory or null if it not exists.
-	 */
-	@Nullable
-	public Inventory getCachedLinkedInventory(final Location location) {
-		final Map<Location, Inventory> linkedInventors = this.getCachedLinkedInventory();
-		if (linkedInventors != null)
-			return linkedInventors.get(location);
-		return null;
-	}
+    /**
+     * Retrieve the location to cache.
+     *
+     * @param loc the location of the inventory
+     * @return Returns the inventory snapshot.
+     */
+    @Nullable
+    public Inventory getLinkInventory(@Nonnull final Location loc) {
+       return cachedLinkedInventory.get(loc);
+    }
+
+    /**
+     * Put the location to cache.
+     *
+     * @param loc the location of the inventory
+     * @param inv the inventory snapshot.
+     */
+    public void addLinkInventory(@Nonnull final Location loc, @Nullable final Inventory inv) {
+        cachedLinkedInventory.put(loc, inv);
+    }
+
+    /**
+     * Remove the location to cache.
+     *
+     * @param loc the location of the inventory
+     */
+    public void removeLinkInventory(@Nonnull final Location loc) {
+        cachedLinkedInventory.remove(loc);
+    }
+
+    /**
+     * Clear the locations set.
+     */
+    public void clearLinkedInventories() {
+        cachedLinkedInventory.clear();
+    }
+
+    /**
+     * Get the linked inventory from the cache.
+     * <p>
+     * This is not a tread safe map you access.
+     *
+     * @param location of the container that is linked to the link and suction container.
+     * @return the inventory or null if it not exists.
+     */
+    @Nullable
+    public Inventory getCachedLinkedInventory(final Location location) {
+        final Map<Location, Inventory> linkedInventors = this.getCachedLinkedInventory();
+        if (linkedInventors != null)
+            return linkedInventors.get(location);
+        return null;
+    }
 
     /**
      * Add amount teleported.

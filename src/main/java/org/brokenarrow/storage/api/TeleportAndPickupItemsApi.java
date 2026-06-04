@@ -83,7 +83,7 @@ public interface TeleportAndPickupItemsApi {
      *
      * @param linkedTo the location of the linked container
      */
-	void addCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
+	void addLinkedLocation(@Nonnull final Location linkedTo);
 
     /**
      * Removes a linked container's inventory and location from the cache.
@@ -92,7 +92,7 @@ public interface TeleportAndPickupItemsApi {
      *
      * @param linkedTo the location of the linked container
      */
-	void removeCachedLinkedContainerInventory(@Nonnull final Location linkedTo);
+	void removeLinkedLocation(@Nonnull final Location linkedTo);
 
     /**
      * Clears the current {@link ContainerTeleportState}.
