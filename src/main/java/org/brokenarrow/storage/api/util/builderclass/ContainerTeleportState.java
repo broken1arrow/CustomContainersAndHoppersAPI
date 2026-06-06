@@ -149,7 +149,7 @@ public class ContainerTeleportState {
      * @param loc the location of the inventory
      * @param inv the inventory snapshot.
      */
-    public void addLinkInventory(@Nonnull final Location loc, @Nullable final Inventory inv) {
+    public void putLinkedInventory(@Nonnull final Location loc, @Nullable final Inventory inv) {
         cachedLinkedInventory.put(loc, inv);
     }
 
@@ -158,7 +158,7 @@ public class ContainerTeleportState {
      *
      * @param loc the location of the inventory
      */
-    public void removeLinkInventory(@Nonnull final Location loc) {
+    public void removeLinkedInventory(@Nonnull final Location loc) {
         cachedLinkedInventory.remove(loc);
     }
 

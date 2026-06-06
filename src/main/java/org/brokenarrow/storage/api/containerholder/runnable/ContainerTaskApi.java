@@ -21,6 +21,9 @@ public interface ContainerTaskApi {
      */
     void runTask();
 
+    @NonNull
+    String getTimeWhenRunTask(Location location);
+
     /**
      * Retrieve If it should run so fast as it could.
      *

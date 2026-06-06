@@ -2,6 +2,7 @@ package org.brokenarrow.storage.api.containerholder;
 
 import org.brokenarrow.storage.api.containerholder.util.Reason;
 import org.brokenarrow.storage.api.player.modal.PlayerMeta;
+import org.bukkit.ChunkSnapshot;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
@@ -135,5 +136,5 @@ public interface InventoryEvents {
 
     void onContainerChunkUnload();
 
-    void onContainerChunkLoad();
+    void onContainerChunkLoadAsync(@Nullable final ChunkSnapshot chunkSnapshot);
 }
