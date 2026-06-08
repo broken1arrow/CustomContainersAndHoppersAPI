@@ -2,6 +2,7 @@ package org.brokenarrow.storage.api.containerholder.teleport;
 
 
 import org.brokenarrow.storage.api.util.builderclass.ContainerTeleportState;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
@@ -28,10 +29,11 @@ public interface TeleportTransferHandler {
     /**
      * Executes teleport logic for the resolved target container.
      *
-     * @param context the teleport execution context, including any
-     *                cached or temporary data related to the operation
-     * @param target  the resolved teleport target to which items
-     *                should be transferred
+     * @param itemStacks       the array of items that shall be teleported.
+     * @param context          the teleport execution context, including any
+     *                         cached or temporary data related to the operation
+     * @param target           the resolved teleport target to which items
+     *                         should be transferred
      */
-    void apply(@Nonnull final ContainerTeleportState context, @Nonnull final TeleportTarget target);
+    void apply(@Nonnull final ItemStack[] itemStacks, @Nonnull final ContainerTeleportState context, @Nonnull final TeleportTarget target);
 }
