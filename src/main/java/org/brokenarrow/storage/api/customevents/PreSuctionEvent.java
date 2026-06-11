@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.customevents;
 
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -10,11 +10,10 @@ import org.bukkit.inventory.ItemStack;
  */
 
 public class PreSuctionEvent extends EventUtility {
-
 	private static final HandlerList handlers = new HandlerList();
 	private final Location itemLocation;
 	private final Location toLocation;
-	private final Inventory toInventory;
+	private final InventoryHolder toInventoryHolder;
 	private final ItemStack itemPickUp;
 	private final boolean canPickUpItem;
 	private boolean cancelled;
@@ -25,13 +24,13 @@ public class PreSuctionEvent extends EventUtility {
 	 * @param itemLocation the location of the item.
 	 * @param itemPickUp the item it tries to pickup.
 	 * @param toLocation the location where the item ends up.
-	 * @param toInventory the inventory the items end up.
+	 * @param inventoryHolder the inventory the items end up.
 	 * @param canPickUpItem if it could pick up items.
 	 */
-	public PreSuctionEvent(Location itemLocation, ItemStack itemPickUp, Location toLocation, Inventory toInventory, boolean canPickUpItem) {
+	public PreSuctionEvent(final Location itemLocation, final ItemStack itemPickUp, final Location toLocation, final InventoryHolder inventoryHolder, final boolean canPickUpItem) {
 		super(handlers);
 		this.itemLocation = itemLocation;
-		this.toInventory = toInventory;
+		this.toInventoryHolder = inventoryHolder;
 		this.toLocation = toLocation;
 		this.itemPickUp = itemPickUp;
 		this.canPickUpItem = canPickUpItem;
@@ -39,7 +38,7 @@ public class PreSuctionEvent extends EventUtility {
 	}
 
 	/**
-	 * get the location of the item it try pick up.
+	 * get the location of the item it tries to pick up.
 	 *
 	 * @return location of the item.
 	 */
@@ -58,18 +57,18 @@ public class PreSuctionEvent extends EventUtility {
 	}
 
 	/**
-	 * get the inventory it try add the item in.
+	 * get the inventory it tries to add the item in.
 	 *
-	 * @return location of the item.
+	 * @return The inventoryHolder instance involved in the event.
 	 */
-	public Inventory getToInventory() {
-		return this.toInventory;
+	public InventoryHolder getToInventoryHolder() {
+		return this.toInventoryHolder;
 	}
 
 	/**
-	 * get the item it try pickup.
+	 * get the item it tries to pickup.
 	 *
-	 * @return itemstack.
+	 * @return itemStack.
 	 */
 	public ItemStack getItemsPickUp() {
 		return this.itemPickUp;
@@ -86,10 +85,10 @@ public class PreSuctionEvent extends EventUtility {
 	}
 
 	/**
-	 * Gets the cancellation state of this event. A cancelled event will not
+	 * Gets the cancellation state of this event. A canceled event will not
 	 * be executed.
 	 *
-	 * @return true if this event is cancelled
+	 * @return true if this event is canceled
 	 */
 	@Override
 	public boolean isCancelled() {
@@ -97,21 +96,16 @@ public class PreSuctionEvent extends EventUtility {
 	}
 
 	/**
-	 * Sets the cancellation state of this event. A cancelled event will not
+	 * Sets the cancellation state of this event. A canceled event will not
 	 * be executed.
 	 *
 	 * @param cancel true if you wish to cancel this event
 	 */
 	@Override
-	public void setCancelled(boolean cancel) {
+	public void setCancelled(final boolean cancel) {
 		this.cancelled = cancel;
 	}
 
-	/**
-	 * Get the list of event handlers.
-	 *
-	 * @return the instance of the HandlerList;
-	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

@@ -42,7 +42,7 @@ public abstract class EventUtility extends Event implements Cancellable {
 	/**
 	 * Register this event.
 	 */
-	public void registerEvent() {
+	protected void registerEvent() {
 		Bukkit.getPluginManager().callEvent(this);
 	}
 

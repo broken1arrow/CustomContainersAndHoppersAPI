@@ -2,9 +2,9 @@ package org.brokenarrow.storage.api.customevents;
 
 
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.itemtransfer.ItemTransferContext;
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -14,13 +14,12 @@ import org.jetbrains.annotations.Nullable;
  */
 
 public class PreHopperMoveItemEvent extends EventUtility {
-
 	private static final HandlerList handlers = new HandlerList();
-	private final Object inventoryHolder;
+	private final InventoryHolder inventoryHolder;
 	private final Location toLocation;
 	private final Location fromLocation;
-	private final Inventory fromInventory;
-	private final Inventory toInventory;
+	private final ItemTransferContext sourceTransferContext;
+	private final ItemTransferContext targetTransferContext;
 	private final ItemStack item;
 	private boolean cancelled;
 
@@ -28,39 +27,43 @@ public class PreHopperMoveItemEvent extends EventUtility {
 	 * Before it moves the item.
 	 *
 	 * @param inventoryHolder the holder that currently evoke this event.
-	 * @param toLocation Location where items should end up.
-	 * @param fromLocation Location where items coming from.
-	 * @param fromInventory the inventory items currently is placed.
-	 * @param toInventory the inventory the items will be added.
+	 * @param sourceTransferContext The source container that move the item.
+	 * @param targetTransferContext The target container that move the item too.
 	 * @param item the item.
 	 */
-	public PreHopperMoveItemEvent(@NotNull final InventoryHolder inventoryHolder, final Location toLocation, final Location fromLocation, final Inventory fromInventory, final Inventory toInventory, @NotNull final ItemStack item) {
+	public PreHopperMoveItemEvent(@NotNull final InventoryHolder inventoryHolder, final ItemTransferContext sourceTransferContext, final ItemTransferContext targetTransferContext, @NotNull final ItemStack item) {
 		super(handlers);
-		this.inventoryHolder = inventoryHolder;
-		this.toLocation = toLocation;
-		this.toInventory = toInventory;
-		this.fromLocation = fromLocation;
-		this.fromInventory = fromInventory;
+		this. inventoryHolder = inventoryHolder;
+
+		this.targetTransferContext = targetTransferContext;
+		this.sourceTransferContext = sourceTransferContext;
+
+		this.toLocation = targetTransferContext.targetLocation();
+		this.fromLocation = sourceTransferContext.targetLocation();
+
 		this.item = item;
 		registerEvent();
 	}
 
 	/**
-	 * Get the inventoryHolder some is involved in this event. You get access to everything inside
-	 * {@link InventoryHolder} and other classes some extends InventoryHolder interface (need then
-	 * cast to right class if you want access all methods).
+	 * Returns the {@link InventoryHolder} involved in this event.
 	 *
-	 * @return inventoryHolder instance.
+	 * <p>
+	 * This typically represents the hopper or container responsible
+	 * for initiating the transfer.
+	 * </p>
+	 *
+	 * @return the inventory holder involved in the transfer
 	 */
 	@NotNull
-	public Object getInventoryHolder() {
+	public InventoryHolder getInventoryHolder() {
 		return inventoryHolder;
 	}
 
 	/**
-	 * Get location it try to add items to.
+	 * Returns the location the item is being transferred to.
 	 *
-	 * @return location of the container it try add items to.
+	 * @return the target container location
 	 */
 	@Nullable
 	public Location getToLocation() {
@@ -68,41 +71,39 @@ public class PreHopperMoveItemEvent extends EventUtility {
 	}
 
 	/**
-	 * Get inventory it try send items to.
+	 * Returns the transfer context representing the target container.
 	 *
-	 * @return inventory some it try send items to;
+	 * @return the target transfer context
 	 */
 	@Nullable
-	public Inventory getToInventory() {
-		return toInventory;
+	public ItemTransferContext getTarget() {
+		return targetTransferContext;
 	}
 
 
 	/**
-	 * Get location where item are moved from.
+	 * Returns the location the item is being transferred from.
 	 *
-	 * @return location of the container it try add items to.
+	 * @return the source container location
 	 */
-
 	@Nullable
 	public Location getFromLocation() {
 		return fromLocation;
 	}
 
 	/**
-	 * Get inventory it try send items from.
+	 * Returns the transfer context representing the source container.
 	 *
-	 * @return inventory some it try send items to;
+	 * @return the source transfer context
 	 */
-	@Nullable
-	public Inventory getFromInventory() {
-		return fromInventory;
+	public ItemTransferContext getSource() {
+		return sourceTransferContext;
 	}
 
 	/**
-	 * Get the items some hopper try to move to container.
+	 * Returns the item the hopper is attempting to transfer.
 	 *
-	 * @return itemstack it currently transfer.
+	 * @return the item being moved
 	 */
 	@NotNull
 	public ItemStack getItem() {
@@ -110,31 +111,25 @@ public class PreHopperMoveItemEvent extends EventUtility {
 	}
 
 	/**
-	 * Get if move items event are cancelled.
+	 * Returns whether this transfer has been canceled.
 	 *
-	 * @return return true if it cancelled.
+	 * @return true if the transfer is canceled
 	 */
-
 	@Override
 	public boolean isCancelled() {
 		return this.cancelled;
 	}
 
 	/**
-	 * Set this to true if you want to stop hopper move item to or from container.
+	 * Cancels or allows the hopper transfer.
 	 *
-	 * @param cancel set it to true if you want to cancel event.
+	 * @param cancel true to cancel the transfer
 	 */
 	@Override
 	public void setCancelled(final boolean cancel) {
 		this.cancelled = cancel;
 	}
 
-	/**
-	 * Get the list of event handlers.
-	 *
-	 * @return the instance of the HandlerList;
-	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
