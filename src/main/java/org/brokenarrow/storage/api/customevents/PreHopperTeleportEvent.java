@@ -1,8 +1,9 @@
 package org.brokenarrow.storage.api.customevents;
 
+import org.brokenarrow.storage.api.containerholder.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.teleport.TeleportTarget;
 import org.bukkit.Location;
 import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -11,81 +12,66 @@ import org.bukkit.inventory.ItemStack;
 public class PreHopperTeleportEvent extends EventUtility {
 
 	private static final HandlerList handlers = new HandlerList();
-	private final Location toLocation;
 	private final Location fromLocation;
-	private final Inventory fromInventory;
-	private final Inventory toInventory;
+	private final InventoryHolder fromHolder;
+	private final TeleportTarget target;
 	private boolean shallRemoveFromHopper;
 	private final ItemStack[] itemsMoved;
 	private boolean cancelled;
 
-	/**
-	 * Before teleport items to a container.
-	 *
-	 *
-	 * @param toLocation Location where items should end up.
-	 * @param fromLocation Location where items coming from.
-	 * @param fromInventory the inventory items currently is placed.
-	 * @param toInventory the inventory the items will be added.
-	 * @param itemsMoved the arrays of items to move.
-	 */
-	public PreHopperTeleportEvent(Location toLocation, Location fromLocation, Inventory fromInventory, Inventory toInventory, ItemStack[] itemsMoved) {
+	public PreHopperTeleportEvent(final Location fromLocation, final InventoryHolder fromHolder, final TeleportTarget target, final ItemStack[] itemsMoved) {
 		super(handlers);
-		this.toLocation = toLocation;
 		this.fromLocation = fromLocation;
-		this.fromInventory = fromInventory;
-		this.toInventory = toInventory;
+		this.fromHolder = fromHolder;
+		this.target = target;
 		this.itemsMoved = itemsMoved;
 		registerEvent();
 	}
 
 	/**
-	 * Get location it try to add items to.
+	 * Get location it tries to add items to.
 	 *
-	 * @return location of the container it try add items to.
+	 * @return location of the container it try to add items to.
 	 */
 
 	public Location getToLocation() {
-		return toLocation;
+		return target.targetLocation();
 	}
 
 	/**
-	 * Get inventory it try send items to.
+	 * Get inventory it try to send items to.
 	 *
-	 * @return inventory some it try send items to;
+	 * @return inventory some it tries to send items to.
 	 */
 
-	public Inventory getToInventory() {
-		return toInventory;
+	public TeleportTarget getTarget() {
+		return target;
 	}
 
 
 	/**
 	 * Get location where item are moved from.
 	 *
-	 * @return location of the container it try add items to.
+	 * @return location of the container it try to add items to.
 	 */
-
-
 	public Location getFromLocation() {
 		return fromLocation;
 	}
 
 	/**
-	 * Get inventory it try send items from.
+	 * Get the custom inventoryHolder it try to send items from.
 	 *
-	 * @return inventory some it try send items to;
+	 * @return inventory some it try to send items to.
 	 */
-
-
-	public Inventory getFromInventory() {
-		return fromInventory;
+	public InventoryHolder getFromHolder() {
+		return fromHolder;
 	}
+
 
 	/**
 	 * Get the items some hopper try to move to container.
 	 *
-	 * @return itemstacks with no air and null.
+	 * @return itemStacks with no air and null.
 	 */
 	public ItemStack[] getItemsMoved() {
 		return itemsMoved;
@@ -106,14 +92,14 @@ public class PreHopperTeleportEvent extends EventUtility {
 	 * @param shallRemoveFromHopper set to true if it shall remove items from hopper.
 	 */
 
-	public void setShallRemoveFromHopper(boolean shallRemoveFromHopper) {
+	public void setShallRemoveFromHopper(final boolean shallRemoveFromHopper) {
 		this.shallRemoveFromHopper = shallRemoveFromHopper;
 	}
 
 	/**
-	 * Get if teleport items event are cancelled.
+	 * Get if teleport items event are canceled.
 	 *
-	 * @return return true if it cancelled.
+	 * @return return true if it canceled.
 	 */
 	@Override
 	public boolean isCancelled() {
@@ -127,15 +113,10 @@ public class PreHopperTeleportEvent extends EventUtility {
 	 * @param toCancel set it to true if you want to cancel event.
 	 */
 	@Override
-	public void setCancelled(boolean toCancel) {
+	public void setCancelled(final boolean toCancel) {
 		this.cancelled = toCancel;
 	}
 
-	/**
-	 * Get the list of event handlers.
-	 *
-	 * @return the instance of the HandlerList;
-	 */
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}

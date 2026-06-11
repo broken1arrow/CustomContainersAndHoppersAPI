@@ -1,7 +1,7 @@
 package org.brokenarrow.storage.api.containerholder.teleport;
 
 import org.brokenarrow.storage.api.builders.ContainerSettingsApi;
-import org.brokenarrow.storage.customevents.PreHopperTeleportEvent;
+import org.brokenarrow.storage.api.customevents.PreHopperTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -16,4 +16,6 @@ public interface TeleportWriter {
     TeleportWriter setUpdateBlock(Predicate<ContainerSettingsApi> updateBlock);
 
     TeleportWriter setItemAmount(@Nonnull final ToIntFunction<ItemStack[]> amountResolver);
+
+    int getAmountToTeleport();
 }

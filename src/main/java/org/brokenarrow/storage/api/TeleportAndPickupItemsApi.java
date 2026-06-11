@@ -4,8 +4,8 @@ import org.brokenarrow.storage.api.containerholder.InventoryHolder;
 import org.brokenarrow.storage.api.containerholder.teleport.SuctionItemHandler;
 import org.brokenarrow.storage.api.containerholder.teleport.TeleportTarget;
 import org.brokenarrow.storage.api.containerholder.teleport.TeleportTransferHandler;
+import org.brokenarrow.storage.api.containerholder.teleport.TeleportWriter;
 import org.brokenarrow.storage.api.util.builderclass.ContainerTeleportState;
-import org.brokenarrow.storage.containerholder.teleport.logic.ItemTeleportHelper;
 import org.bukkit.Location;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -51,7 +51,7 @@ public interface TeleportAndPickupItemsApi {
      */
     void setTeleportHandler(@Nonnull TeleportTransferHandler teleportHandler);
 
-    void setTeleportItemsHandler(@Nonnull final ItemStack[] itemStacks, @Nonnull final Consumer<ItemTeleportHelper> itemTeleportHelper);
+    void setTeleportItemsHandler(@Nonnull final ItemStack[] itemStacks, @Nonnull final Consumer<TeleportWriter> itemTeleportHelper);
 
     /**
      * Sets the handler responsible for suction (picking up) ground items.
