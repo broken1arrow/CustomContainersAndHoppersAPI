@@ -35,6 +35,7 @@ public class PostHopperTeleportEvent extends EventUtility {
         this.teleportTarget = teleportTarget;
         this.itemsMoved = itemsMoved;
         this.hasTeleportItem = teleportedItems;
+        registerEvent();
     }
 
     /**
