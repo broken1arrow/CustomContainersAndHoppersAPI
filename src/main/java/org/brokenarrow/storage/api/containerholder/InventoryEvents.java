@@ -134,7 +134,15 @@ public interface InventoryEvents {
      */
     void removedFromTask(@Nonnull final Reason reason);
 
+    /**
+     * On unloading the chunk this event is trigger.
+     */
     void onContainerChunkUnload();
 
+    /**
+     * On chunk load, this is called asynchronous.
+     *
+     * @param chunkSnapshot the snapshot of the chunk.
+     */
     void onContainerChunkLoadAsync(@Nullable final ChunkSnapshot chunkSnapshot);
 }

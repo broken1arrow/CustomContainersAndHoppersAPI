@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 /**
- * Utility class to handle teleport events. 
+ * Utility class to handle teleport events.
  */
 public interface TeleportWriter {
 
