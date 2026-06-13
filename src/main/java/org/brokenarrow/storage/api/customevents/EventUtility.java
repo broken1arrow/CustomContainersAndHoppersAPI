@@ -12,8 +12,6 @@ import javax.annotation.Nonnull;
  */
 
 public abstract class EventUtility extends Event implements Cancellable {
-
-
 	private final HandlerList handler;
 
 	/**
@@ -47,10 +45,10 @@ public abstract class EventUtility extends Event implements Cancellable {
 	}
 
 	/**
-	 * Gets the cancellation state of this event. A cancelled event will not
+	 * Gets the cancellation state of this event. A canceled event will not
 	 * be executed in the server, but will still pass to other plugins
 	 *
-	 * @return true if this event is cancelled
+	 * @return true if this event is canceled
 	 */
 	@Override
 	public boolean isCancelled() {
@@ -58,9 +56,9 @@ public abstract class EventUtility extends Event implements Cancellable {
 	}
 
 	/**
-	 * You need override this, if you want to use it or it will cast errors.
+	 * You need override this, if you want to use it, or it will cast errors.
 	 * <p>
-	 * This method sets the cancellation state of this event. A cancelled event will not
+	 * This method sets the cancellation state of this event. A canceled event will not
 	 * be executed in the server, but will still pass to other plugins.
 	 *
 	 * @param cancel true if you wish to cancel this event

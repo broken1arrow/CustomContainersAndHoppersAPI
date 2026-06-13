@@ -93,7 +93,7 @@ public interface InventoryHolderStorageUnit extends InventoryHolder {
      */
     @Override
     @NotNull
-    ItemStack[] getContents();
+    ItemStack @NotNull [] getContents();
 
     /**
      * This will convert items to itemstacks.

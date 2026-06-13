@@ -68,7 +68,7 @@ public class PostHopperTeleportEvent extends EventUtility {
     /**
      * Get the items some hopper try to move to container.
      *
-     * @return itemstacks with no air and null.
+     * @return item stacks with no air and null.
      */
     public ItemStack[] getItemsMoved() {
         return itemsMoved;

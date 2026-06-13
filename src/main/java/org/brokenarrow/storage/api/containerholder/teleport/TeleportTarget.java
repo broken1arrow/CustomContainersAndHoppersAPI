@@ -53,6 +53,15 @@ public interface TeleportTarget {
     Map<Integer, ItemStack> addItems(ItemStack... items);
 
     /**
+     * Indicates whether this teleport target represents a custom
+     * inventory implementation rather than a standard Bukkit inventory.
+     *
+     * @return {@code true} if this target is custom-based,
+     * {@code false} otherwise
+     */
+    boolean isCustom();
+
+    /**
      * Returns the underlying Bukkit {@link Inventory}, if this target
      * represents a Bukkit-based container.
      *
@@ -111,12 +120,4 @@ public interface TeleportTarget {
         return Optional.empty();
     }
 
-    /**
-     * Indicates whether this teleport target represents a custom
-     * inventory implementation rather than a standard Bukkit inventory.
-     *
-     * @return {@code true} if this target is custom-based,
-     * {@code false} otherwise
-     */
-    boolean isCustom();
 }
