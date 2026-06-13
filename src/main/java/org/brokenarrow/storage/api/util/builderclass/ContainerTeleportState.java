@@ -34,33 +34,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * </p>
  */
 public class ContainerTeleportState {
-    private Map<Location, Inventory> cachedLinkedInventory = new ConcurrentHashMap<>();
-    private int locationNumberInList;
+    private final Map<Location, Inventory> cachedLinkedInventory = new ConcurrentHashMap<>();
     private int lastNumberInList;
     private boolean teleportedItems;
     private int currentTeleportedItems;
 
-    /**
-     * Sets the cached linked inventory map.
-     *
-     * @param cachedLinkedInventory The map containing cached linked inventories.
-     * @return The builder instance.
-     */
-    public ContainerTeleportState setCachedLinkedInventory(final Map<Location, Inventory> cachedLinkedInventory) {
-        this.cachedLinkedInventory = cachedLinkedInventory;
-        return this;
-    }
-
-    /**
-     * Sets the location number in the list.
-     *
-     * @param locationNumberInList The location number in the list.
-     * @return The builder instance.
-     */
-    public ContainerTeleportState setLocationNumberInList(final int locationNumberInList) {
-        this.locationNumberInList = locationNumberInList;
-        return this;
-    }
 
     /**
      * Sets the last number in the list.
@@ -93,15 +71,6 @@ public class ContainerTeleportState {
         return lastNumberInList;
     }
 
-
-    /**
-     * Returns the current index within the resolved target location list.
-     *
-     * @return the zero-based traversal index
-     */
-    public int getLocationNumberInList() {
-        return locationNumberInList;
-    }
 
     /**
      * Checks if items were teleported.
@@ -192,7 +161,6 @@ public class ContainerTeleportState {
      */
     public void addCurrentTeleportedItems(final int add) {
         this.currentTeleportedItems += add;
-
     }
 
     /**

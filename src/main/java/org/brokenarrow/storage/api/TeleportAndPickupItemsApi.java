@@ -50,7 +50,20 @@ public interface TeleportAndPickupItemsApi {
      * @param teleportHandler handler responsible for processing item teleportation
      */
     void setTeleportHandler(@Nonnull TeleportTransferHandler teleportHandler);
-
+    /**
+     * Sets the handler responsible for teleporting items.
+     * <p>
+     * The handler is executed after validating that the target container
+     * can accept the items.
+     * <p>
+     * The {@link TeleportTarget} provides access to both vanilla and custom
+     * inventories. Always check {@link TeleportTarget#isCustom()} before
+     * directly accessing a custom inventory implementation, as doing so
+     * without validation may cause errors.
+     *
+     * @param itemStacks the itemStacks that should be teleported
+     * @param itemTeleportHelper the helper responsible for processing item teleportation
+     */
     void setTeleportItemsHandler(@Nonnull final ItemStack[] itemStacks, @Nonnull final Consumer<TeleportWriter> itemTeleportHelper);
 
     /**
@@ -135,13 +148,6 @@ public interface TeleportAndPickupItemsApi {
      */
 	@Nullable
     ContainerTeleportState getTeleportWrapper();
-
-    /**
-     * Returns the index of the next linked container to be processed.
-     *
-     * @return the next index to process, or {@code -1} if no containers exist
-     */
-	int getNumberInList();
 
     /**
      * Indicates whether items were successfully teleported.
