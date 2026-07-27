@@ -161,8 +161,6 @@ public enum ServerVersion {
         if (versionUtil != null) return;
 
         versionUtil = new VersionUtil(plugin);
-        System.out.println("versionUtil.versionNewer major: " + versionUtil.getVersion().getMajor() + " m " + versionUtil.getVersion().getMinor() + " p " + versionUtil.getVersion().getPatch());
-        System.out.println("versionUtil.compareTo((int) version.version, 0).newer();" + versionUtil.compareTo((int) ServerVersion.v1_10.version, 0).newer());
         serverName = plugin.getServer().getName();
     }
 

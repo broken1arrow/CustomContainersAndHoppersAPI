@@ -1,8 +1,8 @@
 package org.brokenarrow.storage.api.containerholder.modal;
 
-import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
-import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
+import org.broken.arrow.library.serialize.utility.converters.world.ChunkKey;
 import org.brokenarrow.storage.api.containerholder.InventoryHolder;
+import org.brokenarrow.storage.api.containerholder.key.BlockKeyResolver;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
@@ -119,7 +119,7 @@ public interface InventoryHoldersCacheApi {
      * @return the list of locations associated to that chunk.
      */
   @Nullable
-    List<Location> getChunkData(ChunkKeyAPI chunk);
+    List<Location> getChunkData(ChunkKey chunk);
 
     /**
 	 * Retrieve list of locations from the specific chunk.
@@ -129,5 +129,5 @@ public interface InventoryHoldersCacheApi {
 	 */
 	List<Location> getChunkData(Object chunkSnapshot);
 
-    Set<ChunkKeyAPI> getChunks();
+    Set<ChunkKey> getChunks();
 }

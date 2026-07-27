@@ -1,10 +1,10 @@
 package org.brokenarrow.storage.api.builders;
 
-import org.broken.arrow.library.chunk.tracking.ChunkKey;
+
 import org.broken.arrow.library.chunk.tracking.chunk.ChunkEntry;
 import org.broken.arrow.library.chunk.tracking.chunk.PlayerChunkTracker;
 import org.broken.arrow.library.chunk.tracking.event.status.Relevance;
-import org.brokenarrow.storage.api.containerholder.key.ChunkKeyAPI;
+import org.broken.arrow.library.serialize.utility.converters.world.ChunkKey;
 import org.bukkit.Chunk;
 import org.bukkit.ChunkSnapshot;
 import org.bukkit.Location;
@@ -52,7 +52,7 @@ public interface ChunkCache {
      * @param key      the chunk key identifying the cached entry
      * @param callback a consumer used to modify the cached chunk entry
      */
-    void setChunkLoadContainerTask(@Nonnull final ChunkKeyAPI key, @Nonnull final Consumer<ChunkEntry> callback);
+    void setChunkLoadContainerTask(@Nonnull final ChunkKey key, @Nonnull final Consumer<ChunkEntry> callback);
 
     /**
      * Determines the current relevance state of the chunk at the given location.
@@ -107,7 +107,7 @@ public interface ChunkCache {
      *
      * @param chunkKey the snapshot to update the InventoryHolders set.
      */
-    void loadContainerHolderTask(@NotNull ChunkKeyAPI chunkKey);
+    void loadContainerHolderTask(@NotNull ChunkKey chunkKey);
 
     /**
      * Loads a chunk snapshot directly into the cache for the
@@ -119,7 +119,7 @@ public interface ChunkCache {
      * @param chunkKey      the snapshot to update the InventoryHolders set.
      * @param chunkSnapshot the snapshot to update the InventoryHolders set.
      */
-    void loadContainerHolderTask(@NotNull final ChunkKeyAPI chunkKey, @Nullable final ChunkSnapshot chunkSnapshot);
+    void loadContainerHolderTask(@NotNull final ChunkKey chunkKey, @Nullable final ChunkSnapshot chunkSnapshot);
 
     /**
      * Force load data to the cache, if the chunk contains with players this
@@ -160,7 +160,7 @@ public interface ChunkCache {
      * @return the cached entry, or {@code null} if not present
      */
     @Nullable
-    ChunkEntry getTrackedChunks(@Nonnull final ChunkKeyAPI chunkKey);
+    ChunkEntry getTrackedChunks(@Nonnull final ChunkKey chunkKey);
 
     /**
      * Checks whether cached data exists for the chunk at the given location.
@@ -182,7 +182,7 @@ public interface ChunkCache {
      *
      * @param chunkKey the chunk key identifying the cache entry
      */
-    void removeChunk(@Nonnull final ChunkKeyAPI chunkKey);
+    void removeChunk(@Nonnull final ChunkKey chunkKey);
 
     /**
      * Returns the player chunk tracker used to drive chunk relevance updates.

@@ -40,7 +40,7 @@ public interface LoadSettingsContainersAPI {
 
 
 	/**
-	 * Setings data for all containers.
+	 * Settings data for all containers.
 	 *
 	 * @return the map with all values for all containers.
 	 */
