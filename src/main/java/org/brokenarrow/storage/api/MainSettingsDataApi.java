@@ -438,6 +438,14 @@ public interface MainSettingsDataApi {
 	double getRandomStackNumber();
 
 	/**
+	 * If enabled it allowing player click with container to link the link container
+	 * to other containers by hold it in hand.
+	 *
+	 * @return true if allowing player click with the link container to link.
+	 */
+	boolean isLinkClickingWithContainer();
+
+	/**
 	 * List of debug keys (to debug different parts of the plugin).
 	 *
 	 * @return list of debug keys or empty list.
@@ -464,4 +472,5 @@ public interface MainSettingsDataApi {
 	 * @return the MainSettingsDataApiBuilder instance.
 	 */
 	MainSettingsDataApiBuilder getBuilder();
+
 }
